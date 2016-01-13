@@ -1,5 +1,5 @@
 ---
-classname: AGRON 5XXX/4XXX -  
+classname: AGRON 5XXX/4XXX - Data Stewardship for Earth Scientists  
 semester: Fall 2016
 time: XXX
 room: XXX
@@ -20,22 +20,34 @@ output:
     template: syllabus-template.tex
 ---
 
-\noindent\textbf{Optional Textbook:}  ***Insert textbook here***
+\noindent\textbf{Optional Textbook:}  
+Insert textbook here
 \vskip.25in
 
-\noindent\textbf{Learning Outcome:} ***Insert learning outcome here***
+\noindent\textbf{Learning Outcome:} 
+Insert learning outcome here
 \vskip.25in
 
 \noindent\textbf{Course Outline:} 
 
 \begin{center} \begin{minipage}{6.5in}
 \begin{flushleft}
-Topic \dotfill Homework/blog accompaniment \\
+Learning to use the command line \dotfill Week 1 \\
+Git and the GitHub ecosystem \dotfill Week 1 \\
+Standards of reproducible data collection \dotfill Week 2 \\
+Relational Databases and SQL \dotfill Week 3-4 \\
+Data architecture \dotfill Week 5 \\
+Introduction to \texttt{R} \dotfill Week 6-7 \\
+Data munging and wrangling \dotfill Week 8-9 \\
+Visualization \dotfill Week 10 \\
+Reproducibility and Dynamic Documents \dotfill Week 11-12 \\ 
+External Data Sources \dotfill Week 13-14 \\
+Special Data Types \dotfill Week 15 \\
 \end{flushleft}
 \end{minipage}
 \end{center}
 
-\noindent\textbf{Assessment:} The following assessments will be made throughout the course:
+\noindent\textbf{Assessment:} The following assessments will be made throughout the course.
 \vspace*{.15in}
 \begin{center} 
 \begin{minipage}{6.5in}
