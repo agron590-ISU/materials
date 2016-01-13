@@ -1,5 +1,5 @@
 ---
-classname: AGRON 5XXX/4XXX - Data Stewardship for Earth Scientists  
+classname: AGRON 5XXX/4XXX - Data Stewardship for Earth Systems Scientists  
 semester: Fall 2016
 time: XXX
 room: XXX
@@ -10,8 +10,8 @@ instructor:
    office: Snedecor 3220
    phone: XXX
  - name: "Ranae Dietzel"
-   email: XXX
-   office: XXX
+   email: rdietzel@iastate.edu
+   office: 3403 Agronomy Hall
    phone: XXX
 oh_time: XXX
 oh_office: XXX
@@ -25,7 +25,7 @@ Insert textbook here
 \vskip.25in
 
 \noindent\textbf{Learning Outcome:} 
-Insert learning outcome here
+Students will become good data stewards through learning new tools to clearl organize, track, and communicate data-based work from data collection through publication.  This will facilitate strong teamwork skills and enable subsequent researchers to reproduce or expand upon completed projects.   
 \vskip.25in
 
 \noindent\textbf{Course Outline:} 
