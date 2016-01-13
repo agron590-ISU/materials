@@ -1,0 +1,76 @@
+\documentclass[12pt]{article}
+\usepackage{hyperref}
+\textwidth=7in
+\textheight=9.5in
+\topmargin=-1in
+\headheight=0in
+\headsep=.5in
+\hoffset=-.85in
+
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{center}
+{\bf $classname$ $if(section)$ Section $section$ $endif$  \\ $semester$}
+\end{center}
+
+\setlength{\unitlength}{1in}
+
+\begin{picture}(6,.1) 
+\put(0,0) {\line(1,0){6.25}}         
+\end{picture}
+
+\renewcommand{\arraystretch}{2}
+ 
+\vskip.25in
+\noindent\textbf{Class Time:} $time$ in $room$
+
+
+\noindent\textbf{Instructor:} $for(instructor)$ $instructor.name$ ($instructor.email$, $instructor.office$, $instructor.phone$)$sep$, $endfor$
+
+$for(ta)$
+\noindent\textbf{TA:} $ta.name$ ($ta.office$)
+$endfor$
+
+\noindent\textbf{Office Hours:} $oh_time$ in $oh_office$.
+% \footnotesize
+% I try to make sure that students who would like to attend office hours have that ability. If none of these times fit your course schedule, additional office hours can be arranged. You can also ask questions through emails at any time - I check my email frequently and emails will generally be answered within 24 hours (except on weekends). However, I may not respond immediately - so it is in your best interest not to wait until the last minute before homework deadlines or exams.
+% \normalsize
+
+$if(ta)$ \noindent\textbf{TA Office Hours:} \textit{TBD} $endif$
+\noindent\textbf{Web:} $website$
+\vskip.25in
+
+$body$
+
+\vskip.25in
+\noindent\textbf{Attendance}:  
+Grades do not directly depend on attendance - still, experience shows that attendance and course performance are significantly related to each other. In order to get the most out of this course and do his or her personal best, it is necessary for a student to treat attendance as if it were mandatory.
+
+\vskip.25in
+\noindent\textbf{Academic Honesty}:  
+As an Iowa State University student, you have agreed to abide by the University's academic honesty policy (http://www.dso.iastate.edu/ja/academic/misconduct.html).
+Academic misconduct is a serious matter and student's suspected of academic dishonesty will be reported to the Dean of Students Office.
+Questions related to course assignments and the academic honesty policy should be directed to the instructor.
+
+\vskip.25in
+\noindent\textbf{Disability Accommodation}:  
+Iowa State University complies with the Americans with Disabilities Act and Sect 504 of the Rehabilitation Act. If you have a disability and anticipate needing accommodations in this course, please contact your instructor (in this case, Ian Mouzon) to set up a meeting within the first two weeks of the semester or as soon as you become aware of your need. Before meeting with the instructor, you will need to obtain a SAAR form with recommendations for accommodations from the Disability Resources Office, located in Room 1076 on the main floor of the Student Services Building. Their telephone number is 515-294-7220 or email disabilityresources@iastate.edu. Retroactive requests for accommodations will not be honored.
+
+\vskip.25in
+\noindent\textbf{Dead Week}:
+This class follows the Iowa State University Dead Week policy as noted in section 10.6.4 of the Faculty Handbook http://www.provost.iastate.edu/resources/faculty-handbook .
+
+\vskip.25in
+\noindent\textbf{Harassment and Discrimination}:
+Iowa State University strives to maintain our campus as a place of work and study for faculty, staff, and students that is free of all forms of prohibited discrimination and harassment based upon race, ethnicity, sex (including sexual assault), pregnancy, color, religion, national origin, physical or mental disability, age, marital status, sexual orientation, gender identity, genetic information, or status as a U.S. veteran. Any student who has concerns about such behavior should contact his/her instructor, Student Assistance at 515-294-1020 or email dso-sas@iastate.edu, or the Office of Equal Opportunity and Compliance at 515-294-7612.
+
+\vskip.25in
+\noindent\textbf{Religious Accommodation}:
+If an academic or work requirement conflicts with your religious practices and/or observances, you may request reasonable accommodations. Your request must be in writing, and your instructor or supervisor will review the request.  You or your instructor may also seek assistance from the Dean of Students Office or the Office of Equal Opportunity and Compliance.
+
+\vskip.25in
+\noindent\textbf{Contact Information}:
+If you are experiencing, or have experienced, a problem with any of the above issues, email academicissues@iastate.edu.
+\end{document}

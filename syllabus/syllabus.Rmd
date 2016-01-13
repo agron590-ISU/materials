@@ -1,0 +1,75 @@
+---
+classname: AGRON 5XXX/4XXX -  
+semester: Fall 2016
+time: XXX
+room: XXX
+website: XXX
+instructor:
+ - name: "Andee Kaplan"
+   email: ajkaplan@iastate.edu
+   office: Snedecor 3220
+   phone: XXX
+ - name: "Ranae Dietzel"
+   email: XXX
+   office: XXX
+   phone: XXX
+oh_time: XXX
+oh_office: XXX
+output:
+  pdf_document:
+    template: syllabus-template.tex
+---
+
+\noindent\textbf{Optional Textbook:}  ***Insert textbook here***
+\vskip.25in
+
+\noindent\textbf{Learning Outcome:} ***Insert learning outcome here***
+\vskip.25in
+
+\noindent\textbf{Course Outline:} 
+
+\begin{center} \begin{minipage}{6.5in}
+\begin{flushleft}
+Topic \dotfill Homework/blog accompaniment \\
+\end{flushleft}
+\end{minipage}
+\end{center}
+
+\noindent\textbf{Assessment:} The following assessments will be made throughout the course:
+\vspace*{.15in}
+\begin{center} 
+\begin{minipage}{6.5in}
+\begin{flushleft}
+\textbf{Blog Posts:} Blog details \\
+\vskip.25in
+\textbf{Individual Homework:} Homework details \\
+\vskip.25in
+\textbf{Group Homework:} Homework details \\
+\vskip.25in
+\textbf{Final Project:} Project details
+\vskip.25in
+The components have the following weights:\\
+\vskip.25in
+\begin{center} 
+\begin{minipage}{6in}
+\begin{flushleft}
+\textbf{Blog Posts} \dotfill XX\% (details) \\
+\textbf{Individual Homework} \dotfill XX\% (details) \\
+\textbf{Group Homework} \dotfill XX\% (details) \\
+\textbf{Project:} \dotfill XX\%  (details) \\
+\end{flushleft}
+\end{minipage}
+\end{center}
+\end{flushleft}
+\end{minipage}
+\end{center}
+
+\vskip.25in
+\noindent\textbf{Important Dates}:
+\begin{center} \begin{minipage}{5in}
+\begin{flushleft}
+Event \dotfill Date\\
+\end{flushleft}
+\end{minipage}
+\end{center}
+
