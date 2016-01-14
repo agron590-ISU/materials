@@ -20,68 +20,48 @@ output:
     template: syllabus-template.tex
 ---
 
-\noindent\textbf{Optional Textbook:}  
+#Optional Textbook:
 Insert textbook here
-\vskip.25in
 
-\noindent\textbf{Learning Outcome:} 
+#Learning Outcome:
 Students will become good data stewards through learning new tools to clearly organize, track, and communicate data-based work from data collection through publication.  This will facilitate strong teamwork skills and enable subsequent researchers to reproduce or expand upon completed projects.   
-\vskip.25in
 
-\noindent\textbf{Course Outline:} 
+#Course Outline:
 
-\begin{center} \begin{minipage}{6.5in}
-\begin{flushleft}
-Learning to use the command line \dotfill Week 1 \\
-Git and the GitHub ecosystem \dotfill Week 1 \\
-Standards of reproducible data collection \dotfill Week 2 \\
-Relational Databases and SQL \dotfill Week 3-4 \\
-Data architecture \dotfill Week 5 \\
-Introduction to \texttt{R} \dotfill Week 6-7 \\
-Data munging and wrangling \dotfill Week 8-9 \\
-Visualization \dotfill Week 10 \\
-Reproducibility and Dynamic Documents \dotfill Week 11-12 \\ 
-External Data Sources \dotfill Week 13-14 \\
-Special Data Types \dotfill Week 15 \\
-\end{flushleft}
-\end{minipage}
-\end{center}
+1. Learning to use the command line \dotfill Week 1
+2. Git and the GitHub ecosystem \dotfill Week 1
+1. Standards of reproducible data collection \dotfill Week 2
+1. Relational Databases and SQL \dotfill Week 3-4
+1. Data architecture \dotfill Week 5
+1. Introduction to \texttt{R} \dotfill Week 6-7
+1. Data munging and wrangling \dotfill Week 8-9
+1. Visualization \dotfill Week 10
+1. Reproducibility and Dynamic Documents \dotfill Week 11-12
+1. External Data Sources \dotfill Week 13-14
+1. Special Data Types \dotfill Week 15
 
-\noindent\textbf{Assessment:} The following assessments will be made throughout the course.
-\vspace*{.15in}
-\begin{center} 
-\begin{minipage}{6.5in}
-\begin{flushleft}
-\textbf{Blog Posts:} Blog details \\
-\vskip.25in
-\textbf{Individual Homework:} Homework details \\
-\vskip.25in
-\textbf{Group Homework:} Homework details \\
-\vskip.25in
-\textbf{Final Project:} Project details
-\vskip.25in
-The components have the following weights:\\
-\vskip.25in
-\begin{center} 
-\begin{minipage}{6in}
-\begin{flushleft}
-\textbf{Blog Posts} \dotfill XX\% (details) \\
-\textbf{Individual Homework} \dotfill XX\% (details) \\
-\textbf{Group Homework} \dotfill XX\% (details) \\
-\textbf{Project:} \dotfill XX\%  (details) \\
-\end{flushleft}
-\end{minipage}
-\end{center}
-\end{flushleft}
-\end{minipage}
-\end{center}
 
-\vskip.25in
-\noindent\textbf{Important Dates}:
-\begin{center} \begin{minipage}{5in}
-\begin{flushleft}
-Event \dotfill Date\\
-\end{flushleft}
-\end{minipage}
-\end{center}
+#Assessment: 
+
+The following assessments will be made throughout the course.
+
+##Blog Posts 
+Blog details
+
+##Individual Homework: 
+Homework details
+
+##Group Homework:
+Homework details
+
+##Final Project: 
+Project details  
+
+
+| Component | Weight |
+|:---|---:|
+|**Blog Posts** | XX\% (details) |
+|**Individual Homework** | XX\% (details) |
+|**Group Homework** | XX\% (details) |
+|**Project:** | XX\%  (details) |
 
