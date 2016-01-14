@@ -14,3 +14,9 @@ vignettes/*.pdf
 
 *.pdf
 .Rproj.user
+
+#rstudio crap
+DataStewardship.Rproj
+
+#Mac crap
+.DS_Store
