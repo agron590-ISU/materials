@@ -20,13 +20,15 @@ output:
     template: syllabus-template.tex
 ---
 
-#Optional Textbook:
-Insert textbook here
+#Optional Textbooks:
+- Kimball, Ralph, and Margy Ross. \emph{The data warehouse toolkit: The definitive guide to dimensional modeling}. John Wiley & Sons, 2013.
+- Xie, Yihui. \emph{Dynamic Documents with R and knitr}. Vol. 29. CRC Press, 2013.
+- Wickham, Hadley. \emph{ggplot2: elegant graphics for data analysis}. Springer Science & Business Media, 2009.
 
 #Learning Outcome:
 Students will become good data stewards through learning new tools to clearly organize, track, and communicate data-based work from data collection through publication.  This will facilitate strong teamwork skills and enable subsequent researchers to reproduce or expand upon completed projects.   
 
-#Course Outline:
+#Tentative Course Outline:
 
 1. Learning to use the command line \dotfill Week 1
 2. Git and the GitHub ecosystem \dotfill Week 1
@@ -37,31 +39,31 @@ Students will become good data stewards through learning new tools to clearly or
 1. Data munging and wrangling \dotfill Week 8-9
 1. Visualization \dotfill Week 10
 1. Reproducibility and Dynamic Documents \dotfill Week 11-12
-1. External Data Sources \dotfill Week 13-14
-1. Special Data Types \dotfill Week 15
-
+1. External Data Sources \dotfill Week 13-
+1. Special Data Types \dotfill Week 14
+1. Project presentations \dotfill Week 15
 
 #Assessment: 
 
-The following assessments will be made throughout the course.
+The following assessments will be made throughout the course. All assignments will be turned in and graded within the GitHub ecosystem. There will be no alternative method for submission. This will ensure that the students are learning best collaborative and reproducible practices, as well as reinforcing ideas about data.
 
 ##Blog Posts 
-Blog details
+Weekly readings (journal articles, book chapters, blog posts, etc.) will be assigned and the students will be asked to write their opinions and understanding of the topic in a blog format. Blog posts will be discussed the following class day to encourage synthesis of the topic at hand. 
 
 ##Individual Homework: 
-Homework details
+3-5 individual homeworks will be assigned. These will primarily occur in the beginning of the course to ensure working knowledge of the GitHub ecosystem. All homework must be fully reproducible by the instructors.
 
 ##Group Homework:
-Homework details
+Groups of 2-3 students will be assigned by the instructor and there will be 2-3 group assignments through out the semester. This will be small, well-defined problems that will reinforce the concepts learned through collaborative and reproducible document generation within GitHub. All homework must be fully reproducible by the instructors.
 
 ##Final Project: 
-Project details  
+ A final project of the students' choosing. This should deal with a real world data issue, and will be completed in self-selected groups of no more thn four students. Details to follow.
 
 
 | Component | Weight |
 |:---|---:|
-|**Blog Posts** | XX\% (details) |
-|**Individual Homework** | XX\% (details) |
-|**Group Homework** | XX\% (details) |
-|**Project:** | XX\%  (details) |
+|**Blog Posts** | 10\% |
+|**Individual Homework** | 25\% |
+|**Group Homework** | 25\% |
+|**Project:** | 40\% |
 
