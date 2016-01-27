@@ -21,12 +21,15 @@ output:
 ---
 
 #Optional Textbooks:
-- Kimball, Ralph, and Margy Ross. \emph{The data warehouse toolkit: The definitive guide to dimensional modeling}. John Wiley & Sons, 2013.
-- Xie, Yihui. \emph{Dynamic Documents with R and knitr}. Vol. 29. CRC Press, 2013.
-- Wickham, Hadley. \emph{ggplot2: elegant graphics for data analysis}. Springer Science & Business Media, 2009.
+- Kimball, Ralph, and Margy Ross. *The data warehouse toolkit: The definitive guide to dimensional modeling*. John Wiley & Sons, 2013.
+- Xie, Yihui. *Dynamic Documents with R and knitr*. Vol. 29. CRC Press, 2013.
+- Wickham, Hadley. *ggplot2: elegant graphics for data analysis*. Springer Science & Business Media, 2009.
+
+#Course Objectives
+The need for data stewardship in Earth systems science is due to the increased scale and complexity brought about by simultaneously examining many natural phenomena and their interactions. Students currently have little opportunity to learn fundamental data skills required for successful, collaborative, and reproducible research. AGRON 5XX/4XX will address this lack in a setting that is specific to Earth systems scientists with examples and data sets from their fields.
 
 #Learning Outcome:
-Students will become good data stewards through learning new tools to clearly organize, track, and communicate data-based work from data collection through publication.  This will facilitate strong teamwork skills and enable subsequent researchers to reproduce or expand upon completed projects.   
+Students will become good data stewards through learning new tools to clearly organize, track, and communicate data-based work from data collection through analysis and publication. This will facilitate strong collaborative research skills and enable subsequent researchers to reproduce or expand upon completed projects. By creating a deeper understanding of data architectures and data manipulation, this course will prepare students to be Earth systems scientists with the ability to complete the entire research cycle in a responsible way.
 
 #Tentative Course Outline:
 
@@ -39,7 +42,7 @@ Students will become good data stewards through learning new tools to clearly or
 1. Data munging and wrangling \dotfill Week 8-9
 1. Visualization \dotfill Week 10
 1. Reproducibility and Dynamic Documents \dotfill Week 11-12
-1. External Data Sources \dotfill Week 13-
+1. External Data Sources \dotfill Week 13
 1. Special Data Types \dotfill Week 14
 1. Project presentations \dotfill Week 15
 
