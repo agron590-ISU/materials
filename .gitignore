@@ -12,7 +12,6 @@
 vignettes/*.html
 vignettes/*.pdf
 
-*.pdf
 .Rproj.user
 
 #rstudio crap
