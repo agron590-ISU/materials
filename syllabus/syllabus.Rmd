@@ -17,6 +17,7 @@ oh_time: XXX
 oh_office: XXX
 output:
   pdf_document:
+    keep_tex: yes
     template: syllabus-template.tex
 ---
 
@@ -60,7 +61,7 @@ Weekly readings (journal articles, book chapters, blog posts, etc.) will be assi
 Groups of 2-3 students will be assigned by the instructor and there will be 2-3 group assignments through out the semester. This will be small, well-defined problems that will reinforce the concepts learned through collaborative and reproducible document generation within GitHub. All homework must be fully reproducible by the instructors.
 
 ##Final Project: 
- A final project of the students' choosing. This should deal with a real world data issue, and will be completed in self-selected groups of no more thn four students. Details to follow.
+ A final project of the students' choosing. This should deal with a real world data issue, and will be completed in self-selected groups of no more than four students. Details to follow.
 
 
 | Component | Weight |
