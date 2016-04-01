@@ -1,9 +1,10 @@
 ---
-classname: AGRON 5XXX/4XXX - Data Stewardship for Earth Systems Scientists  
+classname: AGRON 590DS - Data Stewardship for Earth Systems Scientists  
 semester: Fall 2016
 time: XXX
 room: XXX
 website: XXX
+proposed: Once a year.
 instructor:
  - name: "Andee Kaplan"
    email: ajkaplan@iastate.edu
@@ -17,9 +18,11 @@ oh_time: XXX
 oh_office: XXX
 output:
   pdf_document:
-    keep_tex: yes
     template: syllabus-template.tex
 ---
+#Class Format
+We meet three hours per week, twice for lecture periods and once for lab period. The labs will consist of directed individual and group work.
+
 
 #Optional Textbooks:
 - Kimball, Ralph, and Margy Ross. *The data warehouse toolkit: The definitive guide to dimensional modeling*. John Wiley & Sons, 2013.
