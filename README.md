@@ -1,2 +1,2 @@
-# DataStewardship
-Course materials for an experimental course on data stewardship for Fall 2016.
+# AGRON 590RD @ ISU materials
+Course materials for AGRON 590RD @ ISU - Data Stewardship for Earth Systems Scientists for Fall 2016.
