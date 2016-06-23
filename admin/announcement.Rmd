@@ -1,0 +1,32 @@
+---
+output: html_document
+---
+
+New Data Stewardship course available Fall 2016 targeted at students who study components of the plant-soil-atmosphere continuum!
+
+#####Why take it
+
+Do you work with data? Do you work with other people? Have you experienced this kind of frustration? 
+
+![](images/phd_final.gif)
+
+If you answered "yes" to at least one of the above questions, then this class is for you! We will help you learn new tools and skills to clearly organize, track, and communicate data-based work from data collection through analysis and publication all within an environment that facilitates collaboration. 
+
+#####Who we are
+
+Ranae Dietzel is a Postdoc in Agronomy with degrees in Crop and Soil Sciences.  
+
+Andee Kaplan is a PhD Student in Statistics with a history of working with complex data problems. From data warehousing to data science, she has spent the last seven years mastering the technology and skills necessary to store and analyze data in a reproducible way. She is currently interested in the intersection of Statistics and Computing, with a particular penchant for statistical graphics and reproducibility. She likes struggling with JavaScript and learning new languages, R being her first love.
+
+#####Time/Place
+
+MWF 10:00-10:50am in Agronomy G541
+
+#####How to register
+
+???
+
+#####More information
+
+See agron590-ISU.github.io and the attached syllabus for more details. Feel free to e-mail Ranae (rdietzel@iastate.edu) or Andee (ajkaplan@iastate.edu) with any questions. We hope to see you in the fall!
+
