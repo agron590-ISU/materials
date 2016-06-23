@@ -1,10 +1,9 @@
 ---
 classname: AGRON 590RD - Data Stewardship for Earth Systems Scientists  
 semester: Fall 2016
-time: XXX
-room: XXX
+time: MWF 10:00-10:50
+room: Agronomy G541
 website: http://agron590-ISU.github.io
-proposed: Once a year.
 instructor:
  - name: "Andee Kaplan"
    email: ajkaplan@iastate.edu
@@ -35,8 +34,7 @@ Students will become good data stewards through learning new tools to clearly or
 
 #Tentative Course Outline:
 
-1. Learning to use the command line \dotfill Week 1
-2. Git and the GitHub ecosystem \dotfill Week 1
+1. Git, GitHub, and R Markdown \dotfill Week 1
 1. Standards of reproducible data collection \dotfill Week 2
 1. Relational Databases and SQL \dotfill Week 3-4
 1. Data architecture \dotfill Week 5
