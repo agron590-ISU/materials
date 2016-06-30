@@ -12,7 +12,7 @@ output:
 
 ####Interesting tools  
 [Atlassian](https://www.atlassian.com/software/sourcetree)  
-Werker
+[Wercker](http://wercker.com/)
 
 
 ####Great blogs/tutorials  
