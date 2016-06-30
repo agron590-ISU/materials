@@ -22,4 +22,5 @@ Werker
 * Code organization and best practice (chunks, annotations)
 * Writing reproducible questions
 * Awareness of the online community
+* Keeping track of the language they are learning
 
