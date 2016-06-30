@@ -1,0 +1,23 @@
+---
+title: "590RD R Notebook"
+output:
+  html_notebook: default
+  html_document: default
+---
+
+
+####Similar courses
+[mine-cetinkaya-rundel](https://github.com/mine-cetinkaya-rundel/2016-06-27-first-ds-course-user)  
+[cbahlai](https://github.com/cbahlai/OSRR_course)
+
+####Interesting tools
+
+
+####Great blogs/tutorials  
+
+
+####Small skills our students don't have
+* Code organization and best practice (chunks, annotations)
+* Writing reproducible questions
+* Awareness of the online community
+
