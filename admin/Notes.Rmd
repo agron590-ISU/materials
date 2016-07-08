@@ -9,6 +9,8 @@ output:
 ####Similar courses
 [mine-cetinkaya-rundel](https://github.com/mine-cetinkaya-rundel/2016-06-27-first-ds-course-user)  
 [cbahlai](https://github.com/cbahlai/OSRR_course)
+Colin Rundel at Duke
+Jenny Bryan
 
 ####Interesting tools  
 [Atlassian](https://www.atlassian.com/software/sourcetree)  
@@ -16,7 +18,7 @@ output:
 
 
 ####Great blogs/tutorials  
-
+Find style guides, R, SQL
 
 ####Small skills our students don't have
 * Code organization and best practice (chunks, annotations)
@@ -29,4 +31,23 @@ output:
 * Week one assignment
 * Another recruitment email
 * Venn diagram
+* Need to collect and discuss datasets
+
+####Outline
+1. Git, GitHub, and R Markdown \dotfill Week 1
+1. Standards of reproducible data collection \dotfill Week 2
+1. Relational Databases and SQL \dotfill Week 3-4
+1. Data architecture \dotfill Week 5
+1. Introduction to \texttt{R} \dotfill Week 6-7
+1. Data munging and wrangling \dotfill Week 8-9
+1. Visualization \dotfill Week 10
+1. Reproducibility and Dynamic Documents \dotfill Week 11-12
+1. External Data Sources \dotfill Week 13
+1. Special Data Types \dotfill Week 14
+1. Project presentations \dotfill Week 15
+
+28 Lectures, 14 Labs, 
+Aug 22nd-Dec 12th
+
+
 
