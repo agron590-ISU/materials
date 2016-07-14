@@ -21,14 +21,30 @@ http://xkcd.com/1597/
 
 ## GitHub
 
-## Your Turn
+## Your Turn {.yourturn}
 
 1. Create a GitHub account
+  
+  link, screenshots, how to choose a name, etc.
 
-    link, screenshots, how to choose a name, etc.
-
-2. Create a hello-world repo
+1. Create a `hello-world` repo
 
 ## Pushing and pulling, a tug of war
+
+## SourceTree
+
+screencaps, etc.
+
+## Your Turn {.yourturn}
+
+1. Edit the README file in your `hello-world` repo
+1. Commit and push changes
+1. Check out your commit history!
+
+## Collaboration
+
+
+
+
 
 
