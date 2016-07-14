@@ -18,7 +18,7 @@ Jenny Bryan
 
 
 ####Great blogs/tutorials  
-Find style guides, R, SQL
+Find style guides -- R, SQL
 
 ####Small skills our students don't have
 * Code organization and best practice (chunks, annotations)
@@ -29,9 +29,10 @@ Find style guides, R, SQL
 ####Thoughts
 * Make more detailed course outline
 * Week one assignment
-* Another recruitment email
+* Another recruitment email -- top ten list 
 * Venn diagram
 * Need to collect and discuss datasets
+* Group project description development
 
 ####Outline
 1. Git, GitHub, and R Markdown \dotfill Week 1
