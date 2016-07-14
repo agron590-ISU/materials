@@ -1,0 +1,34 @@
+---
+title: "Getting git-ting like a champ"
+author: "Ranae Dietzel & Andee Kaplan"
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: ribbon
+---
+
+## What is git? How do we use it?
+
+![](images/git.png)
+
+http://xkcd.com/1597/
+
+## Definition/background
+
+## Workflow model
+
+## GitHub
+
+## Your Turn
+
+1. Create a GitHub account
+
+    link, screenshots, how to choose a name, etc.
+
+2. Create a hello-world repo
+
+## Pushing and pulling, a tug of war
+
+
