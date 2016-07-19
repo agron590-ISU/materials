@@ -1,0 +1,25 @@
+---
+title: "Stewards of Data"
+author: "Ranae Dietzel & Andee Kaplan"
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: ribbon
+---
+
+##Why we are having this course
+ * Reproducibility/Accountability
+ * Collaboration
+ * Data sharing with the world
+ * Required databases/data tracking (NSF/NIFA)
+ * Personal efficiency  
+ 
+ 
+##The world you are about to enter 
+ * Some history???  What is out there??  
+ 
+ 
+##What we will learn in this course
+ * Syllabus
