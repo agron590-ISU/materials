@@ -8,6 +8,18 @@ output:
     katex: true
     theme: ribbon
 ---
+[//]:One thing you can expect from this course is the use of comics, cliches, and cultural references
+[//]:I know will be the only exposure to culture for some of you
+
+[//]:For example, they say you can lead a horse to water, but you can't make it drink and people often use this metaphor in teaching. But it's not true.
+
+## You *can* make a horse drink
+![](images/drinkinghorse.gif)
+
+## But there are better ways to treat a horse
+![](images/happyhorse.gif) 
+
+[//]:But more seriously, the title of this course is Data Stewardship, so what we really want you to become are model citizens of science. Since most of us work in Earth Systems, we are probably all familiar with the concept of land stewardship. A person may own a piece of land and may pour their own blood, sweat, and tears into making something of it, but in the end the land is passed to some one else and what they are able to do with that land has already been determined by the person that came before them. If the previous owner treated the land poorly, there will not be much anyone can do without a whole lot of work and investment.  If the previous owner was a good steward, there will be a lot more possibilities of what the land can produce. The same is true for your data. You may feel like all the work you do means that you own your data, but in the end, it will go out into the world and your level of stewardship will determine how much people can do with it.   
 
 ##Why we are having this course
  * Reproducibility/Accountability
@@ -23,3 +35,6 @@ output:
  
 ##What we will learn in this course
  * Syllabus
+ 
+
+

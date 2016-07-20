@@ -27,11 +27,11 @@ Find style guides -- R, SQL
 * Keeping track of the language they are learning
 
 ####Thoughts
-* Make more detailed course outline
+* **Make more detailed course outline**
 * Week one assignment
 * Another recruitment email -- top ten list 
 * Venn diagram
-* Need to collect and discuss datasets
+* **Need to collect and discuss datasets**
 * Group project description development
 
 ####Outline
@@ -49,6 +49,9 @@ Find style guides -- R, SQL
 
 28 Lectures, 14 Labs, 
 Aug 22nd-Dec 12th
+
+
+
 
 
 
