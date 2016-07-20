@@ -1,0 +1,37 @@
+---
+title: "Course Calendar"
+author: "Ranae and Andee"
+date: "July 20, 2016"
+output: html_document
+---
+
+____________________________________________________________________________________________  
+
+####August 22nd  
+   Intro and pep talk  
+   Syllabus overview  
+   Computer set up/testing  
+   
+####August 24th
+   GitHub
+   Source tree
+   R Studio?
+   R Markdown?  
+   
+####August 25th
+   Use R Studio to write MD document and push to GitHub  
+      Blog? -- Worst data experience and how it could have been avoided  
+      Only text required, but maybe images and links for the go-getters?  
+     
+####Week 1  
+   Materials - R Markdown Cheat Sheet  
+   Assignment - None due, but assign MD document/blog for next week  
+   
+   
+___________________________________________________________________________________________
+
+   
+####August 29th 
+   Reproducible data collection . . . . . . .   
+   August 31st  
+September 2nd
