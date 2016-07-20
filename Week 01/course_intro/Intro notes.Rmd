@@ -13,6 +13,7 @@ output:
  * Data sharing with the world
  * Required databases/data tracking (NSF/NIFA)
  * Personal efficiency
+ * How this class came to be
  
 ####The world you are about to enter 
  * Some history???  What is out there??
