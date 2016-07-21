@@ -5,13 +5,16 @@ date: "July 20, 2016"
 output: html_document
 ---
 
-____________________________________________________________________________________________  
+____________________________________________________________________________________________ 
+28 Lectures, 14 Labs, 
+Aug 22nd-Dec 12th
 
 ####August 22nd  
-   Intro and pep talk (20 min) 
-   Syllabus overview (10 min)
+   Intro and pep talk (10 min) 
+   Syllabus and overview (10 min)
    Introductions (10 min)
-   Computer set up/testing(10 min)  
+   Computer set up/testing (10 min)
+   Evaluations (10 min)
    
 ####August 24th
    GitHub
@@ -25,7 +28,7 @@ ________________________________________________________________________________
       Only text required, but maybe the go-getters will incorporate more?  
      
 ####Week 1  
-   Materials - R Markdown Cheat Sheet  
+   Materials - R Markdown Cheat Sheet, syllabus ?Print?  
    Assignment - None due, but assign MD document/blog for next week  
    
    
@@ -33,6 +36,6 @@ ________________________________________________________________________________
 
    
 ####August 29th 
-   Reproducible data collection . . . . . . .   
-   August 31st  
-September 2nd
+   Reproducible data collection . . . . . . .  
+####August 31st  
+####September 2nd

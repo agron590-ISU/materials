@@ -8,8 +8,8 @@ output:
 
 ####Similar courses
 [mine-cetinkaya-rundel](https://github.com/mine-cetinkaya-rundel/2016-06-27-first-ds-course-user)  
-[cbahlai](https://github.com/cbahlai/OSRR_course)
-Colin Rundel at Duke
+[cbahlai](https://github.com/cbahlai/OSRR_course)  
+Colin Rundel at Duke  
 Jenny Bryan
 
 ####Interesting tools  
@@ -47,8 +47,11 @@ Find style guides -- R, SQL
 1. Special Data Types \dotfill Week 14
 1. Project presentations \dotfill Week 15
 
-28 Lectures, 14 Labs, 
-Aug 22nd-Dec 12th
+####Other
+Can "reproducible question" be a time-flexible homework?
+
+
+
 
 
 
