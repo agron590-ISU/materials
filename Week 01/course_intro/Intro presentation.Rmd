@@ -33,7 +33,7 @@ output:
  * Document every step of the process
  * Do not misplace or destroy your data
  
- Many of us need new skills to be better stewards.
+Many of us need new skills to be better stewards.
  
 ##Learning curve and time
   * Learning new skills is not easy
@@ -42,28 +42,45 @@ output:
      + determination
      + committment
   * Invest time now to save time later
-  
- 
- 
-##New worlds 
- [//]:* ![](images/worldscollide.png)
- <img src="images/worldscollide.png" width="600px" />
- 
- 
+
 ##What we will learn in this course
- * Course outline  
-
+ * Tools needed for collaborative workflow
+ * How to create good data
+ * How to structure and store data
+ * Tools and theories needed to efficiently work with data
+ * Data visualization
+ * How to make a reproducible and dynamic workflow
+ * How to get more data and work with special cases
+ 
+##Live in new worlds, but visit the old 
+ [//]:* ![](images/worldscollide.png)
+ <img src="images/worldscollide.png" width="600px" /> 
+ 
 ##Homeworks
- * All GitHub
+ * All homeworks will be submitted on GitHub and must be fully reproducible by the instructors
+ * Individual short exercises (25%)
+ * Group short exercises (25%)
+ * Blog posts (10%)
+ 
+Friday classes will be lab sessions, but we usually will not work on homework during lab
 
-##Course Project  
+##Course Project -- 40%  
+The final project will integrate everything from class.  
+* You will work in self-selected groups of 3-4  
+* The final result will be a reproducible story about data  
+   +Report and short presentation
 
 ##Getting Help  
+1. The internet
+  + StackOverflow
+  + Google
+2. Instructors via GitHub  
 
 ##Introductions?
 
-##What you need on your computer
+##Pre-course evaluation
 
+##The computer situation
 
  
 
