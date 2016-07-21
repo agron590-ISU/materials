@@ -8,9 +8,10 @@ output: html_document
 ____________________________________________________________________________________________  
 
 ####August 22nd  
-   Intro and pep talk  
-   Syllabus overview  
-   Computer set up/testing  
+   Intro and pep talk (20 min) 
+   Syllabus overview (10 min)
+   Introductions (10 min)
+   Computer set up/testing(10 min)  
    
 ####August 24th
    GitHub
@@ -21,7 +22,7 @@ ________________________________________________________________________________
 ####August 25th
    Use R Studio to write MD document and push to GitHub  
       Blog? -- Worst data experience and how it could have been avoided  
-      Only text required, but maybe images and links for the go-getters?  
+      Only text required, but maybe the go-getters will incorporate more?  
      
 ####Week 1  
    Materials - R Markdown Cheat Sheet  
