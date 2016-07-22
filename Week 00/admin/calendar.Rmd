@@ -14,7 +14,8 @@ Aug 22nd-Dec 12th
    Syllabus and overview (10 min)
    Introductions (10 min)
    Computer set up/testing (10 min)
-   Evaluations (10 min)
+   RStudio, RMarkdown (10 min)
+   Evaluations as HW
    
 ####August 24th
    GitHub
@@ -22,7 +23,7 @@ Aug 22nd-Dec 12th
    R Studio?
    R Markdown?  
    
-####August 25th
+####August 26th
    Use R Studio to write MD document and push to GitHub  
       Blog? -- Worst data experience and how it could have been avoided  
       Only text required, but maybe the go-getters will incorporate more?  

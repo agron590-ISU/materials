@@ -27,6 +27,7 @@ output:
  * Good stewardship will make you more efficient, faster, and powerful
     + Be kind to your future self
  * The most will be made of data that took a lot of time and money to collect
+    + People want your data
  
 ##How to be a good data steward
  * Work in a style that encourages others to understand and reproduce what you did
