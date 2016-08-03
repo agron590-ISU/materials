@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Reproducible Agronomy"
 author: "Ranae Dietzel"
 date: "August 3, 2016"
 output: ioslides_presentation
@@ -8,8 +8,6 @@ output: ioslides_presentation
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
-
-## Reproducibilty
 
 ## Why
 * If you have to do something once, you are going to have to do it 1000 times  
@@ -25,10 +23,10 @@ knitr::opts_chunk$set(echo = FALSE)
 * They can either use the information to perform similar analyses, or build upon all the work you did
 
 ## How, data collection
-* Reproducibility begins before you head to the field or lab
+* Reproducibility begins before you head to the field or lab  
 * Establish a recorded protocol complete with references  
-  +Test if everyone can follow the protocol before they are left on their own
-  +Bring the protocol with you to the field and record deviations
+  +Test if everyone can follow the protocol before they are left on their own  
+  +Bring the protocol with you to the field and record deviations  
 Do not assume you will remember anything. Remembering indicates there is a piece of data that exists only in your head!  
 * Take notes on anything that might be slightly relevant, but don't go overboard -- you should have established most of the required information before you got to the field  
 * Take pictures in the field/lab. . .you gotta
