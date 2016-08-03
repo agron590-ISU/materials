@@ -1,9 +1,11 @@
 ---
-title: "readme"
+title: "Week Two"
 output: github_document
 ---
 
-## Week Two
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 Materials in progress, so formatting will not be great and citations will be missing for now.
 
