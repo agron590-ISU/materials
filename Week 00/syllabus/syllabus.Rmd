@@ -35,13 +35,13 @@ Students will become good data stewards through learning new tools to clearly or
 #Tentative Course Outline:
 
 1. Git, GitHub, and R Markdown \dotfill Week 1
-1. Standards of reproducible data collection \dotfill Week 2
+1. Reproducibility \dotfill Week 2
 1. Relational Databases and SQL \dotfill Week 3-4
 1. Data architecture \dotfill Week 5
 1. Introduction to \texttt{R} \dotfill Week 6-7
 1. Data munging and wrangling \dotfill Week 8-9
 1. Visualization \dotfill Week 10
-1. Reproducibility and Dynamic Documents \dotfill Week 11-12
+1. Dynamic Documents \dotfill Week 11-12
 1. External Data Sources \dotfill Week 13
 1. Special Data Types \dotfill Week 14
 1. Project presentations \dotfill Week 15

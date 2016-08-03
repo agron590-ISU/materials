@@ -19,6 +19,16 @@ Jenny Bryan
 
 ####Great blogs/tutorials  
 Find style guides -- R, SQL
+[Writing code](http://ropensci.github.io/reproducibility-guide/sections/writingCode/)
+[Code and Data for the Social Sciences, A Practitioner's Guide](http://web.stanford.edu/~gentzkow/research/CodeAndData.xhtml)
+[How to share data with a statistician](https://github.com/jtleek/datasharing)
+[Checklist](http://ropensci.github.io/reproducibility-guide/sections/checklist/)
+[5 Reasons Why to Learn Reproducibility](http://chance.amstat.org/2014/09/reproducible-paradigm/)
+[Raw data organization](http://kbroman.org/dataorg/)
+[Steps to reproducible research](http://kbroman.org/steps2rr/)
+[Markdown for scientists](https://github.com/karthik/markdown_science)
+
+
 
 ####Small skills our students don't have
 * Code organization and best practice (chunks, annotations)
