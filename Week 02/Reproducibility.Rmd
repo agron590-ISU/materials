@@ -22,13 +22,91 @@ knitr::opts_chunk$set(echo = FALSE)
 * If you can reproduce what you did, others can too  
 * They can either use the information to perform similar analyses, or build upon all the work you did
 
-## How, data collection
+##The best thing you can do is to start every project with the goal and mindset of reproducibility
+
+##Steps to reproducible research  
+Karl Broman, Department of Biostatistics & Medical Informatics  
+University of Wisconsin-Madison  
+[kbroman.org](kbroman.org)  
+@kwbroman  
+ <center><img src="images/broman.jpg" width="200px" /></center>
+
+
+##Everything with a script
+* A script is a sequence of code that performs a specific job
+* Pointing, clicking, dragging, dropping, copying, pasting are not reproducible
+* Code tracks and records every step you take  
+* Get data -> convert file -> edit file -> clean data -> analyze data
+* Still possible to write terrible scripts though
+
+##Organize your data and code  
+* Use one directory for one project
+* Put code and data in separate subdirectories
+* Use relative paths that refer only to the project directory and not to your specific computer  
+  + This way if some one else opens the directory on their computer, the script still works
+* Take a minute and choose file names carefully (more later)
+* Avoid using *final* in a file name -- nothing is ever final, ever
+* Write ReadMe files -- something that describes what is what
+
+##Automate the process 
+* Aim to write a script of your scripts  
+* Rerunning your project happens with the touch of a button
+* Broman recommends GNU Make, but R is sufficient for this course
+
+##Turn scripts into reproducible reports  
+* Include enough text in your scripts that future you and anyone else will know why you did what you did
+* We will devote time to reproducible reports later in the semester 
+
+##Turn repeated code into functions    
+* A function is a command made up of other code, e.g. mean
+* Your code will be a lot easier to read and faster to write  
+* Package up these functions to share and use later  
+
+
+##Use version control  
+* You are already doing this!  
+
+#The real world
+ 
+## Data collection
 * Reproducibility begins before you head to the field or lab  
 * Establish a recorded protocol complete with references  
   +Test if everyone can follow the protocol before they are left on their own  
-  +Bring the protocol with you to the field and record deviations  
+  +Bring the protocol with you to the field and record deviations
+  +Name everything that is unique -- each chamber
 Do not assume you will remember anything. Remembering indicates there is a piece of data that exists only in your head!  
 * Take notes on anything that might be slightly relevant, but don't go overboard -- you should have established most of the required information before you got to the field  
 * Take pictures in the field/lab. . .you gotta
 
-## 
+## Collected data
+* If your data exists only on paper -- scan or photograph the paper  
+  + There will be an error and you'll need to refer back  
+* Make data entry as easy as possible for those entering data  
+* If data collection was automated, keep it just as it comes in  
+**Never manually change your raw data**
+
+##That being said, back to Karl Broman for [spreadsheet organization](http://kbroman.org/dataorg/) 
+
+##Be consistent  
+* Use consistent codes for variable names  
+  + Not "Soy", "soy", "Soybean"
+* Use a single fixed code for any missing values  
+  + NA, NAN, . . .  
+* Use consistent codes for categorical variables
+  + Location - "Arm", "Lewis", "Lew"  
+*Use common data layout if you have multiple files  
+
+##Write dates as YYYY-MM-DD  
+ <center><img src="images/iso_8601.png" width="400px" /></center>
+
+##Excel is a date monster  
+ <center><img src="images/dates_in_excel.png" width="600px" /></center>  
+
+##Fill in all of the cells  
+* 
+
+
+
+##Then file naming
+
+

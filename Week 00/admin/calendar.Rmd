@@ -20,17 +20,15 @@ Aug 22nd-Dec 12th
 ####August 24th
    GitHub
    Source tree
-   R Studio?
-   R Markdown?  
-   
+
 ####August 26th
    Use R Studio to write MD document and push to GitHub  
       Blog? -- Worst data experience and how it could have been avoided  
       Only text required, but maybe the go-getters will incorporate more?  
      
 ####Week 1  
-   Materials - R Markdown Cheat Sheet, syllabus ?Print?  
-   Assignment - None due, but assign MD document/blog for next week  
+   Materials - R Markdown Cheat Sheet, Syllabus ?Print?  
+   Assignment - Evaluation, Assign MD document/blog for next week  
    
    
 ___________________________________________________________________________________________
