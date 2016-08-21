@@ -51,7 +51,7 @@ Students will become good data stewards through learning new tools to clearly or
 The following assessments will be made throughout the course. All assignments will be turned in and graded within the GitHub ecosystem. There will be no alternative method for submission. This will ensure that the students are learning best collaborative and reproducible practices, as well as reinforcing ideas about data.
 
 ##Blog Posts 
-Weekly readings (journal articles, book chapters, blog posts, etc.) will be assigned and the students will be asked to write their opinions and understanding of the topic in a blog format. Blog posts will be discussed the following class day to encourage synthesis of the topic at hand. 
+Weekly readings (journal articles, book chapters, blog posts, etc.) will be assigned and the students will be asked to write their opinions and understanding of the topic in a blog format. Blog posts will be discussed the following class day to encourage synthesis of the topic at hand. Blog posts will be public upon completion (unless you talk to us first). 
 
 ##Individual Homework: 
 3-5 individual homeworks will be assigned. These will primarily occur in the beginning of the course to ensure working knowledge of the GitHub ecosystem. All homework must be fully reproducible by the instructors.
