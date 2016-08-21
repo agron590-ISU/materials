@@ -83,28 +83,22 @@ Many of us need new skills to be better stewards. Some of us need a lifestyle ch
  [//]:* ![](images/worldscollide.png)
  <center><img src="images/worldscollide.png" width="700px" /></center>
  
-## Homeworks
+## Course Logistics
+Everything will be at http://agron590-isu.github.io.  
+Grades will be available on Blackboard.
  
- * All homeworks will be submitted on GitHub and must be fully reproducible by the instructors
- * Individual short exercises (25%)
- * Group short exercises (25%)
- * Blog posts (10%)
-    - Blog posts will be public upon completion (unless you talk to us first)
- 
-Friday classes will be lab sessions, but we usually will not work on homework during lab
-
-## Course Project -- 40%  
-The final project will integrate everything from class.  
-
- * You will work in self-selected groups of 3-4  
- * The final result will be a reproducible story about data  
-    - Report and short presentation
 
 ## Getting Help  
 1. The internet
     - StackOverflow
     - Google
 1. Instructors via GitHub  
+
+Follow good question-asking practices as outlined by StackOverflow: http://stackoverflow.com/help/how-to-ask .
+
+## Pre-course evaluation
+
+https://goo.gl/forms/ZCUBnr0MBLk0TTXF2
 
 ## RStudio and Rmarkdown
 
@@ -168,9 +162,7 @@ For now, we will focus on the "markdown" part of Rmarkdown. [cheatsheet](https:/
 <li>Try compiling to a different format.</li>
 </ol>
 
-## Pre-course evaluation
 
-https://goo.gl/forms/ZCUBnr0MBLk0TTXF2
 
 
  
