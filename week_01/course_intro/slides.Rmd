@@ -15,9 +15,9 @@ output:
 
 <div class="double">
 <p class="double-flow">
-<img src="images/andee_profile.png" class="one-col-image">
-</p><p class="double-flow">
 <strong>Andee Kaplan</strong> is a PhD Student in Statistics with a history of working with complex data problems. From data warehousing to data science, she has spent the last seven years mastering the technology and skills necessary to store and analyze data in a reproducible way. She likes struggling with JavaScript and learning new languages, R being her first love.
+</p><p>
+<img src="images/andee_profile.png" class="one-col-image">
 </p>
 </div>
 
