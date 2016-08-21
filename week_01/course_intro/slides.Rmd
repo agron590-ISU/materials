@@ -21,6 +21,12 @@ output:
 </p>
 </div>
 
+## Who are we?
+
+<strong>Ranae Dietzel</strong> is a Postdoc in Agronomy in the Integrated Cropping Systems Lab. I have a Master's in Soil Ecology from Cornell University where I studied the effects of freeze-thaw cycles on nitrous oxide emission and a PhD in Crop Production and Physiology and Sustainable Agriculture here at ISU where I studied differences in carbon dynamics between corn and prairie cropping systems. It's been 10 years since I started grad school and began my relationship with Data.  
+ <center><img src="images/harfordprofile.jpg" width="200px" /></center>
+
+
 ## Who are you?
 
 ![//](images/whoareyou.gif)
