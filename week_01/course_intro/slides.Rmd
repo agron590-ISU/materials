@@ -10,6 +10,22 @@ output:
 ---
 
 # Welcome to Data Stewardship for Earth Systems Scientists
+
+## Who are we?
+
+<div class="double">
+<p class="double-flow">
+<img src="images/andee_profile.png" class="one-col-image">
+</p><p class="double-flow">
+<strong>Andee Kaplan</strong> is a PhD Student in Statistics with a history of working with complex data problems. From data warehousing to data science, she has spent the last seven years mastering the technology and skills necessary to store and analyze data in a reproducible way. She likes struggling with JavaScript and learning new languages, R being her first love.
+</p>
+</div>
+
+## Who are you?
+
+![//](images/whoareyou.gif)
+
+
 [//]:One thing you can expect from this course is the use of comics, cliches, and cultural references
 [//]:I know will be the only exposure to culture for some of you
 
@@ -25,7 +41,7 @@ output:
 
 [//]:But more seriously, the title of this course is Data Stewardship, so what we really want you to become are model citizens of science. Since most of us work in Earth Systems, we are probably all familiar with the concept of land stewardship. A person may own a piece of land and may pour their own blood, sweat, and tears into making something of it, but in the end the land is passed to some one else and what they are able to do with that land has already been determined by the person that came before them. If the previous owner treated the land poorly, there will not be much anyone can do without a whole lot of work and investment.  If the previous owner was a good steward, there will be a lot more possibilities of what the land can produce. The same is true for your data. You may feel like all the work you do means that you own your data, but in the end, it will go out into the world and your level of stewardship will determine how much people can do with it. No one can really own data.   
 
-##A few reasons data stewardship is important 
+## A few reasons data stewardship is important 
  * A solid data management plan is now required by federal agencies (NSF, NIFA)
     + Includes requirements for data storage, preservation, sharing, and public access
  * Good stewardship will make you more efficient, faster, and powerful
@@ -33,14 +49,14 @@ output:
  * The most will be made of data that took a lot of time and money to collect
     + People want your data
  
-##How to be a good data steward
+## How to be a good data steward
  * Work in a style that encourages others to understand and reproduce what you did
  * Document every step of the process
  * Do not misplace or destroy your data
  
 Many of us need new skills to be better stewards. Some of us need a lifestyle change.
  
-##Learning curve and time
+## Learning curve and time
   * Learning new skills is not easy
      + open mind
      + **patience**
@@ -48,7 +64,7 @@ Many of us need new skills to be better stewards. Some of us need a lifestyle ch
      + committment
   * Invest time now to save time later
 
-##What we will learn in this course
+## What we will learn in this course
  * Tools needed for collaborative workflow
  * How to create good data
  * How to structure and store data
@@ -57,35 +73,32 @@ Many of us need new skills to be better stewards. Some of us need a lifestyle ch
  * How to make a reproducible and dynamic workflow
  * How to get more data and work with special cases
  
-##Live in new worlds, but visit the old 
+## Live in new worlds, but visit the old 
  [//]:* ![](images/worldscollide.png)
  <center><img src="images/worldscollide.png" width="700px" /></center>
  
-##Homeworks
+## Homeworks
  
  * All homeworks will be submitted on GitHub and must be fully reproducible by the instructors
  * Individual short exercises (25%)
  * Group short exercises (25%)
  * Blog posts (10%)
+    - Blog posts will be public upon completion (unless you talk to us first)
  
 Friday classes will be lab sessions, but we usually will not work on homework during lab
 
-##Course Project -- 40%  
+## Course Project -- 40%  
 The final project will integrate everything from class.  
 
  * You will work in self-selected groups of 3-4  
  * The final result will be a reproducible story about data  
     - Report and short presentation
 
-##Getting Help  
+## Getting Help  
 1. The internet
     - StackOverflow
     - Google
 1. Instructors via GitHub  
-
-##Who is here?
-
-![//](images/whoareyou.gif)
 
 ## RStudio and Rmarkdown
 
@@ -132,7 +145,24 @@ For now, we will focus on the "markdown" part of Rmarkdown. [cheatsheet](https:/
 ![alt text](path/to/image.png)
 ```
 
-##Pre-course evaluation
+## Your turn { .cover .white }
+
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<img src="images/your_turn.jpg" class="cover height">
+
+
+<ol style="color: white">
+<li>Open up RStudio</li>
+<li>Create a new Rmarkdown document (`File > New File > R Markdown`)</li>
+<li>Edit it in some way.</li>
+  <ul>
+  <li>Try adding bold, italics, different headers, images, links, lists, etc.</li>
+  </ul>
+<li>Compile (`Knit`)</li>
+<li>Try compiling to a different format.</li>
+</ol>
+
+## Pre-course evaluation
 
 https://goo.gl/forms/ZCUBnr0MBLk0TTXF2
 
