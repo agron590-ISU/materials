@@ -66,7 +66,7 @@ University of Wisconsin-Madison
 ##Use version control  
 * You are already doing this!  
 
-#The real world
+#The very beginning
  
 ## Data collection
 * Reproducibility begins before you head to the field or lab  
@@ -85,7 +85,7 @@ Do not assume you will remember anything. Remembering indicates there is a piece
 * If data collection was automated, keep it just as it comes in  
 **Never manually change your raw data**
 
-##That being said, back to Karl Broman for [spreadsheet organization](http://kbroman.org/dataorg/) 
+##Once you have the data organize it according to Karl Broman's [data organization](http://kbroman.org/dataorg/) 
 
 ##Be consistent  
 * Use consistent codes for variable names  
