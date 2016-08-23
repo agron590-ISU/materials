@@ -27,12 +27,11 @@
 
     
   
-<section id="what-is-git-why-do-we-want-it" class="slide level2">
+<section id="get-git-ting" class="titleslide slide level1"><h2 class="shout">Get git-ting!</h2></section><section id="what-is-git-why-do-we-want-it" class="slide level2">
 <h2>What is git? Why do we want it?</h2>
 <p><img src="images/git.png" /></p>
 <p><a href="http://xkcd.com/1597/" class="uri">http://xkcd.com/1597/</a></p>
-</section>
-<section id="definitionbackground" class="slide level2">
+</section><section id="definitionbackground" class="slide level2">
 <h2>Definition/background</h2>
 <ul>
 <li><strong>Git</strong> is a version control system that was created to help developers manage collaborative software projects. Git tracks the evolution of a set of files, called a <strong>repository</strong> or <strong>repo</strong>.</li>
@@ -43,8 +42,8 @@
 <li>store <em>master</em> versions of files, no more <code>paper_final_final_I_really_mean_it.docx</code></li>
 </ul></li>
 </ul>
-</section>
-<section id="terminology" class="slide level2">
+<p><strong>Note:</strong> Thanks to <a href="http://happygitwithr.com" class="uri">http://happygitwithr.com</a> for inspiration and material. There is <em>so</em> much more here, so check it out.</p>
+</section><section id="terminology" class="slide level2">
 <h2>Terminology</h2>
 <ul>
 <li><strong>Repository:</strong> The most basic element of git, imagine as a project’s folder. A repository contains all of the project files, and stores each file’s revision history. Can be either public or private.</li>
@@ -53,8 +52,7 @@
 <li><strong>Commit:</strong> An individual change to a file (or set of files). Every time you save it creates a unique ID that allows you to keep record of what changes were made when and by who.</li>
 <li><strong>Push:</strong> Sending your committed changes to a remote repository such as GitHub.com.</li>
 </ul>
-</section>
-<section id="terminology-contd" class="slide level2">
+</section><section id="terminology-contd" class="slide level2">
 <h2>Terminology (Cont’d)</h2>
 <ul>
 <li><strong>Fork:</strong> A fork is a personal copy of another user’s repository that lives on your account. Forks allow you to freely make changes to a project without affecting the original.</li>
@@ -63,8 +61,7 @@
 <li><strong>Remote:</strong> This is the version of something that is hosted on a server, most likely GitHub.com. It can be connected to local clones so that changes can be synced.</li>
 </ul>
 <p>From <a href="https://help.github.com/articles/github-glossary/" class="uri">https://help.github.com/articles/github-glossary/</a></p>
-</section>
-<section id="github" class="slide level2">
+</section><section id="github" class="slide level2">
 <h2>GitHub</h2>
 <p>There are many hosting services for remote repositories (<a href="github.com">GitHub</a>, <a href="bitbucket.org">Bitbucket</a>, <a href="about.gitlab.com">GitLab</a>, etc.). We will use GitHub in this class, but the ideas carry over to the other services.</p>
 <p>By default, all materials on GitHub are <strong>public</strong>. This is <em>good</em> because you are getting your work out there and contributing to the open source community!</p>
@@ -73,15 +70,14 @@
 <img src="images/daftpunktocat-guy.gif" height="100px"/>
 </center>
 </section>
-<section id="creating-repos" class="slide level2">
+<section id="doing-stuff" class="titleslide slide level1"><h2 class="shout">Doing stuff</h2></section><section id="creating-repos" class="slide level2">
 <h2>Creating Repos</h2>
 <ol type="1">
 <li><img src="images/creating1.png" width="90%" style="vertical-align: top" /></li>
 <li><img src="images/creating2.png" width="50%" style="vertical-align: top"/></li>
 </ol>
 <p>Initialize readme (yes), .gitignore (<code>R</code> usually), license (e.g. GPL 3)</p>
-</section>
-<section id="your-turn" class="slide level2 cover white">
+</section><section id="your-turn" class="slide level2 cover white">
 <h2>Your Turn</h2>
 <!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
 <p><img src="images/your_turn.jpg" class="cover height" /></p>
@@ -106,8 +102,7 @@ Create a <code>hello-world</code> repo
 <li>
 E-mail me your GitHub username so that I can add you to our class organization (<a href="mailto:ajkaplan@iastate.edu" style="color: black">ajkaplan@iastate.edu</a>)
 </li>
-</section>
-<section id="creating-repos-contd" class="slide level2">
+</section><section id="creating-repos-contd" class="slide level2">
 <h2>Creating Repos (Cont’d)</h2>
 <div class="double">
 <strong>From scratch</strong>
@@ -141,35 +136,26 @@ Add files, commit, push, etc.
 </li>
 </ol>
 </div>
-</section>
-<section id="pushing-and-pulling-a-tug-of-war" class="slide level2">
+</section><section id="pushing-and-pulling-a-tug-of-war" class="slide level2">
 <h2>Pushing and pulling, a tug of war</h2>
 <p><img src="images/workflow.png" width="100%"/></p>
 <p><strong>Important:</strong> remember to pull before you start working to get the most up to date changes from your collaborators (or your past self) before making local changes!</p>
-</section>
-<section id="sourcetree" class="slide level2">
+</section><section id="sourcetree" class="slide level2">
 <h2>SourceTree</h2>
 <p><img src="images/source_tree.png" width="100%"/></p>
-</section>
-<section id="when-should-i-commit" class="slide level2">
+</section><section id="when-should-i-commit" class="slide level2">
 <h2>When should I commit?</h2>
 <p>Think of commits as a checkpoint in a video game. This is a point in time when you want to save your status so that you can come back to it later if need be.</p>
 <blockquote>
 <p>Commits are like voting. I like to do it early and often.</p>
 </blockquote>
 <p><em>- Me, right now</em></p>
-</section>
-<section id="blow-it-up" class="slide level2">
+</section><section id="blow-it-up" class="slide level2">
 <h2>Blow it up</h2>
 <p>Sometimes your local repo gets borked. That’s OK. There are ways that we can work really hard and fix them, but sometimes you just want to stash your files somewhere and re-clone from your centralized repository.</p>
 <p><img src="images/blow_it_up.gif" /></p>
-</section>
-<section id="installation-help" class="slide level2">
-<h2>Installation help</h2>
-<p>We are not covering installation on your personal computers for this class. If you would like to work through it on your own, here is an <em>excellent</em> guide: <a href="http://happygitwithr.com/installation-pain.html" class="uri">http://happygitwithr.com/installation-pain.html</a></p>
 <p>Feel free to come to office hours or setup individual time with us if you need help.</p>
-</section>
-<section id="your-turn-1" class="slide level2 cover white">
+</section><section id="your-turn-1" class="slide level2 cover white">
 <h2>Your Turn</h2>
 <!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
 <p><img src="images/your_turn.jpg" class="cover height"></p>
@@ -185,17 +171,27 @@ Check out your commit history!
 </li>
 </ol>
 </section>
-<section id="collaboration" class="slide level2">
-<h2>Collaboration</h2>
-</section>
-<section id="forking-a-repo" class="slide level2">
+<section id="collaboration" class="titleslide slide level1"><h2 class="shout">Collaboration</h2></section><section id="cy-cloning-a-repo" class="slide level2">
+<h2>(Cy-)Cloning a repo</h2>
+<p>If you want a copy of somebody’s repository and you also want to track its evolution then you should <strong>clone</strong> it. This allows you to pull from the remote, but will not allow you to push (unless you are a collaborator).</p>
+<p>This is different from downloading a zip of a repo because you can keep your local version up to date with the remote.</p>
+<p><img src="images/clone.png" width="49%" style="vertical-align:top"/><img src="images/sourceTree_clone.png" width="49%"style="vertical-align:top"/></p>
+</section><section id="forking-a-repo" class="slide level2">
 <h2>Forking A (repo)</h2>
-</section>
-<section id="acheiving-that-pr" class="slide level2">
+<p>If you think you will want to propose a change to a repository, then you should <strong>fork</strong> it instead of cloning it.</p>
+<p><img src="images/fork.png" width="90%"/></p>
+<p>This creates a copy of the original repo in your GitHub profile. You can now clone your own fork and make changes as usual (pull, commit, push) to your fork.</p>
+</section><section id="acheiving-that-pr" class="slide level2">
 <h2>Acheiving that PR</h2>
 <p>No, not <strong>p</strong>ersonal <strong>r</strong>ecord… <strong>p</strong>ull <strong>r</strong>equest!</p>
-</section>
-<section id="blog-assignment" class="slide level2">
+<p><img src="images/pr.png" width="90%"/></p>
+<p>When you are ready to propose a change to the origin of your fork, place a pull request from your fork to the original repo owned by someone else.</p>
+<p><img src="images/pr_process.png" width="90%"/></p>
+</section><section id="next-time" class="slide level2">
+<h2>Next time…</h2>
+<p>… syncing your forks!</p>
+<p><img src="images/practice.gif" /></p>
+</section><section id="blog-assignment" class="slide level2">
 <h2>Blog assignment</h2>
 <ul>
 <li>Due Aug. 31</li>
@@ -203,6 +199,9 @@ Check out your commit history!
 <li>This will involve <em>forking a repo</em>, <em>writing an R markdown document</em>, and <em>creating a pull request</em>!</li>
 </ul>
 <p><img src="images/ohmy.gif" /></p>
+</section><section id="installation-help" class="slide level2">
+<h2>Installation help</h2>
+<p>We are not covering installation on your personal computers for this class. If you would like to work through it on your own, here is an <em>excellent</em> guide: <a href="http://happygitwithr.com/installation-pain.html" class="uri">http://happygitwithr.com/installation-pain.html</a></p>
 </section>
 
   <!--

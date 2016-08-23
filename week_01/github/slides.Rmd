@@ -9,6 +9,8 @@ output:
     theme: ribbon
 ---
 
+# Get git-ting!
+
 ## What is git? Why do we want it? 
 
 ![](images/git.png)
@@ -22,6 +24,8 @@ http://xkcd.com/1597/
     - *merge* conflicts that arrise from collaboration
     - *rollback* to previous versions of files as necessary
     - store *master* versions of files, no more `paper_final_final_I_really_mean_it.docx`
+
+**Note:** Thanks to http://happygitwithr.com for inspiration and material. There is *so* much more here, so check it out.
 
 ## Terminology
 
@@ -49,14 +53,14 @@ If you need **private** repos, checkout [GitHub for Education](https://education
 
 <center><img src="images/daftpunktocat-guy.gif" height="100px"/></center>
 
+# Doing stuff
+
 ## Creating Repos
 
 1. <img src="images/creating1.png" width="90%" style="vertical-align: top" />
 2. <img src="images/creating2.png" width="50%" style="vertical-align: top"/>
 
 Initialize readme (yes), .gitignore (`R` usually), license (e.g. GPL 3)
-
-
 
 ## Your Turn { .cover .white }
 
@@ -106,6 +110,7 @@ Initialize readme (yes), .gitignore (`R` usually), license (e.g. GPL 3)
 
 <img src="images/source_tree.png" width="100%"/>
 
+
 ## When should I commit?
 
 Think of commits as a checkpoint in a video game. This is a point in time when you want to save your status so that you can come back to it later if need be.
@@ -121,12 +126,7 @@ Sometimes your local repo gets borked. That's OK. There are ways that we can wor
 
 ![](images/blow_it_up.gif)
 
-## Installation help
-
-We are not covering installation on your personal computers for this class. If you would like to work through it on your own, here is an *excellent* guide: http://happygitwithr.com/installation-pain.html
-
 Feel free to come to office hours or setup individual time with us if you need help.
-
 
 ## Your Turn { .cover .white }
 
@@ -139,15 +139,39 @@ Feel free to come to office hours or setup individual time with us if you need h
   <li>Check out your commit history!</li>
 </ol>
 
-## Collaboration
+# Collaboration
+
+## (Cy-)Cloning a repo
+If you want a copy of somebody's repository and you also want to track its evolution then you should **clone** it. This allows you to pull from the remote, but will not allow you to push (unless you are a collaborator). 
+
+This is different from downloading a zip of a repo because you can keep your local version up to date with the remote.
+
+<img src="images/clone.png" width="49%" style="vertical-align:top"/><img src="images/sourceTree_clone.png" width="49%"style="vertical-align:top"/>
 
 
 ## Forking A (repo)
+If you think you will want to propose a change to a repository, then you should **fork** it instead of cloning it.
+
+<img src="images/fork.png" width="90%"/>
+
+This creates a copy of the original repo in your GitHub profile. You can now clone your own fork and make changes as usual (pull, commit, push) to your fork.
 
 
 ## Acheiving that PR
 
-No, not **p**ersonal **r**ecord... **p**ull **r**equest!
+No, not **p**ersonal **r**ecord... **p**ull **r**equest! 
+
+<img src="images/pr.png" width="90%"/>
+
+When you are ready to propose a change to the origin of your fork, place a pull request from your fork to the original repo owned by someone else.
+
+<img src="images/pr_process.png" width="90%"/>
+
+## Next time...
+
+... syncing your forks!
+
+![](images/practice.gif)
 
 ## Blog assignment
 
@@ -158,6 +182,9 @@ No, not **p**ersonal **r**ecord... **p**ull **r**equest!
 ![](images/ohmy.gif)
 
 
+## Installation help
+
+We are not covering installation on your personal computers for this class. If you would like to work through it on your own, here is an *excellent* guide: http://happygitwithr.com/installation-pain.html
 
 
 
