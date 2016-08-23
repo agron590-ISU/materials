@@ -47,11 +47,16 @@ By default, all materials on GitHub are **public**. This is *good* because you a
 
 If you need **private** repos, checkout [GitHub for Education](https://education.github.com/) - free private repos for students/postdocs/professors.
 
-<img src="images/daftpunktocat-guy.gif" height="100px" align="middle"/>
+<center><img src="images/daftpunktocat-guy.gif" height="100px"/></center>
 
 ## Creating Repos
 
-Readme, .gitignore, license
+1. <img src="images/creating1.png" width="90%" style="vertical-align: top" />
+2. <img src="images/creating2.png" width="50%" style="vertical-align: top"/>
+
+Initialize readme (yes), .gitignore (`R` usually), license (e.g. GPL 3)
+
+
 
 ## Your Turn { .cover .white }
 
@@ -67,6 +72,28 @@ Readme, .gitignore, license
   </ul></li>
   <li>Create a `hello-world` repo</li>
   <li>E-mail me your GitHub username so that I can add you to our class organization (<a href="mailto:ajkaplan@iastate.edu" style="color: black">ajkaplan@iastate.edu</a>)</li>
+
+## Creating Repos (Cont'd)
+
+<div class="double">
+<strong>From scratch</strong>
+<ol>
+<li>Create the repo on the GitHub website</li>
+<li>Clone the repo</li>
+<li>Start working</li>
+<li>Add files, commit, push, etc.</li>
+</ol>
+<br/>
+<strong>From existing folder</strong>
+<ol>
+<li>Create the repo on the GitHub website</li>
+<li>Clone the repo</li>
+<li>Copy existing work into local folder</li>
+<li>Add files, commit, push, etc.</li>
+</ol>
+
+</div>
+
 
 ## Pushing and pulling, a tug of war
 
@@ -117,6 +144,10 @@ Feel free to come to office hours or setup individual time with us if you need h
 
 ## Forking A (repo)
 
+
+## Acheiving that PR
+
+No, not **p**ersonal **r**ecord... **p**ull **r**equest!
 
 ## Blog assignment
 
