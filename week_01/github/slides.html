@@ -27,47 +27,137 @@
 
     
   
-<section id="what-is-git-how-do-we-use-it" class="slide level2">
-<h2>What is git? How do we use it?</h2>
+<section id="what-is-git-why-do-we-want-it" class="slide level2">
+<h2>What is git? Why do we want it?</h2>
 <p><img src="images/git.png" /></p>
 <p><a href="http://xkcd.com/1597/" class="uri">http://xkcd.com/1597/</a></p>
 </section>
 <section id="definitionbackground" class="slide level2">
 <h2>Definition/background</h2>
+<ul>
+<li><strong>Git</strong> is a version control system that was created to help developers manage collaborative software projects. Git tracks the evolution of a set of files, called a <strong>repository</strong> or <strong>repo</strong>.</li>
+<li>This helps us
+<ul>
+<li><em>merge</em> conflicts that arrise from collaboration</li>
+<li><em>rollback</em> to previous versions of files as necessary</li>
+<li>store <em>master</em> versions of files, no more <code>paper_final_final_I_really_mean_it.docx</code></li>
+</ul></li>
+</ul>
 </section>
-<section id="workflow-model" class="slide level2">
-<h2>Workflow model</h2>
+<section id="terminology" class="slide level2">
+<h2>Terminology</h2>
+<ul>
+<li><strong>Repository:</strong> The most basic element of git, imagine as a project’s folder. A repository contains all of the project files, and stores each file’s revision history. Can be either public or private.</li>
+<li><strong>Clone:</strong> A copy of a repository that lives on your computer instead of on a website’s server somewhere, or the act of making that copy.</li>
+<li><strong>Pull:</strong> When you are fetching in changes and merging them.</li>
+<li><strong>Commit:</strong> An individual change to a file (or set of files). Every time you save it creates a unique ID that allows you to keep record of what changes were made when and by who.</li>
+<li><strong>Push:</strong> Sending your committed changes to a remote repository such as GitHub.com.</li>
+</ul>
+</section>
+<section id="terminology-contd" class="slide level2">
+<h2>Terminology (Cont’d)</h2>
+<ul>
+<li><strong>Fork:</strong> A fork is a personal copy of another user’s repository that lives on your account. Forks allow you to freely make changes to a project without affecting the original.</li>
+<li><strong>Pull Request:</strong> Proposed changes to a repository submitted by a user and accepted or rejected by a repository’s collaborators.</li>
+<li><strong>Issue:</strong> Issues are suggested improvements, tasks or questions related to the repository.</li>
+<li><strong>Remote:</strong> This is the version of something that is hosted on a server, most likely GitHub.com. It can be connected to local clones so that changes can be synced.</li>
+</ul>
+<p>From <a href="https://help.github.com/articles/github-glossary/" class="uri">https://help.github.com/articles/github-glossary/</a></p>
 </section>
 <section id="github" class="slide level2">
 <h2>GitHub</h2>
+<p>There are many hosting services for remote repositories (<a href="github.com">GitHub</a>, <a href="bitbucket.org">Bitbucket</a>, <a href="about.gitlab.com">GitLab</a>, etc.). We will use GitHub in this class, but the ideas carry over to the other services.</p>
+<p>By default, all materials on GitHub are <strong>public</strong>. This is <em>good</em> because you are getting your work out there and contributing to the open source community!</p>
+<p>If you need <strong>private</strong> repos, checkout <a href="https://education.github.com/">GitHub for Education</a> - free private repos for students/postdocs/professors.</p>
+<p><img src="images/daftpunktocat-guy.gif" height="100px" align="middle"/></p>
 </section>
-<section id="your-turn" class="slide level2 yourturn">
+<section id="creating-repos" class="slide level2">
+<h2>Creating Repos</h2>
+<p>Readme, .gitignore, license</p>
+</section>
+<section id="your-turn" class="slide level2 cover white">
 <h2>Your Turn</h2>
-<ol type="1">
-<li>Create a GitHub account</li>
-</ol>
-<p>link, screenshots, how to choose a name, etc.</p>
-<ol type="1">
-<li>Create a <code>hello-world</code> repo</li>
-</ol>
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<p><img src="images/your_turn.jpg" class="cover height" /></p>
+<ol style="color: white">
+<li>
+Create a GitHub account
+<ul>
+<li>
+<a href="http://github.com" target=_blank style="color: black">github.com</a>
+</li>
+<li>
+Consider your username, want to be identifiable, professional and probably include your actual name. Do you have other handles? Twitter?
+</li>
+<li>
+Don’t worry about paying for a plan now, stick with the free one.
+</li>
+</ul>
+</li>
+<li>
+Create a <code>hello-world</code> repo
+</li>
+<li>
+E-mail me your GitHub username so that I can add you to our class organization (<a href="mailto:ajkaplan@iastate.edu" style="color: black">ajkaplan@iastate.edu</a>)
+</li>
 </section>
 <section id="pushing-and-pulling-a-tug-of-war" class="slide level2">
 <h2>Pushing and pulling, a tug of war</h2>
+<p><img src="images/workflow.png" width="100%"/></p>
+<p><strong>Important:</strong> remember to pull before you start working to get the most up to date changes from your collaborators (or your past self) before making local changes!</p>
 </section>
 <section id="sourcetree" class="slide level2">
 <h2>SourceTree</h2>
-<p>screencaps, etc.</p>
+<p><img src="images/source_tree.png" width="100%"/></p>
 </section>
-<section id="your-turn-1" class="slide level2 yourturn">
+<section id="when-should-i-commit" class="slide level2">
+<h2>When should I commit?</h2>
+<p>Think of commits as a checkpoint in a video game. This is a point in time when you want to save your status so that you can come back to it later if need be.</p>
+<blockquote>
+<p>Commits are like voting. I like to do it early and often.</p>
+</blockquote>
+<p><em>- Me, right now</em></p>
+</section>
+<section id="blow-it-up" class="slide level2">
+<h2>Blow it up</h2>
+<p>Sometimes your local repo gets borked. That’s OK. There are ways that we can work really hard and fix them, but sometimes you just want to stash your files somewhere and re-clone from your centralized repository.</p>
+<p><img src="images/blow_it_up.gif" /></p>
+</section>
+<section id="installation-help" class="slide level2">
+<h2>Installation help</h2>
+<p>We are not covering installation on your personal computers for this class. If you would like to work through it on your own, here is an <em>excellent</em> guide: <a href="http://happygitwithr.com/installation-pain.html" class="uri">http://happygitwithr.com/installation-pain.html</a></p>
+<p>Feel free to come to office hours or setup individual time with us if you need help.</p>
+</section>
+<section id="your-turn-1" class="slide level2 cover white">
 <h2>Your Turn</h2>
-<ol type="1">
-<li>Edit the README file in your <code>hello-world</code> repo</li>
-<li>Commit and push changes</li>
-<li>Check out your commit history!</li>
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<p><img src="images/your_turn.jpg" class="cover height"></p>
+<ol style="color: white">
+<li>
+Edit the README file in your <code>hello-world</code> repo
+</li>
+<li>
+Commit and push changes
+</li>
+<li>
+Check out your commit history!
+</li>
 </ol>
 </section>
 <section id="collaboration" class="slide level2">
 <h2>Collaboration</h2>
+</section>
+<section id="forking-a-repo" class="slide level2">
+<h2>Forking A (repo)</h2>
+</section>
+<section id="blog-assignment" class="slide level2">
+<h2>Blog assignment</h2>
+<ul>
+<li>Due Aug. 31</li>
+<li><a href="https://github.com/agron590-ISU/blog" class="uri">https://github.com/agron590-ISU/blog</a></li>
+<li>This will involve <em>forking a repo</em>, <em>writing an R markdown document</em>, and <em>creating a pull request</em>!</li>
+</ul>
+<p><img src="images/ohmy.gif" /></p>
 </section>
 
   <!--
