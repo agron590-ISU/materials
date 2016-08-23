@@ -1,35 +1,46 @@
 ---
-title: "Reproducible Agronomy"
-author: "Ranae Dietzel"
-date: "August 3, 2016"
-output: ioslides_presentation
+title: "It's an iterative process"
+author: "Ranae Dietzel & Andee Kaplan"
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: ribbon
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+##Today's goal: Never feel like this again  
+ <center><img src="images/copyofcopy.gif" width="700px"/></center>
+ 
+#Reproducible Research
 
 ## Why
-* If you have to do something once, you are going to have to do it 1000 times  
-  + analysis is iterative  
-  + requests/collaborators are unpredictable  
-  + data grows
-* If you can't reproduce what you did, it's impossible to find the mistakes
-* If you can't reproduce what you did, it is not credible
+**If you have to do something once, you are going to have to do it 1000 times**  
+* analysis is iterative  
+* requests/collaborators are unpredictable  
+* data grows  
+  
+If you can't reproduce what you did, it's impossible to find the mistakes  
+If you can't reproduce what you did, it is not credible
   
 
 ## Why
 * If you can reproduce what you did, others can too  
 * They can either use the information to perform similar analyses, or build upon all the work you did
 
-##The best thing you can do is to start every project with the goal and mindset of reproducibility
+##The best thing you can do is to start every project with the goal and mindset of reproducibility.  
 
+
+ 
 ##Steps to reproducible research  
 Karl Broman, Department of Biostatistics & Medical Informatics  
 University of Wisconsin-Madison  
 [kbroman.org](kbroman.org)  
 @kwbroman  
- <center><img src="images/broman.jpg" width="200px" /></center>
+ <center><img src="images/bromanofficial.jpg" width="300px" /></center>
 
 
 ##Everything with a script
@@ -85,7 +96,7 @@ Do not assume you will remember anything. Remembering indicates there is a piece
 * If data collection was automated, keep it just as it comes in  
 **Never manually change your raw data**
 
-##Once you have the data organize it according to Karl Broman's [data organization](http://kbroman.org/dataorg/) 
+##Once you have the data, organize it according to Karl Broman's [spreadsheet data organization](http://kbroman.org/dataorg/) 
 
 ##Be consistent  
 * Use consistent codes for variable names  
@@ -101,11 +112,45 @@ Do not assume you will remember anything. Remembering indicates there is a piece
 
 ##Excel is a date monster  
  <center><img src="images/dates_in_excel.png" width="600px" /></center>  
+Be very, very careful.
 
 ##Fill in all of the cells  
-* 
+* If a cell is blank, no one knows if it is intentional or if the data are missing  
+* Don't depend on one cell to cover the information for several cells, you may understand, but a computer won't
 
+##Put just one thing in a cell  
+* Separate the information as well as you can  
+* For example, don't combine block "A" and plot "23" as "A23", or you will need to separate that information later
 
+##Make it a rectangle  
+* Rows should correspond to identifiers (blocks, treatments, reps)  
+* Columns should correspond to variables  
+* If you treat your spreadsheet like a virtual desk with data and calculations and graphs spread all over the place, even other humans are going to have a tough time  
+More on tidy data later
+
+##Create a data dictionary
+* Keep a separate file that explains what everything is (also in a rectangle)  
+  + Exact variable name  
+  + Version of name used for visualization  
+  + Long explanation of the variable  
+  + Measurement units  
+
+##No calculations in raw data files  
+  *If you just can't wait, make a copy and make your messes there
+
+##Don't use font color or highlighting as data  
+* No one can be sure what you mean  
+* Computers can't pick up on it  
+* *Words* provide more information, so include notes in a different column  
+
+##Choose good names for things  
+* So hard  
+* Don't use spaces  
+* Avoid special characters($, @, %, #, &, *, (, ), !, etc.)  
+* **Short, but meaningful**  
+
+##Further resources
+(https://github.com/datacarpentry/spreadsheet-ecology-lesson/blob/gh-pages/02-common-mistakes.md#tables)
 
 ##Then file naming
 
