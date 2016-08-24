@@ -126,7 +126,6 @@ Sometimes your local repo gets borked. That's OK. There are ways that we can wor
 
 ![](images/blow_it_up.gif)
 
-Feel free to come to office hours or setup individual time with us if you need help.
 
 ## Your Turn { .cover .white }
 
@@ -186,6 +185,7 @@ When you are ready to propose a change to the origin of your fork, place a pull 
 
 We are not covering installation on your personal computers for this class. If you would like to work through it on your own, here is an *excellent* guide: http://happygitwithr.com/installation-pain.html
 
+Feel free to come to office hours or setup individual time with us if you need help.
 
 
 
