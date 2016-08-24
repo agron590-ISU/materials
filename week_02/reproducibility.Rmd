@@ -149,6 +149,17 @@ More on tidy data later
 * Avoid special characters($, @, %, #, &, *, (, ), !, etc.)  
 * **Short, but meaningful**  
 
+##Make backups  
+* Best policy is three locations  
+  + One local (hard drive/server)
+  + One off-site (GitHub)  
+  + Another one off-site, preferably hosted in a different region (Dropbox, Cybox)  
+
+##Save data in plain text files  
+* This is a non-proprietary format, so anyone can open it at any point in the future  
+
+##
+
 ##Further resources
 (https://github.com/datacarpentry/spreadsheet-ecology-lesson/blob/gh-pages/02-common-mistakes.md#tables)
 
