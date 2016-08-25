@@ -77,17 +77,18 @@ University of Wisconsin-Madison
 ##Use version control  
 * You are already doing this!  
 
-#The very beginning
+#*Details*, from the very beginning
  
 ## Data collection
 * Reproducibility begins before you head to the field or lab  
 * Establish a recorded protocol complete with references  
   +Test if everyone can follow the protocol before they are left on their own  
   +Bring the protocol with you to the field and record deviations
-  +Name everything that is unique -- each chamber
-Do not assume you will remember anything. Remembering indicates there is a piece of data that exists only in your head!  
-* Take notes on anything that might be slightly relevant, but don't go overboard -- you should have established most of the required information before you got to the field  
-* Take pictures in the field/lab. . .you gotta
+  +Name everything that is unique -- each chamber, depth, or rep  
+* Take notes on anything that might be slightly relevant, but don't go overboard -- you should have established most of the required information before you got to the field/lab  
+* Take so much pictures/video in the field/lab  
+**Do not assume you will remember anything. Remembering indicates there is a piece of data that exists only in your head!**  
+
 
 ## Collected data
 * If your data exists only on paper -- scan or photograph the paper  
@@ -111,7 +112,7 @@ Do not assume you will remember anything. Remembering indicates there is a piece
  <center><img src="images/iso_8601.png" width="400px" /></center>
 
 ##Excel is a date monster  
- <center><img src="images/dates_in_excel.png" width="600px" /></center>  
+ <center><img src="images/dates_in_excel.png" width="500px" /></center>  
 Be very, very careful.
 
 ##Fill in all of the cells  
@@ -158,11 +159,51 @@ More on tidy data later
 ##Save data in plain text files  
 * This is a non-proprietary format, so anyone can open it at any point in the future  
 
-##
-
 ##Further resources
-(https://github.com/datacarpentry/spreadsheet-ecology-lesson/blob/gh-pages/02-common-mistakes.md#tables)
+[Jenny Bryan's Spreadsheet Page](https://github.com/jennybc/2016-06_spreadsheets)  
+[Data Carpentry Workshop](https://github.com/datacarpentry/spreadsheet-ecology-lesson/blob/gh-pages/02-common-mistakes.md#tables)  
+[Checklist from rOpenSci](http://ropensci.github.io/reproducibility-guide/sections/checklist/)  
+Also very good:  
+[How to share data with a statistician](https://github.com/jtleek/datasharing)  
 
-##Then file naming
+##Totally worth spending class time on file naming  
+ <center><img src="images/terrified.gif" width="500px"/></center>  
+
+##[Naming things](https://github.com/jennybc/organization-and-naming/blob/master/naming-things/naming-slides.pdf)
+Jennifer Bryan, Statistics and Micheal Smith Labs    
+University of British Columbia
+http://www.stat.ubc.ca/~jenny  
+@JennyBryan  
+ <center><img src="images/bryan.jpg" width="300px" /></center>  
+
+##File names should  
+be machine readable  
+be human readable  
+play well with default ordering
+
+##Machine readable means  
+Regular expression and globbing friendly  
+* Avoid spaces, punctuation, accented characters, case sensitivity  
+Easy to compute on  
+* Deliberate use of delimiters  
+
+##Globbing  
+ <center><img src="images/globbing.png" width="300px" /></center>  
+ 
+##Human Readable  
+Name contains info on content  
+(include examples of bad names I have)
+
+##Plays wells with default ordering  
+Put something numeric first
+Use YYYY-MM-DD for dates  
+Left pad other numbers with zeros  
+* 01 instead of 1
+
+
+
+
+
+
 
 

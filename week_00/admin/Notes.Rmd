@@ -9,7 +9,7 @@ output:
 ####Similar courses
 [mine-cetinkaya-rundel](https://github.com/mine-cetinkaya-rundel/2016-06-27-first-ds-course-user)  
 [cbahlai](https://github.com/cbahlai/OSRR_course)  
-Colin Rundel at Duke  
+Colin Rundel  
 Jenny Bryan
 
 ####Interesting tools  
@@ -26,8 +26,8 @@ Find style guides -- R, SQL
 [5 Reasons Why to Learn Reproducibility](http://chance.amstat.org/2014/09/reproducible-paradigm/)  
 [Raw data organization](http://kbroman.org/dataorg/)  
 [Steps to reproducible research](http://kbroman.org/steps2rr/)  
-[Markdown for scientists](https://github.com/karthik/markdown_science)
-[Spreadsheets!!!](https://github.com/jennybc/2016-06_spreadsheets)
+[Markdown for scientists](https://github.com/karthik/markdown_science)  
+[Spreadsheets!!!](https://github.com/jennybc/2016-06_spreadsheets)  
 [Filenames](https://rawgit.com/Reproducible-Science-Curriculum/rr-organization1/master/organization-01-slides.html#28)  
 
 
