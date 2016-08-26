@@ -76,7 +76,9 @@ Write ReadMe files
 
 ##Automate the process 
 * Aim to write a script of your scripts  
-* Rerunning your project happens with the touch of a button
+  + This also helps you mentally organize the steps you need to take in your project  
+* Rerunning your project happens with the touch of a button  
+  + Do months of work over and over and over whenever you need to  
 * Broman recommends GNU Make, but R is sufficient for this course
 
 ##Turn scripts into reproducible reports  
