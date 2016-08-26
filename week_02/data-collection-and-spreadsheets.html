@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spreadsheets</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="data-collection-and-spreadsheets_files\rmdshower/node_modules/shower-ribbon/styles/screen-4x3.css">
+  <link rel="stylesheet" href="data-collection-and-spreadsheets_files\rmdshower/style-common.css">
+  <link rel="stylesheet" href="data-collection-and-spreadsheets_files\rmdshower/style-ribbon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+  <script src="data-collection-and-spreadsheets_files\rmdshower/auto-render.min.js" type="text/javascript"></script>
+  
+  
+  
+  
+  
+</head>
+
+<body class="shower list">
+
+  <header class="caption">
+    <h1>Spreadsheets</h1>
+    <p>Ranae Dietzel &amp; Andee Kaplan</p>
+  </header>
+
+    
+  
+<section id="details-from-the-very-beginning" class="titleslide slide level1"><h2 class="shout"><em>Details</em>, from the very beginning</h2></section><section id="data-collection" class="slide level2">
+<h2>Data collection</h2>
+<ul>
+<li>Reproducibility begins before you head to the field or lab<br />
+</li>
+<li>Establish a recorded protocol complete with references<br />
+ +Test if everyone can follow the protocol before they are left on their own<br />
+ +Bring the protocol with you to the field and record deviations +Name everything that is unique – each chamber, depth, or rep<br />
+</li>
+<li>Take notes on anything that might be slightly relevant, but don’t go overboard – you should have established most of the required information before you got to the field/lab<br />
+</li>
+<li>Take so much pictures/video in the field/lab<br />
+<strong>Do not assume you will remember anything. Remembering indicates there is a piece of data that exists only in your head!</strong></li>
+</ul>
+</section><section id="collected-data" class="slide level2">
+<h2>Collected data</h2>
+<ul>
+<li>If your data exists only on paper – scan or photograph the paper<br />
+</li>
+<li>There will be an error and you’ll need to refer back<br />
+</li>
+<li>Make data entry as easy as possible for those entering data<br />
+</li>
+<li>If data collection was automated, keep it just as it comes in<br />
+<strong>Never manually change your raw data</strong></li>
+</ul>
+</section><section id="once-you-have-the-data-organize-it-according-to-karl-bromans-spreadsheet-data-organization" class="slide level2">
+<h2>Once you have the data, organize it according to Karl Broman’s <a href="http://kbroman.org/dataorg/">spreadsheet data organization</a></h2>
+</section><section id="be-consistent" class="slide level2">
+<h2>Be consistent</h2>
+<ul>
+<li>Use consistent codes for variable names<br />
+</li>
+<li>Not “Soy”, “soy”, “Soybean”</li>
+<li>Use a single fixed code for any missing values<br />
+</li>
+<li>NA, NAN, . . .<br />
+</li>
+<li>Use consistent codes for categorical variables</li>
+<li>Location - “Arm”, “Lewis”, “Lew”<br />
+*Use common data layout if you have multiple files</li>
+</ul>
+</section><section id="write-dates-as-yyyy-mm-dd" class="slide level2">
+<h2>Write dates as YYYY-MM-DD</h2>
+<center>
+<img src="images/iso_8601.png" width="400px" />
+</center>
+</section><section id="excel-is-a-date-monster" class="slide level2">
+<h2>Excel is a date monster</h2>
+<center>
+<img src="images/dates_in_excel.png" width="500px" />
+</center>
+<p>Be very, very careful.</p>
+</section><section id="fill-in-all-of-the-cells" class="slide level2">
+<h2>Fill in all of the cells</h2>
+<ul>
+<li>If a cell is blank, no one knows if it is intentional or if the data are missing<br />
+</li>
+<li>Don’t depend on one cell to cover the information for several cells, you may understand, but a computer won’t</li>
+</ul>
+</section><section id="put-just-one-thing-in-a-cell" class="slide level2">
+<h2>Put just one thing in a cell</h2>
+<ul>
+<li>Separate the information as well as you can<br />
+</li>
+<li>For example, don’t combine block “A” and plot “23” as “A23”, or you will need to separate that information later</li>
+</ul>
+</section><section id="make-it-a-rectangle" class="slide level2">
+<h2>Make it a rectangle</h2>
+<ul>
+<li>Rows should correspond to identifiers (blocks, treatments, reps)<br />
+</li>
+<li>Columns should correspond to variables<br />
+</li>
+<li>If you treat your spreadsheet like a virtual desk with data and calculations and graphs spread all over the place, even other humans are going to have a tough time<br />
+More on tidy data later</li>
+</ul>
+</section><section id="create-a-data-dictionary" class="slide level2">
+<h2>Create a data dictionary</h2>
+<ul>
+<li>Keep a separate file that explains what everything is (also in a rectangle)<br />
+</li>
+<li>Exact variable name<br />
+</li>
+<li>Version of name used for visualization<br />
+</li>
+<li>Long explanation of the variable<br />
+</li>
+<li>Measurement units</li>
+</ul>
+</section><section id="no-calculations-in-raw-data-files" class="slide level2">
+<h2>No calculations in raw data files</h2>
+<p>*If you just can’t wait, make a copy and create your messes there</p>
+</section><section id="dont-use-font-color-or-highlighting-as-data" class="slide level2">
+<h2>Don’t use font color or highlighting as data</h2>
+<div class="double">
+<p class="double-flow">
+text here
+</p>
+<p>
+<img src="images/andee_profile.png" class="one-col-image">
+</p>
+</div>
+<ul>
+<li>No one can be sure what you mean<br />
+</li>
+<li>Computers can’t pick up on it<br />
+</li>
+<li><em>Words</em> provide more information, so include notes in a different column</li>
+</ul>
+</section><section id="choose-good-names-for-things" class="slide level2">
+<h2>Choose good names for things</h2>
+<ul>
+<li>So hard<br />
+</li>
+<li>Don’t use spaces<br />
+</li>
+<li>Avoid special characters($, @, %, #, &amp;, *, (, ), !, etc.)<br />
+</li>
+<li><strong>Short, but meaningful</strong></li>
+</ul>
+</section><section id="make-backups" class="slide level2">
+<h2>Make backups</h2>
+<ul>
+<li>Best policy is three locations<br />
+</li>
+<li>One local (hard drive/server)</li>
+<li>One off-site (GitHub)<br />
+</li>
+<li>Another one off-site, preferably hosted in a different region (Dropbox, Cybox)</li>
+</ul>
+</section><section id="save-data-in-plain-text-files" class="slide level2">
+<h2>Save data in plain text files</h2>
+<ul>
+<li>This is a non-proprietary format, so anyone can open it at any point in the future</li>
+</ul>
+</section><section id="further-resources" class="slide level2">
+<h2>Further resources</h2>
+<p><a href="https://github.com/jennybc/2016-06_spreadsheets">Jenny Bryan’s Spreadsheet Page</a><br />
+<a href="https://github.com/datacarpentry/spreadsheet-ecology-lesson/blob/gh-pages/02-common-mistakes.md#tables">Data Carpentry Workshop</a><br />
+<a href="http://ropensci.github.io/reproducibility-guide/sections/checklist/">Checklist from rOpenSci</a><br />
+Also very good:<br />
+<a href="https://github.com/jtleek/datasharing">How to share data with a statistician</a></p>
+</section>
+
+  <!--
+  To hide progress bar from entire presentation
+  just remove “progress” element.
+  -->
+  <!-- <div class="progress"></div> -->
+  <script src="data-collection-and-spreadsheets_files\rmdshower/node_modules/shower/node_modules/shower-core/shower.min.js"></script>
+  <!-- Copyright © 2015 Yours Truly, Famous Inc. -->
+  <!-- Photos by John Carey, fiftyfootshadows.net -->
+
+    <script>renderMathInElement(document.body);</script>
+  
+  
+</body>
+</html>
