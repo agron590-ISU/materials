@@ -12,7 +12,7 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
-##Today's goal: Never feel like this again  
+##When you open a bad folder  
  <center><img src="images/copyofcopy.gif" width="700px"/></center>
  
 #Reproducible Research
@@ -51,13 +51,28 @@ University of Wisconsin-Madison
 * Still possible to write terrible scripts though
 
 ##Organize your data and code  
-* Use one directory for one project
-* Put code and data in separate subdirectories
+* Use one directory (local) and one repo (GitHub) for one project
+* Put code and data in separate subdirectories  
+<center><img src="images/folder_organization.png" width="500px" /></center>  
+
+##Organize your data and code  
+<center><img src="images/folder_organization_github.png" width="600px" /></center>
+
+
+##Organize your data and code
 * Use relative paths that refer only to the project directory and not to your specific computer  
-  + This way if some one else opens the directory on their computer, the script still works
-* Take a minute and choose file names carefully (more later)
-* Avoid using *final* in a file name -- nothing is ever final, ever
-* Write ReadMe files -- something that describes what is what
+*Good:* images/friends.gif  
+*Bad:* C:/Users/rdietzel/Documents/materials/week_02/images/friends.gif  
+<center><img src="images/friends.gif" width="400px" /></center>  
+This will save your friends a lot of trouble when they run your code on their computer
+
+##Organize your data and code
+Write ReadMe files  
+* The ReadMe file is the first to be seen or sought  
+* Describe the files in your folder, especially which order to run them in  
+* Leave a map for those that come after you, or your future self  
+<center><img src="images/treasure-map.jpg" width="400px" /></center> 
+
 
 ##Automate the process 
 * Aim to write a script of your scripts  
@@ -65,17 +80,17 @@ University of Wisconsin-Madison
 * Broman recommends GNU Make, but R is sufficient for this course
 
 ##Turn scripts into reproducible reports  
-* Include enough text in your scripts that future you and anyone else will know why you did what you did
+* Include enough text in your scripts that future you and anyone else will know __why__ you did what you did
 * We will devote time to reproducible reports later in the semester 
 
-##Turn repeated code into functions    
-* A function is a command made up of other code, e.g. mean
+##Turn repeated code into functions  - more later    
+* A function is a command made up of other code, e.g. mean, standard deviation
 * Your code will be a lot easier to read and faster to write  
 * Package up these functions to share and use later  
 
 
 ##Use version control  
-* You are already doing this!  
+* You are already doing this with GitHub!    
 
 #*Details*, from the very beginning
  
@@ -137,9 +152,16 @@ More on tidy data later
   + Measurement units  
 
 ##No calculations in raw data files  
-  *If you just can't wait, make a copy and make your messes there
+  *If you just can't wait, make a copy and create your messes there
 
 ##Don't use font color or highlighting as data  
+<div class="double">
+<p class="double-flow">
+text here
+</p><p>
+<img src="images/andee_profile.png" class="one-col-image">
+</p>
+</div>
 * No one can be sure what you mean  
 * Computers can't pick up on it  
 * *Words* provide more information, so include notes in a different column  
