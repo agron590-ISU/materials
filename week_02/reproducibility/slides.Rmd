@@ -30,9 +30,12 @@ If you can't reproduce what you did, it is not credible
 
 ## Why
 * If you can reproduce what you did, others can too  
-* They can either use the information to perform similar analyses, or build upon all the work you did
+* They can either use the information to perform similar analyses, or build upon all the work you did  
+ 
 
 ##The best thing you can do is to start every project with the goal and mindset of reproducibility.  
+ <center><img src="images/light.jpg" width="500px" /></center>  
+**Stop working in the dark. Realize that everything you do will eventually be seen.**
 
 
  
@@ -68,7 +71,7 @@ University of Wisconsin-Madison
 This will save your friends a lot of trouble when they run your code on their computer
 
 ##Organize your data and code
-Write ReadMe files  
+Write ReadMe files (component of metadata)  
 
 * The ReadMe file is the first to be seen or sought  
 * Describe the files in your folder, especially which order to run them in  
@@ -121,18 +124,25 @@ Easy to compute on
 * Deliberate use of delimiters  
 
 ##Globbing  
- <center><img src="images/globbing.png" width="300px" /></center>  
+ <center><img src="images/globbing.png" width="600px" /></center>  
  
 ##Human Readable  
 Name contains info on content  
-(include examples of bad names I have)
+<center><img src="images/what-are-they.png" width="400px" /></center>
 
 ##Plays wells with default ordering  
 Put something numeric first
 Use YYYY-MM-DD for dates  
-Left pad other numbers with zeros  
+Left pad other numbers with zeros (01 instead of 1)  
+<center><img src="images/000example.png" width="400px" /></center>  
+Not cool to manipulate default ordering with ill intentions
 
-* 01 instead of 1
+
+##Plan your naming scheme  
+* Picture what your files, folders, project, and degree program will look like  
+* Name your file when you create it, not just before you need to run out of your office
+
+
 
 
 
