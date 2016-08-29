@@ -1,0 +1,98 @@
+---
+title: "Agron 590RD - Pre Survey Results"
+author: "Andee Kaplan & Ranae Dietzel"
+date: "August 29, 2016"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r libraries-and-options, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(readr)
+library(lubridate)
+
+opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE)
+```
+
+```{r data}
+rsp <- read_csv("data/responses.csv")
+names(rsp) <- c("time", "major", "degree", "learn_class", "rank_class", "rank_other", "rank_research", "rank_pokemon", "rank_teaching", "change", "heard", "used", "other")
+rsp$time <- parse_date_time(rsp$time, "mdYHMS", tz = "America/Chicago")
+```
+
+Thank you for taking the pre-survey! We have `r nrow(rsp)` responses to the survey. The last survey was completed on `r date(max(rsp$time))` at `r paste(hour(max(rsp$time)), minute(max(rsp$time)), sep = ":")`. Let's have a look!
+
+
+## Majors and degrees
+
+Note to self: we could use some data wrasstlin' with these results. String manipulation is fun!
+
+```{r majors}
+rsp %>%
+  ggplot() +
+  geom_bar(aes(major)) +
+  coord_flip()
+
+rsp %>%
+  ggplot() +
+  geom_bar(aes(degree)) +
+  coord_flip()
+```
+
+## Rankings of importance
+
+Thank you for not ranking this class last. Our egos can (always) use the boost.
+
+```{r ranking}
+rsp %>%
+  select(contains("rank")) %>%
+  gather(what, rank, everything()) %>%
+  separate(what, into=c("junk", "what")) %>%
+  select(-junk) %>%
+  group_by(what, rank) %>%
+  summarise(count = n()) %>%
+  spread(rank, count, fill = 0) %>%
+  select(-`<NA>`) %>%
+  kable()
+```
+
+To the person who ranked Pokémon Go number one, 
+
+![](images/real_mvp.jpg)
+
+## Heard of vs. used
+
+```{r heard-of}
+rsp %>%
+  select(heard) %>%
+  gather(what, which, everything()) -> heard_of
+
+rsp %>%
+  select(used) %>%
+  gather(what, which, everything()) -> used
+
+heard_of$which %>%
+  str_split(", ") %>%
+  unlist() %>% 
+  table() %>% 
+  data.frame() %>%
+  mutate(which = "heard of") %>%
+  full_join(used$which %>%
+    str_split(", ") %>%
+    unlist() %>% 
+    table() %>% 
+    data.frame() %>%
+    mutate(which = "used")) %>%
+  rename_("software" = ".") %>%
+  spread(software, Freq, fill = 0) %>%
+  rename_(" " = "which") %>% 
+  kable
+
+```
+
+
