@@ -57,7 +57,7 @@ University of Wisconsin-Madison
 ##Organize your data and code  
 * Use one directory (local) and one repo (GitHub) for one project
 * Put code and data in separate subdirectories  
-<center><img src="images/folder_organization.png" width="500px" /></center>  
+<center><img src="images/folder_organization.png" width="650px" /></center>  
 
 ##Organize your data and code  
 <center><img src="images/folder_organization_github.png" width="600px" /></center>
@@ -140,7 +140,9 @@ Not cool to manipulate default ordering with ill intentions
 
 ##Plan your naming scheme  
 * Picture what your files, folders, project, and degree program will look like  
-* Name your file when you create it, not just before you need to run out of your office
+* Name your file when you create it, not just before you need to run out of your office  
+
+#[Data Management and Sharing Snafu in Three Short Acts](https://www.youtube.com/watch?v=N2zK3sAtr-4)
 
 
 
