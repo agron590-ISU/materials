@@ -18,16 +18,21 @@ output:
  <center><img src="images/crazy-idea.gif" width="300px"/></center>
 
 ## Experimental design  
-Ask for advice and then actually listen to what people say 
- <center><img src="images/experimental-design.png" width="700px"/></center>
+Ask for advice and then actually consider what people say 
+ <center><img src="images/experimental-design2.jpg" width="600px"/></center>
   
-## Before you head to the field
+## Collecting data
 * Establish a recorded protocol complete with references  
-  +Test if everyone can follow the protocol before they are left on their own  
-  +Bring the protocol with you to the field and record deviations
-  +Name everything that is unique -- each chamber, depth, or rep  
+* Test if everyone can follow the protocol before they are left on their own  
+* Bring the protocol with you to the field and record deviations  
+* Name everything that is unique -- each chamber, depth, or rep 
+  
+## Collecting data  
 * Take notes on anything that might be slightly relevant, but don't go overboard -- you should have established most of the required information before you got to the field/lab  
-* Take so much pictures/video in the field/lab  
+* Take pictures/video in the field/lab until your coworkers are just beyond the point of total annoyance  
+
+
+
 **Do not assume you will remember anything. Remembering indicates there is a piece of data that exists only in your head!**  
 
 
