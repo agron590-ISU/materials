@@ -1,5 +1,5 @@
 ---
-title: "Spreadsheets"
+title: "Before Data gets to R"
 author: "Ranae Dietzel & Andee Kaplan"
 ratio: 16x10
 output:
@@ -8,10 +8,20 @@ output:
     katex: true
     theme: ribbon
 ---
-#*Details*, from the very beginning
+#The very beginning
  
-## Data collection
-* Reproducibility begins before you head to the field or lab  
+## Experimental design
+* Reproducibility and collaboration begin before you head to the field or lab  
+* If you are going to work with a statistician (and you should), talk with them when you are designing your project  
+* Search for data related to your field site to determine expected variability and potential problems  
+* Set up a GitHub repo and introduce the crazy idea of version control to your collaborators  
+ <center><img src="images/crazy-idea.gif" width="300px"/></center>
+
+## Experimental design  
+Ask for advice and then actually listen to what people say 
+ <center><img src="images/experimental-design.png" width="700px"/></center>
+  
+## Before you head to the field
 * Establish a recorded protocol complete with references  
   +Test if everyone can follow the protocol before they are left on their own  
   +Bring the protocol with you to the field and record deviations
