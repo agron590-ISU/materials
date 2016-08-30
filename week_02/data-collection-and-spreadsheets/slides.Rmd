@@ -41,6 +41,8 @@ Ask for advice and then actually consider what people say
   + There will be an error and you'll need to refer back  
 * Make data entry as easy as possible for those entering data  
 * If data collection was automated, keep it just as it comes in  
+
+
 **Never manually change your raw data**
 
 ##Once you have the data, organize it according to Karl Broman's [spreadsheet data organization](http://kbroman.org/dataorg/) 
@@ -111,6 +113,9 @@ text here
 
 ##Save data in plain text files  
 * This is a non-proprietary format, so anyone can open it at any point in the future  
+
+##Spreadsheet cautionary tales  
+
 
 ##Further resources
 [Jenny Bryan's Spreadsheet Page](https://github.com/jennybc/2016-06_spreadsheets)  
