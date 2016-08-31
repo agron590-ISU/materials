@@ -58,6 +58,7 @@ Ask for advice and then actually consider what people say
 
 ##Write dates as YYYY-MM-DD  
  <center><img src="images/iso_8601.png" width="400px" /></center>
+ xckd.com
 
 ##Excel is a date monster  
  <center><img src="images/dates_in_excel.png" width="500px" /></center>  
@@ -65,17 +66,35 @@ Be very, very careful.
 
 ##Fill in all of the cells  
 * If a cell is blank, no one knows if it is intentional or if the data are missing  
-* Don't depend on one cell to cover the information for several cells, you may understand, but a computer won't
+* Don't depend on one cell to cover the information for several cells, you may understand, but a computer won't  
+
+##
+<center><img src="images/bdoc.png" width="1000px" /></center>  
+
+####
+<center><img src="images/rich.png" width="1000px" /></center>
 
 ##Put just one thing in a cell  
 * Separate the information as well as you can  
-* For example, don't combine block "A" and plot "23" as "A23", or you will need to separate that information later
+* For example, don't combine block "A" and plot "23" as "A23", or you will need to separate that information later  
+
+##  
+<center><img src="images/bdoc.png" width="1200px" /></center> 
+
+##Put just one thing in a cell  
+<center><img src="images/dates_in_excel.png" width="500px" /></center>
 
 ##Make it a rectangle  
 * Rows should correspond to identifiers (blocks, treatments, reps)  
 * Columns should correspond to variables  
 * If you treat your spreadsheet like a virtual desk with data and calculations and graphs spread all over the place, even other humans are going to have a tough time  
-More on tidy data later
+More on tidy data later  
+
+##  
+<center><img src="images/texture.png" width="900px" /></center>  
+
+##  
+<center><img src="images/texture2.png" width="900px" /></center>
 
 ##Create a data dictionary
 * Keep a separate file that explains what everything is (also in a rectangle)  
@@ -83,27 +102,32 @@ More on tidy data later
   + Version of name used for visualization  
   + Long explanation of the variable  
   + Measurement units  
+  
+##Create a data dictionary
 
 ##No calculations in raw data files  
-  *If you just can't wait, make a copy and create your messes there
+  * If you just can't wait, make a copy and create your messes there  
+  * For me, this is called a relapse, but 5 years Excel-spree-free
 
 ##Don't use font color or highlighting as data  
 <div class="double">
 <p class="double-flow">
-text here
-</p><p>
-<img src="images/andee_profile.png" class="one-col-image">
-</p>
-</div>
 * No one can be sure what you mean  
 * Computers can't pick up on it  
-* *Words* provide more information, so include notes in a different column  
+* *Words* provide more information, so include notes in a different column
+</p><p>
+<img src="images/colors.png" class="one-col-image">
+</p>
+</div>
+
 
 ##Choose good names for things  
 * So hard  
 * Don't use spaces  
 * Avoid special characters($, @, %, #, &, *, (, ), !, etc.)  
 * **Short, but meaningful**  
+##  
+<center><img src="images/summary.png" width="900px" /></center>
 
 ##Make backups  
 * Best policy is three locations  
