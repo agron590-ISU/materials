@@ -1,5 +1,5 @@
 ---
-title: "Before Data gets to R"
+title: "Pre-R Data"
 author: "Ranae Dietzel & Andee Kaplan"
 ratio: 16x10
 output:
@@ -87,7 +87,9 @@ Be very, very careful.
 ##Make it a rectangle  
 * Rows should correspond to identifiers (blocks, treatments, reps)  
 * Columns should correspond to variables  
-* If you treat your spreadsheet like a virtual desk with data and calculations and graphs spread all over the place, even other humans are going to have a tough time  
+* If you treat your spreadsheet like a virtual desk with data and calculations and graphs spread all over the place, even other humans are going to have a tough time 
+
+
 More on tidy data later  
 
 ##  
@@ -101,13 +103,11 @@ More on tidy data later
   + Exact variable name  
   + Version of name used for visualization  
   + Long explanation of the variable  
-  + Measurement units  
-  
-##Create a data dictionary
+  + Measurement units    
 
 ##No calculations in raw data files  
   * If you just can't wait, make a copy and create your messes there  
-  * For me, this is called a relapse, but 5 years Excel-spree-free
+  * Otherwise known as "relapse"
 
 ##Don't use font color or highlighting as data  
 <div class="double">
@@ -125,7 +125,8 @@ More on tidy data later
 * So hard  
 * Don't use spaces  
 * Avoid special characters($, @, %, #, &, *, (, ), !, etc.)  
-* **Short, but meaningful**  
+* **Short, but meaningful**   
+
 ##  
 <center><img src="images/summary.png" width="900px" /></center>
 
@@ -137,8 +138,19 @@ More on tidy data later
 
 ##Save data in plain text files  
 * This is a non-proprietary format, so anyone can open it at any point in the future  
+* .csv preferred  
+* Keep as much data in one tab as possible, otherwise save each tab as a separate file  
+
+
+*If you have a lot of tabs or files, maybe you should be using a database.  We will talk about these next week!*
 
 ##Spreadsheet cautionary tales  
+<center><img src="images/wapost.png" width="700px" /></center>   
+[Washington Post](https://www.washingtonpost.com/news/wonk/wp/2016/08/26/an-alarming-number-of-scientific-papers-contain-excel-errors/)
+
+##Spreadsheet cautionary tales
+<center><img src="images/excel-genes.png" width="800px" /></center>  
+[Genome Biology](http://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7)
 
 
 ##Further resources
