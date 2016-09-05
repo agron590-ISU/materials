@@ -1,0 +1,46 @@
+---
+title: "Relational Databases"
+author: "Ranae Dietzel & Andee Kaplan"
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: ribbon
+---
+
+# It's all relative
+
+## What is a database?
+
+## Relational Model
+
+## Design (more later)
+
+# Tables and keys
+
+## Uniqueness
+
+## Primary keys
+
+## Foreign keys
+
+# Relationships
+
+## One-to-one
+
+## One-to-many
+
+## Many-to-many
+
+# Normalization
+
+## Normal forms
+
+## First normal form
+
+## Second normal form
+
+## Third normal form
+
+## Breaking the rules:  when to denormalize
