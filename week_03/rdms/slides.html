@@ -60,15 +60,55 @@
 <li>what columns they contain, and</li>
 <li>what are the relationships between tables.</li>
 </ul>
-<p>This is usually not easy nd takes time and effort.</p>
-<p>We will talk more about strategies for this later.</p>
+<p>This is usually not easy and takes time and effort.</p>
+<p>We will talk more about strategies for this later (week 5).</p>
 </section>
-<section id="tables-and-keys" class="titleslide slide level1"><h2 class="shout">Tables and keys</h2></section><section id="uniqueness" class="slide level2">
+<section id="tables-and-keys" class="titleslide slide level1"><h2 class="shout">Tables and keys</h2></section><section id="tables" class="slide level2">
+<h2>Tables</h2>
+<ul>
+<li>Tables represent “things” in the real world.</li>
+<li>Each table should only represent one “thing”</li>
+<li>A “thing” can be an object or an event
+<ul>
+<li>e.g. Customers, students, locations, sample</li>
+</ul></li>
+<li>Tables are made up of rows and columns</li>
+<li>Can imagine a table is <em>kind of</em> like a spreadsheet of data</li>
+</ul>
+</section><section id="uniqueness" class="slide level2">
 <h2>Uniqueness</h2>
+<ul>
+<li>Each row must be <strong>unique</strong> in a table
+<ul>
+<li>This helps us avoid confusion in our tables</li>
+</ul></li>
+<li>Can guarantee uniqueness by assigning a key to a row</li>
+</ul>
+<p><img src="images/special_butterfly.jpg" height="300px"/></p>
 </section><section id="primary-keys" class="slide level2">
 <h2>Primary keys</h2>
+<ul>
+<li>Each table can have only one <em>primary key</em></li>
+<li>All columns (or combination of columns) in a table with unique values are referred to as <em>candidate keys</em></li>
+<li>Keys can be <em>simple</em> or <em>composite</em>
+<ul>
+<li><strong>simple key</strong> made up of one column</li>
+<li><strong>composite key</strong> made up of two or more columns</li>
+</ul></li>
+<li>You choose this in design phase of a DB (no right answer)
+<ul>
+<li>choose the fewest columns necessary</li>
+<li>choose a key that seldom changes</li>
+<li>choose a key that is both simple and familiar to users</li>
+</ul></li>
+</ul>
 </section><section id="foreign-keys" class="slide level2">
 <h2>Foreign keys</h2>
+<ul>
+<li>Primary keys are functions of individual tables</li>
+<li>When you create relationships between tables, need a way to <strong>join</strong> multiple tables together</li>
+<li>A <em>foreign key</em> is a column in a table used to reference a primary key in another table</li>
+</ul>
 </section>
 <section id="relationships" class="titleslide slide level1"><h2 class="shout">Relationships</h2></section><section id="one-to-one" class="slide level2">
 <h2>One-to-one</h2>
@@ -76,6 +116,14 @@
 <h2>One-to-many</h2>
 </section><section id="many-to-many" class="slide level2">
 <h2>Many-to-many</h2>
+</section>
+<section id="software" class="titleslide slide level1"><h2 class="shout">Software</h2></section><section id="installation" class="slide level2">
+<h2>Installation</h2>
+<p><img src="images/install.jpg" /></p>
+<ul>
+<li>sqlite: <a href="https://www.sqlite.org/download.html" class="uri">https://www.sqlite.org/download.html</a></li>
+<li>DB Browser for sqlite: <a href="http://sqlitebrowser.org/" class="uri">http://sqlitebrowser.org/</a></li>
+</ul>
 </section>
 <section id="normalization" class="titleslide slide level1"><h2 class="shout">Normalization</h2></section><section id="normal-forms" class="slide level2">
 <h2>Normal forms</h2>

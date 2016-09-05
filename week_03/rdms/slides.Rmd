@@ -47,15 +47,42 @@ Unless you walk into a project with a database already in production, you will p
 
 This is usually not easy and takes time and effort.
 
-We will talk more about strategies for this later.
+We will talk more about strategies for this later (week 5).
 
 # Tables and keys
 
+## Tables
+- Tables represent "things" in the real world.
+- Each table should only represent one "thing"
+- A "thing" can be an object or an event
+    - e.g. Customers, students, locations, sample
+- Tables are made up of rows and columns
+- Can imagine a table is *kind of* like a spreadsheet of data
+    
 ## Uniqueness
 
+- Each row must be **unique** in a table
+    - This helps us avoid confusion in our tables
+- Can guarantee uniqueness by assigning a key to a row
+
+<img src="images/special_butterfly.jpg" height="300px"/>
+
 ## Primary keys
+- Each table can have only one *primary key* 
+- All columns (or combination of columns) in a table with unique values are referred to as *candidate keys* 
+- Keys can be *simple* or *composite*
+    - **simple key** made up of one column
+    - **composite key** made up of two or more columns
+- You choose this in design phase of a DB (no right answer)
+    - choose the fewest columns necessary
+    - choose a key that seldom changes
+    - choose a key that is both simple and familiar to users
 
 ## Foreign keys
+
+- Primary keys are functions of individual tables
+- When you create relationships between tables, need a way to **join** multiple tables together
+- A *foreign key* is a column in a table used to reference a primary key in another table
 
 # Relationships
 
@@ -64,6 +91,15 @@ We will talk more about strategies for this later.
 ## One-to-many
 
 ## Many-to-many
+
+# Software
+
+## Installation
+
+![](images/install.jpg)
+
+- sqlite: https://www.sqlite.org/download.html
+- DB Browser for sqlite: http://sqlitebrowser.org/
 
 # Normalization
 
