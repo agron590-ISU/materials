@@ -13,9 +13,41 @@ output:
 
 ## What is a database?
 
+- An organized collection of data organized to model aspects of reality in a way that supports processes requiring information.
+- A *relational database* is a database whose organization is based on the relational model of data, as proposed by E. F. Codd in 1970.
+- Most relational database systems use *SQL* (Structured Query Language) as the language for querying and maintaining the database.
+
+![](images/woah.gif)
+
+## Motivation
+
+- Do you have multiple spreadsheets that are **related**?
+- Do you have multiple tabs in a spreadsheet that are **related**?
+- Do you have a gigantic spreadsheet (> 1M rows) that freezes Excel when you open it?
+- Do you have a slowly changing spreadsheet that you want to keep track of?
+
+![](images/salesman.jpg)
+
 ## Relational Model
 
+- A database consists of a series of unordered tables (or relations) that can be manipulated using operations that return tables.
+- **Purpose:** provide a declarative method for specifying data and queries.
+- Users directly state what information the database contains and what information they want from it.
+
+![](images/relational_table.png)
+
+
 ## Design (more later)
+
+Unless you walk into a project with a database already in production, you will probably have to design one yourself. You have to make decisions about
+
+- what tables to create,
+- what columns they contain, and
+- what are the relationships between tables.
+
+This is usually not easy and takes time and effort.
+
+We will talk more about strategies for this later.
 
 # Tables and keys
 

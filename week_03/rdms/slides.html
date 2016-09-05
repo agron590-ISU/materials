@@ -29,10 +29,39 @@
   
 <section id="its-all-relative" class="titleslide slide level1"><h2 class="shout">It’s all relative</h2></section><section id="what-is-a-database" class="slide level2">
 <h2>What is a database?</h2>
+<ul>
+<li>An organized collection of data organized to model aspects of reality in a way that supports processes requiring information.</li>
+<li>A <em>relational database</em> is a database whose organization is based on the relational model of data, as proposed by E. F. Codd in 1970.</li>
+<li>Most relational database systems use <em>SQL</em> (Structured Query Language) as the language for querying and maintaining the database.</li>
+</ul>
+<p><img src="images/woah.gif" /></p>
+</section><section id="motivation" class="slide level2">
+<h2>Motivation</h2>
+<ul>
+<li>Do you have multiple spreadsheets that are <strong>related</strong>?</li>
+<li>Do you have multiple tabs in a spreadsheet that are <strong>related</strong>?</li>
+<li>Do you have a gigantic spreadsheet (&gt; 1M rows) that freezes Excel when you open it?</li>
+<li>Do you have a slowly changing spreadsheet that you want to keep track of?</li>
+</ul>
+<p><img src="images/salesman.jpg" /></p>
 </section><section id="relational-model" class="slide level2">
 <h2>Relational Model</h2>
+<ul>
+<li>A database consists of a series of unordered tables (or relations) that can be manipulated using operations that return tables.</li>
+<li><strong>Purpose:</strong> provide a declarative method for specifying data and queries.</li>
+<li>Users directly state what information the database contains and what information they want from it.</li>
+</ul>
+<p><img src="images/relational_table.png" /></p>
 </section><section id="design-more-later" class="slide level2">
 <h2>Design (more later)</h2>
+<p>Unless you walk into a project with a database already in production, you will probably have to design one yourself. You have to make decisions about</p>
+<ul>
+<li>what tables to create,</li>
+<li>what columns they contain, and</li>
+<li>what are the relationships between tables.</li>
+</ul>
+<p>This is usually not easy nd takes time and effort.</p>
+<p>We will talk more about strategies for this later.</p>
 </section>
 <section id="tables-and-keys" class="titleslide slide level1"><h2 class="shout">Tables and keys</h2></section><section id="uniqueness" class="slide level2">
 <h2>Uniqueness</h2>
