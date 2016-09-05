@@ -1,0 +1,22 @@
+---
+title: "Data modelling"
+author: "Ranae Dietzel & Andee Kaplan"
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: ribbon
+---
+
+# Normalization
+
+## Normal forms
+
+## First normal form
+
+## Second normal form
+
+## Third normal form
+
+## Breaking the rules:  when to denormalize

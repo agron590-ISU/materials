@@ -1,0 +1,12 @@
+---
+title: "SQL"
+author: "Ranae Dietzel & Andee Kaplan"
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: ribbon
+---
+
+# Return of Relational Databases: The SQL

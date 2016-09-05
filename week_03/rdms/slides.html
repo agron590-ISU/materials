@@ -75,6 +75,32 @@
 <li>Tables are made up of rows and columns</li>
 <li>Can imagine a table is <em>kind of</em> like a spreadsheet of data</li>
 </ul>
+</section><section id="your-turn" class="slide level2 cover white">
+<h2>Your turn</h2>
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<p><img src="images/your_turn.jpg" class="cover height" /></p>
+<p style="color: white">
+Discuss
+</p>
+<ol style="color: white">
+<li>
+Think of a spreadsheet that you have or have encountered
+</li>
+<li>
+What “things” does it contain?
+<ul>
+<li>
+More than one?
+</li>
+<li>
+Events, objects, both?
+</li>
+</ul>
+</li>
+<li>
+What columns are contained?
+</li>
+</ol>
 </section><section id="uniqueness" class="slide level2">
 <h2>Uniqueness</h2>
 <ul>
@@ -102,6 +128,27 @@
 <li>choose a key that is both simple and familiar to users</li>
 </ul></li>
 </ul>
+</section><section id="your-turn-1" class="slide level2 cover white">
+<h2>Your turn</h2>
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<p><img src="images/your_turn.jpg" class="cover height" /></p>
+<p style="color: white">
+Discuss
+</p>
+<ol style="color: white">
+<li>
+Pick one of the “things” from your spreadsheet
+</li>
+<li>
+Are the rows unique?
+</li>
+<li>
+If not, how would you ensure that they are?
+</li>
+<li>
+What is a good primary key for your “thing”?
+</li>
+</ol>
 </section><section id="foreign-keys" class="slide level2">
 <h2>Foreign keys</h2>
 <ul>
@@ -110,31 +157,65 @@
 <li>A <em>foreign key</em> is a column in a table used to reference a primary key in another table</li>
 </ul>
 </section>
-<section id="relationships" class="titleslide slide level1"><h2 class="shout">Relationships</h2></section><section id="one-to-one" class="slide level2">
+<section id="relationships" class="titleslide slide level1"><h2 class="shout">Relationships…</h2></section><section id="can-be-complex" class="slide level2">
+<h2>… can be complex</h2>
+<p>Foreign keys in a database created to model relationships in the real world.</p>
+<p>Relationships between real-world entities can be <em>complex</em>, involving numerous entities each having multiple relationships with each other.</p>
+<p><img src="images/complicated.gif" /></p>
+<p>Tables can be related in one of three different ways: one-to-one, one-to-many or many-to-many.</p>
+</section><section id="one-to-one" class="slide level2">
 <h2>One-to-one</h2>
+<p>Two tables are related in a one-to-one relationship if:</p>
+<blockquote>
+<p>for every row in the first table, there is at most one row in the second table.</p>
+</blockquote>
+<p>True one-to-one relationships seldom occur in the real world.</p>
+<p>Often created to get around some limitation of the database management software rather than to model a real-world situation.</p>
+<p>One-to-one related tables should always have the same primary key.</p>
 </section><section id="one-to-many" class="slide level2">
 <h2>One-to-many</h2>
+<p>Two tables are related in a one-to-manyrelationship if:</p>
+<blockquote>
+<p>for every row in the first table, there can be zero, one, or many rows in the second table, but for every row in the second table there is exactly one row in the first table.</p>
+</blockquote>
+<p>E.g. link base tables to information stored in lookup tables - <em>experiment table</em> has date, treatment, plot; <em>treatment table</em> has information about each possible treatment.</p>
 </section><section id="many-to-many" class="slide level2">
 <h2>Many-to-many</h2>
+<p>Two tables are related in a many-to-many relationship if:</p>
+<blockquote>
+<p>for every row in the first table, there can be many rows in the second table, and for every row in the second table, there can be many rows in the first table.</p>
+</blockquote>
+<p>E.g. <em>student table</em> can include classes; <em>class table</em> has multiple students as class list.</p>
+<p>Most complicated relationship, may need an intermediary table depending on DBMS.</p>
+</section><section id="your-turn-2" class="slide level2 cover white">
+<h2>Your turn</h2>
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<p><img src="images/your_turn.jpg" class="cover height" /></p>
+<p style="color: white">
+Discuss
+</p>
+<ol style="color: white">
+<li>
+If your spreadsheet contains multiple “things”, how do they relate?
+</li>
+<li>
+If not, think of multiple spreadsheets that you have that are related. What is the relationship?
+</li>
+<li>
+What are the foreign keys you would use to link “things”?
+</li>
+<li>
+What type of relationship(s) are you dealing with?
+</li>
+</ol>
 </section>
-<section id="software" class="titleslide slide level1"><h2 class="shout">Software</h2></section><section id="installation" class="slide level2">
-<h2>Installation</h2>
+<section id="software" class="titleslide slide level1"><h2 class="shout">Software</h2></section><section id="before-friday" class="slide level2">
+<h2>Before Friday…</h2>
 <p><img src="images/install.jpg" /></p>
 <ul>
 <li>sqlite: <a href="https://www.sqlite.org/download.html" class="uri">https://www.sqlite.org/download.html</a></li>
 <li>DB Browser for sqlite: <a href="http://sqlitebrowser.org/" class="uri">http://sqlitebrowser.org/</a></li>
 </ul>
-</section>
-<section id="normalization" class="titleslide slide level1"><h2 class="shout">Normalization</h2></section><section id="normal-forms" class="slide level2">
-<h2>Normal forms</h2>
-</section><section id="first-normal-form" class="slide level2">
-<h2>First normal form</h2>
-</section><section id="second-normal-form" class="slide level2">
-<h2>Second normal form</h2>
-</section><section id="third-normal-form" class="slide level2">
-<h2>Third normal form</h2>
-</section><section id="breaking-the-rules-when-to-denormalize" class="slide level2">
-<h2>Breaking the rules: when to denormalize</h2>
 </section>
 
   <!--

@@ -58,7 +58,26 @@ We will talk more about strategies for this later (week 5).
     - e.g. Customers, students, locations, sample
 - Tables are made up of rows and columns
 - Can imagine a table is *kind of* like a spreadsheet of data
-    
+
+## Your turn { .cover .white }
+
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<img src="images/your_turn.jpg" class="cover height" />
+
+<p style="color: white">
+Discuss
+</p>
+<ol style="color: white">
+<li>Think of a spreadsheet that you have or have encountered</li>
+<li>What "things" does it contain?
+  <ul>
+  <li>More than one?</li>
+  <li>Events, objects, both?</li>
+  </ul>
+</li>
+<li>What columns are contained?</li>
+</ol>
+
 ## Uniqueness
 
 - Each row must be **unique** in a table
@@ -78,37 +97,93 @@ We will talk more about strategies for this later (week 5).
     - choose a key that seldom changes
     - choose a key that is both simple and familiar to users
 
+## Your turn { .cover .white }
+
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<img src="images/your_turn.jpg" class="cover height" />
+
+<p style="color: white">
+Discuss
+</p>
+
+<ol style="color: white">
+<li>Pick one of the "things" from your spreadsheet</li>
+<li>Are the rows unique?</li>
+<li>If not, how would you ensure that they are?</li>
+<li>What is a good primary key for your "thing"?</li>
+</ol>
+
+
 ## Foreign keys
 
 - Primary keys are functions of individual tables
 - When you create relationships between tables, need a way to **join** multiple tables together
 - A *foreign key* is a column in a table used to reference a primary key in another table
 
-# Relationships
+# Relationships...
+
+## ... can be complex
+
+Foreign keys in a database created to model relationships in the real world. 
+
+Relationships between real-world entities can be *complex*, involving numerous entities each having multiple relationships with each other. 
+
+![](images/complicated.gif)
+
+Tables can be related in one of three different ways: one-to-one, one-to-many or many-to-many.
 
 ## One-to-one
 
+Two tables are related in a one-to-one relationship if:
+
+> for every row in the first table, there is at most one row in the second table. 
+
+True one-to-one relationships seldom occur in the real world. 
+
+Often created to get around some limitation of the database management software rather than to model a real-world situation.
+
+One-to-one related tables should always have the same primary key.
+
 ## One-to-many
+
+Two tables are related in a one-to-manyrelationship if: 
+
+> for every row in the first table, there can be zero, one, or many rows in the second table, but for every row in the second table there is exactly one row in the first table.
+
+E.g.  link base tables to information stored in lookup tables - *experiment table* has date, treatment, plot; *treatment table* has information about each possible treatment.
 
 ## Many-to-many
 
+Two tables are related in a many-to-many relationship if:
+
+> for every row in the first table, there can be many rows in the second table, and for every row in the second table, there can be many rows in the first table.
+
+E.g. *student table* can include classes; *class table* has multiple students as class list.
+
+Most complicated relationship, may need an intermediary table depending on DBMS.
+
+## Your turn { .cover .white }
+
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<img src="images/your_turn.jpg" class="cover height" />
+
+<p style="color: white">
+Discuss
+</p>
+<ol style="color: white">
+<li>If your spreadsheet contains multiple "things", how do they relate?</li>
+<li>If not, think of multiple spreadsheets that you have that are related. What is the relationship?</li>
+<li>What are the foreign keys you would use to link "things"?</li>
+<li>What type of relationship(s) are you dealing with?</li>
+</ol>
+
+
 # Software
 
-## Installation
+## Before Friday...
 
 ![](images/install.jpg)
 
 - sqlite: https://www.sqlite.org/download.html
 - DB Browser for sqlite: http://sqlitebrowser.org/
 
-# Normalization
-
-## Normal forms
-
-## First normal form
-
-## Second normal form
-
-## Third normal form
-
-## Breaking the rules:  when to denormalize
