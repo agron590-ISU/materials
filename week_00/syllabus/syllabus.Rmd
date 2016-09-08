@@ -11,8 +11,8 @@ instructor:
  - name: "Ranae Dietzel"
    email: rdietzel@iastate.edu
    office: 3403 Agronomy Hall
-oh_time: XXX
-oh_office: XXX
+oh_time: Th 2:10-3pm, F 11-11:50am
+oh_office: Agronomy 3214
 output:
   pdf_document:
     template: syllabus-template.tex
