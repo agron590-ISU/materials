@@ -1,0 +1,111 @@
+---
+title: "Manipulating Relational DBs with SQL"
+author: "Ranae Dietzel & Andee Kaplan"
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: ribbon
+---
+
+# Manipulating Relational DBs with SQL
+
+## Using SQL for more than querying
+
+We've seen SQL used to query data from a relational database. We can also use SQL to **create** and **modify** relational databases.
+
+<img src="images/but_wait.jpg" height="400px" />
+
+## Data types
+
+- Most DBMSs use static typing, meaning a column only stores one type of data. SQLite doesn't, meaning you can mix types within a column.
+- Still important to understand what types of data can be used (especially if SQLite is not your end goal)
+
+Type | Meaning
+---- | ---------------------------------------------------------------------------------------
+NULL | missing information or unknown.
+INTEGER | whole numbers; can have variable sizes such as 1, 2,3, 4, or 8 bytes.
+REAL | real numbers with decimal values that use 8-byte floats.
+TEXT | character data; maximum length of TEXT is unlimited. 
+BLOB | binary large object that can be used to store any kind of data; maximum size of BLOBs is unlimited.
+
+## Dates are gross
+
+SQLite doesn't have a dedicated DATE type, though other DBMSs will. Instead, we can handle dates in three ways.
+
+1. TEXT - ISO8601 string format `YYYY-MM-DD HH:MM:SS.SSS`.
+2. REAL - Julian day numbers, days since noon in Greenwich on November 24, 4714 B.C. based on the proleptic Gregorian calendar.
+3. INTEGER - UNIX time, the number of seconds since 1970-01-01 00:00:00 UTC
+
+## Create table
+
+To create a new table in SQLite, you use CREATE TABLE statement. You cannot create a table that already exists in the current database.
+
+```sql
+CREATE TABLE [IF NOT EXISTS] [schema_name].table_name (
+ column_1 data_type PRIMARY KEY,
+   column_2 data_type NOT NULL,
+ column_3 data_type DEFAULT 0,
+ table_constraint
+) [WITHOUT ROWID];
+```
+
+You must include a name (that doesn't start with `sqlite_`), all column names and column types. You also have the ability to contrain columns (NOT NULL, PRIMARY KEY, AUTOINCREMENT, DEFAULT, UNIQUE, etc.). Lastly you can set up table contraints (like PRIMARY KEY or FOREIGN KEY).
+
+## Keys
+
+Set up a **primary key** in the column or table constraints of a table definition, depending on if the key is *simple* (previous slide) or *composite*
+
+```sql
+CREATE TABLE table_name(
+   column_1 NOT NULL INTEGER,
+   column_2 NOT NULL INTEGER,
+   ...
+   PRIMARY KEY(column_1,column_2,...)
+);
+```
+
+Set up a **foreign key** in the table contraints of a table definition.
+
+```sql
+CREATE TABLE table_name(
+ table_id integer PRIMARY KEY,
+ other_table_id integer NOT NULL,
+        FOREIGN KEY (other_table_id) REFERENCES other_table(table_id)
+);
+```
+
+## Update table
+
+Change the structure of an existing table with ALTER TABLE. SQLite gives you two ways to change a table
+
+1. Change the name of a table.
+2. Add a column to an existing table.  
+    The new column cannot have a UNIQUE or PRIMARY KEY constraint. If the new column has a NOT NULL constraint, you must specify a default value for the column other than a NULL value.
+
+```sql
+ALTER TABLE existing_table
+RENAME TO new_table;
+```
+
+```sql
+ALTER TABLE table
+ADD COLUMN column_definition;
+```
+
+## Delete table
+
+Remove a table from the database using SQLite DROP TABLE statement.
+
+```sql
+DROP TABLE [IF EXISTS] [schema_name.]table_name;
+```
+
+![](images/drop.gif)
+
+## Update data
+
+insert, delete, update
+
+## Views
