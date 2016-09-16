@@ -138,7 +138,7 @@ WHERE
 
 Obviously this is not the way most tables are filled (manually). There is usually a go-between the data and the database that adds the data. This is called ETL (Extract-Transform-Load). 
 
-We can do ETL from a "raw" database full of dumped .csv files intro a "production" database using queries. Or, we can use DBMS that is more robust and has ETL capabilities. 
+We can do ETL from a "raw" database full of dumped .csv files into a "production" database using queries. Or, we can use DBMS that is more robust and has ETL capabilities. 
 
 ```sql
 INSERT INTO table_name
