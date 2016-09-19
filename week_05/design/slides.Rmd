@@ -1,5 +1,5 @@
 ---
-title: "Data modelling"
+title: "\"Simple\" rules for database design"
 author: "Ranae Dietzel & Andee Kaplan"
 ratio: 16x10
 output:
@@ -11,12 +11,14 @@ output:
 
 # Normalization
 
+## Facts vs. keys
+
 ## Normal forms
 
 ## First normal form
 
-## Second normal form
+## Second & third normal forms
 
-## Third normal form
+## Fourth & fifth normal forms
 
-## Breaking the rules:  when to denormalize
+## Breaking the rules: when to denormalize
