@@ -29,7 +29,7 @@ Why invest time in creating a conceptual model of your data *before* putting it 
 
 A proper Entity Relationship model leads to a set of logically coherent tables. 
 
-<img src="images/logical.gif" height="250px"/>
+<img src="images/logical.gif" height="220px"/>
 
 ## Entities, attributes, and relationships... Oh my!
 
