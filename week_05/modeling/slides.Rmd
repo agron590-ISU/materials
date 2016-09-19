@@ -1,0 +1,75 @@
+---
+title: "Data modeling - why do it?"
+author: "Ranae Dietzel & Andee Kaplan"
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: ribbon
+---
+
+# Data modeling - why do it?
+
+## Why?
+
+Why invest time in creating a conceptual model of your data *before* putting it into a database?
+
+- facilitates the discussion on the shape of your future database with your team (PI?)
+- forms a basis for the design of the database
+- helps you think through potential pitfalls in the design of your future databas
+- is relatively fast to make and very fast/cheap to change
+
+## Goals
+
+- Capture *all* important information
+- No redundant information
+- Don't model information that is derivable from other modeled information
+- Information is in a predictable, logical place
+
+A proper Entity Relationship model leads to a set of logically coherent tables. 
+
+<img src="images/logical.gif" height="250px"/>
+
+## Entities, attributes, and relationships... Oh my!
+
+An *entity* is something of interest - a "thing" or event. An entity has instances that are of interest to you, maybe observations?
+
+An *attribute* is a single valued property detail of an entity. A specific piece of information that describes, quantifies, qualifies, classifies, or specifies an entity. An attribute has a value (data type). Values can *change* over time.
+
+A *relationship* expresses how entities are mutually related and always exist between two entities (or one entity twice).
+
+## Entity relationship diagrams
+
+An Entity Relationship Model is a list of all *entities*, *attributes* and *relationships* that are of importance for your purpose. The model also provides background information such as entity descriptions, data types and constraints. 
+
+An Entity Relationship Diagram (ERD) is a picture, a representation of the model or of a part of the model.
+
+## Representation
+
+Entities are represented by rectangles with a title. Attributes are represented within the corresponding entity as a list below the title with primary keys noted. Relationships are represented by a line, connecting the entities. The shape of the end of the relationship line represents the degree of the relationship.
+
+![](images/erd_table.png)
+
+## Your turn { .cover .white }
+
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<img src="images/your_turn.jpg" class="cover height" />
+
+<p style="color: white">
+Art galleries keep information about artists, their names (which are unique), birthplaces, age,and style of art. For each piece of artwork, the artist, the year it was made, its unique title, its type of art (e.g., painting, lithograph, sculpture, photograph), and its price must be stored. Pieces of artwork are also classified into groups of various kinds, for example, portraits, still lifes, works by Picasso, or works of the 19th century; a given piece may belong to more than one group. Each group is identified by a name (like those just given) that describes the group. Finally, galleries keep information about customers. For each customer, galleries keep that person’s unique name, address, total amount of dollars spent in the gallery, and the artists and groups of art that the customer tends to like.
+</p>
+
+## Your turn (cont'd) { .cover .white }
+
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<img src="images/your_turn.jpg" class="cover height" />
+
+<p style="color:white">
+Draw an ER Diagram for this scenario. (<a href="http://draw.io" style="color: black">http://draw.io</a> might help, or on paper is fine.)
+</p>
+<ol style="color:white">
+<li>What are the entities in this scenario?</li>
+<li>What attributes do they have?</li>
+<li>What are the relationships between entities?</li>
+</ol>
