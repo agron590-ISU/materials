@@ -11,14 +11,44 @@ output:
 
 # Normalization
 
-## Facts vs. keys
+## Relationship vs. Attribute
+
+An attribute can hide a relationship and relationships can be "downgraded" to an attribute.
+
+![](images/attribute_relation.png)
 
 ## Normal forms
 
-## First normal form
+*Normalization* is a relational database concept that describes the shapes of tables and rules that tables must follow. If you have created a "normalized" entity-relationship data model, then the tables created during design will conform to the rules of normalization. 
 
-## Second & third normal forms
 
-## Fourth & fifth normal forms
+![](images/normal.gif)
+
+## First normal form (1NF)
+
+- All attributes must be single-valued. Under first normal form, all occurrences of a record type must contain the same number of fields.
+- First normal form excludes variable repeating fields and groups.
+- If the attribute has multiple values, create an additional entity and relate it to the original entity with a m:1 relationship.
+
+![](images/first_normal.png)
+
+## Second normal form (2NF) and Third normal form (3NF)
+
+- (2NF) An attribute must be dependent upon its entity’s entire unique identifier.
+    - Second normal form is violated when an attribute is a fact about a subset of a key. 
+    - It is only relevant when the key is composite.
+- (3NF) An attribute depends on nothing outside the primary key.
+    - Third normal form is violated when an attribute is a fact about another attribute field
+
+> The key, the whole key, and nothing but the key, so help me Codd.
+
+## Fourth (4NF) & fifth (5NF) normal forms
+
+Usually **3NF is enough** when modeling real data. 
+
+- 4NF and 5NF deal with multivalued (independent) attributes.
+    - *Independence* between attributes means there is no direct connection between the two. There is only an indirect connection because they belong to some common entity.
+- 4NF states that an entity should only contain at most 1 independent multivalued attribute and satisfy 3NF.
+- 5NF posits an entity's information content cannot be reconstructed from several smaller entities.
 
 ## Breaking the rules: when to denormalize

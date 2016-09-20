@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple rules for database design</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="slides_files/rmdshower/node_modules/shower-ribbon/styles/screen-4x3.css">
+  <link rel="stylesheet" href="slides_files/rmdshower/style-common.css">
+  <link rel="stylesheet" href="slides_files/rmdshower/style-ribbon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+  <script src="slides_files/rmdshower/auto-render.min.js" type="text/javascript"></script>
+  
+  
+  
+  
+  
+</head>
+
+<body class="shower list">
+
+  <header class="caption">
+    <h1>Simple rules for database design</h1>
+    <p>Ranae Dietzel &amp; Andee Kaplan</p>
+  </header>
+
+    
+  
+<section id="normalization" class="titleslide slide level1"><h2 class="shout">Normalization</h2></section><section id="relationship-vs.attribute" class="slide level2">
+<h2>Relationship vs. Attribute</h2>
+<p>An attribute can hide a relationship and relationships can be “downgraded” to an attribute.</p>
+<p><img src="images/attribute_relation.png" /></p>
+</section><section id="normal-forms" class="slide level2">
+<h2>Normal forms</h2>
+<p><em>Normalization</em> is a relational database concept that describes the shapes of tables and rules that tables must follow. If you have created a “normalized” entity-relationship data model, then the tables created during design will conform to the rules of normalization.</p>
+<p><img src="images/normal.gif" /></p>
+</section><section id="first-normal-form-1nf" class="slide level2">
+<h2>First normal form (1NF)</h2>
+<ul>
+<li>All attributes must be single-valued. Under first normal form, all occurrences of a record type must contain the same number of fields.</li>
+<li>First normal form excludes variable repeating fields and groups.</li>
+<li>If the attribute has multiple values, create an additional entity and relate it to the original entity with a m:1 relationship.</li>
+</ul>
+<p><img src="images/first_normal.png" /></p>
+</section><section id="second-normal-form-2nf-and-third-normal-form-3nf" class="slide level2">
+<h2>Second normal form (2NF) and Third normal form (3NF)</h2>
+<ul>
+<li>(2NF) An attribute must be dependent upon its entity’s entire unique identifier.
+<ul>
+<li>Second normal form is violated when an attribute is a fact about a subset of a key.</li>
+<li>It is only relevant when the key is composite.</li>
+</ul></li>
+<li>(3NF) An attribute depends on nothing outside the primary key.
+<ul>
+<li>Third normal form is violated when an attribute is a fact about another attribute field</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>The key, the whole key, and nothing but the key, so help me Codd.</p>
+</blockquote>
+</section><section id="fourth-4nf-fifth-5nf-normal-forms" class="slide level2">
+<h2>Fourth (4NF) &amp; fifth (5NF) normal forms</h2>
+<p>Usually <strong>3NF is enough</strong> when modeling real data.</p>
+<ul>
+<li>4NF and 5NF deal with multivalued (independent) attributes.
+<ul>
+<li><em>Independence</em> between attributes means there is no direct connection between the two. There is only an indirect connection because they belong to some common entity.</li>
+</ul></li>
+<li>4NF states that an entity should only contain at most 1 independent multivalued attribute and satisfy 3NF.</li>
+<li>5NF posits an entity’s information content cannot be reconstructed from several smaller entities.</li>
+</ul>
+</section><section id="breaking-the-rules-when-to-denormalize" class="slide level2">
+<h2>Breaking the rules: when to denormalize</h2>
+</section>
+
+  <!--
+  To hide progress bar from entire presentation
+  just remove “progress” element.
+  -->
+  <!-- <div class="progress"></div> -->
+  <script src="slides_files/rmdshower/node_modules/shower/node_modules/shower-core/shower.min.js"></script>
+  <!-- Copyright © 2015 Yours Truly, Famous Inc. -->
+  <!-- Photos by John Carey, fiftyfootshadows.net -->
+
+    <script>renderMathInElement(document.body);</script>
+  
+  
+</body>
+</html>
