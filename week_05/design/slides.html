@@ -27,7 +27,7 @@
 
     
   
-<section id="normalization" class="titleslide slide level1"><h2 class="shout">Normalization</h2></section><section id="relationship-vs.attribute" class="slide level2">
+<section id="normalization-and-other-tricks" class="titleslide slide level1"><h2 class="shout">Normalization and other tricks</h2></section><section id="relationship-vs.attribute" class="slide level2">
 <h2>Relationship vs. Attribute</h2>
 <p>An attribute can hide a relationship and relationships can be “downgraded” to an attribute.</p>
 <p><img src="images/attribute_relation.png" /></p>
@@ -70,8 +70,50 @@
 <li>4NF states that an entity should only contain at most 1 independent multivalued attribute and satisfy 3NF.</li>
 <li>5NF posits an entity’s information content cannot be reconstructed from several smaller entities.</li>
 </ul>
-</section><section id="breaking-the-rules-when-to-denormalize" class="slide level2">
-<h2>Breaking the rules: when to denormalize</h2>
+</section><section id="modeling-change" class="slide level2">
+<h2>Modeling change</h2>
+<p>Every update of an attribute or transfer of a relationship means potential loss of information. Often that information is no longer of use, but some systems need to keep track of some or all of the old values of an attribute. This may lead to an explicit time dimension in the model.</p>
+<p><img src=images/time.jpg height="250px"/></p>
+</section><section id="types-of-change" class="slide level2">
+<h2>Types of change</h2>
+<ul>
+<li>Often it is natural to record a date attribute, usually when an entity is an event. E.g., when an experiment was run, when a sample was collected, when a purchase was made.</li>
+<li>Sometimes adding a date attribute allows you to work in the <strong>future</strong>, if you know an event will happen</li>
+<li>Maybe values can be updated, but you want to keep track of some of the old values.
+<ul>
+<li><code>start_date</code> and <code>end_date</code></li>
+</ul></li>
+</ul>
+<p>As always, there is a price for adding things such as this. Adding a time dimension to your conceptual data model makes the model considerably more complex. Think <strong>constraints</strong>.</p>
+</section><section id="date-entity-vs.attribute" class="slide level2">
+<h2>Date entity vs. attribute</h2>
+<p><img src="images/date_flow.png" /></p>
+</section><section id="slowly-changing-dimensions" class="slide level2">
+<h2>Slowly changing dimensions</h2>
+<ul>
+<li>Overwrite (no history saved)</li>
+<li>Add a new row with effective dates</li>
+<li>Add a new attribute with current vs. old</li>
+<li>Add history table</li>
+</ul>
+<p><img src="images/eeny.gif" height="300px"/></p>
+</section><section id="section" class="slide level2">
+<h2></h2>
+<p><img src="images/owl.jpeg" /></p>
+</section><section id="learning-is-easy-doing-is-hard" class="slide level2">
+<h2>Learning is easy, doing is hard</h2>
+<p>What are some lessons I can give you about actually doing this?</p>
+<ol type="1">
+<li>Draw an ERD
+<ul>
+<li>Start with entities, then think about relationships, then add attributes</li>
+<li>Think about the <em>granularity</em> of your tables (What does one row of data represent?)</li>
+<li>Are you missing (dropping) any pieces of data?</li>
+</ul></li>
+<li>Edit your ERD, explain it to a (imaginary?) friend</li>
+<li>Think about some questions you have to answer with your data. Can you answer those questions?</li>
+<li>How difficult will it be for your database to adapt? Can you make it more flexible now?</li>
+</ol>
 </section>
 
   <!--

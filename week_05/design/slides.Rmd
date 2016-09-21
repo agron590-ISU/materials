@@ -9,7 +9,7 @@ output:
     theme: ribbon
 ---
 
-# Normalization
+# Normalization and other tricks
 
 ## Relationship vs. Attribute
 
@@ -17,10 +17,10 @@ An attribute can hide a relationship and relationships can be "downgraded" to an
 
 ![](images/attribute_relation.png)
 
+
 ## Normal forms
 
 *Normalization* is a relational database concept that describes the shapes of tables and rules that tables must follow. If you have created a "normalized" entity-relationship data model, then the tables created during design will conform to the rules of normalization. 
-
 
 ![](images/normal.gif)
 
@@ -51,4 +51,51 @@ Usually **3NF is enough** when modeling real data.
 - 4NF states that an entity should only contain at most 1 independent multivalued attribute and satisfy 3NF.
 - 5NF posits an entity's information content cannot be reconstructed from several smaller entities.
 
-## Breaking the rules: when to denormalize
+## Modeling change
+
+Every update of an attribute or transfer of a relationship means potential loss of information. Often that information is no longer of use, but some systems need to keep track of some or all of the old values of an attribute. This may lead to an explicit time
+dimension in the model.
+
+<img src=images/time.jpg height="250px"/>
+
+## Types of change
+
+- Often it is natural to record a date attribute, usually when an entity is an event. E.g., when an experiment was run, when a sample was collected, when a purchase was made.
+- Sometimes adding a date attribute allows you to work in the **future**, if you know an event will happen
+- Maybe values can be updated, but you want to keep track of some of the old values.
+    - `start_date` and `end_date`
+
+As always, there is a price for adding things such as this. Adding a time dimension to your conceptual data model makes the model considerably more complex. Think **constraints**.
+
+## Date entity vs. attribute 
+
+![](images/date_flow.png)
+
+## Slowly changing dimensions
+
+- Overwrite (no history saved)
+- Add a new row with effective dates
+- Add a new attribute with current vs. old
+- Add history table
+
+<img src="images/eeny.gif" height="300px"/>
+
+##
+
+![](images/owl.jpeg)
+
+## Learning is easy, doing is hard
+
+What are some lessons I can give you about actually doing this?
+
+1. Draw an ERD
+    - Start with entities, then think about relationships, then add attributes
+    - Think about the *granularity* of your tables (What does one row of data represent?)
+    - Are you missing (dropping) any pieces of data?
+2. Edit your ERD, explain it to a (imaginary?) friend
+3. Think about some questions you have to answer with your data. Can you answer those questions?
+4. How difficult will it be for your database to adapt? Can you make it more flexible now?
+
+
+
+
