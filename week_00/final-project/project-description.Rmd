@@ -1,0 +1,24 @@
+---
+title: "Final Project"
+author: "Ranae Dietzel and Andee Kaplan"
+date: "September 21, 2016"
+output: html_document
+---
+__________________________________________________________
+### Objective  
+Work collaboratively and reproducibly to create a story involving data.  
+
+There are two story options.   
+1) Write a short manuscript style story including an Intro, Materials and Methods, Results, Discussion, and Conclusions.  
+2) Create a relational database or data-handling system and write a story about the process.  
+
+### Final outputs  
+* A dynamic report which includes text, code, and figures  
+* A 20 minute presentation  
+
+### Grading  
+* All collaboration must occur through GitHub  
+* Instructors must be able to reproduce every document  
+* Must include demonstration of tidy data   
+* Must incorporate good data visualization principles  
+* Story must be coherent
