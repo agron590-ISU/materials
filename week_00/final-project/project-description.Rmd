@@ -1,24 +1,34 @@
 ---
-title: "Final Project"
+title: "Agron 590RD - Final Project Description"
 author: "Ranae Dietzel and Andee Kaplan"
-date: "September 21, 2016"
-output: html_document
+output:
+  html_document: default
 ---
-__________________________________________________________
-### Objective  
-Work collaboratively and reproducibly to create a story involving data.  
 
-There are two story options.   
-1) Write a short manuscript style story including an Intro, Materials and Methods, Results, Discussion, and Conclusions.  
-2) Create a relational database or data-handling system and write a story about the process.  
+## Objective  
 
-### Final outputs  
-* A dynamic report which includes text, code, and figures  
-* A 20 minute presentation  
+Work collaboratively (teams of size 2-3) and reproducibly to create a story involving data.  
 
-### Grading  
-* All collaboration must occur through GitHub  
-* Instructors must be able to reproduce every document  
+There are two obvious options.   
+
+1. Create a reproducible analysis of data from raw data to manuscript. Your manuscript should include an Intro, Materials and Methods, Results, Discussion, and Conclusions. However, no statistical modelling is required. Exploratory data analysis and graphics preferred.
+2. Create a relational database or data-handling system and write about the process. What is your data model? What design decisions did you make during the process and why? What were some challenges along the way and how did you overcome them, etc. Demonstrate the capabilities of your new database with some cursory data explorations in `R`.
+
+If you have an idea for a different sort of project, please talk to Ranae and Andee ASAP, we'd love to discuss it.
+
+## Final outputs  
+
+You will be graded on two parts of the project, each worth 50% of the grade.
+
+1. A dynamic report which includes text, figures, and all code used to create.
+2. A 20 minute presentation, in which each member of the group must contribute.
+
+## Grading (40%)
+
+Your projects will be graded with the following rubric in mind.
+
+* All collaboration must occur through GitHub (will be used to assess participation of team members)
+* Instructors must be able to reproduce every document by following clear instructions on your project repo's README
 * Must include demonstration of tidy data   
-* Must incorporate good data visualization principles  
+* Must incorporate good data visualization principles
 * Story must be coherent
