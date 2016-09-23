@@ -7,11 +7,12 @@ output:
 
 ## Objective  
 
-Work collaboratively (teams of size 2-3) and reproducibly to create a story involving data.  
+Work collaboratively (teams of size 3-4) and reproducibly to create a story involving data.  
 
 There are two obvious options.   
 
 1. Create a reproducible analysis of data from raw data to manuscript. Your manuscript should include an Intro, Materials and Methods, Results, Discussion, and Conclusions. However, no statistical modelling is required. Exploratory data analysis and graphics preferred.
+
 2. Create a relational database or data-handling system and write about the process. What is your data model? What design decisions did you make during the process and why? What were some challenges along the way and how did you overcome them, etc. Demonstrate the capabilities of your new database with some cursory data explorations in `R`.
 
 If you have an idea for a different sort of project, please talk to Ranae and Andee ASAP, we'd love to discuss it.
@@ -23,7 +24,7 @@ You will be graded on two parts of the project, each worth 50% of the grade.
 1. A dynamic report which includes text, figures, and all code used to create.
 2. A 20 minute presentation, in which each member of the group must contribute.
 
-## Grading (40%)
+## Grading
 
 Your projects will be graded with the following rubric in mind.
 
