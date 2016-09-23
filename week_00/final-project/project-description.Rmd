@@ -7,7 +7,7 @@ output:
 
 ## Objective  
 
-Work collaboratively (teams of size 3-4) and reproducibly to create a story involving data.  
+Work collaboratively (teams of size 2-4) and reproducibly to create a story involving data.  
 
 There are two obvious options.   
 
