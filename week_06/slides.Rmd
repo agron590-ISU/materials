@@ -7,6 +7,7 @@ output:
     self_contained: false
     katex: true
     theme: ribbon
+    incremental: true
 ---
 
 ##Welcome to    
@@ -14,61 +15,46 @@ output:
 
 #What is R?  
 
-##R is an environment. 
-<img src="images/environment4.jpg" class="cover height" style="filter:FlipH" />
+#R is an environment.  
 
+## R is an integrated suite of software facilities for data manipulation, calculation and graphical display.  
+* From the [R homepage](https://www.r-project.org/about):
 
-
-
-
-
-##
-
-* R is an integrated suite of software facilities for data manipulation, calculation and graphical display. 
-
-##  
-
+## R is 
 * an effective data handling and storage facility  
 * a suite of operators for calculations on arrays, in particular matrices  
 * a large, coherent, integrated collection of intermediate tools for data analysis  
 * graphical facilities for data analysis and display either on-screen or on hardcopy and  
 * a well-developed, simple and effective programming language which includes conditionals, loops, user-defined recursive functions and input and output facilities.  
 
-The term "environment" is intended to characterize it as a fully planned and coherent system, rather than an incremental accretion of very specific and inflexible tools, as is frequently the case with other data analysis software.  
+## The term "environment" is intended to characterize it as a fully planned and coherent system, rather than an incremental accretion of very specific and inflexible tools, as is frequently the case with other data analysis software.  
 
-##Base R  https://cran.r-project.org/doc/manuals/R-intro.pdf
-  what is there
-  common datasets
+##So many ways to learn R  
+* [The manual](https://cran.r-project.org/doc/manuals/R-intro.pdf)  
+* Books -- My favorite is [The Art of R Programming](https://archive.org/details/Norman_Matloff___The_Art_of_R_Programming) by Norman Matloff  
+* Online courses/tutorials -- Any recommendations?  
+* Learn R in R with the [swiRl](http://swirlstats.com/) package  
+* **In this course!**  
 
+##  
+<center><img src="images/taketime.jpg" width="400px"/></center> 
 
- 
-#Community built  
-  Many ways to do many things
-  Packages  
-    Old school vs. new package descriptions  
-  
-  
+# Base R  
+
+## Beyond base
+
 You seem to be falling prey to a common misconception that "R" is some monolithic tool, when in fact it is a herd of cats.
    -- Jeff Newmiller (in response to a user who did not look for packages)
       R-help (December 2013)  
 
-####
+* R has packages that are easy to install and call upon  
 
-Spencer Graves: 'The sun never sets on the (former) British Empire.' Today, it never sets on R-Help.  
+## Anyone is allowed to make an R package  
+* There are 7,801 R packages available on CRAN (Comprehensive R Archive Network)  
+* Whatever you are doing, some one has probably made an R package that can help you  
+* 
 
-
-
-#Why use R?  
-  Community (help, support) 
-  
-#What can R do? 
-  
-  
-  
+## Spencer Graves: 'The sun never sets on the (former) British Empire.' Today, it never sets on R-Help.  
 
 
-
-How, what, why, where, when 
-
-  
 
