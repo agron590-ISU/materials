@@ -9,22 +9,40 @@ output:
     theme: ribbon
 ---
 
-##Outline  
-####What is R?  
-  R is an environment -- language, software  
-R is an integrated suite of software facilities for data manipulation, calculation and graphical display. It includes
+##Welcome to    
+<center><img src="images/rlogo.png" width="500px"/></center> 
 
-an effective data handling and storage facility,
-a suite of operators for calculations on arrays, in particular matrices,
-a large, coherent, integrated collection of intermediate tools for data analysis,
-graphical facilities for data analysis and display either on-screen or on hardcopy, and
-a well-developed, simple and effective programming language which includes conditionals, loops, user-defined recursive functions and input and output facilities.
+#What is R?  
+
+##R is an environment. 
+<img src="images/environment4.jpg" class="cover height" style="filter:FlipH" />
+
+
+
+
+
+
+##
+
+* R is an integrated suite of software facilities for data manipulation, calculation and graphical display. 
+
+##  
+
+* an effective data handling and storage facility  
+* a suite of operators for calculations on arrays, in particular matrices  
+* a large, coherent, integrated collection of intermediate tools for data analysis  
+* graphical facilities for data analysis and display either on-screen or on hardcopy and  
+* a well-developed, simple and effective programming language which includes conditionals, loops, user-defined recursive functions and input and output facilities.  
+
 The term "environment" is intended to characterize it as a fully planned and coherent system, rather than an incremental accretion of very specific and inflexible tools, as is frequently the case with other data analysis software.  
 
-#Base R  
+##Base R  https://cran.r-project.org/doc/manuals/R-intro.pdf
+  what is there
+  common datasets
 
-####Open source, free  
-####Community built  
+
+ 
+#Community built  
   Many ways to do many things
   Packages  
     Old school vs. new package descriptions  
@@ -40,8 +58,10 @@ Spencer Graves: 'The sun never sets on the (former) British Empire.' Today, it n
 
 
 
-Why use R?  
-  Community (help, support)  
+#Why use R?  
+  Community (help, support) 
+  
+#What can R do? 
   
   
   
