@@ -1,0 +1,40 @@
+---
+title: "Basic `R`"
+author: "Ranae Dietzel & Andee Kaplan"
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: ribbon
+    incremental: true
+---
+
+## Basic `R`
+
+![](images/pumpkin_spice.jpg) ![](images/Rlogo.png) 
+
+## `R` as a huge calculator
+
+## Using functions
+
+## Storing values
+
+## Variable creation
+
+## Vectors
+
+## Your turn {.white}
+
+## Data frames
+
+## Accessing parts of data
+
+## Logicals
+
+## Your turn {.white}
+
+## Data types
+
+## Moar functions
+
