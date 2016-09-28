@@ -131,7 +131,7 @@ y &lt;-<span class="st"> </span><span class="kw">cos</span>(<span class="dv">2</
 </section>
 <section id="vectors" class="slide level2">
 <h2>Vectors</h2>
-<p>We can store multiple values in a variable using vectors. To create a vector, we can <strong>combine</strong> values (<code>c</code>), or use <strong>sequencing</strong> functions.</p>
+<p>We can store multiple values in a variable using vectors. To create a vector, we can <strong>combine</strong> values (<code>c</code>), or use <strong>sequencing</strong> functions. Each element in a vector must be of the same type.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#combine values</span>
 (nightstand_books &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Harry Potter and the Goblet of Fire&quot;</span>, <span class="st">&quot;A Storm of Swords&quot;</span>, <span class="st">&quot;On Writing Well&quot;</span>, <span class="st">&quot;Advanced R&quot;</span>, <span class="st">&quot;R Packages&quot;</span>))</code></pre></div>
 <pre><code>## [1] &quot;Harry Potter and the Goblet of Fire&quot;
@@ -145,27 +145,161 @@ y &lt;-<span class="st"> </span><span class="kw">cos</span>(<span class="dv">2</
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(nums_2 &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dt">by =</span> <span class="dv">2</span>))</code></pre></div>
 <pre><code>## [1] 1 3 5 7 9</code></pre>
 </section>
-<section id="your-turn" class="slide level2 white">
+<section id="your-turn" class="slide level2 cover white">
 <h2>Your turn</h2>
-<p><a href="https://cran.r-project.org/doc/contrib/Short-refcard.pdf">helpful functions</a></p>
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<p><img src="images/your_turn.jpg" class="cover height" /></p>
+<p>
+<a style="color:black" href="https://cran.r-project.org/doc/contrib/Short-refcard.pdf" target="_blank">helpful functions</a>
+</p>
+<ol style="color:white">
+<li>
+Use the <code>rep</code> function to create and store a vector containing 111222333444555
+</li>
+<li>
+Use the <code>rep</code> function to create and store a vector containing 123451234512345
+</li>
+<li>
+What is the third power of each integer from 1 to 50?
+</li>
+</ol>
 </section>
 <section id="data-frames" class="slide level2">
 <h2>Data frames</h2>
+<ul>
+<li>Data frames hold data sets</li>
+<li>Each column can be of different type, but within a column the type is consistent (kind of like a spreadsheet)</li>
+<li>Each column in a data frame is a vector</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(mtcars)</code></pre></div>
+<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
 </section>
 <section id="accessing-parts-of-data" class="slide level2">
-<h2>Accessing parts of data</h2>
+<h2>Accessing parts of data ($)</h2>
+<p>Depending on what we have (data frame vs. vector), there are multiple ways to access <em>part</em> of the data.</p>
+<p>For data frames, we can access columns using the <code>$</code> operator</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#accessing data using $</span>
+<span class="kw">head</span>(mtcars$mpg)</code></pre></div>
+<pre><code>## [1] 21.0 21.0 22.8 21.4 18.7 18.1</code></pre>
+</section>
+<section id="accessing-parts-of-data-indices" class="slide level2">
+<h2>Accessing parts of data (indices)</h2>
+<p>We can also use numeric indexing (starts at 1). Or, we can access columns in a data frame using their string names</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#accessing data using numeric indexing</span>
+mtcars[<span class="dv">1</span>:<span class="dv">6</span>, <span class="dv">1</span>]</code></pre></div>
+<pre><code>## [1] 21.0 21.0 22.8 21.4 18.7 18.1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars$mpg[<span class="dv">1</span>]</code></pre></div>
+<pre><code>## [1] 21</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#accessing data using string names of columns</span>
+mtcars[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>), <span class="st">&quot;mpg&quot;</span>]</code></pre></div>
+<pre><code>## [1] 21.0 22.8 18.7</code></pre>
 </section>
 <section id="logicals" class="slide level2">
 <h2>Logicals</h2>
+<p><code>R</code> has support for logicals with <code>TRUE</code> and <code>FALSE</code> as built in Boolean values. We can create logicals with <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code>, <code>is.na</code>, etc.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#logicals</span>
+<span class="dv">3</span> &lt;<span class="st"> </span><span class="dv">5</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="ot">NA</span>, <span class="dv">100</span>)
+<span class="kw">is.na</span>(x)</code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE  TRUE FALSE</code></pre>
+<p>We can combine logical statements using and <code>&amp;</code> and or <code>||</code>.</p>
 </section>
-<section id="your-turn-1" class="slide level2 white">
+<section id="indexing-with-logicals" class="slide level2">
+<h2>Indexing with logicals</h2>
+<p>We can also use logical statements to access parts of our data (think <strong>filtering</strong>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#indexing with logicals</span>
+x[!<span class="kw">is.na</span>(x)]</code></pre></div>
+<pre><code>## [1]   2   4   5 100</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[x &gt;<span class="st"> </span><span class="dv">10</span>]</code></pre></div>
+<pre><code>## [1]  NA 100</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[x &gt;<span class="st"> </span><span class="dv">10</span> &amp;<span class="st"> </span>!<span class="kw">is.na</span>(x)]</code></pre></div>
+<pre><code>## [1] 100</code></pre>
+</section>
+<section id="your-turn-1" class="slide level2 cover white">
 <h2>Your turn</h2>
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<p><img src="images/your_turn.jpg" class="cover height" /></p>
+<p style="color:white">
+Using the <code>mtcars</code> dataset,
+</p>
+<ol style="color:white">
+<li>
+Which car has greater than 30 mpg and over 100 horsepower?
+</li>
+<li>
+How many cars have 4 cylinders? <strong>Hint:</strong> Using the <code>sum</code> function on logicals returns how many <code>TRUE</code> values there are.
+</li>
+<li>
+Calculate the average horsepower for the cars with 4 cylinders.
+</li>
+</ol>
+</section>
+<section id="modifying-data" class="slide level2">
+<h2>Modifying data</h2>
+<p>We can use indexing to change values of data. Or add columns to a data frame.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#using indexing to change certain values</span>
+hp_per_cyl &lt;-<span class="st"> </span>mtcars$hp/mtcars$cyl
+hp_per_cyl[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="ot">NA</span>
+hp_per_cyl[<span class="dv">2</span>] &lt;-<span class="st"> &quot;???&quot;</span>
+hp_per_cyl[<span class="dv">1</span>:<span class="dv">10</span>]</code></pre></div>
+<pre><code>##  [1] NA                 &quot;???&quot;              &quot;23.25&quot;           
+##  [4] &quot;18.3333333333333&quot; &quot;21.875&quot;           &quot;17.5&quot;            
+##  [7] &quot;30.625&quot;           &quot;15.5&quot;             &quot;23.75&quot;           
+## [10] &quot;20.5&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#add column</span>
+mtcars$hp_per_cyl &lt;-<span class="st"> </span>hp_per_cyl
+<span class="kw">head</span>(mtcars, <span class="dv">1</span>)</code></pre></div>
+<pre><code>##           mpg cyl disp  hp drat   wt  qsec vs am gear carb hp_per_cyl
+## Mazda RX4  21   6  160 110  3.9 2.62 16.46  0  1    4    4       &lt;NA&gt;</code></pre>
 </section>
 <section id="data-types" class="slide level2">
 <h2>Data types</h2>
+<ul>
+<li>Use <code>class</code> to find out what data type we’re talking about. For more informative look, use <code>str</code> (structure).</li>
+<li>Numeric, integer, character, Date, and factor most common data types.</li>
+<li>Can convert between types using <code>as.</code>type.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#structure</span>
+<span class="kw">str</span>(mtcars[, <span class="dv">1</span>:<span class="dv">3</span>])</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    32 obs. of  3 variables:
+##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+##  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
+##  $ disp: num  160 160 108 258 360 ...</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#type conversion</span>
+<span class="kw">as.character</span>(mtcars$mpg)[<span class="dv">1</span>:<span class="dv">6</span>]</code></pre></div>
+<pre><code>## [1] &quot;21&quot;   &quot;21&quot;   &quot;22.8&quot; &quot;21.4&quot; &quot;18.7&quot; &quot;18.1&quot;</code></pre>
 </section>
 <section id="moar-functions" class="slide level2">
 <h2>Moar functions</h2>
+<p>There are a <em>lot</em> more functions. Here are some examples.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#moar functions</span>
+x &lt;-<span class="st"> </span>mtcars$mpg
+<span class="kw">length</span>(x)</code></pre></div>
+<pre><code>## [1] 32</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(x)</code></pre></div>
+<pre><code>## [1] 642.9</code></pre>
+<p><img src="images/firehose.gif" /></p>
+</section>
+<section id="stats" class="slide level2">
+<h2>Stats</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#basic statistical functions</span>
+<span class="kw">mean</span>(x)</code></pre></div>
+<pre><code>## [1] 20.09062</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(x)</code></pre></div>
+<pre><code>## [1] 6.026948</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(x)</code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   10.40   15.42   19.20   20.09   22.80   33.90</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(x, <span class="dt">probs =</span> <span class="fl">0.5</span>)</code></pre></div>
+<pre><code>##  50% 
+## 19.2</code></pre>
 </section>
 
   <!--

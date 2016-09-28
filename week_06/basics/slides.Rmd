@@ -76,7 +76,7 @@ Why don't we just use `=` (which also works)?
 
 ## Vectors
 
-We can store multiple values in a variable using vectors. To create a vector, we can **combine** values (`c`), or use **sequencing** functions.
+We can store multiple values in a variable using vectors. To create a vector, we can **combine** values (`c`), or use **sequencing** functions. Each element in a vector must be of the same type. 
 
 ```{r}
 #combine values
@@ -87,19 +87,142 @@ We can store multiple values in a variable using vectors. To create a vector, we
 (nums_2 <- seq(1, 10, by = 2))
 ```
 
-## Your turn {.white}
+## Your turn { .cover .white }
 
-[helpful functions](https://cran.r-project.org/doc/contrib/Short-refcard.pdf)
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<img src="images/your_turn.jpg" class="cover height" />
+
+<p>
+<a style="color:black" href="https://cran.r-project.org/doc/contrib/Short-refcard.pdf" target="_blank">helpful functions</a>
+</p>
+
+<ol style="color:white">
+<li>Use the `rep` function to create and store a vector containing 111222333444555</li>
+<li>Use the `rep` function to create and store a vector containing 123451234512345</li>
+<li>What is the third power of each integer from 1 to 50?</li>
+</ol>
 
 ## Data frames
 
-## Accessing parts of data
+- Data frames hold data sets
+- Each column can be of different type, but within a column the type is consistent (kind of like a spreadsheet)
+- Each column in a data frame is a vector
+
+```{r}
+head(mtcars)
+```
+
+## Accessing parts of data ($)
+
+Depending on what we have (data frame vs. vector), there are multiple ways to access *part* of the data. 
+
+For data frames, we can access columns using the `$` operator
+
+```{r}
+#accessing data using $
+head(mtcars$mpg)
+```
+
+## Accessing parts of data (indices)
+
+We can also use numeric indexing (starts at 1). Or, we can access columns in a data frame using their string names
+    
+```{r}
+#accessing data using numeric indexing
+mtcars[1:6, 1]
+mtcars$mpg[1]
+
+#accessing data using string names of columns
+mtcars[c(1, 3, 5), "mpg"]
+```
 
 ## Logicals
 
-## Your turn {.white}
+`R` has support for logicals with `TRUE` and `FALSE` as built in Boolean values. We can create logicals with `<`, `>`, `<=`, `>=`, `==`, `!=`, `is.na`, etc.
+
+```{r}
+#logicals
+3 < 5
+x <- c(2, 4, 5, NA, 100)
+is.na(x)
+```
+
+We can combine logical statements using and `&` and or `||`.
+
+## Indexing with logicals
+
+We can also use logical statements to access parts of our data (think **filtering**).
+
+```{r}
+#indexing with logicals
+x[!is.na(x)]
+x[x > 10]
+x[x > 10 & !is.na(x)]
+```
+
+## Your turn { .cover .white }
+
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<img src="images/your_turn.jpg" class="cover height" />
+
+<p style="color:white">
+Using the `mtcars` dataset, 
+</p>
+<ol style="color:white">
+<li>Which car has greater than 30 mpg and over 100 horsepower?</li>
+<li>How many cars have 4 cylinders? **Hint:** Using the `sum` function on logicals returns how many `TRUE` values there are.</li>
+<li>Calculate the average horsepower for the cars with 4 cylinders.</li>
+</ol>
+
+## Modifying data
+
+We can use indexing to change values of data. Or add columns to a data frame.
+
+```{r}
+#using indexing to change certain values
+hp_per_cyl <- mtcars$hp/mtcars$cyl
+hp_per_cyl[1] <- NA
+hp_per_cyl[2] <- "???"
+hp_per_cyl[1:10]
+
+#add column
+mtcars$hp_per_cyl <- hp_per_cyl
+head(mtcars, 1)
+```
 
 ## Data types
 
+- Use `class` to find out what data type we're talking about. For more informative look, use `str` (structure).
+- Numeric, integer, character, Date, and factor most common data types.
+- Can convert between types using `as.`type.
+
+```{r}
+#structure
+str(mtcars[, 1:3])
+
+#type conversion
+as.character(mtcars$mpg)[1:6]
+```
+
 ## Moar functions
+
+There are a *lot* more functions. Here are some examples.
+
+```{r}
+#moar functions
+x <- mtcars$mpg
+length(x)
+sum(x)
+```
+
+![](images/firehose.gif)
+
+## Stats
+```{r}
+#basic statistical functions
+mean(x)
+sd(x)
+summary(x)
+quantile(x, probs = 0.5)
+```
 
