@@ -32,6 +32,7 @@ output:
 ##So many ways to learn R  
 * [The manual](https://cran.r-project.org/doc/manuals/R-intro.pdf)  
 * Books -- My favorite is [The Art of R Programming](https://archive.org/details/Norman_Matloff___The_Art_of_R_Programming) by Norman Matloff  
+  - Also [R for Data Science](http://r4ds.had.co.nz/) (Grolemund & Wickham) and [A Modern Dive into Data with R](https://ismayc.github.io/moderndiver-book/) (Ismay)
 * Online courses/tutorials -- Any recommendations?  
 * Learn R in R with the [swiRl](http://swirlstats.com/) package  
 * **In this course!**  
