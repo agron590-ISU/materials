@@ -10,40 +10,89 @@ output:
 ---
 create data from scratch
 importing data (read.csv), 
-change dates  
 add a column
 remove rows
 subset data  
 fit model  
 pull out stuff from model  
 
-data frames (indexing again, 
-adding a column,add a row,
-remove a column/row,
-creating a data frame from scratch, 
-renaming columns), 
-importing data (read.csv), 
-lists,
-working with output from a function (example of pulling out a p value from lm?)  
-Advanced R Book [[]] 
+Advanced R Book [[]]  
+
+df$ET[df$ET < 0 | df$ET > 10] <- 0  
+%in%, ?'%in%' match - defines the intersections of two sets
+| or
+& and  
+na.rm  
+
 
 
 ## Dataframes
 
-![](images/pumpkin_spice.jpg) ![](images/Rlogo.png) 
+![](images/pumpkin_spice.jpg) 
 
-## `R` as a huge calculator
+## DIY Dataframe
+
+Good to know for making simple examples  
 
 ```{r}
-#addition, subtraction, multiplications, powers
-2 + 3
-3^3
-2/7
-3*108
-
-#modulo (remainder)
-33%%4 
+block = c("A", "B", "C", "A", "B", "C")
+rep = c(1, 2, 1, 2, 1, 2)
+mass = c(52, 48, 33, 32, 44, 49)
+df = data.frame(block, rep, mass)
 ```
+ 
+What have you done?  
+```{r, eval=FALSE}
+plot(df$mass ~ df$rep)
+df$rep<-as.factor(df$rep)
+plot(df$mass ~ df$rep)
+```
+
+If you get an error message, check your class!
+
+##  
+
+<center><img src="images/checkyoself.jpg" width="550px"/></center> 
+
+## Importing data  
+
+Check your working directory. 
+`getwd()`  
+Change your working directory.
+`setwd()`  
+Import your file  
+`df<-read.csv("file.csv")`  
+`df<-read.table("file.txt", header = TRUE)`  
+For Excel files, look in to the `readxl` package  
+
+#Let's do it  
+
+## Subsetting  
+
+**%in%** (?'%in%') (use quotes when looking up weird stuff)
+
+* match - defines the intersections of two sets  
+* use instead of `==` when you have more than one    
+* `df[df$year %in% c(2008, 2009, 2010),]`   
+
+**|** means "or" 
+
+* `df$ET[df$ET < 0 | df$ET > 10] <- NA`
+
+otherwise `&` means "and"  
+
+#`[]` vs `[[]]`
+
+##  
+* `[]` always gives you a list  
+* `[[]]` gives you the content of the list  
+* This difference will become more important when we get into functions
+
+
+
+
+
+
 
 
 
@@ -62,66 +111,6 @@ Advanced R Book [[]]
 <li>What is the third power of each integer from 1 to 50?</li>
 </ol>
 
-## Data frames
-
-- Data frames hold data sets
-- Each column can be of different type, but within a column the type is consistent (kind of like a spreadsheet)
-- Each column in a data frame is a vector
-
-```{r}
-head(mtcars)
-```
-
-## Accessing parts of data ($)
-
-Depending on what we have (data frame vs. vector), there are multiple ways to access *part* of the data. 
-
-For data frames, we can access columns using the `$` operator
-
-```{r}
-#accessing data using $
-head(mtcars$mpg)
-```
-
-## Accessing parts of data (indices)
-
-We can also use numeric indexing (starts at 1). Or, we can access columns in a data frame using their string names
-    
-```{r}
-#accessing data using numeric indexing
-mtcars[1:6, 1]
-mtcars$mpg[1]
-
-#accessing data using string names of columns
-mtcars[c(1, 3, 5), "mpg"]
-```
-
-
-
-## Indexing with logicals
-
-We can also use logical statements to access parts of our data (think **filtering**).
-
-```{r}
-#indexing with logicals
-x[!is.na(x)]
-x[x > 10]
-x[x > 10 & !is.na(x)]
-```
-
-## Your turn { .cover .white }
-
-<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
-<img src="images/your_turn.jpg" class="cover height" />
-
-<p style="color:white">
-Using the `mtcars` dataset, 
-</p>
-<ol style="color:white">
-<li>Which car has greater than 30 mpg and over 100 horsepower?</li>
-<li>How many cars have 4 cylinders? **Hint:** Using the `sum` function on logicals returns how many `TRUE` values there are.</li>
-<li>Calculate the average horsepower for the cars with 4 cylinders.</li>
-</ol>
 
 ## Modifying data
 
