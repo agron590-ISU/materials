@@ -42,8 +42,9 @@ Check your working directory.
 Change your working directory.
 `setwd()`  
 Import your file  
-`df<-read.csv("file.csv")`  
 `df<-read.table("file.txt", header = TRUE)`  
+`df<-read_csv("file.csv")`
+
 For Excel files, look in to the `readxl` package  
 
 ## Subsetting  
