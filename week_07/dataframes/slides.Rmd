@@ -25,7 +25,7 @@ df = data.frame(block, rep, mass)
 What have you done?  
 ```{r, eval=FALSE}
 plot(df$mass ~ df$rep)
-df$rep<-as.factor(df$rep)
+df$rep <- as.factor(df$rep)
 plot(df$mass ~ df$rep)
 ```
 
@@ -42,8 +42,8 @@ Check your working directory.
 Change your working directory.
 `setwd()`  
 Import your file  
-`df<-read.table("file.txt", header = TRUE)`  
-`df<-read_csv("file.csv")`
+`df <- read.table("file.txt", header = TRUE)`  
+`df <- readr::read_csv("file.csv")`
 
 For Excel files, look in to the `readxl` package  
 
