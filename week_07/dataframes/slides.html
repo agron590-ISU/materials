@@ -64,21 +64,7 @@
 
     
   
-<section class="slide level2">
-
-<p>create data from scratch importing data (read.csv), add a column remove rows subset data<br />
-fit model<br />
-pull out stuff from model</p>
-<p>Advanced R Book [<a href="#/section"></a>]</p>
-<p>df<span class="math inline">\(ET[df\)</span>ET &lt; 0 | df$ET &gt; 10] &lt;- 0<br />
-%in%, ?‘%in%’ match - defines the intersections of two sets | or &amp; and<br />
-na.rm</p>
-</section>
-<section id="dataframes" class="slide level2">
-<h2>Dataframes</h2>
-<p><img src="images/pumpkin_spice.jpg" alt="" /></p>
-</section>
-<section id="diy-dataframe" class="slide level2">
+<section id="dataframes" class="titleslide slide level1"><h2 class="shout">Dataframes</h2></section><section id="diy-dataframe" class="slide level2">
 <h2>DIY Dataframe</h2>
 <p>Good to know for making simple examples</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">block =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>)
@@ -90,24 +76,21 @@ df =<span class="st"> </span><span class="kw">data.frame</span>(block, rep, mass
 df$rep&lt;-<span class="kw">as.factor</span>(df$rep)
 <span class="kw">plot</span>(df$mass ~<span class="st"> </span>df$rep)</code></pre></div>
 <p>If you get an error message, check your class!</p>
-</section>
-<section id="section" class="slide level2">
+</section><section id="section" class="slide level2">
 <h2></h2>
 <center>
 <img src="images/checkyoself.jpg" width="550px"/>
 </center>
-</section>
-<section id="importing-data" class="slide level2">
+</section><section id="importing-data" class="slide level2">
 <h2>Importing data</h2>
 <p>Check your working directory. <code>getwd()</code><br />
 Change your working directory. <code>setwd()</code><br />
 Import your file<br />
-<code>df&lt;-read.csv(&quot;file.csv&quot;)</code><br />
 <code>df&lt;-read.table(&quot;file.txt&quot;, header = TRUE)</code><br />
-For Excel files, look in to the <code>readxl</code> package</p>
-</section>
-<section id="lets-do-it" class="titleslide slide level1"><h2 class="shout">Let’s do it</h2></section><section id="wait" class="slide level2">
-<h2>Wait</h2>
+<code>df&lt;-read_csv(&quot;file.csv&quot;)</code></p>
+<p>For Excel files, look in to the <code>readxl</code> package</p>
+</section><section id="subsetting" class="slide level2">
+<h2>Subsetting</h2>
 <p><strong>%in%</strong> (?‘%in%’) (use quotes when looking up weird stuff)</p>
 <ul>
 <li>match - defines the intersections of two sets<br />
@@ -122,41 +105,31 @@ For Excel files, look in to the <code>readxl</code> package</p>
 </ul>
 <p>otherwise <code>&amp;</code> means “and”</p>
 </section>
-<section id="vs" class="titleslide slide level1"><h2 class="shout"><code>[]</code> vs <code>[[]]</code></h2></section><section id="your-turn" class="slide level2 cover white">
+<section id="vs" class="titleslide slide level1"><h2 class="shout"><code>[]</code> vs <code>[[]]</code></h2></section><section id="section-1" class="slide level2">
+<h2></h2>
+<ul>
+<li><code>[]</code> always gives you a list<br />
+</li>
+<li><code>[[]]</code> gives you the content of the list<br />
+</li>
+<li>This difference will become more important when we get into functions</li>
+</ul>
+</section>
+<section id="lets-import-and-subset" class="titleslide slide level1"><h2 class="shout">Let’s import and subset</h2></section><section id="your-turn" class="slide level2 cover white">
 <h2>Your turn</h2>
 <!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
 <p><img src="images/your_turn.jpg" class="cover height" /></p>
-<p>
-<a style="color:black" href="https://cran.r-project.org/doc/contrib/Short-refcard.pdf" target="_blank">helpful functions</a>
-</p>
-<ol style="color:white">
+<ol style="color:black">
 <li>
-Use the <code>rep</code> function to create and store a vector containing 111222333444555
+Use the NASS data to determine the relationship between time and change in bu/acre of corn
 </li>
 <li>
-Use the <code>rep</code> function to create and store a vector containing 123451234512345
+Examine the same relationship, but split into 1940-1990 and 1991-2015 and compare the slopes of the linear models
 </li>
 <li>
-What is the third power of each integer from 1 to 50?
+Compare “acres harvested” of small grains (oats, barley, wheat, and rye) to “acres harvested” of corn and soybean over the last 100 years.
 </li>
 </ol>
-</section><section id="modifying-data" class="slide level2">
-<h2>Modifying data</h2>
-<p>We can use indexing to change values of data. Or add columns to a data frame.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#using indexing to change certain values</span>
-hp_per_cyl &lt;-<span class="st"> </span>mtcars$hp/mtcars$cyl
-hp_per_cyl[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="ot">NA</span>
-hp_per_cyl[<span class="dv">2</span>] &lt;-<span class="st"> &quot;???&quot;</span>
-hp_per_cyl[<span class="dv">1</span>:<span class="dv">10</span>]</code></pre></div>
-<pre><code>##  [1] NA                 &quot;???&quot;              &quot;23.25&quot;           
-##  [4] &quot;18.3333333333333&quot; &quot;21.875&quot;           &quot;17.5&quot;            
-##  [7] &quot;30.625&quot;           &quot;15.5&quot;             &quot;23.75&quot;           
-## [10] &quot;20.5&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#add column</span>
-mtcars$hp_per_cyl &lt;-<span class="st"> </span>hp_per_cyl
-<span class="kw">head</span>(mtcars, <span class="dv">1</span>)</code></pre></div>
-<pre><code>##           mpg cyl disp  hp drat   wt  qsec vs am gear carb hp_per_cyl
-## Mazda RX4  21   6  160 110  3.9 2.62 16.46  0  1    4    4       &lt;NA&gt;</code></pre>
 </section>
 
   <!--
