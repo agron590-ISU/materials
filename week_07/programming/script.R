@@ -8,12 +8,19 @@
 ## }
 
 ## ------------------------------------------------------------------------
-x <- "hello"
+x <- c(-100, 100, 10)
 if (!is.numeric(x)) {
-    print("Numeric input is required")
+  print("Numeric input is required")
+} else if(all(x > 0)) {
+  print("Postive!")
 } else {
-  print(TRUE)
+  x[x < 0] <- NA
+  print("Fixed negative values!")
 }
+
+
+
+
 
 ## ------------------------------------------------------------------------
 for(i in 1:2){

@@ -1,0 +1,47 @@
+---
+title: "Your Turn Solution"
+author: "Andee Kaplan"
+date: "10/7/2016"
+output: html_document
+---
+
+This is the solution to the "Your Turn" in class from October 7. Below is my function that accomplishes the following:
+
+1. Computes the mean of an input vector.
+2. Has error checking to ensure the input vector is numeric or logical, displays an error if not satisfied (see “stop”). 
+3. Has a parameter to allow the user to specify if they want to exclude NA values.
+
+```{r setup, include=FALSE}
+mymean <- function(x, na.rm = FALSE) {
+  # check for numeric or logical input, message a friendly error to user
+  if (!(is.numeric(x) | is.logical(x))) {
+    stop("Input vector must be numeric or logical!")
+  }
+  
+  # if the user elects to remove NAs, do so.
+  if(na.rm) {
+    x <- x[!is.na(x)]
+  }
+  sum(x)/length(x)
+}
+```
+
+Now we can loop over the columns of the `diamonds` data set and apply my function to all of the numeric columns.
+
+```{r}
+library(ggplot2) #diamonds data
+for(col in colnames(diamonds)) {
+  dat <- diamonds[, col]
+  if(all(class(dat) %in% c("numeric", "logical"))) { # sometimes class returns a vector of length > 1
+    print(paste(col, ":", mymean(dat)))
+  }
+}
+
+```
+
+A potential problem with my function is if a user inputs a vector of length 0, the following occurs:
+
+```{r}
+ mymean(numeric(0))
+```
+ This returns a value of "Not a Number", because we have divided by 0. While technically true, it might be nice to add some error handling to give the user a warning when this occurs.
