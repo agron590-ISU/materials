@@ -1,0 +1,21 @@
+---
+title: "Data Cleaning"
+author: "Ranae Dietzel & Andee Kaplan"
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: ribbon
+---
+## Data cleaning
+
+[But I'm supposed to do it!](https://www.youtube.com/watch?v=75BJ2ovo-S0)
+
+# Pull in lab materials and we will get started there  
+
+## The data cleaning - magic spell analogy continues  
+  [So many things can happen](https://www.youtube.com/watch?v=HJnaXaNzEVg)
+
+
+
