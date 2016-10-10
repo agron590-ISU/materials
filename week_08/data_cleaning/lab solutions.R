@@ -35,7 +35,7 @@ clean$min_temp_C<-clean$min_temp_F*1.8+32
 clean$date<-as.Date(clean$date, "%m/%d/%Y %H:%M")
 
 #Create a column which labels anything before Sept 22 as "summer" and Sept 22 and after as "autumn"
-clean$season[clean$date < as.Date("2016-09-22")]<-"summer"  #These don't work
+clean$season[clean$date < as.Date("2016-09-22")]<-"summer"  
 clean$season[clean$date >= 2016-09-22]<-"fall"
 
 #Make a few simple plots of your data to see if it looks okay and everything is the right class
