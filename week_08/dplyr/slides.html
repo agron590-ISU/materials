@@ -110,18 +110,73 @@ Write a for loop that calculates and stores the career batting average for each 
 </section>
 <section id="enter-dplyr" class="slide level2">
 <h2>Enter: <code>dplyr</code></h2>
-<p><code>dplyr</code> is a Hadley package that implements the “split-apply-combine” strategy.</p>
+<p><code>dplyr</code> is a Hadley package that implements the “split-apply-combine” strategy (among other things).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)</code></pre></div>
 <p><img src="images/split-apply-combine.png" height="380px"/></p>
 </section>
 <section id="verbs" class="slide level2">
 <h2>Verbs</h2>
+<ul>
+<li>When working with data you must:
+<ol type="1">
+<li>Figure out what you want to do.</li>
+<li>Describe those tasks in the form of a computer program.</li>
+<li>Execute the program.</li>
+</ol></li>
+</ul>
+<p><code>dplyr</code> provides simple <strong>verbs</strong>, functions that correspond to the most common data manipulation tasks, to help you translate those thoughts into code.</p>
 </section>
 <section id="group-by" class="slide level2">
 <h2>Group by</h2>
+<ul>
+<li><code>group_by()</code> breaks down a dataset into specified groups of rows. When you then apply the verbs on the resulting object they’ll be automatically applied “by group”</li>
+<li>This is the <strong>split</strong> part of the split-apply-combine strategy</li>
+<li>This is the same operator that we used in SQL, <code>GROUP BY</code></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">group_by</span>(baseball, id)</code></pre></div>
+<pre><code>## Source: local data frame [21,699 x 22]
+## Groups: id [1,228]
+## 
+##           id  year stint  team    lg     g    ab     r     h   X2b   X3b
+## *      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+## 1  ansonca01  1871     1   RC1          25   120    29    39    11     3
+## 2  forceda01  1871     1   WS3          32   162    45    45     9     4
+## 3  mathebo01  1871     1   FW1          19    89    15    24     3     1
+## 4  startjo01  1871     1   NY2          33   161    35    58     5     1
+## 5  suttoez01  1871     1   CL1          29   128    35    45     3     7
+## 6  whitede01  1871     1   CL1          29   146    40    47     6     5
+## 7   yorkto01  1871     1   TRO          29   145    36    37     5     7
+## 8  ansonca01  1872     1   PH1          46   217    60    90    10     7
+## 9  burdoja01  1872     1   BR2          37   174    26    46     3     0
+## 10 forceda01  1872     1   TRO          25   130    40    53    11     0
+## # ... with 21,689 more rows, and 11 more variables: hr &lt;int&gt;, rbi &lt;int&gt;,
+## #   sb &lt;int&gt;, cs &lt;int&gt;, bb &lt;int&gt;, so &lt;int&gt;, ibb &lt;int&gt;, hbp &lt;int&gt;,
+## #   sh &lt;int&gt;, sf &lt;int&gt;, gidp &lt;int&gt;</code></pre>
 </section>
 <section id="summarise" class="slide level2">
 <h2>Summarise</h2>
+<ul>
+<li><code>summarise()</code> summarises data through the use of aggregate functions, which take a vector of values and return a single number.</li>
+<li>There are many useful examples of such functions, <code>min()</code>, <code>max()</code>, <code>mean()</code>, <code>sum()</code>, <code>sd()</code>, <code>median()</code>, and <code>IQR()</code>.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summarise</span>(baseball, <span class="kw">mean</span>(h))</code></pre></div>
+<pre><code>##   mean(h)
+## 1 61.7569</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summarise</span>(<span class="kw">group_by</span>(baseball, year), <span class="kw">mean</span>(h))</code></pre></div>
+<pre><code>## # A tibble: 137 × 2
+##     year `mean(h)`
+##    &lt;int&gt;     &lt;dbl&gt;
+## 1   1871  42.14286
+## 2   1872  42.92308
+## 3   1873  68.53846
+## 4   1874  64.86667
+## 5   1875  73.29412
+## 6   1876  72.40000
+## 7   1877  64.23529
+## 8   1878  66.82353
+## 9   1879  82.32000
+## 10  1880  72.00000
+## # ... with 127 more rows</code></pre>
 </section>
 <section id="the-pipe" class="slide level2">
 <h2>The pipe</h2>

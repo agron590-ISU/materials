@@ -46,7 +46,7 @@ players <- unique(baseball$id)
 
 ## Enter: `dplyr`
 
-`dplyr` is a Hadley package that implements the "split-apply-combine" strategy.
+`dplyr` is a Hadley package that implements the "split-apply-combine" strategy (among other things).
 
 ```{r, message=FALSE}
 library(dplyr)
@@ -56,10 +56,34 @@ library(dplyr)
 
 ## Verbs
 
+- When working with data you must:
+    1. Figure out what you want to do.
+    1. Describe those tasks in the form of a computer program.
+    1. Execute the program.
+
+
+`dplyr` provides simple **verbs**, functions that correspond to the most common data manipulation tasks, to help you translate those thoughts into code.
 
 ## Group by
 
+- `group_by()` breaks down a dataset into specified groups of rows. When you then apply the verbs on the resulting object they’ll be automatically applied "by group"
+- This is the **split** part of the split-apply-combine strategy
+- This is the same operator that we used in SQL, `GROUP BY`
+
+```{r}
+group_by(baseball, id)
+```
 ## Summarise
+
+- `summarise()` summarises data through the use of aggregate functions, which take a vector of values and return a single number. 
+- There are many useful examples of such functions, `min()`, `max()`, `mean()`, `sum()`, `sd()`, `median()`, and `IQR()`. 
+
+```{r}
+summarise(baseball, mean(h))
+summarise(group_by(baseball, year), mean(h))
+```
+
+ 
 
 ## The pipe
 
