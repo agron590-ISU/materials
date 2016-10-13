@@ -1,0 +1,22 @@
+---
+title: "Project Proposal"
+author: "Ranae Dietzel and Andee Kaplan"
+date: "October 13, 2016"
+output: html_document
+---
+
+##
+
+Please write one page which describes
+
+1) Background  
+ - What problem are you addressing? Why is there a need for this project?  What do your data look like?  
+2) Objective  
+ - You may need more than one.
+3) Approach  
+ - What strategies and tools will you use to reach your objective?  
+4) Desired outcome  
+ - What does the final product look like?
+
+Use an additional page to create a timeline. Use the timeline to describe deliverables that will be held accountable within your group.  
+
