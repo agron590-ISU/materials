@@ -1,22 +1,28 @@
 ---
-title: "Project Proposal"
+title: "Agron 590RD - Final Project Proposal"
 author: "Ranae Dietzel and Andee Kaplan"
-date: "October 13, 2016"
 output: html_document
 ---
 
-##
+Please write a 2-3 page final project proposal detailing the background and goal of your project. This document will be comprised of two parts.
 
-Please write one page which describes
+## Details and objectives
+
+Please write 1-2 pages which describes
 
 1) Background  
- - What problem are you addressing? Why is there a need for this project?  What do your data look like?  
+    - What problem are you addressing? Why is there a need for this project?  
+    - Where does your data come from? Do you already have access to it? What do your data look like?  
 2) Objective  
- - You may need more than one.
+    - What will "success" look like for your project?
+    - You may need more than one.
+    - Potentially consider objectives for this class, as well as long term (if necessary)
 3) Approach  
- - What strategies and tools will you use to reach your objective?  
+    - What strategies and tools will you use to reach your objective?  
 4) Desired outcome  
- - What does the final product look like?
+    - What does the final product look like?
 
-Use an additional page to create a timeline. Use the timeline to describe deliverables that will be held accountable within your group.  
+## Timeline
+
+Use an additional page to create a timeline. Use the timeline to describe deliverables that will be held accountable within your group. Consider creating tasks that are easily assignable within the group, with clear deadlines.  
 
