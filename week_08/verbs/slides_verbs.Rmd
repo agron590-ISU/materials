@@ -1,0 +1,122 @@
+---
+title: "`dplyr` verbs"
+author: "Ranae Dietzel & Andee Kaplan"
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: ribbon
+---
+
+## Verbs, that's what's happening!
+
+```{r, echo=FALSE, message=FALSE}
+library(dplyr)
+data(baseball, package="plyr")
+```
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/US8mGU1MzYw" frameborder="0"></iframe>
+
+## Filter
+
+`filter()` allows you to select a subset of rows in a data frame. Just like `WHERE` statements in SQL.
+
+```{r}
+filter(baseball, team == "HOU" & year == 2005)
+```
+
+## Arrange
+`arrange()` reorders rows. It takes a data frame, and a set of column names to order by. If you provide more than one column name, each additional column will be used to break ties in the values of preceding columns. Just like `ORDER BY` in SQL.
+
+```{r}
+astros_ws <- filter(baseball, team == "HOU" & year == 2005)
+arrange(astros_ws, desc(hr), desc(rbi), g)
+```
+
+## Select
+Often you work with large datasets with many columns but only a few are actually of interest to you. `select()` allows you show only the columns you are interested. Just like `SELECT` in SQL.
+
+```{r}
+select(astros_ws, id, hr, rbi, g)
+```
+```{r echo = FALSE}
+# other AWESOME ways to subset
+# select(astros_ws, id:bb)
+# select(astros_ws, -(X2b:gidp))
+# select(astros_ws, starts_with("X"))
+```
+
+Helper functions: `starts_with()`, `ends_with()`, `matches()` and `contains()`
+
+## Distinct
+
+`distinct()` finds unique values in a table. Just like `SELECT DISTINCT` in SQL.
+
+```{r}
+head(distinct(select(baseball, team)))
+```
+
+
+## Mutate
+
+`mutate()` adds new columns that are the functions of existing columns
+
+```{r}
+head(mutate(baseball, ba = h/ab))
+```
+
+## The pipe
+
+The pipe operator in `dplyr` actually comes from a package called `magrittr`, and is meant to simplify your code into readable, sequential operators (almost like stringing together actions into a story).
+
+
+```r
+x %>% f()
+```
+
+The above code can be read as "Take `x`, **and then** do `f`". The `%>%` operator takes whatever is to the left of it and plugs it in as the first argument in the function to the right. So, this is equivalent to
+
+```r
+f(x)
+```
+
+## The Treachery of Images
+
+This allows you to string together operations sequentially.
+
+
+```{r}
+baseball %>%
+  group_by(id) %>%
+  summarise(ba = mean(h/ab)) %>% 
+  tail(2)
+```
+
+![](images/magrittr.png) <img src="images/MagrittePipe.jpg" height="210px"/>
+
+## Your turn { .cover .white }
+
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<img src="images/your_turn.jpg" class="cover height" />
+
+<p style="color: white">
+Use `dplyr` to do the following
+</p>
+<ol style="color: white">
+<li>Calculate the <b>career</b> batting average for each player.</li>
+<li>Filter out players that have zero at bats before calculating batting average</li>
+<li>Arrange your results by batting average to find the player with the best career batting average</li>
+<li>Limit your results to only players who have played in at least 100 games.</li>
+</ol>
+
+## Joins
+
+`dplyr` also has joins implemented.
+
+- `left_join()`
+- `right_join()`
+- `inner_join()`
+- `full_join()`
+
+You can control the variables to join on by using `by = "common_name"` or `by = c("column_a" = "column_b", ...)` as a parameter in the join function.

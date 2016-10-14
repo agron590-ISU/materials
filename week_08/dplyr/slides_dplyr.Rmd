@@ -85,30 +85,3 @@ summarise(group_by(baseball, year), mean(h))
 
  
 
-## The pipe
-
-The pipe operator in `dplyr` actually comes from a package called `magrittr`, and is meant to simplify your code into readable, sequential operators (almost like stringing together actions into a story).
-
-
-```r
-x %>% f()
-```
-
-The above code can be read as "Take `x`, **and then** do `f`". The `%>%` operator takes whatever is to the left of it and plugs it in as the first argument in the function to the right. So, this is equivalent to
-
-```r
-f(x)
-```
-
-## The Treachery of Images
-
-This allows you to string together operations sequentially.
-
-```{r, message=FALSE}
-baseball %>%
-  group_by(id) %>%
-  summarise(ba = mean(h/ab)) %>% 
-  tail(2)
-```
-
-![](images/magrittr.png) <img src="images/MagrittePipe.jpg" height="210px"/>

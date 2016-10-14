@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="slides_files/rmdshower/node_modules/shower-ribbon/styles/screen-4x3.css">
-  <link rel="stylesheet" href="slides_files/rmdshower/style-common.css">
-  <link rel="stylesheet" href="slides_files/rmdshower/style-ribbon.css">
+  <link rel="stylesheet" href="slides_dplyr_files/rmdshower/node_modules/shower-ribbon/styles/screen-4x3.css">
+  <link rel="stylesheet" href="slides_dplyr_files/rmdshower/style-common.css">
+  <link rel="stylesheet" href="slides_dplyr_files/rmdshower/style-ribbon.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
-  <script src="slides_files/rmdshower/auto-render.min.js" type="text/javascript"></script>
+  <script src="slides_dplyr_files/rmdshower/auto-render.min.js" type="text/javascript"></script>
   
   
     <style type="text/css">
@@ -178,34 +178,13 @@ Write a for loop that calculates and stores the career batting average for each 
 ## 10  1880  72.00000
 ## # ... with 127 more rows</code></pre>
 </section>
-<section id="the-pipe" class="slide level2">
-<h2>The pipe</h2>
-<p>The pipe operator in <code>dplyr</code> actually comes from a package called <code>magrittr</code>, and is meant to simplify your code into readable, sequential operators (almost like stringing together actions into a story).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x %&gt;%<span class="st"> </span><span class="kw">f</span>()</code></pre></div>
-<p>The above code can be read as “Take <code>x</code>, <strong>and then</strong> do <code>f</code>”. The <code>%&gt;%</code> operator takes whatever is to the left of it and plugs it in as the first argument in the function to the right. So, this is equivalent to</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">f</span>(x)</code></pre></div>
-</section>
-<section id="the-treachery-of-images" class="slide level2">
-<h2>The Treachery of Images</h2>
-<p>This allows you to string together operations sequentially.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">baseball %&gt;%
-<span class="st">  </span><span class="kw">group_by</span>(id) %&gt;%
-<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">ba =</span> <span class="kw">mean</span>(h/ab)) %&gt;%<span class="st"> </span>
-<span class="st">  </span><span class="kw">tail</span>(<span class="dv">2</span>)</code></pre></div>
-<pre><code>## # A tibble: 2 × 2
-##          id        ba
-##       &lt;chr&gt;     &lt;dbl&gt;
-## 1 zeileto01 0.2608945
-## 2 zimmech01 0.2547137</code></pre>
-<p><img src="images/magrittr.png" /> <img src="images/MagrittePipe.jpg" height="210px"/></p>
-</section>
 
   <!--
   To hide progress bar from entire presentation
   just remove “progress” element.
   -->
   <!-- <div class="progress"></div> -->
-  <script src="slides_files/rmdshower/node_modules/shower/node_modules/shower-core/shower.min.js"></script>
+  <script src="slides_dplyr_files/rmdshower/node_modules/shower/node_modules/shower-core/shower.min.js"></script>
   <!-- Copyright © 2015 Yours Truly, Famous Inc. -->
   <!-- Photos by John Carey, fiftyfootshadows.net -->
 
