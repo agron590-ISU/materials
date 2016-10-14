@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dataframes</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="dataframes_files\rmdshower/node_modules/shower-ribbon/styles/screen-4x3.css">
+  <link rel="stylesheet" href="dataframes_files\rmdshower/style-common.css">
+  <link rel="stylesheet" href="dataframes_files\rmdshower/style-ribbon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+  <script src="dataframes_files\rmdshower/auto-render.min.js" type="text/javascript"></script>
+  
+  
+    <style type="text/css">
+   div.sourceCode { overflow-x: auto; }
+   table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+     margin: 0; padding: 0; vertical-align: baseline; border: none; }
+   table.sourceCode { width: 100%; line-height: 100%; }
+   td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+   td.sourceCode { padding-left: 5px; }
+   code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+   code > span.dt { color: #902000; } /* DataType */
+   code > span.dv { color: #40a070; } /* DecVal */
+   code > span.bn { color: #40a070; } /* BaseN */
+   code > span.fl { color: #40a070; } /* Float */
+   code > span.ch { color: #4070a0; } /* Char */
+   code > span.st { color: #4070a0; } /* String */
+   code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+   code > span.ot { color: #007020; } /* Other */
+   code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+   code > span.fu { color: #06287e; } /* Function */
+   code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+   code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+   code > span.cn { color: #880000; } /* Constant */
+   code > span.sc { color: #4070a0; } /* SpecialChar */
+   code > span.vs { color: #4070a0; } /* VerbatimString */
+   code > span.ss { color: #bb6688; } /* SpecialString */
+   code > span.im { } /* Import */
+   code > span.va { color: #19177c; } /* Variable */
+   code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+   code > span.op { color: #666666; } /* Operator */
+   code > span.bu { } /* BuiltIn */
+   code > span.ex { } /* Extension */
+   code > span.pp { color: #bc7a00; } /* Preprocessor */
+   code > span.at { color: #7d9029; } /* Attribute */
+   code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+   code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+   code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+   code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  
+  
+  
+</head>
+
+<body class="shower list">
+
+  <header class="caption">
+    <h1>Dataframes</h1>
+    <p>Ranae Dietzel &amp; Andee Kaplan</p>
+  </header>
+
+    
+  
+<section id="dataframes" class="titleslide slide level1"><h2 class="shout">Dataframes</h2></section><section id="diy-dataframe" class="slide level2">
+<h2>DIY Dataframe</h2>
+<p>Good to know for making simple examples</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">block =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>)
+rep =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>)
+mass =<span class="st"> </span><span class="kw">c</span>(<span class="dv">52</span>, <span class="dv">48</span>, <span class="dv">33</span>, <span class="dv">32</span>, <span class="dv">44</span>, <span class="dv">49</span>)
+df =<span class="st"> </span><span class="kw">data.frame</span>(block, rep, mass)</code></pre></div>
+<p>What have you done?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(df$mass ~<span class="st"> </span>df$rep)
+df$rep &lt;-<span class="st"> </span><span class="kw">as.factor</span>(df$rep)
+<span class="kw">plot</span>(df$mass ~<span class="st"> </span>df$rep)</code></pre></div>
+<p>If you get an error message, check your class!</p>
+</section><section id="section" class="slide level2">
+<h2></h2>
+<center>
+<img src="images/checkyoself.jpg" width="550px"/>
+</center>
+</section><section id="importing-data" class="slide level2">
+<h2>Importing data</h2>
+<p>Check your working directory. <code>getwd()</code><br />
+Change your working directory. <code>setwd()</code><br />
+Import your file<br />
+<code>df &lt;- read.table(&quot;file.txt&quot;, header = TRUE)</code><br />
+<code>df &lt;- readr::read_csv(&quot;file.csv&quot;)</code></p>
+<p>For Excel files, look in to the <code>readxl</code> package</p>
+</section><section id="subsetting" class="slide level2">
+<h2>Subsetting</h2>
+<p><strong>%in%</strong> (?‘%in%’) (use quotes when looking up weird stuff)</p>
+<ul>
+<li>match<br />
+</li>
+<li>use instead of <code>==</code> when you have more than one<br />
+</li>
+<li><code>df[df$year %in% c(2008, 2009, 2010),]</code></li>
+</ul>
+<p><strong>|</strong> means “or”</p>
+<ul>
+<li><code>df$ET[df$ET &lt; 0 | df$ET &gt; 10] &lt;- NA</code></li>
+</ul>
+<p>otherwise <code>&amp;</code> means “and”</p>
+</section>
+<section id="vs" class="titleslide slide level1"><h2 class="shout"><code>[]</code> vs <code>[[]]</code></h2></section><section id="section-1" class="slide level2">
+<h2></h2>
+<ul>
+<li><code>[]</code> always gives you a list<br />
+</li>
+<li><code>[[]]</code> gives you the content of the list<br />
+</li>
+<li>This difference will become more important when we get into functions</li>
+</ul>
+</section>
+<section id="lets-import-and-subset" class="titleslide slide level1"><h2 class="shout">Let’s import and subset</h2></section><section id="your-turn" class="slide level2 cover white">
+<h2>Your turn</h2>
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<p><img src="images/your_turn.jpg" class="cover height" /></p>
+<ol style="color:black">
+<li>
+Use the NASS data to determine the relationship between time and change in bu/acre of corn
+</li>
+<li>
+Examine the same relationship, but split into 1940-1990 and 1991-2015 and compare the slopes of the linear models
+</li>
+<li>
+Compare “acres harvested” of small grains (oats, barley, wheat, and rye) to “acres harvested” of corn and soybean over the last 100 years.
+</li>
+</ol>
+</section>
+
+  <!--
+  To hide progress bar from entire presentation
+  just remove “progress” element.
+  -->
+  <!-- <div class="progress"></div> -->
+  <script src="dataframes_files\rmdshower/node_modules/shower/node_modules/shower-core/shower.min.js"></script>
+  <!-- Copyright © 2015 Yours Truly, Famous Inc. -->
+  <!-- Photos by John Carey, fiftyfootshadows.net -->
+
+    <script>renderMathInElement(document.body);</script>
+  
+  
+</body>
+</html>
