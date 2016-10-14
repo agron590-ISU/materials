@@ -168,14 +168,14 @@
 <h2>The Treachery of Images</h2>
 <p>This allows you to string together operations sequentially.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">baseball %&gt;%
-<span class="st">  </span><span class="kw">group_by</span>(id) %&gt;%
-<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">ba =</span> <span class="kw">mean</span>(h/ab)) %&gt;%<span class="st"> </span>
-<span class="st">  </span><span class="kw">tail</span>(<span class="dv">2</span>)</code></pre></div>
-<pre><code>## # A tibble: 2 × 2
-##          id        ba
-##       &lt;chr&gt;     &lt;dbl&gt;
-## 1 zeileto01 0.2608945
-## 2 zimmech01 0.2547137</code></pre>
+<span class="st">  </span><span class="kw">filter</span>(team ==<span class="st"> &quot;HOU&quot;</span> &amp;<span class="st"> </span>year ==<span class="st"> </span><span class="dv">2005</span>) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(id, hr, rbi, g) %&gt;%
+<span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(hr), <span class="kw">desc</span>(rbi)) %&gt;%
+<span class="st">  </span><span class="kw">head</span>(<span class="dv">3</span>)</code></pre></div>
+<pre><code>##          id hr rbi   g
+## 1 biggicr01 26  69 155
+## 2 ausmubr01  3  47 134
+## 3 bagweje01  3  19  39</code></pre>
 <p><img src="images/magrittr.png" /> <img src="images/MagrittePipe.jpg" height="210px"/></p>
 </section>
 <section id="your-turn" class="slide level2 cover white">

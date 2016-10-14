@@ -26,7 +26,8 @@ head(mutate(baseball, ba = h/ab))
 
 ## ------------------------------------------------------------------------
 baseball %>%
-  group_by(id) %>%
-  summarise(ba = mean(h/ab)) %>% 
-  tail(2)
+  filter(team == "HOU" & year == 2005) %>% 
+  select(id, hr, rbi, g) %>%
+  arrange(desc(hr), desc(rbi)) %>%
+  head(3)
 

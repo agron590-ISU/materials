@@ -88,9 +88,10 @@ This allows you to string together operations sequentially.
 
 ```{r}
 baseball %>%
-  group_by(id) %>%
-  summarise(ba = mean(h/ab)) %>% 
-  tail(2)
+  filter(team == "HOU" & year == 2005) %>% 
+  select(id, hr, rbi, g) %>%
+  arrange(desc(hr), desc(rbi)) %>%
+  head(3)
 ```
 
 ![](images/magrittr.png) <img src="images/MagrittePipe.jpg" height="210px"/>
