@@ -1,5 +1,5 @@
 ---
-title: "Data Cleaning"
+title: "Tidy Data"
 author: "Ranae Dietzel & Andee Kaplan"
 ratio: 16x10
 output:
@@ -7,15 +7,53 @@ output:
     self_contained: false
     katex: true
     theme: ribbon
+    incremental: true
 ---
-## Data cleaning
 
-[But I'm supposed to do it!](https://www.youtube.com/watch?v=75BJ2ovo-S0)
+#Tibbles and Tidy Data  
 
-# Pull in lab materials and we will get started there  
+## Today's lecture brought to you by 
 
-## The data cleaning - magic spell analogy continues  
-  [So many things can happen](https://www.youtube.com/watch?v=HJnaXaNzEVg)
+ <center><img src="images/r4ds_cover.jpg" width="300px" /></center>  
+ [A book about data science in the tidyverse](http://r4ds.had.co.nz/)
+
+## Tibbles  
+  Like a dataframe, but does less 
+  
+  * Never changes the type of inputs  
+  * Never changes the names of variables  
+  * Never creates row names  
+  * Is not as picky about column names (accepts spaces or names beginning with numbers)  
+      - These must be surrounded by backticks  
+      
+## Tibbles  
+  When you print a tibble, you see  
+  
+  * First 10 rows  
+  * Type of column
+  * Only the columns that fit on the screen (other columns listed)  
+      - If you want to see all the columns use `width = Inf`.  
+  
+## Tidy data  
+
+ <center><img src="images/tidy_1.png" width="800px" /></center>  
+ 
+ * Each variable must have its own column.    
+ * Each observation must have its own row.  
+ * Each value must have its own cell.  
+
+## Why tidy data  
+
+* Consistent data structure allows easier learning of related tools because they have an underlying uniformity  
+* Placing variables in columns takes advantage of R's vectorized nature  
+* ggplot2 and dplyr are best friends with tidy data  
+
+##  Very easy to find data that is well organized, but not tidy  
+```{r, echo=FALSE}
 
 
+```
 
+ 
+  
+    

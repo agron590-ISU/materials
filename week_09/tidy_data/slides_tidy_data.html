@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tidy Data</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="slides_tidy_data_files\rmdshower/node_modules/shower-ribbon/styles/screen-4x3.css">
+  <link rel="stylesheet" href="slides_tidy_data_files\rmdshower/style-common.css">
+  <link rel="stylesheet" href="slides_tidy_data_files\rmdshower/style-ribbon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+  <script src="slides_tidy_data_files\rmdshower/auto-render.min.js" type="text/javascript"></script>
+  
+  
+  
+  
+  
+</head>
+
+<body class="shower list">
+
+  <header class="caption">
+    <h1>Tidy Data</h1>
+    <p>Ranae Dietzel &amp; Andee Kaplan</p>
+  </header>
+
+    
+  
+<section id="tibbles-and-tidy-data" class="titleslide slide level1"><h2 class="shout">Tibbles and Tidy Data</h2></section><section id="todays-lecture-brought-to-you-by" class="slide level2">
+<h2>Today’s lecture brought to you by</h2>
+<center>
+<img src="images/r4ds_cover.jpg" width="300px" />
+</center>
+<p><a href="http://r4ds.had.co.nz/">A book about data science in the tidyverse</a></p>
+</section><section id="tibbles" class="slide level2">
+<h2>Tibbles</h2>
+<p>Like a dataframe, but does less</p>
+<ul>
+<li class="fragment next">Never changes the type of inputs<br />
+</li>
+<li class="fragment next">Never changes the names of variables<br />
+</li>
+<li class="fragment next">Never creates row names<br />
+</li>
+<li class="fragment next">Is not as picky about column names (accepts spaces or names beginning with numbers)
+<ul>
+<li class="fragment next">These must be surrounded by backticks</li>
+</ul></li>
+</ul>
+</section><section id="tibbles-1" class="slide level2">
+<h2>Tibbles</h2>
+<p>When you print a tibble, you see</p>
+<ul>
+<li class="fragment next">First 10 rows<br />
+</li>
+<li class="fragment next">Type of column</li>
+<li class="fragment next">Only the columns that fit on the screen (other columns listed)
+<ul>
+<li class="fragment next">If you want to see all the columns use <code>width = Inf</code>.</li>
+</ul></li>
+</ul>
+</section><section id="tidy-data" class="slide level2">
+<h2>Tidy data</h2>
+<center>
+<img src="images/tidy_1.png" width="800px" />
+</center>
+<ul>
+<li class="fragment next">Each variable must have its own column.<br />
+</li>
+<li class="fragment next">Each observation must have its own row.<br />
+</li>
+<li class="fragment next">Each value must have its own cell.</li>
+</ul>
+</section>
+
+  <!--
+  To hide progress bar from entire presentation
+  just remove “progress” element.
+  -->
+  <!-- <div class="progress"></div> -->
+  <script src="slides_tidy_data_files\rmdshower/node_modules/shower/node_modules/shower-core/shower.min.js"></script>
+  <!-- Copyright © 2015 Yours Truly, Famous Inc. -->
+  <!-- Photos by John Carey, fiftyfootshadows.net -->
+
+    <script>renderMathInElement(document.body);</script>
+  
+  
+</body>
+</html>
