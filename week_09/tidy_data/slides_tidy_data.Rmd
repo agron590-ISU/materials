@@ -1,5 +1,5 @@
 ---
-title: "Tidy Data"
+title: "The tidyverse continues"
 author: "Ranae Dietzel & Andee Kaplan"
 ratio: 16x10
 output:
@@ -10,7 +10,7 @@ output:
     incremental: true
 ---
 
-#Tibbles and Tidy Data  
+#tidyr  
 
 ## Today's lecture brought to you by 
 
@@ -100,5 +100,31 @@ ggplot(aes(x=depth, y=value))+
 ```
 Almost!  
 
-##
+##  `spread`
+
+Use this if one of your columns is full of what could be headers
+```{r, echo=FALSE}
+crops<-read_csv("data/NASS-Iowa.csv")
+oats<-(crops[crops$Commodity == "OATS", c(2, 16, 17, 20)])  
+head(oats)
+```
+
+* Now column that includes the variable names is `key`, here it is `Data Item`.  
+* Column that contains the values is the `value` column, here they already have it as `Values` 
+
+##   
+```{r}
+spread(oats, key = `Data Item`, value = Value)
+```
+
+## 
+```{r}
+spread(oats, key = `Data Item`, value = Value)%>%
+ggplot(aes(y=`OATS - YIELD, MEASURED IN BU / ACRE`,
+           x = `OATS - ACRES HARVESTED`, label = Year))+
+        geom_text()
+```
+
+
+
     

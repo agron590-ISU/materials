@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Tidy Data</title>
+  <title>The tidyverse continues</title>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,13 +58,13 @@
 <body class="shower list">
 
   <header class="caption">
-    <h1>Tidy Data</h1>
+    <h1>The tidyverse continues</h1>
     <p>Ranae Dietzel &amp; Andee Kaplan</p>
   </header>
 
     
   
-<section id="tibbles-and-tidy-data" class="titleslide slide level1"><h2 class="shout">Tibbles and Tidy Data</h2></section><section id="todays-lecture-brought-to-you-by" class="slide level2">
+<section id="tidyr" class="titleslide slide level1"><h2 class="shout">tidyr</h2></section><section id="todays-lecture-brought-to-you-by" class="slide level2">
 <h2>Today’s lecture brought to you by</h2>
 <center>
 <img src="images/r4ds_cover.jpg" width="300px" />
@@ -190,7 +190,59 @@ tidy_soil</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(tidy_soil, property ==<span class="st"> &quot;pH&quot;</span>)%&gt;%
 <span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>depth, <span class="dt">y=</span>value))+
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">3</span>)</code></pre></div>
-<p><img src="slides_tidy_data_files/figure-revealjs/unnamed-chunk-6-1.png" width="768" /> Almost there!</p>
+<p><img src="slides_tidy_data_files/figure-revealjs/unnamed-chunk-6-1.png" width="768" /> Almost!</p>
+</section><section id="spread" class="slide level2">
+<h2><code>spread</code></h2>
+<p>Use this if one of your columns is full of what could be headers</p>
+<pre><code>## Parsed with column specification:
+## cols(
+##   .default = col_character(),
+##   Year = col_integer(),
+##   `State ANSI` = col_integer(),
+##   Value = col_number()
+## )</code></pre>
+<pre><code>## See spec(...) for full column specifications.</code></pre>
+<pre><code>## # A tibble: 6 × 4
+##    Year Commodity                         `Data Item`    Value
+##   &lt;int&gt;     &lt;chr&gt;                               &lt;chr&gt;    &lt;dbl&gt;
+## 1  2015      OATS              OATS - ACRES HARVESTED    57000
+## 2  2015      OATS                OATS - ACRES PLANTED   125000
+## 3  2015      OATS    OATS - PRODUCTION, MEASURED IN $ 11027000
+## 4  2015      OATS   OATS - PRODUCTION, MEASURED IN BU  4161000
+## 5  2015      OATS OATS - YIELD, MEASURED IN BU / ACRE       73
+## 6  2014      OATS              OATS - ACRES HARVESTED    55000</code></pre>
+<ul>
+<li class="fragment next">Now column that includes the variable names is <code>key</code>, here it is <code>Data Item</code>.<br />
+</li>
+<li class="fragment next">Column that contains the values is the <code>value</code> column, here they already have it as <code>Values</code></li>
+</ul>
+</section><section id="section-1" class="slide level2">
+<h2></h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">spread</span>(oats, <span class="dt">key =</span> <span class="st">`</span><span class="dt">Data Item</span><span class="st">`</span>, <span class="dt">value =</span> Value)</code></pre></div>
+<pre><code>## # A tibble: 150 × 8
+##     Year Commodity `OATS - ACRES HARVESTED` `OATS - ACRES PLANTED`
+## *  &lt;int&gt;     &lt;chr&gt;                    &lt;dbl&gt;                  &lt;dbl&gt;
+## 1   1866      OATS                   450000                     NA
+## 2   1867      OATS                   500000                     NA
+## 3   1868      OATS                   560000                     NA
+## 4   1869      OATS                   610000                     NA
+## 5   1870      OATS                   660000                     NA
+## 6   1871      OATS                   750000                     NA
+## 7   1872      OATS                   850000                     NA
+## 8   1873      OATS                   910000                     NA
+## 9   1874      OATS                   960000                     NA
+## 10  1875      OATS                  1075000                     NA
+## # ... with 140 more rows, and 4 more variables: `OATS - PRODUCTION,
+## #   MEASURED IN $` &lt;dbl&gt;, `OATS - PRODUCTION, MEASURED IN BU` &lt;dbl&gt;, `OATS
+## #   - YIELD, MEASURED IN BU / ACRE` &lt;dbl&gt;, `OATS - YIELD, MEASURED IN BU /
+## #   NET PLANTED ACRE` &lt;dbl&gt;</code></pre>
+</section><section id="section-2" class="slide level2">
+<h2></h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">spread</span>(oats, <span class="dt">key =</span> <span class="st">`</span><span class="dt">Data Item</span><span class="st">`</span>, <span class="dt">value =</span> Value)%&gt;%
+<span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">y=</span><span class="st">`</span><span class="dt">OATS - YIELD, MEASURED IN BU / ACRE</span><span class="st">`</span>,
+           <span class="dt">x =</span> <span class="st">`</span><span class="dt">OATS - ACRES HARVESTED</span><span class="st">`</span>, <span class="dt">label =</span> Year))+
+<span class="st">        </span><span class="kw">geom_text</span>()</code></pre></div>
+<p><img src="slides_tidy_data_files/figure-revealjs/unnamed-chunk-9-1.png" width="768" /></p>
 </section>
 
   <!--
