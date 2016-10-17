@@ -75,7 +75,7 @@ soil
 ```
 
 * We need to know the columns that are the values that need to be incorporated  
-* The name of the variable for the values, here it is `depth`. This can be called the `key`.  
+* The name of the variable for the values, here it is `depth`. This is the `key`.  
 
 
 ##  `gather`  
@@ -84,11 +84,12 @@ soil
 soil
 ```
 
-> * The name of the variable whose values are spread over the cells. This can be called `value`. If you know what it is, name it (NO3ppm). If you have many mixed units, you can use `value = value` or `value = measured` etc.
+> * The name of the variable whose values are spread over the cells. This is the  `value`. If you know what it is, name it (NO3ppm). If you have many mixed units, you can use `value = value` or `value = measured` etc.
 
 ## `gather`  
 ```{r}
-tidy_soil<-gather(soil, five_cm, ten_cm, fifteen_cm, twenty_cm, key=depth, value=value)
+tidy_soil<-gather(soil, five_cm, ten_cm, fifteen_cm, twenty_cm, 
+                  key=depth, value=value)
 tidy_soil
 ```
 
@@ -103,8 +104,11 @@ Almost!
 ##  `spread`
 
 Use this if one of your columns is full of what could be headers
-```{r, echo=FALSE}
+```{r, echo=FALSE, include=FALSE}
 crops<-read_csv("data/NASS-Iowa.csv")
+```
+
+```{r, echo=FALSE}
 oats<-(crops[crops$Commodity == "OATS", c(2, 16, 17, 20)])  
 head(oats)
 ```
@@ -125,6 +129,15 @@ ggplot(aes(y=`OATS - YIELD, MEASURED IN BU / ACRE`,
         geom_text()
 ```
 
+## Your turn { .cover .white }
+
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<img src="images/your_turn.jpg" class="cover height" />
 
 
+<ol style="color:black">
+<li>Use the NASS data to determine the relationship between time and change in bu/acre of corn </li>
+<li>Examine the same relationship, but split into 1940-1990 and 1991-2015 and compare the slopes of the linear models </li>
+<li>Compare "acres harvested" of small grains (oats, barley, wheat, and rye) to "acres harvested" of corn and soybean over the last 100 years.</li>
+</ol>
     

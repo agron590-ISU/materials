@@ -143,7 +143,7 @@
 <ul>
 <li class="fragment next">We need to know the columns that are the values that need to be incorporated<br />
 </li>
-<li class="fragment next">The name of the variable for the values, here it is <code>depth</code>. This can be called the <code>key</code>.</li>
+<li class="fragment next">The name of the variable for the values, here it is <code>depth</code>. This is the <code>key</code>.</li>
 </ul>
 </section><section id="gather-1" class="slide level2">
 <h2><code>gather</code></h2>
@@ -156,11 +156,12 @@
 ## 4     silt      20   20.0       20.0      20.0
 ## 5     sand      60   60.0       60.0      60.0</code></pre>
 <ul>
-<li>The name of the variable whose values are spread over the cells. This can be called <code>value</code>. If you know what it is, name it (NO3ppm). If you have many mixed units, you can use <code>value = value</code> or <code>value = measured</code> etc.</li>
+<li>The name of the variable whose values are spread over the cells. This is the <code>value</code>. If you know what it is, name it (NO3ppm). If you have many mixed units, you can use <code>value = value</code> or <code>value = measured</code> etc.</li>
 </ul>
 </section><section id="gather-2" class="slide level2">
 <h2><code>gather</code></h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tidy_soil&lt;-<span class="kw">gather</span>(soil, five_cm, ten_cm, fifteen_cm, twenty_cm, <span class="dt">key=</span>depth, <span class="dt">value=</span>value)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tidy_soil&lt;-<span class="kw">gather</span>(soil, five_cm, ten_cm, fifteen_cm, twenty_cm, 
+                  <span class="dt">key=</span>depth, <span class="dt">value=</span>value)
 tidy_soil</code></pre></div>
 <pre><code>## # A tibble: 20 × 3
 ##    property      depth value
@@ -194,14 +195,6 @@ tidy_soil</code></pre></div>
 </section><section id="spread" class="slide level2">
 <h2><code>spread</code></h2>
 <p>Use this if one of your columns is full of what could be headers</p>
-<pre><code>## Parsed with column specification:
-## cols(
-##   .default = col_character(),
-##   Year = col_integer(),
-##   `State ANSI` = col_integer(),
-##   Value = col_number()
-## )</code></pre>
-<pre><code>## See spec(...) for full column specifications.</code></pre>
 <pre><code>## # A tibble: 6 × 4
 ##    Year Commodity                         `Data Item`    Value
 ##   &lt;int&gt;     &lt;chr&gt;                               &lt;chr&gt;    &lt;dbl&gt;
@@ -242,7 +235,22 @@ tidy_soil</code></pre></div>
 <span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">y=</span><span class="st">`</span><span class="dt">OATS - YIELD, MEASURED IN BU / ACRE</span><span class="st">`</span>,
            <span class="dt">x =</span> <span class="st">`</span><span class="dt">OATS - ACRES HARVESTED</span><span class="st">`</span>, <span class="dt">label =</span> Year))+
 <span class="st">        </span><span class="kw">geom_text</span>()</code></pre></div>
-<p><img src="slides_tidy_data_files/figure-revealjs/unnamed-chunk-9-1.png" width="768" /></p>
+<p><img src="slides_tidy_data_files/figure-revealjs/unnamed-chunk-10-1.png" width="768" /></p>
+</section><section id="your-turn" class="slide level2 cover white">
+<h2>Your turn</h2>
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<p><img src="images/your_turn.jpg" class="cover height" /></p>
+<ol style="color:black">
+<li>
+Use the NASS data to determine the relationship between time and change in bu/acre of corn
+</li>
+<li>
+Examine the same relationship, but split into 1940-1990 and 1991-2015 and compare the slopes of the linear models
+</li>
+<li>
+Compare “acres harvested” of small grains (oats, barley, wheat, and rye) to “acres harvested” of corn and soybean over the last 100 years.
+</li>
+</ol>
 </section>
 
   <!--
