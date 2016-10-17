@@ -129,15 +129,47 @@ ggplot(aes(y=`OATS - YIELD, MEASURED IN BU / ACRE`,
         geom_text()
 ```
 
-## Your turn { .cover .white }
+##  Our turn 
+```{r, echo=FALSE}
+biomass<-data.frame(trt = c("0", "100", "130", "150"),
+               block = c("A", "A", "A", "A"),
+                    part=c("leaf", "stem", "fruit", "root"),
+                    may = c(5.5, 5.7, 0, 12.0),
+                    june = c(7.5, 6.7, 2.0, 14.0),
+                    july = c(12.5, 7.7, 8.2, 22.5),
+                    august = c(12.5, 7.7, 8.8, 22.0),
+                   stringsAsFactors=FALSE)
 
-<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+biomass<-as_tibble(biomass)
+biomass
+
+```  
+Which columns need to be incorporated?  
+What is the `key`?  
+What is the `value`?  
+
+##  
+```{r}
+gather(biomass, may, june, july, august, key = month, value = g_m2)
+```
+
+```{r, echo=FALSE}
+biomass_tidy<-gather(biomass, may, june, july, august, key = month, value = g_m2)
+```
+
+
+## 
+```{r}
+spread(biomass_tidy, key = part, value = g_m2)
+```  
+
+## Your turn  
 <img src="images/your_turn.jpg" class="cover height" />
 
 
 <ol style="color:black">
-<li>Use the NASS data to determine the relationship between time and change in bu/acre of corn </li>
-<li>Examine the same relationship, but split into 1940-1990 and 1991-2015 and compare the slopes of the linear models </li>
-<li>Compare "acres harvested" of small grains (oats, barley, wheat, and rye) to "acres harvested" of corn and soybean over the last 100 years.</li>
+<li>Look at the NASS soybean data from 1900 to 2015.</li>
+<li>Spread the data and make an XY plot of soybean acres planted vs soybean acres harvested. </li>
+<li>Gather the data and make a plot of how all of the "Data Item" variables change over time. </li>
 </ol>
     

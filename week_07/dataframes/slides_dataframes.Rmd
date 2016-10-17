@@ -79,8 +79,8 @@ otherwise `&` means "and"
 
 
 <ol style="color:black">
-<li>Use the NASS data to determine the relationship between time and change in bu/acre of corn </li>
-<li>Examine the same relationship, but split into 1940-1990 and 1991-2015 and compare the slopes of the linear models </li>
+<li>Look at the NASS soybean data from 1900 to 2015.</li>
+<li>Make an XY plot of soybean acres planted vs soybean acres harvested. </li>
 <li>Compare "acres harvested" of small grains (oats, barley, wheat, and rye) to "acres harvested" of corn and soybean over the last 100 years.</li>
 </ol>
 
