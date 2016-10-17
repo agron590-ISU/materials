@@ -48,12 +48,57 @@ output:
 * Placing variables in columns takes advantage of R's vectorized nature  
 * ggplot2 and dplyr are best friends with tidy data  
 
-##  Very easy to find data that is well organized, but not tidy  
-```{r, echo=FALSE}
+##  Very easy to find data that is well organized, but not tidy 
 
-
+```{r, include=FALSE}
+library(tidyverse)
 ```
 
+```{r, echo=FALSE }
+df<-data.frame(property=c("pH", "NO3", "clay", "silt", "sand"),
+                    five_cm = c(7, 35, 20, 20, 60),
+                    ten_cm = c(6.7, 22, 20, 20, 60),
+                    fifteen_cm = c(6.5, 20, 20, 20, 60),
+                    twenty_cm = c(6.4, 18, 20, 20, 60),
+                   stringsAsFactors=FALSE)
+
+soil<-as_tibble(df)
+soil
+```
+
+Plot the change in pH across depth?
+
+##  `gather`  
+When column names are *values* instead of variables, we need to `gather` 
+```{r, echo=FALSE}
+soil
+```
+
+* We need to know the columns that are the values that need to be incorporated  
+* The name of the variable for the values, here it is `depth`. This can be called the `key`.  
+
+
+##  `gather`  
  
-  
+```{r, echo=FALSE}
+soil
+```
+
+> * The name of the variable whose values are spread over the cells. This can be called `value`. If you know what it is, name it (NO3ppm). If you have many mixed units, you can use `value = value` or `value = measured` etc.
+
+## `gather`  
+```{r}
+tidy_soil<-gather(soil, five_cm, ten_cm, fifteen_cm, twenty_cm, key=depth, value=value)
+tidy_soil
+```
+
+##  
+```{r}
+filter(tidy_soil, property == "pH")%>%
+ggplot(aes(x=depth, y=value))+
+  geom_point(size=3)
+```
+Almost!  
+
+##
     
