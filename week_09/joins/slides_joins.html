@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Joins in R</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="slides_joins_files/rmdshower/node_modules/shower-ribbon/styles/screen-4x3.css">
+  <link rel="stylesheet" href="slides_joins_files/rmdshower/style-common.css">
+  <link rel="stylesheet" href="slides_joins_files/rmdshower/style-ribbon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+  <script src="slides_joins_files/rmdshower/auto-render.min.js" type="text/javascript"></script>
+  
+  
+    <style type="text/css">
+   div.sourceCode { overflow-x: auto; }
+   table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+     margin: 0; padding: 0; vertical-align: baseline; border: none; }
+   table.sourceCode { width: 100%; line-height: 100%; }
+   td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+   td.sourceCode { padding-left: 5px; }
+   code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+   code > span.dt { color: #902000; } /* DataType */
+   code > span.dv { color: #40a070; } /* DecVal */
+   code > span.bn { color: #40a070; } /* BaseN */
+   code > span.fl { color: #40a070; } /* Float */
+   code > span.ch { color: #4070a0; } /* Char */
+   code > span.st { color: #4070a0; } /* String */
+   code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+   code > span.ot { color: #007020; } /* Other */
+   code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+   code > span.fu { color: #06287e; } /* Function */
+   code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+   code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+   code > span.cn { color: #880000; } /* Constant */
+   code > span.sc { color: #4070a0; } /* SpecialChar */
+   code > span.vs { color: #4070a0; } /* VerbatimString */
+   code > span.ss { color: #bb6688; } /* SpecialString */
+   code > span.im { } /* Import */
+   code > span.va { color: #19177c; } /* Variable */
+   code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+   code > span.op { color: #666666; } /* Operator */
+   code > span.bu { } /* BuiltIn */
+   code > span.ex { } /* Extension */
+   code > span.pp { color: #bc7a00; } /* Preprocessor */
+   code > span.at { color: #7d9029; } /* Attribute */
+   code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+   code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+   code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+   code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  
+  
+  
+</head>
+
+<body class="shower list">
+
+  <header class="caption">
+    <h1>Joins in R</h1>
+    <p>Ranae Dietzel &amp; Andee Kaplan</p>
+  </header>
+
+    
+  
+<section id="throwback" class="slide level2">
+<h2>Throwback</h2>
+<p><img src="images/join_us.gif" /></p>
+</section>
+<section id="recall-joins" class="slide level2">
+<h2>Recall joins</h2>
+<p><img src="images/sql.png" /></p>
+</section>
+<section id="your-turn" class="slide level2 cover white">
+<h2>Your turn</h2>
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<p><img src="images/your_turn.jpg" class="cover height" /></p>
+<p style="color: white">
+Discuss the result of the following joins using the tables:
+</p>
+<p><img src="images/tables.png" height="200px"/></p>
+<ol style="color: white">
+<li>
+Inner join of A and B on id
+</li>
+<li>
+Inner join of A and B on id and group
+</li>
+<li>
+Left join of A and B on id
+</li>
+<li>
+Right join of A and B on id
+</li>
+<li>
+Outer join of A and B on id
+</li>
+</ol>
+</section>
+<section id="joins-in-r" class="slide level2">
+<h2>Joins in <code>R</code></h2>
+<p><code>dplyr</code> also has joins implemented.</p>
+<ul>
+<li><code>left_join()</code></li>
+<li><code>right_join()</code></li>
+<li><code>inner_join()</code></li>
+<li><code>full_join()</code></li>
+</ul>
+<p>You can control the variables to join on by using <code>by = &quot;common_name&quot;</code> or <code>by = c(&quot;column_a&quot; = &quot;column_b&quot;, ...)</code> as a parameter in the join function.</p>
+</section>
+<section id="revisiting-the-star-wars-universe" class="slide level2">
+<h2>Revisiting the Star Wars universe</h2>
+<p>I have the Star Wars DB in an <code>R</code> data object (rather than a SQLite database) available so that we can</p>
+<ol type="1">
+<li>Refresh our memories on joins</li>
+<li>Learn the <code>dplyr</code> syntax</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+<span class="kw">load</span>(<span class="st">&quot;data/star_wars.RData&quot;</span>)</code></pre></div>
+<p><img src="images/chewy.gif" /></p>
+</section>
+<section id="what-is-the-most-highly-populated-planet-documented-in-the-universe" class="slide level2">
+<h2>What is the most highly populated planet documented in the universe?</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">planet %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">max_pop =</span> <span class="kw">max</span>(population, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) %&gt;%
+<span class="st">  </span><span class="kw">filter</span>(population ==<span class="st"> </span>max_pop) %&gt;%
+<span class="st">  </span><span class="kw">select</span>(name)</code></pre></div>
+<pre><code>##        name
+## 1 Coruscant</code></pre>
+</section>
+<section id="which-planet-has-the-most-named-characters-from-the-films-what-species-is-native-to-this-planet" class="slide level2">
+<h2>Which planet has the most named characters from the films? What species is native to this planet?</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">person %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(homeworld_id) %&gt;%
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">count =</span> <span class="kw">n</span>()) %&gt;%
+<span class="st">  </span><span class="kw">inner_join</span>(planet, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;homeworld_id&quot;</span> =<span class="st"> &quot;planet_id&quot;</span>)) %&gt;%
+<span class="st">  </span><span class="kw">inner_join</span>(species, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;homeworld_id&quot;</span>)) %&gt;%
+<span class="st">  </span><span class="kw">select</span>(name.x, count, name.y) %&gt;%
+<span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(count)) %&gt;%
+<span class="st">  </span><span class="kw">head</span>(<span class="dv">1</span>)</code></pre></div>
+<pre><code>## # A tibble: 1 × 3
+##   name.x count name.y
+##    &lt;chr&gt; &lt;int&gt;  &lt;chr&gt;
+## 1  Naboo    11 Gungan</code></pre>
+</section>
+<section id="who-has-piloted-the-most-spacecraft-vehicles-and-starships-in-the-universe-documented" class="slide level2">
+<h2>Who has piloted the most spacecraft (vehicles and starships) in the universe (documented)?</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pilot %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(pilot_id) %&gt;%
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">count =</span> <span class="kw">n</span>()) %&gt;%
+<span class="st">  </span><span class="kw">inner_join</span>(person, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;pilot_id&quot;</span> =<span class="st"> &quot;person_id&quot;</span>)) %&gt;%
+<span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(count)) %&gt;%
+<span class="st">  </span><span class="kw">select</span>(name, count) %&gt;%
+<span class="st">  </span><span class="kw">head</span>(<span class="dv">1</span>)</code></pre></div>
+<pre><code>## # A tibble: 1 × 2
+##             name count
+##            &lt;chr&gt; &lt;int&gt;
+## 1 Obi-Wan Kenobi     6</code></pre>
+</section>
+<section id="what-about-just-vehicles" class="slide level2">
+<h2>What about just vehicles?</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pilot %&gt;%
+<span class="st">  </span><span class="kw">filter</span>(craft_type ==<span class="st"> &quot;vehicle&quot;</span>) %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(pilot_id) %&gt;%
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">count =</span> <span class="kw">n</span>()) %&gt;%
+<span class="st">  </span><span class="kw">inner_join</span>(person, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;pilot_id&quot;</span> =<span class="st"> &quot;person_id&quot;</span>)) %&gt;%
+<span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(count)) %&gt;%
+<span class="st">  </span><span class="kw">select</span>(name, count) %&gt;%
+<span class="st">  </span><span class="kw">head</span>(<span class="dv">2</span>)</code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##               name count
+##              &lt;chr&gt; &lt;int&gt;
+## 1   Luke Skywalker     2
+## 2 Anakin Skywalker     2</code></pre>
+</section>
+<section id="your-turn-1" class="slide level2 cover white">
+<h2>Your turn</h2>
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<p><img src="images/your_turn.jpg" class="cover height" /></p>
+<p style="color: white">
+Use <code>dplyr</code> to answer the following
+</p>
+<ol style="color: white">
+<li>
+How many people have never piloted a spacecraft according to this data?
+</li>
+<li>
+How many spacecraft have no documented pilots? What are their names?
+</li>
+</ol>
+</section>
+
+  <!--
+  To hide progress bar from entire presentation
+  just remove “progress” element.
+  -->
+  <!-- <div class="progress"></div> -->
+  <script src="slides_joins_files/rmdshower/node_modules/shower/node_modules/shower-core/shower.min.js"></script>
+  <!-- Copyright © 2015 Yours Truly, Famous Inc. -->
+  <!-- Photos by John Carey, fiftyfootshadows.net -->
+
+    <script>renderMathInElement(document.body);</script>
+  
+  
+</body>
+</html>

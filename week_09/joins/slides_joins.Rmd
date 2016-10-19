@@ -1,0 +1,124 @@
+---
+title: "Joins in R"
+author: "Ranae Dietzel & Andee Kaplan"
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: ribbon
+---
+
+## Throwback
+
+![](images/join_us.gif)
+
+## Recall joins
+
+![](images/sql.png)
+
+## Your turn { .cover .white }
+
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<img src="images/your_turn.jpg" class="cover height" />
+
+<p style="color: white">
+Discuss the result of the following joins using the tables:
+</p>
+
+<img src="images/tables.png" height="200px"/>
+
+<ol style="color: white">
+<li>Inner join of A and B on id</li>
+<li>Inner join of A and B on id and group</li>
+<li>Left join of A and B on id</li>
+<li>Right join of A and B on id</li>
+<li>Outer join of A and B on id</li>
+</ol>
+
+
+
+## Joins in `R`
+
+`dplyr` also has joins implemented.
+
+- `left_join()`
+- `right_join()`
+- `inner_join()`
+- `full_join()`
+
+You can control the variables to join on by using `by = "common_name"` or `by = c("column_a" = "column_b", ...)` as a parameter in the join function.
+
+## Revisiting the Star Wars universe
+
+I have the Star Wars DB in an `R` data object (rather than a SQLite database) available so that we can 
+
+1. Refresh our memories on joins
+2. Learn the `dplyr` syntax
+
+```{r, message=FALSE}
+library(dplyr)
+load("data/star_wars.RData")
+```
+
+![](images/chewy.gif)
+
+## What is the most highly populated planet documented in the universe?
+
+```{r}
+planet %>%
+  mutate(max_pop = max(population, na.rm = TRUE)) %>%
+  filter(population == max_pop) %>%
+  select(name)
+```
+
+## Which planet has the most named characters from the films? What species is native to this planet?
+
+```{r}
+person %>%
+  group_by(homeworld_id) %>%
+  summarise(count = n()) %>%
+  inner_join(planet, by = c("homeworld_id" = "planet_id")) %>%
+  inner_join(species, by = c("homeworld_id")) %>%
+  select(name.x, count, name.y) %>%
+  arrange(desc(count)) %>%
+  head(1)
+```
+
+## Who has piloted the most spacecraft (vehicles and starships) in the universe (documented)? 
+
+```{r}
+pilot %>%
+  group_by(pilot_id) %>%
+  summarise(count = n()) %>%
+  inner_join(person, by=c("pilot_id" = "person_id")) %>%
+  arrange(desc(count)) %>%
+  select(name, count) %>%
+  head(1)
+```
+
+## What about just vehicles? 
+
+```{r}
+pilot %>%
+  filter(craft_type == "vehicle") %>%
+  group_by(pilot_id) %>%
+  summarise(count = n()) %>%
+  inner_join(person, by=c("pilot_id" = "person_id")) %>%
+  arrange(desc(count)) %>%
+  select(name, count) %>%
+  head(2)
+```
+
+## Your turn { .cover .white }
+
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<img src="images/your_turn.jpg" class="cover height" />
+
+<p style="color: white">
+Use `dplyr` to answer the following
+</p>
+<ol style="color: white">
+<li>How many people have never piloted a spacecraft according to this data?</li>
+<li>How many spacecraft have no documented pilots? What are their names?</li>
+</ol>
