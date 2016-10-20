@@ -1,0 +1,175 @@
+---
+title: "The tidyverse continues"
+author: "Ranae Dietzel & Andee Kaplan"
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: ribbon
+    incremental: true
+---
+
+#tidyr  
+
+## Today's lecture brought to you by 
+
+ <center><img src="images/r4ds_cover.jpg" width="300px" /></center>  
+ [A book about data science in the tidyverse](http://r4ds.had.co.nz/)
+
+## Tibbles  
+  Like a dataframe, but does less 
+  
+  * Never changes the type of inputs  
+  * Never changes the names of variables  
+  * Never creates row names  
+  * Is not as picky about column names (accepts spaces or names beginning with numbers)  
+      - These must be surrounded by backticks  
+      
+## Tibbles  
+  When you print a tibble, you see  
+  
+  * First 10 rows  
+  * Type of column
+  * Only the columns that fit on the screen (other columns listed)  
+      - If you want to see all the columns use `width = Inf`.  
+  
+## Tidy data  
+
+ <center><img src="images/tidy_1.png" width="800px" /></center>  
+ 
+ * Each variable must have its own column.    
+ * Each observation must have its own row.  
+ * Each value must have its own cell.  
+
+## Why tidy data  
+
+* Consistent data structure allows easier learning of related tools because they have an underlying uniformity  
+* Placing variables in columns takes advantage of R's vectorized nature  
+* ggplot2 and dplyr are best friends with tidy data  
+
+##  Very easy to find data that is well organized, but not tidy 
+
+```{r, include=FALSE}
+library(tidyverse)
+```
+
+```{r, echo=FALSE }
+df<-data.frame(property=c("pH", "NO3", "clay", "silt", "sand"),
+                    five_cm = c(7, 35, 20, 20, 60),
+                    ten_cm = c(6.7, 22, 20, 20, 60),
+                    fifteen_cm = c(6.5, 20, 20, 20, 60),
+                    twenty_cm = c(6.4, 18, 20, 20, 60),
+                   stringsAsFactors=FALSE)
+
+soil<-as_tibble(df)
+soil
+```
+
+Plot the change in pH across depth?
+
+##  `gather`  
+When column names are *values* instead of variables, we need to `gather` 
+```{r, echo=FALSE}
+soil
+```
+
+* We need to know the columns that are the values that need to be incorporated  
+* The name of the variable for the values, here it is `depth`. This is the `key`.  
+
+
+##  `gather`  
+ 
+```{r, echo=FALSE}
+soil
+```
+
+> * The name of the variable whose values are spread over the cells. This is the  `value`. If you know what it is, name it (NO3ppm). If you have many mixed units, you can use `value = value` or `value = measured` etc.
+
+## `gather`  
+```{r}
+tidy_soil<-gather(soil, five_cm, ten_cm, fifteen_cm, twenty_cm, 
+                  key=depth, value=value)
+tidy_soil
+```
+
+##  
+```{r}
+filter(tidy_soil, property == "pH")%>%
+ggplot(aes(x=depth, y=value))+
+  geom_point(size=3)
+```
+Almost!  
+
+##  `spread`
+
+Use this if one of your columns is full of what could be headers
+```{r, echo=FALSE, include=FALSE}
+crops<-read_csv("data/NASS-Iowa.csv")
+```
+
+```{r, echo=FALSE}
+oats<-(crops[crops$Commodity == "OATS", c(2, 16, 17, 20)])  
+head(oats)
+```
+
+* Now column that includes the variable names is `key`, here it is `Data Item`.  
+* Column that contains the values is the `value` column, here they already have it as `Values` 
+
+##   
+```{r}
+spread(oats, key = `Data Item`, value = Value)
+```
+
+## 
+```{r}
+spread(oats, key = `Data Item`, value = Value)%>%
+ggplot(aes(y=`OATS - YIELD, MEASURED IN BU / ACRE`,
+           x = `OATS - ACRES HARVESTED`, label = Year))+
+        geom_text()
+```
+
+##  Our turn 
+```{r, echo=FALSE}
+biomass<-data.frame(trt = c("0", "100", "130", "150"),
+               block = c("A", "A", "A", "A"),
+                    part=c("leaf", "stem", "fruit", "root"),
+                    may = c(5.5, 5.7, 0, 12.0),
+                    june = c(7.5, 6.7, 2.0, 14.0),
+                    july = c(12.5, 7.7, 8.2, 22.5),
+                    august = c(12.5, 7.7, 8.8, 22.0),
+                   stringsAsFactors=FALSE)
+
+biomass<-as_tibble(biomass)
+biomass
+
+```  
+Which columns need to be incorporated?  
+What is the `key`?  
+What is the `value`?  
+
+##  
+```{r}
+gather(biomass, may, june, july, august, key = month, value = g_m2)
+```
+
+```{r, echo=FALSE}
+biomass_tidy<-gather(biomass, may, june, july, august, key = month, value = g_m2)
+```
+
+
+## 
+```{r}
+spread(biomass_tidy, key = part, value = g_m2)
+```  
+
+## Your turn  
+<img src="images/your_turn.jpg" class="cover height" />
+
+
+<ol style="color:black">
+<li>Look at the NASS soybean data from 1900 to 2015.</li>
+<li>Spread the data and make an XY plot of soybean acres planted vs soybean acres harvested. </li>
+<li>Gather the data and make a plot of how all of the "Data Item" variables change over time. </li>
+</ol>
+    
