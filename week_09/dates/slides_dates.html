@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dates</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="slides_dates_files\rmdshower/node_modules/shower-ribbon/styles/screen-4x3.css">
+  <link rel="stylesheet" href="slides_dates_files\rmdshower/style-common.css">
+  <link rel="stylesheet" href="slides_dates_files\rmdshower/style-ribbon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+  <script src="slides_dates_files\rmdshower/auto-render.min.js" type="text/javascript"></script>
+  
+  
+    <style type="text/css">
+   div.sourceCode { overflow-x: auto; }
+   table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+     margin: 0; padding: 0; vertical-align: baseline; border: none; }
+   table.sourceCode { width: 100%; line-height: 100%; }
+   td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+   td.sourceCode { padding-left: 5px; }
+   code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+   code > span.dt { color: #902000; } /* DataType */
+   code > span.dv { color: #40a070; } /* DecVal */
+   code > span.bn { color: #40a070; } /* BaseN */
+   code > span.fl { color: #40a070; } /* Float */
+   code > span.ch { color: #4070a0; } /* Char */
+   code > span.st { color: #4070a0; } /* String */
+   code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+   code > span.ot { color: #007020; } /* Other */
+   code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+   code > span.fu { color: #06287e; } /* Function */
+   code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+   code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+   code > span.cn { color: #880000; } /* Constant */
+   code > span.sc { color: #4070a0; } /* SpecialChar */
+   code > span.vs { color: #4070a0; } /* VerbatimString */
+   code > span.ss { color: #bb6688; } /* SpecialString */
+   code > span.im { } /* Import */
+   code > span.va { color: #19177c; } /* Variable */
+   code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+   code > span.op { color: #666666; } /* Operator */
+   code > span.bu { } /* BuiltIn */
+   code > span.ex { } /* Extension */
+   code > span.pp { color: #bc7a00; } /* Preprocessor */
+   code > span.at { color: #7d9029; } /* Attribute */
+   code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+   code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+   code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+   code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  
+  
+  
+</head>
+
+<body class="shower list">
+
+  <header class="caption">
+    <h1>Dates</h1>
+    <p>Ranae Dietzel &amp; Andee Kaplan</p>
+  </header>
+
+    
+  
+<section id="dates-in-the-tidyverse" class="titleslide slide level1"><h2 class="shout">Dates in the Tidyverse</h2></section></section>
+<section id="lubridate" class="titleslide slide level1"><h2 class="shout"><code>Lubridate</code></h2></section><section id="section" class="slide level2">
+<h2></h2>
+<img src="images/darkpast.jpg" class="cover height" />
+<p style="color:white">
+Life before <code>lubridate</code> was so hard.
+</p>
+<p style="color:white">
+We will not even venture down this road.
+</p>
+<p style="color:white">
+When you encounter non-lubridate date code, be strong.
+</p>
+</section><section id="write-dates-as-yyyy-mm-dd" class="slide level2">
+<h2>Write dates as YYYY-MM-DD</h2>
+<center>
+<img src="images/iso_8601.png" width="400px" />
+</center>
+<p>xckd.com</p>
+</section><section id="when-is-the-last-time-you-recieved-a-date-in-the-right-format" class="slide level2">
+<h2>When is the last time you recieved a date in the right format?</h2>
+<p>Getting R to recognize a date is usually the first step</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dates&lt;-<span class="kw">c</span>(<span class="st">&quot;10/20/2016&quot;</span>, <span class="st">&quot;10/21/2016&quot;</span>, <span class="st">&quot;10/22/2016&quot;</span>)
+<span class="kw">mdy</span>(dates)</code></pre></div>
+<pre><code>## [1] &quot;2016-10-20&quot; &quot;2016-10-21&quot; &quot;2016-10-22&quot;</code></pre>
+<p>Now we are good.</p>
+</section><section id="parse_date_time" class="slide level2">
+<h2><code>parse_date_time</code></h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">parse_date_time</span>(<span class="st">&quot;2014-09-24 15:23:10&quot;</span>, <span class="dt">orders=</span><span class="st">&quot;ymd hms&quot;</span>)  </code></pre></div>
+<pre><code>## [1] &quot;2014-09-24 15:23:10 UTC&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">parse_date_time</span>(<span class="st">&quot;09/24/2014 15-23-10&quot;</span>, <span class="dt">orders=</span><span class="st">&quot;mdy hms&quot;</span>)</code></pre></div>
+<pre><code>## [1] &quot;2014-09-24 15:23:10 UTC&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">parse_date_time</span>(<span class="st">&quot;24 09 2014 15 23 10&quot;</span>, <span class="dt">orders=</span><span class="st">&quot;dmy hms&quot;</span>)</code></pre></div>
+<pre><code>## [1] &quot;2014-09-24 15:23:10 UTC&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">parse_date_time</span>(<span class="st">&quot;24-09-14 15-23-10&quot;</span>, <span class="dt">orders=</span><span class="st">&quot;dmy hms&quot;</span>)</code></pre></div>
+<pre><code>## [1] &quot;2014-09-24 15:23:10 UTC&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">parse_date_time</span>(<span class="st">&quot;Sep 24, 2014 15:23:10&quot;</span>, <span class="dt">orders=</span><span class="st">&quot;mdy hms&quot;</span>)</code></pre></div>
+<pre><code>## [1] &quot;2014-09-24 15:23:10 UTC&quot;</code></pre>
+</section>
+<section id="get-dates-in-the-right-format" class="titleslide slide level1"><h2 class="shout">Get dates in the right format</h2></section></section>
+<section id="parse-a-date-component---month-day" class="titleslide slide level1"><h2 class="shout">Parse a date component - (month, day)</h2></section></section>
+<section id="get-day-of-year" class="titleslide slide level1"><h2 class="shout">Get day of year</h2></section></section>
+<section id="lubridate-and-graphing" class="titleslide slide level1"><h2 class="shout">Lubridate and graphing</h2></section></section>
+<section id="timestamps" class="titleslide slide level1"><h2 class="shout">Timestamps</h2></section></section>
+<section id="section-1" class="titleslide slide level1"><h2 class="shout"></h2></section></section>
+
+  <!--
+  To hide progress bar from entire presentation
+  just remove “progress” element.
+  -->
+  <!-- <div class="progress"></div> -->
+  <script src="slides_dates_files\rmdshower/node_modules/shower/node_modules/shower-core/shower.min.js"></script>
+  <!-- Copyright © 2015 Yours Truly, Famous Inc. -->
+  <!-- Photos by John Carey, fiftyfootshadows.net -->
+
+    <script>renderMathInElement(document.body);</script>
+  
+  
+</body>
+</html>
