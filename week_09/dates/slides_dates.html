@@ -65,7 +65,7 @@
     
   
 <section id="dates-in-the-tidyverse" class="titleslide slide level1"><h2 class="shout">Dates in the Tidyverse</h2></section></section>
-<section id="lubridate" class="titleslide slide level1"><h2 class="shout"><code>Lubridate</code></h2></section><section id="section" class="slide level2">
+<section id="lubridate" class="titleslide slide level1"><h2 class="shout"><code>lubridate</code></h2></section><section id="section" class="slide level2">
 <h2></h2>
 <img src="images/darkpast.jpg" class="cover height" />
 <p style="color:white">
@@ -102,13 +102,70 @@ When you encounter non-lubridate date code, be strong.
 <pre><code>## [1] &quot;2014-09-24 15:23:10 UTC&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">parse_date_time</span>(<span class="st">&quot;Sep 24, 2014 15:23:10&quot;</span>, <span class="dt">orders=</span><span class="st">&quot;mdy hms&quot;</span>)</code></pre></div>
 <pre><code>## [1] &quot;2014-09-24 15:23:10 UTC&quot;</code></pre>
+</section><section id="now-we-can-isolate-components-of-our-dates" class="slide level2">
+<h2>Now we can isolate components of our dates</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">month</span>(<span class="st">&quot;2016-10-21&quot;</span>)</code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">day</span>(<span class="st">&quot;2016-10-21&quot;</span>)</code></pre></div>
+<pre><code>## [1] 21</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">year</span>(<span class="st">&quot;2016-10-21&quot;</span>)</code></pre></div>
+<pre><code>## [1] 2016</code></pre>
+</section><section id="day-of-year" class="slide level2">
+<h2>Day of year!</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">yday</span>(<span class="st">&quot;2016-10-21&quot;</span>)</code></pre></div>
+<pre><code>## [1] 295</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">yday</span>(<span class="kw">mdy</span>(dates))</code></pre></div>
+<pre><code>## [1] 294 295 296</code></pre>
+</section><section id="also-handles-intervals" class="slide level2">
+<h2>Also handles intervals</h2>
+<p>For example, when can Andee prepare for her prelim?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">now&lt;-<span class="kw">Sys.time</span>()
+prelim&lt;-<span class="st">&quot;2016-10-25 09:00:00 CDT&quot;</span>
+prep&lt;-now %--%<span class="st"> </span>prelim 
+prep</code></pre></div>
+<pre><code>## [1] 2016-10-21 06:18:33 UTC--2016-10-25 09:00:00 UTC</code></pre>
+<p>When will Ranae be at a Software Carpentry Instructor workshop?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">depart&lt;-<span class="st">&quot;2016-10-23 12:00:00 CDT&quot;</span>
+return&lt;-<span class="st">&quot;2016-10-25 20:00:00 CDT&quot;</span>
+workshop&lt;-<span class="st"> </span>depart %--%<span class="st"> </span>return
+workshop</code></pre></div>
+<pre><code>## [1] 2016-10-23 12:00:00 UTC--2016-10-25 20:00:00 UTC</code></pre>
+</section><section id="section-1" class="slide level2">
+<h2></h2>
+<p>Will Andee and Ranae be occupied at the same time?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">int_overlaps</span>(prep, workshop)</code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>When will Andee and Ranae both be unavailable?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setdiff</span>(prep, workshop)</code></pre></div>
+<pre><code>## [1] 2016-10-21 06:18:33 UTC--2016-10-23 12:00:00 UTC</code></pre>
+</section><section id="section-2" class="slide level2">
+<h2></h2>
+<a href="http://erichare.me/">Eric Hare</a> will teach class at 2016-10-24 10:00:00.
+<center>
+<img src="images/erichare.jpg" width="600px"/>
+</center>
+</section><section id="if-anyone-drove-a-time-machine-they-would-crash--grolemund" class="slide level2">
+<h2>If anyone drove a time machine, they would crash -Grolemund</h2>
+<p>The length of months and years change so often that doing arithmetic with them can be unintuitive. Consider a simple operation, January 31st + one month. Should the answer be</p>
+<ol type="1">
+<li>February 31st (which doesn’t exist)</li>
+<li>March 4th (31 days after January 31), or</li>
+<li>February 28th (assuming its not a leap year)</li>
+</ol>
+</section><section id="section-3" class="slide level2">
+<h2></h2>
+<p>Lubridate does arithmetic with dates, but you still have to think about it and make decisions about what you really mean and want.</p>
+<p>However, there are helpful functions such as:</p>
+<p>How long does Andee have to prepare for her prelim?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.period</span>(prep %%<span class="st"> </span><span class="kw">months</span>(<span class="dv">1</span>))</code></pre></div>
+<pre><code>## [1] &quot;4d 2H 41M 26.7182500362396S&quot;</code></pre>
+</section><section id="more-practice" class="slide level2">
+<h2>More practice</h2>
+Pull in lab materials for practice with lubridate and dplyr.
+<center>
+<img src="images/practice.gif" width="500px"/>
+</center>
 </section>
-<section id="get-dates-in-the-right-format" class="titleslide slide level1"><h2 class="shout">Get dates in the right format</h2></section></section>
-<section id="parse-a-date-component---month-day" class="titleslide slide level1"><h2 class="shout">Parse a date component - (month, day)</h2></section></section>
-<section id="get-day-of-year" class="titleslide slide level1"><h2 class="shout">Get day of year</h2></section></section>
-<section id="lubridate-and-graphing" class="titleslide slide level1"><h2 class="shout">Lubridate and graphing</h2></section></section>
-<section id="timestamps" class="titleslide slide level1"><h2 class="shout">Timestamps</h2></section></section>
-<section id="section-1" class="titleslide slide level1"><h2 class="shout"></h2></section></section>
 
   <!--
   To hide progress bar from entire presentation

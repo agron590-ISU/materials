@@ -7,11 +7,10 @@ output:
     self_contained: false
     katex: true
     theme: ribbon
-    incremental: true
 ---
 
 #Dates in the Tidyverse 
-#`Lubridate`
+#`lubridate`
 
 ##   
 <img src="images/darkpast.jpg" class="cover height" />
@@ -50,47 +49,64 @@ parse_date_time("Sep 24, 2014 15:23:10", orders="mdy hms")
 ```{r}
 month("2016-10-21")
 day("2016-10-21")
+year("2016-10-21")
 ```
+
+##Day of year!  
 
 ```{r}
-library(htmltools)
-countdown_timer <- function(seconds) {
-  td <- seconds_to_period(seconds)
-  timeString <- sprintf('%02d:%02d:%02d:%02d', day(td), td@hour, minute(td), second(td))
-  timeString <- sub("^(00:){0,2}0?", "", timeString, perl = TRUE)
-
-  deps <- list(
-    htmlDependency("jquery", "1.12.0",
-      src = system.file("jquery", package="countdown"),
-      script = "jquery-1.12.0.min.js"
-    ),
-    htmlDependency("countdown_timer", packageVersion("countdown"),
-      src = system.file("assets", package="countdown"),
-      script = "countdown.js",
-      stylesheet = "countdown.css"
-    )
-  )
-  attachDependencies(
-    withTags(
-      div(class="countdown-timer", `data-timespan`=as.character(seconds),
-        span(class="countdown-timer-time", timeString),
-        br(),
-        button(class="countdown-timer-start", type="button", "Start"),
-        button(class="countdown-timer-stop", type="button", "Stop"),
-        button(class="countdown-timer-reset", type="button", "Reset")
-      )
-    ),
-    deps
-  )
-}
+yday("2016-10-21")
+yday(mdy(dates))
 ```
 
+##Also handles intervals  
+For example, when can Andee prepare for her prelim?
+```{r}
+now<-Sys.time()
+prelim<-"2016-10-25 09:00:00 CDT"
+prep<-now %--% prelim 
+prep
+```
+When will Ranae be at a Software Carpentry Instructor workshop?
+```{r}
+depart<-"2016-10-23 12:00:00 CDT"
+return<-"2016-10-25 20:00:00 CDT"
+workshop<- depart %--% return
+workshop
+```
 
+##
+Will Andee and Ranae be occupied at the same time?
+```{r}
+int_overlaps(prep, workshop)
+```
+When will Andee and Ranae both be unavailable?
+```{r}
+setdiff(prep, workshop)
+```
 
-# Get dates in the right format
-# Parse a date component - (month, day)
-# Get day of year  
-# Lubridate and graphing  
-# Timestamps  
-# 
+##
+[Eric Hare](http://erichare.me/) will teach class at 2016-10-24 10:00:00. 
+<center><img src="images/erichare.jpg" width="600px"/></center>
 
+##If anyone drove a time machine, they would crash -Grolemund
+
+The length of months and years change so often that doing arithmetic with them can be unintuitive. Consider a simple operation, January 31st + one month. Should the answer be  
+
+1. February 31st (which doesn't exist)
+2. March 4th (31 days after January 31), or
+3. February 28th (assuming its not a leap year) 
+
+##  
+Lubridate does arithmetic with dates, but you still have to think about it and make decisions about what you really mean and want.  
+
+However, there are helpful functions such as:
+
+How long does Andee have to prepare for her prelim?
+```{r}
+as.period(prep %% months(1))
+```
+
+##More practice  
+Pull in lab materials for practice with lubridate and dplyr.
+<center><img src="images/practice.gif" width="500px"/></center>
