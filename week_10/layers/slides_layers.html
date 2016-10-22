@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Layers</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="slides_layers_files/rmdshower/node_modules/shower-ribbon/styles/screen-4x3.css">
+  <link rel="stylesheet" href="slides_layers_files/rmdshower/style-common.css">
+  <link rel="stylesheet" href="slides_layers_files/rmdshower/style-ribbon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+  <script src="slides_layers_files/rmdshower/auto-render.min.js" type="text/javascript"></script>
+  
+  
+    <style type="text/css">
+   div.sourceCode { overflow-x: auto; }
+   table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+     margin: 0; padding: 0; vertical-align: baseline; border: none; }
+   table.sourceCode { width: 100%; line-height: 100%; }
+   td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+   td.sourceCode { padding-left: 5px; }
+   code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+   code > span.dt { color: #902000; } /* DataType */
+   code > span.dv { color: #40a070; } /* DecVal */
+   code > span.bn { color: #40a070; } /* BaseN */
+   code > span.fl { color: #40a070; } /* Float */
+   code > span.ch { color: #4070a0; } /* Char */
+   code > span.st { color: #4070a0; } /* String */
+   code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+   code > span.ot { color: #007020; } /* Other */
+   code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+   code > span.fu { color: #06287e; } /* Function */
+   code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+   code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+   code > span.cn { color: #880000; } /* Constant */
+   code > span.sc { color: #4070a0; } /* SpecialChar */
+   code > span.vs { color: #4070a0; } /* VerbatimString */
+   code > span.ss { color: #bb6688; } /* SpecialString */
+   code > span.im { } /* Import */
+   code > span.va { color: #19177c; } /* Variable */
+   code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+   code > span.op { color: #666666; } /* Operator */
+   code > span.bu { } /* BuiltIn */
+   code > span.ex { } /* Extension */
+   code > span.pp { color: #bc7a00; } /* Preprocessor */
+   code > span.at { color: #7d9029; } /* Attribute */
+   code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+   code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+   code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+   code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  
+  
+  
+</head>
+
+<body class="shower list">
+
+  <header class="caption">
+    <h1>Layers</h1>
+    <p>Eric Hare</p>
+  </header>
+
+    
+  
+<section id="plotting-with-layers" class="titleslide slide level1"><h2 class="shout">Plotting with Layers</h2></section></section>
+<section id="ggplot2" class="titleslide slide level1"><h2 class="shout"><code>ggplot2</code></h2></section><section id="deepwater-horizon-oil-spill" class="slide level2">
+<h2>Deepwater Horizon Oil Spill</h2>
+<p><img src="images/satelitepicBPoilspill.png" /></p>
+</section><section id="datasets" class="slide level2">
+<h2>Datasets</h2>
+<p>NOAA Data:</p>
+<ul>
+<li>National Oceanic and Atmospheric Administration</li>
+<li>Temperature and Salinity Data in Gulf of Mexico</li>
+<li>Measured using Floats, Gliders and Boats</li>
+</ul>
+<p>US Fisheries and Wildlife Data:</p>
+<ul>
+<li>Animal Sightings on the Gulf Coast</li>
+<li>Birds, Turtles and Mammals</li>
+<li>Status: Oil Covered or Not</li>
+</ul>
+<p>Both data sets have geographic coordinates for ever observation</p>
+</section><section id="loading-noaa-data" class="slide level2">
+<h2>Loading NOAA Data</h2>
+<p>NOAA data is a .rdata file so we need to read it specially:</p>
+<ol type="1">
+<li>Download the data from <a href="http://heike.github.io/rwrks/02-r-graphics/data/noaa.rdata" class="uri">http://heike.github.io/rwrks/02-r-graphics/data/noaa.rdata</a></li>
+<li>Run the <code>getwd()</code> command to find your current working directory</li>
+<li>Place noaa.rdata in the directory from step 2.</li>
+<li>Run the command below:</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(maps)
+
+<span class="kw">load</span>(<span class="st">&quot;noaa.rdata&quot;</span>)</code></pre></div>
+</section><section id="floats" class="slide level2">
+<h2>Floats</h2>
+<p>Lets take a peek at the top of the floats NOAA data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(floats, <span class="dt">n =</span> <span class="dv">2</span>)[,<span class="dv">1</span>:<span class="dv">5</span>]</code></pre></div>
+<pre><code>##   callSign Date_Time JulianDay Time_QC Latitude
+## 1 Q4901043 7/12/2010   2455390       1   24.823
+## 2 Q4901043 7/12/2010   2455390       1   24.823</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(floats, <span class="dt">n =</span> <span class="dv">2</span>)[,<span class="dv">6</span>:<span class="dv">10</span>]</code></pre></div>
+<pre><code>##   Longitude Position_QC Depth Depth_QC Temperature
+## 1   -87.964           1     2        1       29.83
+## 2   -87.964           1     4        1       29.65</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(floats, <span class="dt">n =</span> <span class="dv">2</span>)[,<span class="dv">11</span>:<span class="dv">14</span>]</code></pre></div>
+<pre><code>##   Temperature_QC Salinity Salinity_QC  Type
+## 1              1    36.59           1 Float
+## 2              1    36.58           1 Float</code></pre>
+</section><section id="floats-plot" class="slide level2">
+<h2>Floats Plot</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(Longitude, Latitude, <span class="dt">colour =</span> callSign, <span class="dt">data =</span> floats) +<span class="st"> </span>
+<span class="st">    </span><span class="kw">coord_map</span>()</code></pre></div>
+<p><img src="slides_layers_files/figure-revealjs/unnamed-chunk-4-1.png" width="672" /></p>
+</section><section id="gliders" class="slide level2">
+<h2>Gliders</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(Longitude, Latitude, <span class="dt">colour =</span> callSign, <span class="dt">data =</span> gliders) +<span class="st"> </span>
+<span class="st">    </span><span class="kw">coord_map</span>()</code></pre></div>
+<p><img src="slides_layers_files/figure-revealjs/unnamed-chunk-5-1.png" width="672" /></p>
+</section><section id="boats" class="slide level2">
+<h2>Boats</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(Longitude, Latitude, <span class="dt">colour =</span> callSign, <span class="dt">data =</span> boats) +<span class="st"> </span>
+<span class="st">    </span><span class="kw">coord_map</span>()</code></pre></div>
+<p><img src="slides_layers_files/figure-revealjs/unnamed-chunk-6-1.png" width="672" /></p>
+</section><section id="layering" class="slide level2">
+<h2>Layering</h2>
+<p>This data has the same context - a common time and common place</p>
+<ul>
+<li>Want to aggregate information from different sources onto a common plot</li>
+<li>Start with a common background the lat/long grid</li>
+<li>With <code>ggplot2</code> we will superimpose data onto this grid in layers</li>
+</ul>
+</section><section id="layers" class="slide level2">
+<h2>Layers</h2>
+<p>To give you an idea…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">states &lt;-<span class="st"> </span><span class="kw">map_data</span>(<span class="st">&quot;state&quot;</span>)
+
+<span class="kw">ggplot</span>() +
+<span class="st">    </span><span class="kw">geom_path</span>(<span class="dt">data =</span> states, <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group)) +<span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">data =</span> floats, <span class="kw">aes</span>(<span class="dt">x =</span> Longitude, <span class="dt">y =</span> Latitude, <span class="dt">colour =</span> callSign)) +<span class="st">   </span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(x, y), <span class="dt">shape =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">data =</span> rig) +<span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(x, y), <span class="dt">label =</span> <span class="st">&quot;BP Oil Rig&quot;</span>, 
+              <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">data =</span> rig, <span class="dt">hjust =</span> -<span class="fl">0.1</span>) +<span class="st"> </span>
+<span class="st">    </span><span class="kw">xlim</span>(<span class="kw">c</span>(-<span class="dv">91</span>, -<span class="dv">80</span>)) +<span class="st"> </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">22</span>,<span class="dv">32</span>)) +<span class="st"> </span><span class="kw">coord_map</span>()</code></pre></div>
+<p><img src="slides_layers_files/figure-revealjs/unnamed-chunk-7-1.png" width="672" /></p>
+</section><section id="more-layering" class="slide level2">
+<h2>More Layering</h2>
+<ul>
+<li>Most maps (and many plots) have multiple layers of data. The layers may be from the same or different datasets.</li>
+<li>ggplot2 builds around this same idea. Very easy to add additional layers to the plot. To do this we need to understand a little more about the underlying theory…</li>
+</ul>
+</section><section id="what-is-a-plot" class="slide level2">
+<h2>What is a Plot?</h2>
+<ul>
+<li>A default dataset</li>
+<li>A coordinate system</li>
+<li>layers of geometric objects (geoms)</li>
+<li>A set of aesthetic mappings (taking information from the data and converting into an attribute of the plot)</li>
+<li>A scale for each aesthetic</li>
+<li>A facetting specification (multiple plots based on subsetting the data)</li>
+</ul>
+</section><section id="floats-decomposed" class="slide level2">
+<h2>Floats Decomposed</h2>
+<ul>
+<li><strong>Data</strong>: floats</li>
+<li><strong>Mappings</strong>:</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>aesthetic</th>
+<th style="text-align: left;">mapping</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>x</td>
+<td style="text-align: left;">Longitude</td>
+</tr>
+<tr class="even">
+<td>y</td>
+<td style="text-align: left;">Latitude</td>
+</tr>
+<tr class="odd">
+<td>color</td>
+<td style="text-align: left;">CallSign</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Layers</strong>: Points</li>
+<li><strong>Scales</strong>:</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>aesthetic</th>
+<th style="text-align: left;">scale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>x</td>
+<td style="text-align: left;">continuous</td>
+</tr>
+<tr class="even">
+<td>y</td>
+<td style="text-align: left;">continuous</td>
+</tr>
+<tr class="odd">
+<td>color</td>
+<td style="text-align: left;">discrete</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Facetting</strong>: None</p>
+</section><section id="qplot-vs-ggplot" class="slide level2">
+<h2><code>qplot()</code> vs <code>ggplot()</code></h2>
+<p><code>qplot()</code> stands for “quickplot”:</p>
+<ul>
+<li>Automatically chooses default settings to make life easier</li>
+<li>Less control over plot construction</li>
+</ul>
+<p><code>ggplot()</code> stands for “grammar of graphics plot”</p>
+<ul>
+<li>Contructs the plot using components listed in previous slides</li>
+</ul>
+</section><section id="qplot-and-ggplot-for-floats" class="slide level2">
+<h2><code>qplot()</code> and <code>ggplot()</code> for Floats</h2>
+<p>Two ways to construct the same plot for float locations:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(Longitude, Latitude, <span class="dt">colour =</span> callSign, <span class="dt">data =</span> floats) </code></pre></div>
+<p>Or:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> floats, 
+       <span class="kw">aes</span>(<span class="dt">x =</span> Longitude, <span class="dt">y =</span> Latitude, <span class="dt">colour =</span> callSign)) +
+<span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_y_continuous</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_colour_discrete</span>()</code></pre></div>
+</section><section id="we-can-shorten-that-a-bit" class="slide level2">
+<h2>We can shorten that a bit</h2>
+<p>We fortunately don’t need to be so verbose - Even <code>ggplot()</code> will automatically pick default scales:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> floats, 
+       <span class="kw">aes</span>(<span class="dt">x =</span> Longitude, <span class="dt">y =</span> Latitude, <span class="dt">colour =</span> callSign)) +
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="slides_layers_files/figure-revealjs/unnamed-chunk-10-1.png" width="672" /></p>
+</section><section id="your-turn" class="slide level2" data-background="#527a7a">
+<h2>Your Turn</h2>
+<p>Find the <code>ggplot()</code> statement that creates this plot:</p>
+<p><img src="slides_layers_files/figure-revealjs/unnamed-chunk-11-1.png" width="672" /></p>
+</section><section id="what-is-a-layer" class="slide level2">
+<h2>What is a Layer?</h2>
+<p>A layer added <code>ggplot()</code> can be a geom…</p>
+<ul>
+<li>The type of geometric object</li>
+<li>The statistic mapped to that object</li>
+<li>The data set from which to obtain the statistic</li>
+</ul>
+<p>… or a position adjustment to the scales</p>
+<ul>
+<li>Changing the axes scale</li>
+<li>Changing the color gradient</li>
+</ul>
+</section><section id="layer-examples" class="slide level2">
+<h2>Layer Examples</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Plot</th>
+<th style="text-align: left;">Geom</th>
+<th style="text-align: left;">Stat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Scatterplot</td>
+<td style="text-align: left;">point</td>
+<td style="text-align: left;">identity</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Histogram</td>
+<td style="text-align: left;">bar</td>
+<td style="text-align: left;">bin count</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Smoother</td>
+<td style="text-align: left;">line + ribbon</td>
+<td style="text-align: left;">smoother function</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Binned Scatterplot</td>
+<td style="text-align: left;">rectange + color</td>
+<td style="text-align: left;">2d bin count</td>
+</tr>
+</tbody>
+</table>
+<p>More geoms described at <a href="http://docs.ggplot2.org/current/" class="uri">http://docs.ggplot2.org/current/</a></p>
+</section><section id="piecing-things-together" class="slide level2">
+<h2>Piecing Things Together</h2>
+<p>Want to build a map using NOAA data</p>
+<ul>
+<li>Coordinate system (mapping Long-Lat to X-Y)</li>
+<li>Add layer of state outlines</li>
+<li>Add layer of points for float locations</li>
+<li>Add layers for Oil Rig marker and label</li>
+<li>Adjust the range of x and y scales</li>
+</ul>
+</section><section id="the-result" class="slide level2">
+<h2>The Result</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() +
+<span class="st">    </span><span class="kw">geom_path</span>(<span class="dt">data =</span> states, <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group)) +<span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">data =</span> floats, <span class="kw">aes</span>(<span class="dt">x =</span> Longitude, <span class="dt">y =</span> Latitude, <span class="dt">colour =</span> callSign)) +<span class="st">   </span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(x, y), <span class="dt">shape =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">data =</span> rig) +<span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(x, y), <span class="dt">label =</span> <span class="st">&quot;BP Oil Rig&quot;</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">data =</span> rig, <span class="dt">hjust =</span> -<span class="fl">0.1</span>) +<span class="st"> </span>
+<span class="st">    </span><span class="kw">xlim</span>(<span class="kw">c</span>(-<span class="dv">91</span>, -<span class="dv">80</span>)) +<span class="st"> </span>
+<span class="st">    </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">22</span>, <span class="dv">32</span>)) +<span class="st"> </span><span class="kw">coord_map</span>()</code></pre></div>
+<p><img src="slides_layers_files/figure-revealjs/unnamed-chunk-12-1.png" width="672" /></p>
+</section><section id="your-turn-1" class="slide level2 cover white">
+<h2>Your turn</h2>
+<p><img src="images/your_turn.jpg" class="cover height" /></p>
+<ol style="color: white">
+<li>
+Read in the animal.csv data:
+</li>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">animal &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://heike.github.io/rwrks/02-r-graphics/data/animal.csv&quot;</span>)</code></pre></div>
+<li>
+Plot the location of animal sightings on a map of the region
+</li>
+<li>
+On this plot, try to color points by class of animal and/or status of animal
+</li>
+<li>
+<strong>Advanced</strong>: Could we indicate time somehow?
+</li>
+</ol>
+</section>
+
+  <!--
+  To hide progress bar from entire presentation
+  just remove “progress” element.
+  -->
+  <!-- <div class="progress"></div> -->
+  <script src="slides_layers_files/rmdshower/node_modules/shower/node_modules/shower-core/shower.min.js"></script>
+  <!-- Copyright © 2015 Yours Truly, Famous Inc. -->
+  <!-- Photos by John Carey, fiftyfootshadows.net -->
+
+    <script>renderMathInElement(document.body);</script>
+  
+  
+</body>
+</html>
