@@ -136,6 +136,9 @@ y         Latitude
 color     CallSign
 
 - **Layers**: Points
+
+## Floats Decomposed (Continued)
+
 - **Scales**:
 
 aesthetic scale
@@ -186,14 +189,6 @@ ggplot(data = floats,
   geom_point()
 ```
 
-## Your Turn {data-background=#527a7a}
-
-Find the `ggplot()` statement that creates this plot:
-
-```{r, fig.height=4, fig.width=7, echo=FALSE, warning=FALSE}
-ggplot(aes(x = Depth, y = Temperature, colour = callSign), data = floats) + geom_point()
-```
-
 ## What is a Layer?
 
 A layer added `ggplot()` can be a geom...
@@ -209,12 +204,12 @@ A layer added `ggplot()` can be a geom...
 
 ## Layer Examples
 
-Plot               Geom             Stat
------------------- ---------------- -----------------
-Scatterplot        point            identity
-Histogram          bar              bin count
-Smoother           line + ribbon    smoother function
-Binned Scatterplot rectange + color 2d bin count
+Plot               Geom              Stat
+------------------ ----------------- -----------------
+Scatterplot        point             identity
+Histogram          bar               bin count
+Smoother           line + ribbon     smoother function
+Binned Scatterplot rectangle + color 2d bin count
 
 More geoms described at http://docs.ggplot2.org/current/
 
@@ -253,5 +248,4 @@ animal <- read.csv("http://heike.github.io/rwrks/02-r-graphics/data/animal.csv")
 
 <li>Plot the location of animal sightings on a map of the region</li>
 <li>On this plot, try to color points by class of animal and/or status of animal</li>
-<li>**Advanced**: Could we indicate time somehow?</li>
 </ol>
