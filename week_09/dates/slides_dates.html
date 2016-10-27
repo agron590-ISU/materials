@@ -123,7 +123,7 @@ When you encounter non-lubridate date code, be strong.
 prelim&lt;-<span class="st">&quot;2016-10-25 09:00:00 CDT&quot;</span>
 prep&lt;-now %--%<span class="st"> </span>prelim 
 prep</code></pre></div>
-<pre><code>## [1] 2016-10-21 14:50:03 UTC--2016-10-25 09:00:00 UTC</code></pre>
+<pre><code>## [1] 2016-10-21 14:58:35 UTC--2016-10-25 09:00:00 UTC</code></pre>
 <p>When will Ranae be at a Software Carpentry Instructor workshop?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">depart&lt;-<span class="st">&quot;2016-10-23 12:00:00 CDT&quot;</span>
 return&lt;-<span class="st">&quot;2016-10-25 20:00:00 CDT&quot;</span>
@@ -137,7 +137,7 @@ workshop</code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>When will Andee and Ranae both be unavailable?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setdiff</span>(prep, workshop)</code></pre></div>
-<pre><code>## [1] 2016-10-21 14:50:03 UTC--2016-10-23 12:00:00 UTC</code></pre>
+<pre><code>## [1] 2016-10-21 14:58:35 UTC--2016-10-23 12:00:00 UTC</code></pre>
 </section><section id="section-2" class="slide level2">
 <h2></h2>
 <a href="http://erichare.me/">Eric Hare</a> will teach class at 2016-10-24 10:00:00.
@@ -158,7 +158,7 @@ workshop</code></pre></div>
 <p>However, there are helpful functions such as:</p>
 <p>How long does Andee have to prepare for her prelim?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.period</span>(prep %%<span class="st"> </span><span class="kw">months</span>(<span class="dv">1</span>))</code></pre></div>
-<pre><code>## [1] &quot;3d 18H 9M 56.0868859291077S&quot;</code></pre>
+<pre><code>## [1] &quot;3d 18H 1M 24.9760739803314S&quot;</code></pre>
 </section><section id="more-practice" class="slide level2">
 <h2>More practice</h2>
 Pull in lab materials for practice with lubridate and dplyr.
