@@ -146,12 +146,114 @@ Advisor:
 * I hate these colors.  
 * This won't work in black and white  
 
-#Three places to polish figures  
-* In `aes` - you may want to add `shape`  
+##Three places to polish figures  
+* In `aes` - you may want to add `shape`
 * As a `gg`  
-* Change `theme`  
+* Change `theme` components 
+
+##
+```{r}
+ggplot(both, aes(x=year, y=acres, group=crop, color=crop, shape=crop))+
+  geom_point(size=3)+
+  geom_smooth()
+```
+
+## 
+```{r}
+ggplot(both, aes(x=year, y=acres, group=crop, color=crop, shape=crop))+
+  geom_point()+
+  geom_smooth()+
+  ggtitle("Acres of small grains and soybeans in Iowa")
+```
+
+##
+```{r}
+theme_set(theme_bw())
+ggplot(both, aes(x=year, y=acres, group=crop, color=crop, shape=crop))+
+  geom_point()+
+  geom_smooth()+
+  ggtitle("Acres of small grains and soybeans in Iowa")
+```
+
+```{r}
+library(scales)
+theme_set(theme_bw())
+ggplot(both, aes(x=year, y=acres, group=crop, color=crop, shape=crop))+
+  geom_point()+
+  geom_smooth()+
+  ggtitle("Acres of small grains and soybeans in Iowa")+
+  scale_y_continuous(labels = comma)
+```
+
+##
+```{r, results = "hide"}
+theme_set(theme_bw())
+ggplot(both, aes(x=year, y=acres, group=crop, color=crop, shape=crop))+
+  geom_point(size=3, alpha = .6)+
+  geom_smooth()+
+  ggtitle("Acres of small grains and soybeans in Iowa")+
+  scale_y_continuous(labels = comma)+
+labs(x = "Year",y = "Acres Planted") + 
+    theme(#panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          #panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position=c(.27,.84), legend.title=element_blank(),
+		      legend.text = element_text(size=20),
+		      legend.key.size=unit(1, "cm"),
+		      axis.title.x = element_text(size=22,vjust=-0.5),
+          axis.title.y = element_text(size=22,angle=90),
+          axis.text.x = element_text(colour="black", size=20),
+          axis.text.y = element_text(colour="black", size=20)) 
+```
+
+##
+```{r, echo=FALSE}
+theme_set(theme_bw())
+ggplot(both, aes(x=year, y=acres, group=crop, color=crop, shape=crop))+
+  geom_point(size=3, alpha = .6)+
+  geom_smooth()+
+  ggtitle("Acres of small grains and soybeans in Iowa")+
+  scale_y_continuous(labels = comma)+
+labs(x = "Year",y = "Acres Planted") + 
+    theme(#panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          #panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position=c(.27,.84), legend.title=element_blank(),
+		      legend.text = element_text(size=20),legend.key.size=unit(1, "cm"),
+		      axis.title.x = element_text(size=22,vjust=-0.5),
+          axis.title.y = element_text(size=22,angle=90),
+          axis.text.x = element_text(colour="black", size=20),
+          axis.text.y = element_text(colour="black", size=20)) 
+```
 
 
+## 
+```{r}
+my_theme<-theme_bw()+
+  theme(#panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          #panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position=c(.27,.84), legend.title=element_blank(),
+		      legend.text = element_text(size=20),legend.key.size=unit(1, "cm"),
+		      axis.title.x = element_text(size=22,vjust=-0.5),
+          axis.title.y = element_text(size=22,angle=90),
+          axis.text.x = element_text(colour="black", size=20),
+          axis.text.y = element_text(colour="black", size=20)) 
+```  
+
+##
+```{r}
+theme_set(my_theme)
+ggplot(both, aes(x=year, y=acres, group=crop, color=crop, shape=crop))+
+  geom_point(size=3, alpha = .6)+
+  geom_smooth()+
+  ggtitle("Acres of small grains and soybeans in Iowa")+
+  scale_y_continuous(labels = comma)+
+labs(x = "Year",y = "Acres Planted")
+```
 
 ##How  
 specific commands  
