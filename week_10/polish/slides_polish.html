@@ -88,13 +88,14 @@
 </li>
 <li class="fragment next">This won’t work in black and white</li>
 </ul>
-</section><section id="three-places-to-polish-figures" class="slide level2">
-<h2>Three places to polish figures</h2>
+</section><section id="three-points-on-polishing" class="slide level2">
+<h2>Three points on polishing</h2>
 <ul>
-<li class="fragment next">In <code>aes</code> - you may want to add <code>shape</code></li>
-<li class="fragment next">As a <code>gg</code><br />
+<li class="fragment next"><code>aes</code></li>
+<li class="fragment next"><code>gg</code><br />
 </li>
-<li class="fragment next">Change <code>theme</code> components</li>
+<li class="fragment next"><code>theme</code></li>
+<li class="fragment next">none of the above</li>
 </ul>
 </section><section id="section" class="slide level2">
 <h2></h2>
@@ -105,7 +106,7 @@
 </section><section id="section-1" class="slide level2">
 <h2></h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(both, <span class="kw">aes</span>(<span class="dt">x=</span>year, <span class="dt">y=</span>acres, <span class="dt">group=</span>crop, <span class="dt">color=</span>crop, <span class="dt">shape=</span>crop))+
-<span class="st">  </span><span class="kw">geom_point</span>()+
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">3</span>, <span class="dt">alpha =</span> .<span class="dv">6</span>)+
 <span class="st">  </span><span class="kw">geom_smooth</span>()+
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Acres of small grains and soybeans in Iowa&quot;</span>)</code></pre></div>
 <p><img src="slides_polish_files/figure-revealjs/unnamed-chunk-4-1.png" width="768" /></p>
@@ -113,7 +114,7 @@
 <h2></h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">theme_set</span>(<span class="kw">theme_bw</span>())
 <span class="kw">ggplot</span>(both, <span class="kw">aes</span>(<span class="dt">x=</span>year, <span class="dt">y=</span>acres, <span class="dt">group=</span>crop, <span class="dt">color=</span>crop, <span class="dt">shape=</span>crop))+
-<span class="st">  </span><span class="kw">geom_point</span>()+
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">3</span>, <span class="dt">alpha =</span> .<span class="dv">6</span>)+
 <span class="st">  </span><span class="kw">geom_smooth</span>()+
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Acres of small grains and soybeans in Iowa&quot;</span>)</code></pre></div>
 <p><img src="slides_polish_files/figure-revealjs/unnamed-chunk-5-1.png" width="768" /></p>
@@ -125,7 +126,7 @@
 ##     col_factor, col_numeric</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">theme_set</span>(<span class="kw">theme_bw</span>())
 <span class="kw">ggplot</span>(both, <span class="kw">aes</span>(<span class="dt">x=</span>year, <span class="dt">y=</span>acres, <span class="dt">group=</span>crop, <span class="dt">color=</span>crop, <span class="dt">shape=</span>crop))+
-<span class="st">  </span><span class="kw">geom_point</span>()+
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">3</span>, <span class="dt">alpha =</span> .<span class="dv">6</span>)+
 <span class="st">  </span><span class="kw">geom_smooth</span>()+
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Acres of small grains and soybeans in Iowa&quot;</span>)+
 <span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> comma)</code></pre></div>
@@ -144,12 +145,12 @@
           <span class="co">#panel.background = element_blank(),</span>
           <span class="dt">axis.line =</span> <span class="kw">element_line</span>(),
           <span class="dt">legend.position=</span><span class="kw">c</span>(.<span class="dv">27</span>,.<span class="dv">84</span>), <span class="dt">legend.title=</span><span class="kw">element_blank</span>(),
-              <span class="dt">legend.text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>),<span class="dt">legend.key.size=</span><span class="kw">unit</span>(<span class="dv">1</span>, <span class="st">&quot;cm&quot;</span>),
+              <span class="dt">legend.text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>),
+              <span class="dt">legend.key.size=</span><span class="kw">unit</span>(<span class="dv">1</span>, <span class="st">&quot;cm&quot;</span>),
               <span class="dt">axis.title.x =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">22</span>,<span class="dt">vjust=</span>-<span class="fl">0.5</span>),
           <span class="dt">axis.title.y =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">22</span>,<span class="dt">angle=</span><span class="dv">90</span>),
           <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>, <span class="dt">size=</span><span class="dv">20</span>),
           <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>, <span class="dt">size=</span><span class="dv">20</span>)) </code></pre></div>
-<p><img src="slides_polish_files/figure-revealjs/unnamed-chunk-7-1.png" width="768" /></p>
 </section><section id="section-4" class="slide level2">
 <h2></h2>
 <p><img src="slides_polish_files/figure-revealjs/unnamed-chunk-8-1.png" width="768" /></p>
@@ -162,24 +163,118 @@
           <span class="dt">axis.line =</span> <span class="kw">element_line</span>(),
           <span class="dt">legend.position=</span><span class="kw">c</span>(.<span class="dv">27</span>,.<span class="dv">84</span>), <span class="dt">legend.title=</span><span class="kw">element_blank</span>(),
               <span class="dt">legend.text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>),<span class="dt">legend.key.size=</span><span class="kw">unit</span>(<span class="dv">1</span>, <span class="st">&quot;cm&quot;</span>),
+              <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">22</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>),
               <span class="dt">axis.title.x =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">22</span>,<span class="dt">vjust=</span>-<span class="fl">0.5</span>),
           <span class="dt">axis.title.y =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">22</span>,<span class="dt">angle=</span><span class="dv">90</span>),
           <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>, <span class="dt">size=</span><span class="dv">20</span>),
           <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>, <span class="dt">size=</span><span class="dv">20</span>)) </code></pre></div>
-</section><section id="how" class="slide level2">
-<h2>How</h2>
-<p>specific commands<br />
- axes<br />
- legends<br />
- alpha, color, size, shape, text, themes</p>
-</section><section id="common-theme-changes" class="slide level2">
-<h2>Common theme changes</h2>
-</section><section id="colors" class="slide level2">
-<h2>Colors</h2>
-</section><section id="grid-vs-facet" class="slide level2">
-<h2>Grid vs facet</h2>
 </section><section id="section-6" class="slide level2">
 <h2></h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">theme_set</span>(my_theme)
+<span class="kw">ggplot</span>(both, <span class="kw">aes</span>(<span class="dt">x=</span>year, <span class="dt">y=</span>acres, <span class="dt">group=</span>crop, <span class="dt">color=</span>crop, <span class="dt">shape=</span>crop))+
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">3</span>, <span class="dt">alpha =</span> .<span class="dv">6</span>)+
+<span class="st">  </span><span class="kw">geom_smooth</span>()+
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Acres of small grains and soybeans in Iowa&quot;</span>)+
+<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> comma)+
+<span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,<span class="dt">y =</span> <span class="st">&quot;Acres Planted&quot;</span>)</code></pre></div>
+<p><img src="slides_polish_files/figure-revealjs/unnamed-chunk-10-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">theme_set</span>(my_theme)
+<span class="kw">ggplot</span>(both, <span class="kw">aes</span>(<span class="dt">x=</span>year, <span class="dt">y=</span>acres, <span class="dt">group=</span>crop, <span class="dt">color=</span>crop, <span class="dt">shape=</span>crop))+
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">3</span>, <span class="dt">alpha =</span> .<span class="dv">6</span>)+
+<span class="st">  </span><span class="kw">geom_smooth</span>()+
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Acres of small grains and soybeans in Iowa&quot;</span>)+
+<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> comma)+
+<span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,<span class="dt">y =</span> <span class="st">&quot;Acres Planted&quot;</span>)+
+<span class="st">  </span><span class="kw">scale_color_discrete</span>(<span class="dt">name=</span><span class="st">&quot;Crop&quot;</span>,
+                         <span class="dt">breaks=</span><span class="kw">c</span>(<span class="st">&quot;smlgrains&quot;</span>, <span class="st">&quot;soybeans&quot;</span>),
+                         <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Small Grains&quot;</span>, <span class="st">&quot;Soybeans&quot;</span>))+
+<span class="st">  </span><span class="kw">scale_shape_discrete</span>(<span class="dt">name=</span><span class="st">&quot;Crop&quot;</span>,
+                         <span class="dt">breaks=</span><span class="kw">c</span>(<span class="st">&quot;smlgrains&quot;</span>, <span class="st">&quot;soybeans&quot;</span>),
+                         <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Small Grains&quot;</span>, <span class="st">&quot;Soybeans&quot;</span>))</code></pre></div>
+<p><img src="slides_polish_files/figure-revealjs/unnamed-chunk-11-1.png" width="768" /></p>
+</section><section id="section-7" class="slide level2">
+<h2></h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">theme_set</span>(my_theme)
+<span class="kw">ggplot</span>(both, <span class="kw">aes</span>(<span class="dt">x=</span>year, <span class="dt">y=</span>acres, <span class="dt">group=</span>crop, <span class="dt">color=</span>crop, <span class="dt">shape=</span>crop))+
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">3</span>, <span class="dt">alpha =</span> .<span class="dv">6</span>)+
+<span class="st">  </span><span class="kw">geom_smooth</span>()+
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Acres of small grains and soybeans in Iowa&quot;</span>)+
+<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> comma)+
+<span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,<span class="dt">y =</span> <span class="st">&quot;Acres Planted&quot;</span>)+
+<span class="st">  </span><span class="kw">scale_color_discrete</span>(<span class="dt">name=</span><span class="st">&quot;Crop&quot;</span>,
+                         <span class="dt">breaks=</span><span class="kw">c</span>(<span class="st">&quot;smlgrains&quot;</span>, <span class="st">&quot;soybeans&quot;</span>),
+                         <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Small Grains&quot;</span>, <span class="st">&quot;Soybeans&quot;</span>))+
+<span class="st">  </span><span class="kw">scale_shape_discrete</span>(<span class="dt">name=</span><span class="st">&quot;Crop&quot;</span>,
+                         <span class="dt">breaks=</span><span class="kw">c</span>(<span class="st">&quot;smlgrains&quot;</span>, <span class="st">&quot;soybeans&quot;</span>),
+                         <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Small Grains&quot;</span>, <span class="st">&quot;Soybeans&quot;</span>))</code></pre></div>
+</section><section id="section-8" class="slide level2">
+<h2></h2>
+<p><img src="slides_polish_files/figure-revealjs/unnamed-chunk-13-1.png" width="768" /></p>
+</section><section id="section-9" class="slide level2">
+<h2></h2>
+<p><img src="slides_polish_files/figure-revealjs/unnamed-chunk-14-1.png" width="768" /></p>
+</section><section id="many-options-to-save-figures" class="slide level2">
+<h2>Many options to save figures</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggsave</span>(<span class="st">&quot;changes.pdf&quot;</span>, <span class="dt">plot=</span>cropfig)</code></pre></div>
+<p>or</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pdf</span>(<span class="dt">file=</span><span class="st">&quot;changes.pdf&quot;</span>, <span class="dt">height=</span><span class="dv">600</span>, <span class="dt">width=</span><span class="dv">600</span>)  
+cropfig  
+<span class="kw">dev.off</span>()</code></pre></div>
+<p>Can save in many formats – .png, .tiff, .jpg, etc.</p>
+</section>
+<section id="colors" class="titleslide slide level1"><h2 class="shout">Colors</h2></section><section id="gradients" class="slide level2">
+<h2>Gradients</h2>
+<p>Qualitative schemes: no more than 7 colors</p>
+<p><img src="slides_polish_files/figure-revealjs/unnamed-chunk-17-1.png" width="672" /></p>
+<p>Quantitative schemes: use color gradient with only one hue for positive values</p>
+<p><img src="slides_polish_files/figure-revealjs/unnamed-chunk-18-1.png" width="672" /></p>
+</section><section id="more-gradients" class="slide level2">
+<h2>More Gradients</h2>
+<p>Quantitative schemes: use color gradient with two hues for positive and negative values. Gradient should go through a light, neutral color (white)</p>
+<p><img src="slides_polish_files/figure-revealjs/unnamed-chunk-19-1.png" width="672" /></p>
+<p>Small objects or thin lines need more contrast than larger areas</p>
+</section><section id="rcolorbrewer" class="slide level2">
+<h2>RColorBrewer</h2>
+<p>R package based on <a href="http://www.colorbrewer2.org">Cynthia Brewer’s color schemes</a> <img src="slides_polish_files/figure-revealjs/unnamed-chunk-20-1.png" width="672" /></p>
+</section><section id="color-in-ggplot2" class="slide level2">
+<h2>Color in <code>ggplot2</code></h2>
+<ul>
+<li class="fragment next">Factor variable:
+<ul>
+<li class="fragment next"><code>scale_colour_discrete</code></li>
+<li class="fragment next"><code>scale_colour_brewer(palette = ...)</code></li>
+</ul></li>
+<li class="fragment next">Continuous variable:
+<ul>
+<li class="fragment next"><code>scale_colour_gradient</code> (define low, high values)</li>
+<li class="fragment next"><code>scale_colour_gradient2</code> (define low, mid, and high values)</li>
+<li class="fragment next">Equivalents for fill: <code>scale_fill_...</code></li>
+</ul></li>
+</ul>
+</section><section id="section-10" class="slide level2">
+<h2></h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(both, <span class="kw">aes</span>(<span class="dt">x=</span>year, <span class="dt">y=</span>acres, <span class="dt">group=</span>crop, <span class="dt">color=</span>crop, <span class="dt">shape=</span>crop))+
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">3</span>, <span class="dt">alpha =</span> .<span class="dv">6</span>)+
+<span class="st">  </span><span class="kw">geom_smooth</span>()+
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Acres of small grains and soybeans in Iowa&quot;</span>)+
+<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> comma)+
+<span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,<span class="dt">y =</span> <span class="st">&quot;Acres Planted&quot;</span>)+
+<span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">name=</span><span class="st">&quot;Crop&quot;</span>,
+                         <span class="dt">breaks=</span><span class="kw">c</span>(<span class="st">&quot;smlgrains&quot;</span>, <span class="st">&quot;soybeans&quot;</span>),
+                         <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Small Grains&quot;</span>, <span class="st">&quot;Soybeans&quot;</span>), <span class="dt">palette=</span><span class="st">&quot;Set1&quot;</span>)+
+<span class="st">  </span><span class="kw">scale_shape_discrete</span>(<span class="dt">name=</span><span class="st">&quot;Crop&quot;</span>,
+                         <span class="dt">breaks=</span><span class="kw">c</span>(<span class="st">&quot;smlgrains&quot;</span>, <span class="st">&quot;soybeans&quot;</span>),
+                         <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Small Grains&quot;</span>, <span class="st">&quot;Soybeans&quot;</span>))</code></pre></div>
+</section><section id="section-11" class="slide level2">
+<h2></h2>
+<p><img src="slides_polish_files/figure-revealjs/unnamed-chunk-22-1.png" width="768" /></p>
+</section><section id="great-places-to-look-up-what-you-need-all-included-by-google" class="slide level2">
+<h2>Great places to look up what you need (all included by Google)</h2>
+<ul>
+<li class="fragment next"><a href="http://docs.ggplot2.org/current/">ggplot2 documentation</a></li>
+<li class="fragment next"><a href="http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/">Beautiful plotting in R</a></li>
+<li class="fragment next"><a href="http://www.cookbook-r.com/Graphs/">R Graphics Cookbook</a></li>
+</ul>
 </section>
 
   <!--
