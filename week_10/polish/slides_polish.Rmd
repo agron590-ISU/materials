@@ -457,3 +457,4 @@ labs(x = "Year",y = "Acres Planted")+
 * [ggplot2 documentation](http://docs.ggplot2.org/current/)
 * [Beautiful plotting in R](http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/)
 * [R Graphics Cookbook](http://www.cookbook-r.com/Graphs/)
+* [R Graph Catalog](http://shinyapps.stat.ubc.ca/r-graph-catalog/)
