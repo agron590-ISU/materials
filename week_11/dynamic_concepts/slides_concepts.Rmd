@@ -112,6 +112,11 @@ Gentleman and Lang define a dynamic document as an ordered composition of code c
 * Interactivity  
 * Metadata  
 
+##
+
+<center><img src="images/anyquestions.gif" width="600px"/></center>
+
+
 ## What are some barriers to the creation and use of compendiums and dynamic documents?  
 * In general  
 * For you personally  
@@ -125,4 +130,8 @@ Gentleman and Lang define a dynamic document as an ordered composition of code c
 <p style="color:black">
 <p>Find an article published with a compendium or dynamic document in your discipline. </p> 
 </p>  
+
+##  
+
+<center><img src="images/davidpumpkins.gif" width="600px"/></center>
 
