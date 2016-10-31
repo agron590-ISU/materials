@@ -1,0 +1,31 @@
+---
+title: "Dynamic Documents"
+author: "Ranae Dietzel and Andee Kaplan"
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: ribbon
+    incremental: true
+---
+
+#The Role of Dynamic Documents in Reproduciblity  
+
+##Research has many moving parts  
+* Text for the story  
+* Data  
+    - Many years  
+    - Many people  
+    - Many types  
+    - Many sets  
+* Code  
+    - Figures  
+    - Statistical analysis  
+    - Tables  
+* Bibliography  
+
+## When you start a publication, you don't always have a map of where you're going. This usually means you also can't provide a map of where you've been, even if you can give someone directions on how to get there.  
+
+## A dynamic document 
+
