@@ -10,7 +10,7 @@ output:
     incremental: true
 ---
 
-#The Role of Dynamic Documents in Reproduciblity  
+#The Role of Dynamic Documents in Reproducibility  
 
 ##What is a dynamic document?  
 * A dynamic document incorporates changes made in your work as you work.  
