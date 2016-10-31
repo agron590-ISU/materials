@@ -122,7 +122,56 @@ Gentleman and Lang, 2004<br />
 </li>
 <li class="fragment next"><em>Auxiliary software</em> is software that is used, but does not appear in the dynamic document. For example, R packages and functions.<br />
 </li>
-<li class="fragment next"><em>Transformer</em> is the mechansism or system used to transform a dynamic document into some desired output.</li>
+<li class="fragment next"><em>Transformer</em> is the mechanism or system used to transform a dynamic document into some desired output.</li>
+</ul>
+</section><section id="your-turn" class="slide level2 cover white">
+<h2>Your turn</h2>
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<p><img src="images/your_turn.jpg" class="cover height" /></p>
+<p style="color:black">
+<p>
+Talk with a partner about all of the components that need to go into a report or publication. Draw a concept diagram of the connections that need to be made between these components in order to produce a runnable document.
+</p>
+<p>
+In other words, pretend knitr has not yet been invented. What needs to happen for a dynamic document to become a reality?
+</p>
+</section><section id="gentleman-and-lang" class="slide level2">
+<h2>Gentleman and Lang</h2>
+<ul>
+<li class="fragment next">Envisioned that not only would compendiums and dyanmic documents allow readers to recreate analyses, they would also change the way a reader interacted with the content.<br />
+</li>
+<li class="fragment next">Readers would be able to go through computations as they read the work.<br />
+</li>
+<li class="fragment next">Readers could explore alternative computations or parameter values.</li>
+</ul>
+</section><section id="further-motivation" class="slide level2">
+<h2>Further motivation</h2>
+<ul>
+<li class="fragment next">Reviewing the results of papers would no longer need to involve reworking long computations.<br />
+</li>
+<li class="fragment next">Or, the results of studies would no longer need to be taken on faith.<br />
+</li>
+<li class="fragment next">Implicit assumptions and mistakes can be discovered during peer review.</li>
+</ul>
+</section><section id="literate-programming" class="slide level2">
+<h2>Literate programming</h2>
+<ul>
+<li class="fragment next">Introduced by Knuth in 1992<br />
+</li>
+<li class="fragment next">A literate program is a document that is a mixture of code segments and text segements.</li>
+<li class="fragment next">Written to be read by humans rather than a computer and organized as such.</li>
+</ul>
+</section><section id="literate-programming-1" class="slide level2">
+<h2>Literate programming</h2>
+<ul>
+<li class="fragment next">A literate program should support <em>weaving</em> and <em>tangling</em>.<br />
+</li>
+<li class="fragment next"><em>Weaving</em> creates a document for the reader that displays code and text and output such as figures and tables.<br />
+</li>
+<li class="fragment next"><em>Tangling</em> arranges the code chunk in a way that they are machine readable and runnable.<br />
+</li>
+<li class="fragment next"><p><em>Sweave</em> (Leisch 2002) uses R and XML to execute these ideas.</p></li>
+<li class="fragment next"></li>
 </ul>
 </section>
 
