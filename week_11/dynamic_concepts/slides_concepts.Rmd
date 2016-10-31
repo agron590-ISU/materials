@@ -16,7 +16,7 @@ output:
 * A dynamic document incorporates changes made in your work as you work.  
 * Your data changes, your document changes.  
 * Your code changes, your document changes.  
-* Your story changes, your documents changes. . .if you type in the new story.
+* Your story changes, your document changes. . .if you type in the new story.
 
 ##Research has many moving parts  
 * Text for the story  
@@ -26,13 +26,51 @@ output:
     - Many types  
     - Many sets  
 * Code  
-    - Figures  
+    - Figures, tables  
     - Statistical analysis  
-    - Tables  
+* Software   
 * Bibliography  
 
-## When you start a publication, you don't always have a map of where you're going. This usually means you also can't provide a map of where you've been, even if you can give someone directions on how to get there.  
+## 
+
+When you start a publication, you don't always have a map of where you're going. This usually means you also can't provide a map of where you've been, even if you can give someone directions on how to get there.  
+
+<center><img src="images/wrongturn.gif" width="350px"/></center> 
 
 ## A dynamic document is more than just a pretty face.  
-*  Dynamic documents can tie together everything you have done and allow others to reproduce all or part of your work.  
+* Dynamic documents can tie together everything you have done and allow others to reproduce all or part of your work.  
+* A good dynamic document requires thoughtful structuring behind the scenes.  
+
+## Dynamic documents are not a new idea.  
+When I was playing Oregon Trail, people were planning ways to tie together their text, code, and data in a way that they would not have to repeat work and others could follow what they did.  
+<center><img src="images/oregontrail.png" width="400px"/></center>  
+Probably so they could keep track of their Oregon Trail successes and failures.  
+
+## Statistical Analyses and Reproducible Research  
+  Gentleman and Lang, 2004  
+<center><img src="images/thegentlemen.gif" width="600px"/></center>  
+
+## Compendium  
+  Gentleman and Lang introduce the idea of a *compendium* as both  
+  
+* a container for the elements that make up a publication  
+* a means for distributing, managing, and updating the collection.  
+
+Key Words: Compendium, Dynamic documents, Literate programming, Markup language, Perl, Python, R  
+
+## Compendium  
+* Elements of a dynamic document can be extracted and processed by both the author and the reader  
+* Elements of the compendium can be used in contexts other than the author's original work    
+
+
+## Compendium Elements    
+Gentleman and Lang define a dynamic document as an ordered composition of code chunks and text chunks.  
+
+* *Code chunks* are sequences of commands in some programming language.  
+    - Perform the computations needed to produce the appropriate output  
+* *Text chunks* describe the problem, the code, the results, and often their interpretation.  
+* *Auxiliary software* is software that is used, but does not appear in the dynamic document.  For example, R packages and functions.  
+* *Transformer* is the mechansism or system used to transform a dynamic document into some desired output.  
+
+
 

@@ -27,7 +27,18 @@
 
     
   
-<section id="the-role-of-dynamic-documents-in-reproduciblity" class="titleslide slide level1"><h2 class="shout">The Role of Dynamic Documents in Reproduciblity</h2></section><section id="research-has-many-moving-parts" class="slide level2">
+<section id="the-role-of-dynamic-documents-in-reproduciblity" class="titleslide slide level1"><h2 class="shout">The Role of Dynamic Documents in Reproduciblity</h2></section><section id="what-is-a-dynamic-document" class="slide level2">
+<h2>What is a dynamic document?</h2>
+<ul>
+<li class="fragment next">A dynamic document incorporates changes made in your work as you work.<br />
+</li>
+<li class="fragment next">Your data changes, your document changes.<br />
+</li>
+<li class="fragment next">Your code changes, your document changes.<br />
+</li>
+<li class="fragment next">Your story changes, your document changes. . .if you type in the new story.</li>
+</ul>
+</section><section id="research-has-many-moving-parts" class="slide level2">
 <h2>Research has many moving parts</h2>
 <ul>
 <li class="fragment next">Text for the story<br />
@@ -45,17 +56,74 @@
 </ul></li>
 <li class="fragment next">Code
 <ul>
-<li class="fragment next">Figures<br />
+<li class="fragment next">Figures, tables<br />
 </li>
 <li class="fragment next">Statistical analysis<br />
 </li>
-<li class="fragment next">Tables<br />
-</li>
 </ul></li>
+<li class="fragment next">Software<br />
+</li>
 <li class="fragment next">Bibliography</li>
 </ul>
-</section><section id="when-you-start-a-publication-you-dont-always-have-a-map-of-where-youre-going.-this-usually-means-you-also-cant-provide-a-map-of-where-youve-been-even-if-you-can-give-someone-directions-on-how-to-get-there." class="slide level2">
-<h2>When you start a publication, you don’t always have a map of where you’re going. This usually means you also can’t provide a map of where you’ve been, even if you can give someone directions on how to get there.</h2>
+</section><section id="section" class="slide level2">
+<h2></h2>
+<p>When you start a publication, you don’t always have a map of where you’re going. This usually means you also can’t provide a map of where you’ve been, even if you can give someone directions on how to get there.</p>
+<center>
+<img src="images/wrongturn.gif" width="350px"/>
+</center>
+</section><section id="a-dynamic-document-is-more-than-just-a-pretty-face." class="slide level2">
+<h2>A dynamic document is more than just a pretty face.</h2>
+<ul>
+<li class="fragment next">Dynamic documents can tie together everything you have done and allow others to reproduce all or part of your work.<br />
+</li>
+<li class="fragment next">A good dynamic document requires thoughtful structuring behind the scenes.</li>
+</ul>
+</section><section id="dynamic-documents-are-not-a-new-idea." class="slide level2">
+<h2>Dynamic documents are not a new idea.</h2>
+When I was playing Oregon Trail, people were planning ways to tie together their text, code, and data in a way that they would not have to repeat work and others could follow what they did.<br />
+
+<center>
+<img src="images/oregontrail.png" width="400px"/>
+</center>
+<p>Probably so they could keep track of their Oregon Trail successes and failures.</p>
+</section><section id="statistical-analyses-and-reproducible-research" class="slide level2">
+<h2>Statistical Analyses and Reproducible Research</h2>
+Gentleman and Lang, 2004<br />
+
+<center>
+<img src="images/thegentlemen.gif" width="600px"/>
+</center>
+</section><section id="compendium" class="slide level2">
+<h2>Compendium</h2>
+<p>Gentleman and Lang introduce the idea of a <em>compendium</em> as both</p>
+<ul>
+<li class="fragment next">a container for the elements that make up a publication<br />
+</li>
+<li class="fragment next">a means for distributing, managing, and updating the collection.</li>
+</ul>
+<p>Key Words: Compendium, Dynamic documents, Literate programming, Markup language, Perl, Python, R</p>
+</section><section id="compendium-1" class="slide level2">
+<h2>Compendium</h2>
+<ul>
+<li class="fragment next">Elements of a dynamic document can be extracted and processed by both the author and the reader<br />
+</li>
+<li class="fragment next">Elements of the compendium can be used in contexts other than the author’s original work</li>
+</ul>
+</section><section id="compendium-elements" class="slide level2">
+<h2>Compendium Elements</h2>
+<p>Gentleman and Lang define a dynamic document as an ordered composition of code chunks and text chunks.</p>
+<ul>
+<li class="fragment next"><em>Code chunks</em> are sequences of commands in some programming language.
+<ul>
+<li class="fragment next">Perform the computations needed to produce the appropriate output<br />
+</li>
+</ul></li>
+<li class="fragment next"><em>Text chunks</em> describe the problem, the code, the results, and often their interpretation.<br />
+</li>
+<li class="fragment next"><em>Auxiliary software</em> is software that is used, but does not appear in the dynamic document. For example, R packages and functions.<br />
+</li>
+<li class="fragment next"><em>Transformer</em> is the mechansism or system used to transform a dynamic document into some desired output.</li>
+</ul>
 </section>
 
   <!--
