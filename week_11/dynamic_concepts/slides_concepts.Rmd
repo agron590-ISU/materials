@@ -12,6 +12,12 @@ output:
 
 #The Role of Dynamic Documents in Reproduciblity  
 
+##What is a dynamic document?  
+* A dynamic document incorporates changes made in your work as you work.  
+* Your data changes, your document changes.  
+* Your code changes, your document changes.  
+* Your story changes, your documents changes. . .if you type in the new story.
+
 ##Research has many moving parts  
 * Text for the story  
 * Data  
@@ -27,5 +33,6 @@ output:
 
 ## When you start a publication, you don't always have a map of where you're going. This usually means you also can't provide a map of where you've been, even if you can give someone directions on how to get there.  
 
-## A dynamic document 
+## A dynamic document is more than just a pretty face.  
+*  Dynamic documents can tie together everything you have done and allow others to reproduce all or part of your work.  
 
