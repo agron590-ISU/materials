@@ -10,16 +10,16 @@ Please write a 2-3 page final project proposal detailing the background and goal
 
 Please write 1-2 pages which describes
 
-1) Background  
+1. Background  
     - What problem are you addressing? Why is there a need for this project?  
     - Where does your data come from? Do you already have access to it? What do your data look like?  
-2) Objective  
+2. Objective  
     - What will "success" look like for your project?
     - You may need more than one.
     - Potentially consider objectives for this class, as well as long term (if necessary)
-3) Approach  
+3. Approach  
     - What strategies and tools will you use to reach your objective?  
-4) Desired outcome  
+4. Desired outcome  
     - What does the final product look like?
 
 ## Timeline
