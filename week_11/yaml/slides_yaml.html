@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>YAML</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="slides_yaml_files/rmdshower/node_modules/shower-ribbon/styles/screen-4x3.css">
+  <link rel="stylesheet" href="slides_yaml_files/rmdshower/style-common.css">
+  <link rel="stylesheet" href="slides_yaml_files/rmdshower/style-ribbon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+  <script src="slides_yaml_files/rmdshower/auto-render.min.js" type="text/javascript"></script>
+  
+  
+  
+  
+  
+</head>
+
+<body class="shower list">
+
+  <header class="caption">
+    <h1>YAML</h1>
+    <p>Ranae Dietzel and Andee Kaplan</p>
+  </header>
+
+    
+  
+<section id="yaml-aint-markup-language" class="titleslide slide level1"><h2 class="shout">YAML Ain’t Markup Language</h2></section><section id="r-markdown-output-formats" class="slide level2">
+<h2>R markdown output formats</h2>
+<p><strong>Documents</strong></p>
+<p>Interactive R Notebooks, HTML, PDF, Microsoft Word (docx), OpenDocument Text, Rich Text Format, Markdown</p>
+<p><strong>Presentations</strong></p>
+<p>HTML presentation with ioslides, reveal.js, W3C Slidy (and more), and PDF presentation with LaTeX Beamer</p>
+<p><strong>More</strong></p>
+<p>Interactive dashboards, R package vignette, books, websites, and interactive documents.</p>
+</section><section id="your-turn" class="slide level2 cover white">
+<h2>Your turn</h2>
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<p><img src="images/your_turn.jpg" class="cover height" /></p>
+<p style="color:white">
+Come up with a list of 5 things you wish you could do with R markdown (formatting or otherwise).
+</p>
+</section><section id="r-markdown-flexibility" class="slide level2">
+<h2>R markdown flexibility</h2>
+<p>Each output type has its own flexible options to customize your document. For example:</p>
+<div class="double">
+<ul>
+<li>
+Table of contents
+</li>
+<li>
+Section numbers
+</li>
+<li>
+Tabbed sections (HTML)
+</li>
+<li>
+Figure width, height, captions
+</li>
+<li>
+Code folding (HTML)
+</li>
+<li>
+Equation rendering
+</li>
+<li>
+Templating
+</li>
+<li>
+Including external documents
+</li>
+<li>
+Bibliographies
+</li>
+<li>
+LaTeX options (PDF)
+</li>
+<li>
+etc.
+</ul>
+</p>
+</section><section id="yaml" class="slide level2">
+<h2>YAML</h2>
+<p>We control <strong>all</strong> of these options with YAML front-matter. YAML is a human friendly data serialization standard for all programming languages.</p>
+<p>The YAML header is surrounded by <code>---</code>s, and is at the beginning of the document.</p>
+<p><img src="images/yaml.png" /></p>
+</section><section id="available-options" class="slide level2">
+<h2>Available options</h2>
+<p>You can go to <a href="http://rmarkdown.rstudio.com">rmarkdown.rstudio.com</a> and find out all the available YAML options for the default document types in R markdown.</p>
+<p>If you create your own templates, you can make your own options! For example, you may want to create a template for a journal submission <a href="https://github.com/gammarama/intRo/tree/papers/jcgs-paper-2016">[example]</a>.</p>
+</section><section id="your-turn-1" class="slide level2 cover white">
+<h2>Your turn</h2>
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<p><img src="images/your_turn.jpg" class="cover height" /></p>
+<p style="color: white">
+Navigate to <a style="color: black" href="http://rmarkdown.rstudio.com">rmarkdown.rstudio.com</a> and look up how to specify your 5 wishes and implement them in a R markdown document.
+</p>
+<p style="color: white">
+<b>Hint:</b> Think about what type of document you want first.
+</p>
+<p style="color: white">
+If you don’t have a wish list, try mine (PDF Document):
+</p>
+<ol style="color: white">
+<li>
+Table of contents
+</li>
+<li>
+Numbered sections
+</li>
+<li>
+Allow figure captions
+</li>
+<li>
+Set default figure size to 4in by 3in
+</li>
+<li>
+Set margins to 1in
+</li>
+</ol>
+</section>
+
+  <!--
+  To hide progress bar from entire presentation
+  just remove “progress” element.
+  -->
+  <!-- <div class="progress"></div> -->
+  <script src="slides_yaml_files/rmdshower/node_modules/shower/node_modules/shower-core/shower.min.js"></script>
+  <!-- Copyright © 2015 Yours Truly, Famous Inc. -->
+  <!-- Photos by John Carey, fiftyfootshadows.net -->
+
+    <script>renderMathInElement(document.body);</script>
+  
+  
+</body>
+</html>
