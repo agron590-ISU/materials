@@ -30,6 +30,18 @@ output:
 <center><img src="images/inception_awake.gif" width="400px"/></center>  
 
 ## Three Rmarkdown options in RStudio  
+* ioslides (html)   
+* Slidy (html)  
+* Beamer (pdf)  
+
+*ioslides has more default styling than Slidy, but both can be changed using a styling sheet (CSS)  
+
+## YAML Options  
+* Rendering -- `incremental: true`  
+* Screen size --`widescreen: true`  
+* Text size -- `smaller: true`  
+* Transiton speed -- `transition: slower`  
+* Custom CSS -- `css: styles.css`  
 
 
 
