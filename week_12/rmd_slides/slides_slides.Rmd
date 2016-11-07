@@ -102,10 +102,10 @@ This text was supposed to be red.
 * Pushing the `h` button will make the non-highlighted code fade   
 
 ```{html}
-<b>
+### <b>
 x <- 10
 y <- x * 2
- </b>
+ ### </b>
 ```
 
 ## Presenter mode  
