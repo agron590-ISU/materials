@@ -1,35 +1,54 @@
 ---
 title: "Making Slides"
-author: "Ranae Dietzel"
+author: "Ranae Dietzel and Andee Kaplan"
 date: "November 4, 2016"
-output: ioslides_presentation
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: ribbon
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
+##Slides about making slides 
 
-## R Markdown
+<center><img src="images/inception_top.gif" width="800px"/></center>
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+## Rmarkdown  
+* Great for reproducibility  
+* Very nice for including figures, tables, data, and code  
+* Strong choice for header -> bullet point type style  
+* Output html which enables easy use of life-changing GIFs  
+<center><img src="images/inception_page.gif" width="400px"/></center> 
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+## Rmarkdown  
+* Not great for creating diagrams and schematics while writing your presentation  
+* Appearance is difficult to change unless you can write CSS/HTML  
+    - However, CSS templates are out there  
+    - Some HTML relatively easy to find and implement e.g.:    
+`<center><img src="images/awake.gif" width="400px"/></center>`
+<center><img src="images/inception_awake.gif" width="400px"/></center>  
 
-## Slide with Bullets
+## Three Rmarkdown options in RStudio  
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
 
-## Slide with R Output
 
-```{r cars, echo = TRUE}
-summary(cars)
-```
 
-## Slide with Plot
 
-```{r pressure}
-plot(pressure)
-```
 
+
+## Display Modes 
+## Incremental Bullets  
+## Visual Appearance  
+## Code Highlighting  
+## Tables  
+## Advanced Layout  
+## Text Color  
+## Presenter Mode  
+## Printing and PDF Output  
+## Figure Options  
+## Data Frame Printing  
+## Equations  
+## Document Dependencies  
+## Advanced Customization  
+## Shared Options
