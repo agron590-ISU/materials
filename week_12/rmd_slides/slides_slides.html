@@ -13,6 +13,43 @@
   <script src="slides_slides_files\rmdshower/auto-render.min.js" type="text/javascript"></script>
   
   
+    <style type="text/css">
+   div.sourceCode { overflow-x: auto; }
+   table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+     margin: 0; padding: 0; vertical-align: baseline; border: none; }
+   table.sourceCode { width: 100%; line-height: 100%; }
+   td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+   td.sourceCode { padding-left: 5px; }
+   code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+   code > span.dt { color: #902000; } /* DataType */
+   code > span.dv { color: #40a070; } /* DecVal */
+   code > span.bn { color: #40a070; } /* BaseN */
+   code > span.fl { color: #40a070; } /* Float */
+   code > span.ch { color: #4070a0; } /* Char */
+   code > span.st { color: #4070a0; } /* String */
+   code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+   code > span.ot { color: #007020; } /* Other */
+   code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+   code > span.fu { color: #06287e; } /* Function */
+   code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+   code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+   code > span.cn { color: #880000; } /* Constant */
+   code > span.sc { color: #4070a0; } /* SpecialChar */
+   code > span.vs { color: #4070a0; } /* VerbatimString */
+   code > span.ss { color: #bb6688; } /* SpecialString */
+   code > span.im { } /* Import */
+   code > span.va { color: #19177c; } /* Variable */
+   code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+   code > span.op { color: #666666; } /* Operator */
+   code > span.bu { } /* BuiltIn */
+   code > span.ex { } /* Extension */
+   code > span.pp { color: #bc7a00; } /* Preprocessor */
+   code > span.at { color: #7d9029; } /* Attribute */
+   code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+   code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+   code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+   code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
   
   
   
@@ -88,53 +125,148 @@
 </li>
 <li>Transiton speed – <code>transition: slower</code><br />
 </li>
-<li>Custom CSS – <code>css: styles.css</code></li>
+<li>Custom CSS – <code>css: styles.css</code><br />
+</li>
+<li>Add a logo – <code>logo.png</code><br />
+</li>
+<li>and more. . .</li>
 </ul>
 </section>
-<section id="display-modes" class="slide level2">
-<h2>Display Modes</h2>
+<section id="slide-basics" class="slide level2">
+<h2>Slide basics</h2>
+<ul>
+<li><code>#</code> makes a new slide with huge letters<br />
+</li>
+<li><code>##</code> makes a new slide and begins the header of it.<br />
+</li>
+<li><code>----</code> also makes a new slide<br />
+</li>
+<li>All other RMarkdown applies
+<ul>
+<li><code>*</code> followed by a space creates bullets<br />
+</li>
+<li>Two tabs, a <code>-</code> and a space creates subpoints</li>
+</ul></li>
+</ul>
 </section>
-<section id="incremental-bullets" class="slide level2">
-<h2>Incremental Bullets</h2>
-</section>
-<section id="visual-appearance" class="slide level2">
-<h2>Visual Appearance</h2>
-</section>
-<section id="code-highlighting" class="slide level2">
-<h2>Code Highlighting</h2>
+<section id="your-turn" class="slide level2 cover white">
+<h2>Your turn</h2>
+<p><img src="images/your_turn.jpg" class="cover height" /></p>
+<p style="color:black">
+<p>
+Open up a ioslides presentation and make some YAML adjustments.
+</p>
+<p>
+Make one text-only slide that briefly outlines your morning.
+</p>
+<p>
+Follow with a slide showing demo code and another slide showing a demo plot.
+</p>
 </section>
 <section id="tables" class="slide level2">
 <h2>Tables</h2>
+<ul>
+<li>Tables are also the same as in Rmarkdown<br />
+</li>
+<li><em><code>kable(summary)</code> or <code>kable(df)</code></em><br />
+</li>
+<li><code>pander::pander(lm( y~ x))</code><br />
+</li>
+<li><code>xtable::xtable(summary)</code></li>
+</ul>
 </section>
-<section id="advanced-layout" class="slide level2">
-<h2>Advanced Layout</h2>
+<section id="a-tiny-bit-of-html" class="slide level2">
+<h2>A tiny bit of html</h2>
+<ul>
+<li>Two-column layout</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;columns-2&quot;</span><span class="kw">&gt;</span>
+  ![](image.png)
+
+  - Bullet 1
+  - Bullet 2
+  - Bullet 3
+<span class="kw">&lt;/div&gt;</span></code></pre></div>
 </section>
-<section id="text-color" class="slide level2">
-<h2>Text Color</h2>
+<section id="a-tiny-bit-of-html-1" class="slide level2">
+<h2>A tiny bit of html</h2>
+<ul>
+<li>Change text color</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;red2&quot;</span><span class="kw">&gt;</span>
+This text is red
+<span class="kw">&lt;/div&gt;</span></code></pre></div>
+<div class="red">
+<p>This text was supposed to be red.</p>
+</div>
+</section>
+<section id="change-css-on-slide-by-slide-basis" class="slide level2">
+<h2>Change css on slide-by-slide basis</h2>
+<ul>
+<li><code>## Your turn { .cover .white }</code></li>
+</ul>
+<center>
+<img src="images/inception_iguess.gif" width="400px"/>
+</center>
+</section>
+<section id="code-highlighting" class="slide level2">
+<h2>Code highlighting</h2>
+<ul>
+<li>Make some of your code stand out by making it bold<br />
+</li>
+<li>Pushing the <code>h</code> button will make the non-highlighted code fade</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;b&gt;</span>
+x <span class="er">&lt;</span>- 10
+y <span class="er">&lt;</span>- x * 2
+ <span class="kw">&lt;/b&gt;</span></code></pre></div>
 </section>
 <section id="presenter-mode" class="slide level2">
-<h2>Presenter Mode</h2>
+<h2>Presenter mode</h2>
+<ul>
+<li>Rmarkdown offers a presenter mode<br />
+</li>
+<li>Shows presenter notes and a thumbnail of the next slide<br />
+</li>
+<li>Enable presenter mode by adding <code>?presentme=true</code> to the URL of the presentation<br />
+</li>
+<li>Add presenter notes by</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;notes&quot;</span><span class="kw">&gt;</span>
+This is my *note*.
+
+- It can contain markdown
+- like this list
+
+<span class="kw">&lt;/div&gt;</span></code></pre></div>
 </section>
-<section id="printing-and-pdf-output" class="slide level2">
-<h2>Printing and PDF Output</h2>
+<section id="alternate-formats" class="slide level2">
+<h2>Alternate formats</h2>
+<ul>
+<li>In addition to CSS templates, you may find alternate presentation formats<br />
+</li>
+<li>For example, we use <a href="https://shwr.me/"><code>shower</code></a> for our class slides</li>
+</ul>
 </section>
-<section id="figure-options" class="slide level2">
-<h2>Figure Options</h2>
+<section id="questions" class="slide level2">
+<h2>Questions?</h2>
+<center>
+<img src="images/inception_questions.gif" width="800px"/>
+</center>
 </section>
-<section id="data-frame-printing" class="slide level2">
-<h2>Data Frame Printing</h2>
-</section>
-<section id="equations" class="slide level2">
-<h2>Equations</h2>
-</section>
-<section id="document-dependencies" class="slide level2">
-<h2>Document Dependencies</h2>
-</section>
-<section id="advanced-customization" class="slide level2">
-<h2>Advanced Customization</h2>
-</section>
-<section id="shared-options" class="slide level2">
-<h2>Shared Options</h2>
+<section id="your-turn-1" class="slide level2 cover white">
+<h2>Your turn</h2>
+<p><img src="images/your_turn.jpg" class="cover height" /></p>
+<p style="color:black">
+<p>
+Alter your slides by highlighting some of the code.
+</p>
+<p>
+Add an image and adjust the size and center the image using html..
+</p>
+<p>
+Make notes for a few slides and try out presenter mode.
+</p>
 </section>
 
   <!--

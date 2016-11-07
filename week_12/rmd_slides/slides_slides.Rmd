@@ -42,25 +42,100 @@ output:
 * Text size -- `smaller: true`  
 * Transiton speed -- `transition: slower`  
 * Custom CSS -- `css: styles.css`  
+* Add a logo -- `logo.png`  
+* and more. . .  
+
+## Slide basics  
+* `#` makes a new slide with huge letters  
+* `##` makes a new slide and begins the header of it.  
+*  `----` also makes a new slide  
+* All other RMarkdown applies  
+    - `*` followed by a space creates bullets  
+    - Two tabs, a `-` and a space creates subpoints
+
+## Your turn { .cover .white }
+
+<img src="images/your_turn.jpg" class="cover height" />
 
 
+<p style="color:black">
+<p>Open up a ioslides presentation and make some YAML adjustments.</p> 
+<p>Make one text-only slide that briefly outlines your morning.</p> 
+<p>Follow with a slide showing demo code and another slide showing a demo plot.</p>  
 
-
-
-
-
-## Display Modes 
-## Incremental Bullets  
-## Visual Appearance  
-## Code Highlighting  
 ## Tables  
-## Advanced Layout  
-## Text Color  
-## Presenter Mode  
-## Printing and PDF Output  
-## Figure Options  
-## Data Frame Printing  
-## Equations  
-## Document Dependencies  
-## Advanced Customization  
-## Shared Options
+* Tables are also the same as in Rmarkdown  
+* *`kable(summary)` or `kable(df)`*  
+* `pander::pander(lm( y~ x))`  
+* `xtable::xtable(summary)`
+
+## A tiny bit of html  
+* Two-column layout  
+```{html, eval=FALSE}
+<div class="columns-2">
+  ![](image.png)
+
+  - Bullet 1
+  - Bullet 2
+  - Bullet 3
+</div>
+```  
+
+## A tiny bit of html  
+* Change text color  
+```{html}
+<div class="red2">
+This text is red
+</div>
+```
+<div class="red">
+This text was supposed to be red.
+</div>  
+
+## Change css on slide-by-slide basis 
+* `## Your turn { .cover .white }`
+
+<center><img src="images/inception_iguess.gif" width="400px"/></center>  
+
+## Code highlighting  
+* Make some of your code stand out by making it bold  
+* Pushing the `h` button will make the non-highlighted code fade   
+
+```{html}
+<b>
+x <- 10
+y <- x * 2
+ </b>
+```
+
+## Presenter mode  
+* Rmarkdown offers a presenter mode  
+* Shows presenter notes and a thumbnail of the next slide  
+* Enable presenter mode by adding `?presentme=true` to the URL of the presentation  
+* Add presenter notes by  
+
+```{html}
+<div class="notes">
+This is my *note*.
+
+- It can contain markdown
+- like this list
+
+</div>
+```
+
+## Alternate formats  
+* In addition to CSS templates, you may find alternate presentation formats  
+* For example, we use [`shower`](https://shwr.me/) for our class slides  
+
+## Questions?  
+<center><img src="images/inception_questions.gif" width="800px"/></center>
+
+## Your turn { .cover .white }
+
+<img src="images/your_turn.jpg" class="cover height" />
+
+<p style="color:black">
+<p>Alter your slides by highlighting some of the code.</p> 
+<p>Add an image and adjust the size and center the image using html..</p> 
+<p>Make notes for a few slides and try out presenter mode.</p>  
