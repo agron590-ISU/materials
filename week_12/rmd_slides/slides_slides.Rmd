@@ -42,8 +42,8 @@ output:
 * Text size -- `smaller: true`  
 * Transiton speed -- `transition: slower`  
 * Custom CSS -- `css: styles.css`  
-* Add a logo -- `logo.png`  
-* and more. . .  
+* Add a logo -- `logo:logo.png`  
+* Lines and tabs are important in YAML!  
 
 ## Slide basics  
 * `#` makes a new slide with huge letters  
@@ -109,7 +109,7 @@ y <- x * 2
 ```
 
 ## Presenter mode  
-* Rmarkdown offers a presenter mode  
+* Rmarkdown offers a presenter mode (`p`) 
 * Shows presenter notes and a thumbnail of the next slide  
 * Enable presenter mode by adding `?presentme=true` to the URL of the presentation  
 * Add presenter notes by  
