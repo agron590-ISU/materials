@@ -151,6 +151,30 @@ planet &lt;-<span class="st"> </span><span class="kw">tbl</span>(star_wars, <spa
 <p style="color:white">
 </p>
 </section>
+<section id="laziness" class="slide level2">
+<h2>Laziness</h2>
+<p><code>dplyr</code> never pulls data into <code>R</code> unless you explicitly ask for it.</p>
+<p>It delays doing any work until the last possible moment: it collects together everything you want to do and then sends it to the database in one step.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">c1 &lt;-<span class="st"> </span><span class="kw">filter</span>(planet, population &gt;<span class="st"> </span><span class="fl">1e7</span> &amp;<span class="st"> </span>diameter &lt;<span class="st"> </span><span class="dv">10000</span>)
+c2 &lt;-<span class="st"> </span><span class="kw">select</span>(c1, name, climate, terrain, gravity, diameter, population)
+c3 &lt;-<span class="st"> </span><span class="kw">mutate</span>(c2, <span class="dt">surface_area =</span> <span class="dv">4</span>*pi*(diameter/<span class="dv">2</span>)^<span class="dv">2</span>)
+c4 &lt;-<span class="st"> </span><span class="kw">mutate</span>(c3, <span class="dt">pop_area =</span> population/surface_area)
+c5 &lt;-<span class="st"> </span><span class="kw">arrange</span>(c4, pop_area)</code></pre></div>
+<p>This sequence of operations never actually touches the database. It’s not until you ask for the data (e.g. by printing <code>c5</code>) that <code>dplyr</code> generates the SQL and requests the results from the database. Even then it only pulls down 10 rows.</p>
+</section>
+<section id="collect" class="slide level2">
+<h2>Collect</h2>
+<p>To pull down all the results use <code>collect()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># dplyr doesn&#39;t actually pull all the data</span>
+<span class="kw">dim</span>(c5)</code></pre></div>
+<pre><code>## [1] NA  8</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># unless we tell it to</span>
+c5 %&gt;%<span class="st"> </span><span class="kw">collect</span>() %&gt;%<span class="st"> </span><span class="kw">dim</span>()</code></pre></div>
+<pre><code>## [1] 6 8</code></pre>
+</section>
+<section id="dbi" class="slide level2">
+<h2><code>DBI</code></h2>
+</section>
 
   <!--
   To hide progress bar from entire presentation

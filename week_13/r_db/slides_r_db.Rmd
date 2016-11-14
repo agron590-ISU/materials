@@ -81,4 +81,33 @@ head(planet)
 
 </p>
 
+## Laziness
+
+`dplyr` never pulls data into `R` unless you explicitly ask for it.
+
+It delays doing any work until the last possible moment: it collects together everything you want to do and then sends it to the database in one step.
+
+```{r lazy}
+c1 <- filter(planet, population > 1e7 & diameter < 10000)
+c2 <- select(c1, name, climate, terrain, gravity, diameter, population)
+c3 <- mutate(c2, surface_area = 4*pi*(diameter/2)^2)
+c4 <- mutate(c3, pop_area = population/surface_area)
+c5 <- arrange(c4, pop_area)
+```
+
+This sequence of operations never actually touches the database. It’s not until you ask for the data (e.g. by printing `c5`) that `dplyr` generates the SQL and requests the results from the database. Even then it only pulls down 10 rows.
+
+## Collect
+
+To pull down all the results use `collect()`.
+
+```{r collect}
+# dplyr doesn't actually pull all the data
+dim(c5)
+
+# unless we tell it to
+c5 %>% collect() %>% dim()
+```
+
 ## `DBI`
+
