@@ -78,8 +78,14 @@ head(planet)
 <img src="images/your_turn.jpg" class="cover height" />
 
 <p style="color:white">
-
+Connect to the star wars DB from your homework using `dplyr` (try to use raw SQL as little as possible) and answer
 </p>
+
+<ol style="color:white">
+<li>How many planets are not in the movies?</li>
+<li>What are their names?</li>
+<li>Which species are native to them?</li>
+</ol>
 
 ## Laziness
 
@@ -110,4 +116,29 @@ c5 %>% collect() %>% dim()
 ```
 
 ## `DBI`
+
+- More flexible
+- Able to run more queries that `SELECT` (`CREATE`, `DROP`, `INSERT`, `UPDATE`)
+- More DB backends
+
+## Example
+
+```{r dbi, warning=FALSE}
+library(DBI)
+
+# connect
+sw_con <- dbConnect(dbDriver("SQLite"), "data/star_wars.db")
+
+# list of tables
+dbListTables(sw_con)
+
+# get the data
+query <- dbSendQuery(sw_con, "SELECT * FROM planet")
+planet <- fetch(query)
+dim(planet)
+
+# close the connection
+dbDisconnect(sw_con)
+
+```
 
