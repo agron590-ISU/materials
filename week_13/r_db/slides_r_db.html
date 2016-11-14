@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>R + Databases</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="slides_r_db_files/rmdshower/node_modules/shower-ribbon/styles/screen-4x3.css">
+  <link rel="stylesheet" href="slides_r_db_files/rmdshower/style-common.css">
+  <link rel="stylesheet" href="slides_r_db_files/rmdshower/style-ribbon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+  <script src="slides_r_db_files/rmdshower/auto-render.min.js" type="text/javascript"></script>
+  
+  
+    <style type="text/css">
+   div.sourceCode { overflow-x: auto; }
+   table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+     margin: 0; padding: 0; vertical-align: baseline; border: none; }
+   table.sourceCode { width: 100%; line-height: 100%; }
+   td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+   td.sourceCode { padding-left: 5px; }
+   code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+   code > span.dt { color: #902000; } /* DataType */
+   code > span.dv { color: #40a070; } /* DecVal */
+   code > span.bn { color: #40a070; } /* BaseN */
+   code > span.fl { color: #40a070; } /* Float */
+   code > span.ch { color: #4070a0; } /* Char */
+   code > span.st { color: #4070a0; } /* String */
+   code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+   code > span.ot { color: #007020; } /* Other */
+   code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+   code > span.fu { color: #06287e; } /* Function */
+   code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+   code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+   code > span.cn { color: #880000; } /* Constant */
+   code > span.sc { color: #4070a0; } /* SpecialChar */
+   code > span.vs { color: #4070a0; } /* VerbatimString */
+   code > span.ss { color: #bb6688; } /* SpecialString */
+   code > span.im { } /* Import */
+   code > span.va { color: #19177c; } /* Variable */
+   code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+   code > span.op { color: #666666; } /* Operator */
+   code > span.bu { } /* BuiltIn */
+   code > span.ex { } /* Extension */
+   code > span.pp { color: #bc7a00; } /* Preprocessor */
+   code > span.at { color: #7d9029; } /* Attribute */
+   code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+   code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+   code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+   code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  
+  
+  
+</head>
+
+<body class="shower list">
+
+  <header class="caption">
+    <h1>R + Databases</h1>
+    <p>Ranae Dietzel and Andee Kaplan</p>
+  </header>
+
+    
+  
+<section id="r-databases" class="slide level2">
+<h2>R + Databases</h2>
+<p><img src="images/synergy.gif" /></p>
+</section>
+<section id="situation" class="slide level2">
+<h2>Situation</h2>
+<ol type="1">
+<li>You have a wonderful relational DB implemented with all of your beautiful data.</li>
+<li>You love using <code>R</code> and R markdown to analyse your data.</li>
+</ol>
+<p><strong>Question: </strong> How to analyze your relational database data in <code>R</code>?</p>
+</section>
+<section id="options" class="slide level2">
+<h2>Options</h2>
+<p>There are many options for you. Here are 2:</p>
+<ol type="1">
+<li>Database backend with <code>dplyr</code></li>
+<li>Run SQL queries with <code>DBI</code></li>
+</ol>
+<p><img src="images/options.gif" /></p>
+</section>
+<section id="dplyr" class="slide level2">
+<h2><code>dplyr</code></h2>
+<p>Currently dplyr supports the three most popular open source databases (sqlite, mysql and postgresql), and google’s bigquery. If your data fits in memory there is no advantage to putting it in a database: it will only be slower and more hassle.</p>
+<p>The reasons you’d want to use dplyr with a database are</p>
+<ol type="1">
+<li>either your data is already in a database (and you don’t want to work with static csv files that someone else has dumped out for you), or</li>
+<li>you have so much data that it does not fit in memory and you have to use a database.</li>
+</ol>
+</section>
+<section id="motivation" class="slide level2">
+<h2>Motivation</h2>
+<ul>
+<li>Usually iterate between <code>R</code> and SQL many times before you get the perfect dataset.</li>
+<li>Switching between languages is cognitively challenging.</li>
+<li><code>dplyr</code> helps by allowing you to write <code>R</code> code that is automatically translated to SQL.</li>
+<li>The goal of dplyr is not to replace every SQL function with an <code>R</code> function. Instead, dplyr only generates <code>SELECT</code> statements, the SQL you write most often during analysis.</li>
+</ul>
+</section>
+<section id="lets-do-it" class="slide level2">
+<h2>Let’s do it!</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+
+<span class="co"># set up the connection</span>
+star_wars &lt;-<span class="st"> </span><span class="kw">src_sqlite</span>(<span class="st">&quot;data/star_wars.db&quot;</span>)
+
+<span class="co"># get a table by name</span>
+planet &lt;-<span class="st"> </span><span class="kw">tbl</span>(star_wars, <span class="st">&quot;planet&quot;</span>)
+
+planet %&gt;%
+<span class="st">  </span><span class="kw">filter</span>(population &gt;<span class="st"> </span><span class="fl">1e10</span>) %&gt;%
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">count =</span> <span class="kw">n</span>())</code></pre></div>
+<pre><code>## Source:   query [?? x 1]
+## Database: sqlite 3.8.6 [data/star_wars.db]
+## 
+##   count
+##   &lt;int&gt;
+## 1     6</code></pre>
+</section>
+<section id="arbitrary-sql-with-dplyr" class="slide level2">
+<h2>Arbitrary SQL with <code>dplyr</code></h2>
+<p>You can also use arbitrary SQL.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># arbitrary sql queries</span>
+planet &lt;-<span class="st"> </span><span class="kw">tbl</span>(star_wars, <span class="kw">sql</span>(<span class="st">&quot;SELECT * FROM planet&quot;</span>))
+
+<span class="kw">head</span>(planet)</code></pre></div>
+<pre><code>## Source:   query [?? x 10]
+## Database: sqlite 3.8.6 [data/star_wars.db]
+## 
+##   planet_id     name rotation_period orbital_period diameter
+##       &lt;int&gt;    &lt;chr&gt;           &lt;int&gt;          &lt;int&gt;    &lt;dbl&gt;
+## 1         1 Tatooine              23            304    10465
+## 2         2 Alderaan              24            364    12500
+## 3         3 Yavin IV              24           4818    10200
+## 4         4     Hoth              23            549     7200
+## 5         5  Dagobah              23            341     8900
+## 6         6   Bespin              12           5110   118000
+## # ... with 5 more variables: climate &lt;chr&gt;, gravity &lt;chr&gt;, terrain &lt;chr&gt;,
+## #   surface_water &lt;int&gt;, population &lt;int&gt;</code></pre>
+</section>
+<section id="your-turn" class="slide level2 cover white">
+<h2>Your turn</h2>
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<p><img src="images/your_turn.jpg" class="cover height" /></p>
+<p style="color:white">
+</p>
+</section>
+
+  <!--
+  To hide progress bar from entire presentation
+  just remove “progress” element.
+  -->
+  <!-- <div class="progress"></div> -->
+  <script src="slides_r_db_files/rmdshower/node_modules/shower/node_modules/shower-core/shower.min.js"></script>
+  <!-- Copyright © 2015 Yours Truly, Famous Inc. -->
+  <!-- Photos by John Carey, fiftyfootshadows.net -->
+
+    <script>renderMathInElement(document.body);</script>
+  
+  
+</body>
+</html>

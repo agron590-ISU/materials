@@ -1,0 +1,84 @@
+---
+title: "R + Databases"
+author: "Ranae Dietzel and Andee Kaplan"
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: ribbon
+---
+
+## R + Databases
+
+![](images/synergy.gif)
+
+## Situation
+
+1. You have a wonderful relational DB implemented with all of your beautiful data.
+2. You love using `R` and R markdown to analyse your data.
+
+**Question: ** How to analyze your relational database data in `R`?
+
+## Options
+
+There are many options for you. Here are 2:
+
+1. Database backend with `dplyr`
+2. Run SQL queries with `DBI`
+
+![](images/options.gif)
+
+## `dplyr`
+
+Currently dplyr supports the three most popular open source databases (sqlite, mysql and postgresql), and google’s bigquery. If your data fits in memory there is no advantage to putting it in a database: it will only be slower and more hassle. 
+
+The reasons you’d want to use dplyr with a database are
+
+1. either your data is already in a database (and you don’t want to work with static csv files that someone else has dumped out for you), or
+2. you have so much data that it does not fit in memory and you have to use a database. 
+
+## Motivation
+
+- Usually iterate between `R` and SQL many times before you get the perfect dataset.
+- Switching between languages is cognitively challenging. 
+- `dplyr` helps by allowing you to write `R` code that is automatically translated to SQL. 
+- The goal of dplyr is not to replace every SQL function with an `R` function. Instead, dplyr only generates `SELECT` statements, the SQL you write most often during analysis.
+
+## Let's do it!
+
+```{r connect, message=FALSE}
+library(dplyr)
+
+# set up the connection
+star_wars <- src_sqlite("data/star_wars.db")
+
+# get a table by name
+planet <- tbl(star_wars, "planet")
+
+planet %>%
+  filter(population > 1e10) %>%
+  summarise(count = n())
+```
+
+## Arbitrary SQL with `dplyr`
+
+You can also use arbitrary SQL.
+
+```{r sql}
+# arbitrary sql queries
+planet <- tbl(star_wars, sql("SELECT * FROM planet"))
+
+head(planet)
+```
+
+## Your turn { .cover .white }
+
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<img src="images/your_turn.jpg" class="cover height" />
+
+<p style="color:white">
+
+</p>
+
+## `DBI`
