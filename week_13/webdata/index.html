@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Data on the Web</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="index_files/rmdshower/node_modules/shower-ribbon/styles/screen-4x3.css">
+  <link rel="stylesheet" href="index_files/rmdshower/style-common.css">
+  <link rel="stylesheet" href="index_files/rmdshower/style-ribbon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+  <script src="index_files/rmdshower/auto-render.min.js" type="text/javascript"></script>
+  
+  
+    <style type="text/css">
+   table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+     margin: 0; padding: 0; vertical-align: baseline; border: none; }
+   table.sourceCode { width: 100%; line-height: 100%; }
+   td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+   td.sourceCode { padding-left: 5px; }
+   code > span.kw { color: #007020; font-weight: bold; }
+   code > span.dt { color: #902000; }
+   code > span.dv { color: #40a070; }
+   code > span.bn { color: #40a070; }
+   code > span.fl { color: #40a070; }
+   code > span.ch { color: #4070a0; }
+   code > span.st { color: #4070a0; }
+   code > span.co { color: #60a0b0; font-style: italic; }
+   code > span.ot { color: #007020; }
+   code > span.al { color: #ff0000; font-weight: bold; }
+   code > span.fu { color: #06287e; }
+   code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  
+  
+  
+</head>
+
+<body class="shower list">
+
+  <header class="caption">
+    <h1>Data on the Web</h1>
+    <p></p>
+  </header>
+
+    
+  
+<section id="data-on-the-web" class="slide level2">
+<h2>Data on the Web</h2>
+<p>Scott Chamberlain</p>
+<p>2016-11-15</p>
+<p><img src="img/icon_lettering_color.svg" width = "800"></p>
+</section>
+<section id="data-sources" class="slide level2">
+<h2>Data Sources</h2>
+<p>Data on the web can include</p>
+<ul>
+<li>HTML</li>
+<li>Files in FTP servers of lots of different formats</li>
+<li>Database dump</li>
+<li>APIs</li>
+<li>etc …</li>
+</ul>
+</section>
+<section id="how-to-get-it" class="slide level2">
+<h2>How to get it?</h2>
+<ul>
+<li>HTML –&gt; scrape</li>
+<li>Files (e.g., csv) –&gt; scrape and/or download</li>
+<li>Files in FTP servers of lots of different formats –&gt; download and parse</li>
+<li>Database dump –&gt; SQL or other DB client</li>
+<li>APIs –&gt; HTTP client</li>
+</ul>
+</section>
+<section id="data-type-faceoff" class="slide level2">
+<h2>Data type faceoff</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Yay!</th>
+<th style="text-align: center;">Boo!</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Scraping</td>
+<td style="text-align: center;">Mostly always an option</td>
+<td style="text-align: center;">Code breaks easily</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Can be blocked easily</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Files/FTP</td>
+<td style="text-align: center;">Likely an R thing to read it</td>
+<td style="text-align: center;">Links to files can break</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Watch out for huge files</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Database dump</td>
+<td style="text-align: center;">Great if you know SQL</td>
+<td style="text-align: center;">Not so great if you don’t</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Flexible query syntax</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Avoid R memory lim.</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">API</td>
+<td style="text-align: center;">Interface is stable(ish)</td>
+<td style="text-align: center;">Not great when want “all the data”</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">HTTP is a good UI</td>
+<td style="text-align: center;">HTTP APIs are not standarized</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="web-gotchas" class="slide level2">
+<h2>Web gotchas</h2>
+<ul>
+<li>Is the internet up or down?</li>
+<li>Your IP address may matter</li>
+<li>Is the remote website/server up or down?</li>
+<li>Using an HTTP client, useful to debug</li>
+<li>Don’t reveal your authentication details</li>
+</ul>
+</section>
+<section id="scraping" class="slide level2">
+<h2>Scraping</h2>
+<p>Let’s scrape some weather data</p>
+<p><img src="img/ames_weather.png" width = "600"></p>
+</section>
+<section id="scraping-1" class="slide level2">
+<h2>Scraping</h2>
+<p><code>rvest</code> is an easy way to get started</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&#39;rvest&#39;</span>)
+url &lt;-<span class="st"> </span><span class="kw">paste0</span>(
+  <span class="st">&quot;https://www.wunderground.com/history/airport/&quot;</span>,
+  <span class="st">&quot;KAMW/2016/11/15/DailyHistory.html&quot;</span>
+)
+weather_data &lt;-<span class="st"> </span><span class="kw">read_html</span>(url)
+<span class="kw">head</span>(<span class="kw">html_table</span>(weather_data)[[<span class="dv">1</span>]])</code></pre>
+<pre><code>#&gt;                       Actual Average        Record
+#&gt; 1         Temperature                             
+#&gt; 2    Mean Temperature  47 °F   37 °F              
+#&gt; 3     Max Temperature  66 °F   46 °F 72 °F\n(2001)
+#&gt; 4     Min Temperature  28 °F   27 °F 14 °F\n(2014)
+#&gt; 5         Degree Days                             
+#&gt; 6 Heating Degree Days     18      28              </code></pre>
+</section>
+<section id="scraping-2" class="slide level2">
+<h2>Scraping</h2>
+<p>What did we just do?</p>
+<p>Go to <code>View Page Source</code> by right-clicking on the page</p>
+<p><img src="img/rightclick.png" width = "500"></p>
+</section>
+<section id="scraping-3" class="slide level2">
+<h2>Scraping</h2>
+<p>The source is a pile of html. Very exciting!</p>
+<p><img src="img/htmlsource.png" width = "900"></p>
+</section>
+<section id="scraping---your-turn" class="slide level2">
+<h2>Scraping - Your turn</h2>
+<p><strong>3 minutes</strong></p>
+<ul>
+<li>Pick a city of your choice from Weather Underground</li>
+<li>Navigate to the history tab</li>
+<li>Get the URL</li>
+<li>Scrape the html</li>
+<li>Get any table</li>
+</ul>
+</section>
+<section id="scraping-bonus" class="slide level2">
+<h2>Scraping bonus</h2>
+<p>Use <a href="http://selectorgadget.com/">SelectorGadget</a> to find the xpath to an HTML element.</p>
+</section>
+<section id="ftp" class="slide level2">
+<h2>FTP</h2>
+<center>
+FTP = <a href="https://en.wikipedia.org/wiki/File_Transfer_Protocol">File Transfer Protocol</a>
+</center>
+</section>
+<section id="ftp-1" class="slide level2">
+<h2>FTP</h2>
+<p>They look like this</p>
+<p><img src="img/ftp.png" width = "500"></p>
+</section>
+<section id="ftp-2" class="slide level2">
+<h2>FTP</h2>
+<ul>
+<li>No specialized FTP R packages</li>
+<li>Getting FTP files:
+<ul>
+<li>Any HTTP client package: <code>crul</code>, <code>curl</code>, <code>httr</code>, <code>RCurl</code></li>
+<li><code>download.file()</code></li>
+<li><code>read.table</code> and friends</li>
+<li>etc.</li>
+</ul></li>
+<li>Some FTP servers require username and password</li>
+</ul>
+</section>
+<section id="ftp-3" class="slide level2">
+<h2>FTP</h2>
+<p>Example FTP data collection</p>
+<p>Download file</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;httr&quot;</span>)
+url &lt;-<span class="st"> &quot;ftp://ftp.ncdc.noaa.gov/pub/data/noaa/1991/010510-99999-1991.gz&quot;</span>
+res &lt;-<span class="st"> </span><span class="kw">GET</span>(url, <span class="kw">write_disk</span>(<span class="dt">path =</span> <span class="kw">basename</span>(url)))
+res$request$output$path</code></pre>
+<p>OR</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">download.file</span>(url, <span class="dt">destfile =</span> <span class="kw">basename</span>(url))</code></pre>
+</section>
+<section id="ftp-4" class="slide level2">
+<h2>FTP</h2>
+<p>Then, read data</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">readLines</span>(<span class="kw">basename</span>(url), <span class="dt">n =</span> <span class="dv">10</span>)</code></pre>
+<pre><code>#&gt;  [1] &quot;0036010510999991991010112004+69583+023533FM-12+037499999V0203201N00101030001CN0300001N9-01651-01831999999ADDAG12000GF108991031071008001021999&quot;                                                                                               
+#&gt;  [2] &quot;0080010510999991991010118004+69583+023533FM-12+037499999V0200301N00101012001CN0300001N9-01541-01711999999ADDAA106000091AG14000GF108991081001012501021999KA1120M+01201REMSYN011333   10120&quot;                                                   
+#&gt;  [3] &quot;0109010510999991991010206004+69583+023533FM-12+037499999V0200901N00101220001CN0300001N9-01931-02121999999ADDAA106000091AG14000AJ100499199999999GF102991001001999999001081IA1239KA1120N-02461REMSYN017333   21246 47049&quot;                      
+#&gt;  [4] &quot;0036010510999991991010212004+69583+023533FM-12+037499999V0201601N00101030001CN0200001N9-01441-01621999999ADDAG12000GF108991031071004501021999&quot;                                                                                               
+#&gt;  [5] &quot;0118010510999991991010218004+69583+023533FM-12+037499999V0201601N00101002401CN0030001N9-01201-01341999999ADDAA199001091AG10002AY171061AY221061GA1091+999999999GF109991091999999999999999KA1120M-01201MW1731REMSYN011333   11120&quot;             
+#&gt;  [6] &quot;0131010510999991991010306004+69583+023533FM-12+037499999V0201601N00261030001CN0200001N9-01241-01461999999ADDAA199008091AG10001AJ100519199999999AY171061AY231061GF108991021071004501021999IA1239KA1120N-01241MW1021REMSYN017333   21124 47051&quot;
+#&gt;  [7] &quot;0058010510999991991010312004+69583+023533FM-12+037499999V0201701N00461030001CN0200001N9-01331-01571999999ADDAG12001AY171061AY231061GF108991031071004501021999MW1711&quot;                                                                         
+#&gt;  [8] &quot;0102010510999991991010318004+69583+023533FM-12+037499999V0201701N00461030001CN0200001N9-01291-01551999999ADDAA199004091AG10001AY171061AY231061GF108991041071004501021999KA1120M-01261MW1021REMSYN011333   11126&quot;                             
+#&gt;  [9] &quot;0131010510999991991010406004+69583+023533FM-12+037499999V0201601N00261030001CN0200001N9-01161-01431999999ADDAA106000091AG14000AJ100449199999999AY131061AY221061GF108991021071004501021999IA1239KA1120N-01351MW1021REMSYN017333   21135 47044&quot;
+#&gt; [10] &quot;0036010510999991991010412004+69583+023533FM-12+037499999V0201701N00261030001CN0200001N9-01161-01401999999ADDAG12000GF108991031071004501021999&quot;</code></pre>
+</section>
+<section id="protip" class="slide level2">
+<h2>Protip</h2>
+<p>Use our package <a href="https://github.com/ropenscilabs/isdparser">isdparser</a></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(isdparser)
+<span class="kw">isd_parse</span>(<span class="dt">path =</span> <span class="kw">basename</span>(url))</code></pre>
+<pre><code>#&gt; # A tibble: 1,038 × 130
+#&gt;    total_chars usaf_station wban_station       date  time date_flag
+#&gt;          &lt;dbl&gt;        &lt;chr&gt;        &lt;chr&gt;     &lt;date&gt; &lt;chr&gt;     &lt;chr&gt;
+#&gt; 1           36       010510        99999 1991-01-01  1200         4
+#&gt; 2           80       010510        99999 1991-01-01  1800         4
+#&gt; 3          109       010510        99999 1991-01-02  0600         4
+#&gt; 4           36       010510        99999 1991-01-02  1200         4
+#&gt; 5          118       010510        99999 1991-01-02  1800         4
+#&gt; 6          131       010510        99999 1991-01-03  0600         4
+#&gt; 7           58       010510        99999 1991-01-03  1200         4
+#&gt; 8          102       010510        99999 1991-01-03  1800         4
+#&gt; 9          131       010510        99999 1991-01-04  0600         4
+#&gt; 10          36       010510        99999 1991-01-04  1200         4
+#&gt; # ... with 1,028 more rows, and 124 more variables: latitude &lt;dbl&gt;,
+#&gt; #   longitude &lt;dbl&gt;, type_code &lt;chr&gt;, elevation &lt;dbl&gt;, call_letter &lt;chr&gt;,
+#&gt; #   quality &lt;chr&gt;, wind_direction &lt;dbl&gt;, wind_direction_quality &lt;chr&gt;,
+#&gt; #   wind_code &lt;chr&gt;, wind_speed &lt;dbl&gt;, wind_speed_quality &lt;chr&gt;,
+#&gt; #   ceiling_height &lt;chr&gt;, ceiling_height_quality &lt;chr&gt;,
+#&gt; #   ceiling_height_determination &lt;chr&gt;, ceiling_height_cavok &lt;chr&gt;,
+#&gt; #   visibility_distance &lt;chr&gt;, visibility_distance_quality &lt;chr&gt;,
+#&gt; #   visibility_code &lt;chr&gt;, visibility_code_quality &lt;chr&gt;,
+#&gt; #   temperature &lt;dbl&gt;, temperature_quality &lt;chr&gt;,
+#&gt; #   temperature_dewpoint &lt;dbl&gt;, temperature_dewpoint_quality &lt;chr&gt;,
+#&gt; #   air_pressure &lt;dbl&gt;, air_pressure_quality &lt;chr&gt;,
+#&gt; #   AG1_precipitation_estimated &lt;chr&gt;, AG1_discrepancy_code &lt;chr&gt;,
+#&gt; #   AG1_estimated_water_depth &lt;chr&gt;, GF1_sky_condition &lt;chr&gt;,
+#&gt; #   GF1_coverage &lt;chr&gt;, GF1_opaque_coverage &lt;chr&gt;,
+#&gt; #   GF1_coverage_quality &lt;chr&gt;, GF1_lowest_cover &lt;chr&gt;,
+#&gt; #   GF1_lowest_cover_quality &lt;chr&gt;, GF1_low_cloud_genus &lt;chr&gt;,
+#&gt; #   GF1_low_cloud_genus_quality &lt;chr&gt;, GF1_lowest_cloud_base_height &lt;chr&gt;,
+#&gt; #   GF1_lowest_cloud_base_height_quality &lt;chr&gt;, GF1_mid_cloud_genus &lt;chr&gt;,
+#&gt; #   GF1_mid_cloud_genus_quality &lt;chr&gt;, GF1_high_cloud_genus &lt;chr&gt;,
+#&gt; #   GF1_high_cloud_genus_quality &lt;chr&gt;, AA1_precipitation_liquid &lt;chr&gt;,
+#&gt; #   AA1_period_quantity_hrs &lt;chr&gt;, AA1_depth &lt;chr&gt;,
+#&gt; #   AA1_condition_quality &lt;chr&gt;, AA1_quality_code &lt;chr&gt;,
+#&gt; #   N01_original_observation &lt;chr&gt;, N01_original_value_text &lt;chr&gt;,
+#&gt; #   N01_units_code &lt;chr&gt;, N01_parameter_code &lt;chr&gt;,
+#&gt; #   KA1_extreme_temp &lt;chr&gt;, KA1_period_quantity &lt;chr&gt;, KA1_max_min &lt;chr&gt;,
+#&gt; #   KA1_temp &lt;chr&gt;, KA1_temp_quality &lt;chr&gt;, REM_remarks &lt;chr&gt;,
+#&gt; #   REM_identifier &lt;chr&gt;, REM_length_quantity &lt;chr&gt;, REM_comment &lt;chr&gt;,
+#&gt; #   AJ1_snow_depth &lt;chr&gt;, AJ1_depth_dimension &lt;chr&gt;,
+#&gt; #   AJ1_condition_code &lt;chr&gt;, AJ1_quality_code &lt;chr&gt;,
+#&gt; #   AJ1_equivalent_water_depth &lt;chr&gt;,
+#&gt; #   AJ1_equivalent_water_condition_code &lt;chr&gt;,
+#&gt; #   AJ1_equivalent_water_condition_quality_code &lt;chr&gt;,
+#&gt; #   IA1_ground_surface &lt;chr&gt;, IA1_ground_surface_code &lt;chr&gt;,
+#&gt; #   IA1_ground_surface_code_quality &lt;chr&gt;, AY1_past_weather_manual &lt;chr&gt;,
+#&gt; #   AY1_condition_code &lt;chr&gt;, AY1_condition_quality &lt;chr&gt;,
+#&gt; #   AY1_period &lt;chr&gt;, AY1_period_quality &lt;chr&gt;,
+#&gt; #   AY2_past_weather_manual &lt;chr&gt;, AY2_condition_code &lt;chr&gt;,
+#&gt; #   AY2_condition_quality &lt;chr&gt;, AY2_period &lt;chr&gt;,
+#&gt; #   AY2_period_quality &lt;chr&gt;, GA1_sky_cover_layer_identifier &lt;chr&gt;,
+#&gt; #   GA1_coverage_code &lt;chr&gt;, GA1_coverage_quality_code &lt;chr&gt;,
+#&gt; #   GA1_base_height_dimension &lt;chr&gt;, GA1_base_height_quality_code &lt;chr&gt;,
+#&gt; #   GA1_cloud_type_code &lt;chr&gt;, GA1_cloud_type_quality_code &lt;chr&gt;,
+#&gt; #   MW1_first_weather_reported &lt;chr&gt;,
+#&gt; #   MW1_manual_atmospheric_condition_code &lt;chr&gt;,
+#&gt; #   MW1_condition_quality &lt;chr&gt;, KA2_extreme_temp &lt;chr&gt;,
+#&gt; #   KA2_period_quantity &lt;chr&gt;, KA2_max_min &lt;chr&gt;, KA2_temp &lt;chr&gt;,
+#&gt; #   KA2_temp_quality &lt;chr&gt;, N02_original_observation &lt;chr&gt;,
+#&gt; #   N02_original_value_text &lt;chr&gt;, N02_units_code &lt;chr&gt;,
+#&gt; #   N02_parameter_code &lt;chr&gt;, EQD_observation_identifier &lt;chr&gt;, ...</code></pre>
+</section>
+<section id="ftp---your-turn" class="slide level2">
+<h2>FTP - Your turn</h2>
+<p><strong>3 minutes</strong></p>
+<ul>
+<li>Go to <a href="ftp://ftp.ncdc.noaa.gov/pub/data/noaa/" class="uri">ftp://ftp.ncdc.noaa.gov/pub/data/noaa/</a></li>
+<li>Pick a file</li>
+<li>Get the URL</li>
+<li>Download the file</li>
+<li>Read in some lines</li>
+</ul>
+</section>
+<section id="apis" class="slide level2">
+<h2>APIs</h2>
+<ul>
+<li>API == Application Programming Interface</li>
+<li>A set of rules for one thing to communicate with another</li>
+<li>E.g., when you login with Facebook on another site, you’re using the Facebook API</li>
+<li>can be lots of things:
+<ul>
+<li>the exported functions of an R package</li>
+<li>A public web API</li>
+<li>the interface to a database</li>
+<li>the interface to an operating system</li>
+</ul></li>
+<li>Place to look for APIs: <a href="http://www.programmableweb.com" class="uri">http://www.programmableweb.com</a></li>
+</ul>
+</section>
+<section id="web-apis" class="slide level2">
+<h2>(web) APIs</h2>
+<p>Web APIs are:</p>
+<ul>
+<li>Code to expose a user interface on top of a database</li>
+<li>Documentation is often quite good</li>
+<li>Routes are defined to do certain things: e.g.
+<ul>
+<li><code>/search</code> - to search</li>
+<li><code>/&lt;species id&gt;</code> - to get data on a particular species by ID</li>
+</ul></li>
+<li>Most web APIs involve HTTP - get to know HTTP</li>
+</ul>
+</section>
+<section id="web-apis-1" class="slide level2">
+<h2>(web) APIs</h2>
+<p>Components</p>
+<p><img src="img/getverb.png" width = "900"></p>
+</section>
+<section id="web-apis-2" class="slide level2">
+<h2>(web) APIs</h2>
+<p>R clients for APIs</p>
+<ul>
+<li><code>crul</code> - <a href="https://github.com/ropenscilabs/crul" class="uri">https://github.com/ropenscilabs/crul</a></li>
+<li><code>request</code> - <a href="https://github.com/sckott/request" class="uri">https://github.com/sckott/request</a></li>
+<li><code>curl</code> - <a href="https://github.com/jeroenooms/curl" class="uri">https://github.com/jeroenooms/curl</a></li>
+<li><code>httr</code> - <a href="https://github.com/hadley/httr" class="uri">https://github.com/hadley/httr</a></li>
+</ul>
+</section>
+<section id="web-apis-3" class="slide level2">
+<h2>(web) APIs</h2>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;request&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)
+res &lt;-<span class="st"> </span><span class="kw">api</span>(<span class="st">&quot;http://omdbapi.com&quot;</span>) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">api_query</span>(<span class="dt">s =</span> <span class="st">&quot;iron man&quot;</span>, <span class="dt">r =</span> json) 
+res$Search</code></pre>
+<pre><code>#&gt; # A tibble: 10 × 5
+#&gt;                            Title  Year    imdbID  Type
+#&gt; *                          &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;
+#&gt; 1                       Iron Man  2008 tt0371746 movie
+#&gt; 2                     Iron Man 3  2013 tt1300854 movie
+#&gt; 3                     Iron Man 2  2010 tt1228705 movie
+#&gt; 4       The Man in the Iron Mask  1998 tt0120744 movie
+#&gt; 5    The Man with the Iron Fists  2012 tt1258972 movie
+#&gt; 6           Tetsuo, the Iron Man  1989 tt0096251 movie
+#&gt; 7        The Invincible Iron Man  2007 tt0903135 movie
+#&gt; 8   Iron Man: Rise of Technovore  2013 tt2654124 movie
+#&gt; 9  The Man with the Iron Fists 2  2015 tt3625152 movie
+#&gt; 10                   Man of Iron  1981 tt0082222 movie
+#&gt; # ... with 1 more variables: Poster &lt;chr&gt;</code></pre>
+</section>
+<section id="web-apis---your-turn" class="slide level2">
+<h2>(web) APIs - Your turn</h2>
+<p><strong>3 minutes</strong></p>
+<ul>
+<li>Use the base url <a href="http://omdbapi.com" class="uri">http://omdbapi.com</a> (and navigate to the page in browser)</li>
+<li>Look at the documentation</li>
+<li>Using code example from previous slide, search for a movie</li>
+</ul>
+</section>
+<section id="ropensci" class="slide level2">
+<h2>rOpenSci</h2>
+<center>
+<p>We connect you to open data</p>
+<p>Check us out at <a href="https://ropensci.org" class="uri">https://ropensci.org</a></p>
+<p>We’d love to help with data problems that fit in our wheelhouse.</p>
+Contribute! It’s a great way to learn more R.
+</center>
+</section>
+<section id="ropensci-packages-of-interest" class="slide level2">
+<h2>rOpenSci packages of interest</h2>
+<ul>
+<li><a href="https://github.com/ropensci/rnoaa">rnoaa</a> - Lots of NOAA data</li>
+<li><a href="https://github.com/ropenscilabs/laselva">laselva</a> - FIA data in R</li>
+<li><a href="https://github.com/ropenscilabs/isdparser">isdparser</a> - Parse NOAA ISD files</li>
+</ul>
+<p>lots more …, check out <a href="https://ropensci.org/packages" class="uri">https://ropensci.org/packages</a></p>
+<h3 id="further-reading">Further reading</h3>
+<ul>
+<li><a href="https://github.com/sckott/user2016http/blob/master/01-http.pdf">HTTP and APIs in depth</a></li>
+</ul>
+<p><img src="img/icon_lettering_color.svg" width = "400"></p>
+</section>
+
+  <!--
+  To hide progress bar from entire presentation
+  just remove “progress” element.
+  -->
+  <!-- <div class="progress"></div> -->
+  <script src="index_files/rmdshower/node_modules/shower/node_modules/shower-core/shower.min.js"></script>
+  <!-- Copyright © 2015 Yours Truly, Famous Inc. -->
+  <!-- Photos by John Carey, fiftyfootshadows.net -->
+
+    <script>renderMathInElement(document.body);</script>
+  
+  
+</body>
+</html>
