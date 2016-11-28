@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Making Slides</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="slides_model_basics_files\rmdshower/node_modules/shower-ribbon/styles/screen-4x3.css">
+  <link rel="stylesheet" href="slides_model_basics_files\rmdshower/style-common.css">
+  <link rel="stylesheet" href="slides_model_basics_files\rmdshower/style-ribbon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+  <script src="slides_model_basics_files\rmdshower/auto-render.min.js" type="text/javascript"></script>
+  
+  
+    <style type="text/css">
+   div.sourceCode { overflow-x: auto; }
+   table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+     margin: 0; padding: 0; vertical-align: baseline; border: none; }
+   table.sourceCode { width: 100%; line-height: 100%; }
+   td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+   td.sourceCode { padding-left: 5px; }
+   code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+   code > span.dt { color: #902000; } /* DataType */
+   code > span.dv { color: #40a070; } /* DecVal */
+   code > span.bn { color: #40a070; } /* BaseN */
+   code > span.fl { color: #40a070; } /* Float */
+   code > span.ch { color: #4070a0; } /* Char */
+   code > span.st { color: #4070a0; } /* String */
+   code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+   code > span.ot { color: #007020; } /* Other */
+   code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+   code > span.fu { color: #06287e; } /* Function */
+   code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+   code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+   code > span.cn { color: #880000; } /* Constant */
+   code > span.sc { color: #4070a0; } /* SpecialChar */
+   code > span.vs { color: #4070a0; } /* VerbatimString */
+   code > span.ss { color: #bb6688; } /* SpecialString */
+   code > span.im { } /* Import */
+   code > span.va { color: #19177c; } /* Variable */
+   code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+   code > span.op { color: #666666; } /* Operator */
+   code > span.bu { } /* BuiltIn */
+   code > span.ex { } /* Extension */
+   code > span.pp { color: #bc7a00; } /* Preprocessor */
+   code > span.at { color: #7d9029; } /* Attribute */
+   code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+   code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+   code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+   code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  
+  
+  
+</head>
+
+<body class="shower list">
+
+  <header class="caption">
+    <h1>Making Slides</h1>
+    <p>Ranae Dietzel and Andee Kaplan</p>
+  </header>
+
+    
+  
+<section id="models" class="slide level2">
+<h2>Models</h2>
+<center>
+<img src="images/inception_top.gif" width="800px"/>
+</center>
+</section>
+<section id="why-model" class="slide level2">
+<h2>Why model?</h2>
+<ul>
+<li>Modeling helps you identify trends, make predictions, and perform statistical tests<br />
+</li>
+<li>Today we will only touch on modeling and do so in the context of tools we have already learned</li>
+</ul>
+<p>We will be going over Chapter 23 of <a href="http://r4ds.had.co.nz/model-basics.html">R for Data Science</a> by Garrett Grolemund and Hadley Wickham almost verbatim.</p>
+</section>
+<section id="modeling-for-eda" class="slide level2">
+<h2>Modeling for EDA</h2>
+<ul>
+<li>Use models to partition data into patterns and residuals<br />
+</li>
+<li>Strong patterns will hide subtler trends, use models to peel back layers of structure as you explore a dataset</li>
+</ul>
+</section>
+<section id="very-very-very-basics-of-how-models-work" class="slide level2">
+<h2>Very, very, very basics of how models work</h2>
+<p>First, define a <em>family of models</em> that express a precise, but generic, pattern that you want to capture.</p>
+<ul>
+<li>For example, a straight line expressed <code>y = a_1 * x + a_2</code></li>
+<li><code>x</code> and <code>y</code> are known variable from your data and <code>a_1</code> and <code>a_2</code> are parameters that can vary to capture different patterns</li>
+</ul>
+</section>
+<section id="very-very-very-basics-of-how-models-work-1" class="slide level2">
+<h2>Very, very, very basics of how models work</h2>
+<p>Next, generate a <em>fitted model</em> by finding the model from the family that is the closest to your data.</p>
+<ul>
+<li>This takes the generic model family and makes it specific, like <code>y = 3 * x + 7</code>.</li>
+</ul>
+<p>A fitted model is just the closest model from a family of models. This does not necessarily mean it is good and does not imply the model is “true”.</p>
+</section>
+<section id="prerequisites" class="slide level2">
+<h2>Prerequisites</h2>
+<p>Today we’ll use the modelr package which wraps around base R’s modelling functions to make them work naturally in a pipe.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+
+<span class="kw">library</span>(modelr)
+<span class="kw">options</span>(<span class="dt">na.action =</span> na.warn)</code></pre></div>
+</section>
+<section id="a-simple-model" class="slide level2">
+<h2>A simple model</h2>
+<p>Lets take a look at the simulated dataset <code>sim1</code>. It contains two continuous variables, <code>x</code> and <code>y</code>. Let’s plot them to see how they’re related:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(sim1, <span class="kw">aes</span>(x, y)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="slides_model_basics_files/figure-revealjs/unnamed-chunk-1-1.png" width="384" /></p>
+</section>
+<section id="a-simple-model-1" class="slide level2">
+<h2>A simple model</h2>
+<p>In this case, the relationship looks linear, i.e. <code>y = a_0 + a_1 * x</code>. Let’s start by getting a feel for what models from that family look like by randomly generating a few and overlaying them on the data. <img src="slides_model_basics_files/figure-revealjs/unnamed-chunk-2-1.png" width="384" /></p>
+</section>
+<section id="a-simple-model-2" class="slide level2">
+<h2>A simple model</h2>
+<p><img src="slides_model_basics_files/figure-revealjs/unnamed-chunk-3-1.png" width="384" /></p>
+<p>Most of these models are very bad. If we can quantify the distance between the data and each model, we can get a better idea of which models are better.</p>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<p>One place to start is to find the vertical distance between each point and the model, as in the following diagram.</p>
+<p><img src="slides_model_basics_files/figure-revealjs/unnamed-chunk-4-1.png" width="384" /></p>
+<p>This distance is the difference between the y value given by the model, and the actual y value in the data.</p>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<p>To compute this distance, we first turn our model family into an R function. This takes the model parameters and the data as inputs, and gives values predicted by the model as output:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">model1 &lt;-<span class="st"> </span>function(a, data) {
+  a[<span class="dv">1</span>] +<span class="st"> </span>data$x *<span class="st"> </span>a[<span class="dv">2</span>]
+}
+<span class="kw">model1</span>(<span class="kw">c</span>(<span class="dv">7</span>, <span class="fl">1.5</span>), sim1)</code></pre></div>
+<pre><code>##  [1]  8.5  8.5  8.5 10.0 10.0 10.0 11.5 11.5 11.5 13.0 13.0 13.0 14.5 14.5
+## [15] 14.5 16.0 16.0 16.0 17.5 17.5 17.5 19.0 19.0 19.0 20.5 20.5 20.5 22.0
+## [29] 22.0 22.0</code></pre>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<p>Next, we need some way to compute an overall distance between the predicted and actual values. In other words, the plot above shows 30 distances: how do we collapse that into a single number?</p>
+<p>We will use the “root-mean-squared deviation”. We compute the difference between actual and predicted, square them, average them, and the take the square root.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">measure_distance &lt;-<span class="st"> </span>function(mod, data) {
+  diff &lt;-<span class="st"> </span>data$y -<span class="st"> </span><span class="kw">model1</span>(mod, data)
+  <span class="kw">sqrt</span>(<span class="kw">mean</span>(diff ^<span class="st"> </span><span class="dv">2</span>))
+}
+<span class="kw">measure_distance</span>(<span class="kw">c</span>(<span class="dv">7</span>, <span class="fl">1.5</span>), sim1)</code></pre></div>
+<pre><code>## [1] 2.665212</code></pre>
+</section>
+<section id="purrr" class="slide level2">
+<h2><code>purrr</code></h2>
+<p>Now we can use purrr to compute the distance for all the models defined above. We need a helper function because our distance function expects the model as a numeric vector of length 2.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sim1_dist &lt;-<span class="st"> </span>function(a1, a2) {
+  <span class="kw">measure_distance</span>(<span class="kw">c</span>(a1, a2), sim1)
+}
+
+models &lt;-<span class="st"> </span>models %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">dist =</span> purrr::<span class="kw">map2_dbl</span>(a1, a2, sim1_dist))
+models</code></pre></div>
+<pre><code>## # A tibble: 250 × 3
+##              a1         a2     dist
+##           &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;
+## 1   13.12348001 -1.8517400 16.97381
+## 2  -15.39548699 -2.7976278 48.38368
+## 3    2.99767693  0.2507514 12.45401
+## 4   -0.04579094  4.9493584 14.49241
+## 5   30.35659918 -1.5248814 12.32296
+## 6  -14.05320299  3.5153500 11.25688
+## 7  -10.75608309  2.8032437 11.25836
+## 8   24.93667886  4.7943662 36.71972
+## 9   -8.13386949 -1.0773910 30.97281
+## 10  21.29810972 -1.3550271 10.14983
+## # ... with 240 more rows</code></pre>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<p>Next, let’s overlay the 10 best models on to the data. The models are colored by <code>-dist</code>to make sure that the best models (i.e. the ones with the smallest distance) get the brighest colours.</p>
+<p><img src="slides_model_basics_files/figure-revealjs/unnamed-chunk-8-1.png" width="384" /></p>
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<p>We can also think about these models as observations, and visualising with a scatterplot of <code>a1</code> vs <code>a2</code>, again coloured by <code>-dist</code>.</p>
+<p><img src="slides_model_basics_files/figure-revealjs/unnamed-chunk-9-1.png" width="768" /></p>
+</section>
+<section id="grid-search" class="slide level2">
+<h2>Grid search</h2>
+<p>Instead of trying lots of random models, we could be more systematic and generate an evenly spaced grid of points (this is called a grid search). Parameters of the grid were roughly picked by looking at where the best models were in the previous plot.</p>
+</section>
+<section id="grid-search-1" class="slide level2">
+<h2>Grid search</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grid &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(
+  <span class="dt">a1 =</span> <span class="kw">seq</span>(-<span class="dv">5</span>, <span class="dv">20</span>, <span class="dt">length =</span> <span class="dv">25</span>),
+  <span class="dt">a2 =</span> <span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dt">length =</span> <span class="dv">25</span>)
+  ) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">dist =</span> purrr::<span class="kw">map2_dbl</span>(a1, a2, sim1_dist))</code></pre></div>
+<p><img src="slides_model_basics_files/figure-revealjs/unnamed-chunk-11-1.png" width="576" /></p>
+</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<p>When you overlay the best 10 models back on the original data, they all look pretty good:</p>
+<p><img src="slides_model_basics_files/figure-revealjs/unnamed-chunk-12-1.png" width="768" /></p>
+</section>
+<section id="optim" class="slide level2">
+<h2><code>optim()</code></h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">best &lt;-<span class="st"> </span><span class="kw">optim</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), measure_distance, <span class="dt">data =</span> sim1)
+best$par</code></pre></div>
+<pre><code>## [1] 4.222248 2.051204</code></pre>
+<p><img src="slides_model_basics_files/figure-revealjs/unnamed-chunk-14-1.png" width="576" /></p>
+</section>
+<section id="your-turn" class="slide level2 cover white">
+<h2>Your turn</h2>
+<p><img src="images/your_turn.jpg" class="cover height" /></p>
+<p style="color:black">
+<p>
+Alter your slides by highlighting some of the code.
+</p>
+<p>
+Add an image and adjust the size and center the image using html..
+</p>
+<p>
+Make notes for a few slides and try out presenter mode.
+</p>
+</section>
+
+  <!--
+  To hide progress bar from entire presentation
+  just remove “progress” element.
+  -->
+  <!-- <div class="progress"></div> -->
+  <script src="slides_model_basics_files\rmdshower/node_modules/shower/node_modules/shower-core/shower.min.js"></script>
+  <!-- Copyright © 2015 Yours Truly, Famous Inc. -->
+  <!-- Photos by John Carey, fiftyfootshadows.net -->
+
+    <script>renderMathInElement(document.body);</script>
+  
+  
+</body>
+</html>

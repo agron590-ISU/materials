@@ -18,7 +18,7 @@ output:
 * Modeling helps you identify trends, make predictions, and perform statistical tests  
 * Today we will only touch on modeling and do so in the context of tools we have already learned  
 
-We will be discussing Chapter 23 of [R for Data Science](http://r4ds.had.co.nz/model-basics.html) by Garrett Grolemund and Hadley Wickham
+We will be going over Chapter 23 of [R for Data Science](http://r4ds.had.co.nz/model-basics.html) by Garrett Grolemund and Hadley Wickham almost verbatim.
 
 ##Modeling for EDA  
 * Use models to partition data into patterns and residuals  
@@ -37,6 +37,171 @@ Next, generate a *fitted model* by finding the model from the family that is the
 
 A fitted model is just the closest model from a family of models. This does not necessarily mean it is good and does not imply the model is "true". 
 
+## Prerequisites
+
+Today we'll use the modelr package which wraps around base R's modelling functions to make them work naturally in a pipe.
+
+```{r setup, message = FALSE}
+library(tidyverse)
+
+library(modelr)
+options(na.action = na.warn)
+```
+
+## A simple model
+
+Lets take a look at the simulated dataset `sim1`. It contains two continuous variables, `x` and `y`. Let's plot them to see how they're related:
+
+```{r, fig.height=4, fig.width=4}
+ggplot(sim1, aes(x, y)) + 
+  geom_point()
+```
+
+## A simple model
+In this case, the relationship looks linear, i.e. `y = a_0 + a_1 * x`.  Let's start by getting a feel for what models from that family look like by randomly generating a few and overlaying them on the data. 
+```{r, echo = FALSE, fig.height=4, fig.width=4}
+models <- tibble(
+  a1 = runif(250, -20, 40),
+  a2 = runif(250, -5, 5)
+)
+
+ggplot(sim1, aes(x, y)) + 
+  geom_abline(aes(intercept = a1, slope = a2), data = models, alpha = 1/4) +
+  geom_point() 
+```
+
+## A simple model
+```{r, echo = FALSE, fig.height=4, fig.width=4}
+models <- tibble(
+  a1 = runif(250, -20, 40),
+  a2 = runif(250, -5, 5)
+)
+
+ggplot(sim1, aes(x, y)) + 
+  geom_abline(aes(intercept = a1, slope = a2), data = models, alpha = 1/4) +
+  geom_point() 
+```
+
+Most of these models are very bad. If we can quantify the distance between the data and each model, we can get a better idea of which models are better.  
+
+##  
+One place to start is to find the vertical distance between each point and the model, as in the following diagram.   
+
+```{r, echo = FALSE, fig.height=4, fig.width=4}
+dist1 <- sim1 %>% 
+  mutate(
+    dodge = rep(c(-1, 0, 1) / 20, 10),
+    x1 = x + dodge,
+    pred = 7 + x1 * 1.5
+  )
+
+ggplot(dist1, aes(x1, y)) + 
+  geom_abline(intercept = 7, slope = 1.5, colour = "grey40") +
+  geom_point(colour = "grey40") +
+  geom_linerange(aes(ymin = y, ymax = pred), colour = "#3366FF") 
+```
+
+This distance is the difference between the y value given by the model, and the actual y value in the data.
+
+## 
+To compute this distance, we first turn our model family into an R function. This takes the model parameters and the data as inputs, and gives values predicted by the model as output:
+
+```{r}
+model1 <- function(a, data) {
+  a[1] + data$x * a[2]
+}
+model1(c(7, 1.5), sim1)
+```  
+
+##  
+Next, we need some way to compute an overall distance between the predicted and actual values. In other words, the plot above shows 30 distances: how do we collapse that into a single number?
+
+We will use the "root-mean-squared deviation". We compute the difference between actual and predicted, square them, average them, and the take the square root. 
+```{r}
+measure_distance <- function(mod, data) {
+  diff <- data$y - model1(mod, data)
+  sqrt(mean(diff ^ 2))
+}
+measure_distance(c(7, 1.5), sim1)
+```
+
+##`purrr`  
+Now we can use purrr to compute the distance for all the models defined above. We need a helper function because our distance function expects the model as a numeric vector of length 2.
+
+```{r}
+sim1_dist <- function(a1, a2) {
+  measure_distance(c(a1, a2), sim1)
+}
+
+models <- models %>% 
+  mutate(dist = purrr::map2_dbl(a1, a2, sim1_dist))
+models
+```  
+
+##
+Next, let's overlay the 10 best models on to the data. The models are colored by `-dist`to make sure that the best models (i.e. the ones with the smallest distance) get the brighest colours.
+
+```{r, echo=FALSE, fig.height=4, fig.width=4}
+ggplot(sim1, aes(x, y)) + 
+  geom_point(size = 2, colour = "grey30") + 
+  geom_abline(
+    aes(intercept = a1, slope = a2, colour = -dist), 
+    data = filter(models, rank(dist) <= 10)
+  )
+```  
+
+##  
+We can also think about these models as observations, and visualising with a scatterplot of `a1` vs  `a2`, again coloured by `-dist`.
+
+```{r, echo=FALSE}
+ggplot(models, aes(a1, a2)) +
+  geom_point(data = filter(models, rank(dist) <= 10), size = 4, colour = "red") +
+  geom_point(aes(colour = -dist))
+```  
+
+##Grid search  
+Instead of trying lots of random models, we could be more systematic and generate an evenly spaced grid of points (this is called a grid search). Parameters of the grid were roughly picked by looking at where the best models were in the previous plot.  
+
+##Grid search 
+
+```{r, fig.height=4, fig.width=4}
+grid <- expand.grid(
+  a1 = seq(-5, 20, length = 25),
+  a2 = seq(1, 3, length = 25)
+  ) %>% 
+  mutate(dist = purrr::map2_dbl(a1, a2, sim1_dist))
+```
+
+```{r, echo=FALSE, fig.height=4, fig.width=6}
+grid %>% 
+  ggplot(aes(a1, a2)) +
+  geom_point(data = filter(grid, rank(dist) <= 10), size = 4, colour = "red") +
+  geom_point(aes(colour = -dist)) 
+```  
+
+##  
+When you overlay the best 10 models back on the original data, they all look pretty good:
+
+```{r, echo=FALSE}
+ggplot(sim1, aes(x, y)) + 
+  geom_point(size = 2, colour = "grey30") + 
+  geom_abline(
+    aes(intercept = a1, slope = a2, colour = -dist), 
+    data = filter(grid, rank(dist) <= 10)
+  )
+```  
+
+##`optim()`  
+```{r}
+best <- optim(c(0, 0), measure_distance, data = sim1)
+best$par
+```  
+
+```{r, echo=FALSE, fig.width=6, fig.height=4}
+ggplot(sim1, aes(x, y)) + 
+  geom_point(size = 2, colour = "grey30") + 
+  geom_abline(intercept = best$par[1], slope = best$par[2])
+```
 
 
 
