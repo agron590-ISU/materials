@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Making Slides</title>
+  <title>Modeling Basics</title>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,16 +58,16 @@
 <body class="shower list">
 
   <header class="caption">
-    <h1>Making Slides</h1>
+    <h1>Modeling Basics</h1>
     <p>Ranae Dietzel and Andee Kaplan</p>
   </header>
 
     
   
-<section id="models" class="slide level2">
-<h2>Models</h2>
+<section id="modeling-basics" class="slide level2">
+<h2>Modeling Basics</h2>
 <center>
-<img src="images/inception_top.gif" width="800px"/>
+<img src="images/model.gif" width="800px"/>
 </center>
 </section>
 <section id="why-model" class="slide level2">
@@ -166,18 +166,18 @@ models &lt;-<span class="st"> </span>models %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">dist =</span> purrr::<span class="kw">map2_dbl</span>(a1, a2, sim1_dist))
 models</code></pre></div>
 <pre><code>## # A tibble: 250 × 3
-##              a1         a2     dist
-##           &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;
-## 1   13.12348001 -1.8517400 16.97381
-## 2  -15.39548699 -2.7976278 48.38368
-## 3    2.99767693  0.2507514 12.45401
-## 4   -0.04579094  4.9493584 14.49241
-## 5   30.35659918 -1.5248814 12.32296
-## 6  -14.05320299  3.5153500 11.25688
-## 7  -10.75608309  2.8032437 11.25836
-## 8   24.93667886  4.7943662 36.71972
-## 9   -8.13386949 -1.0773910 30.97281
-## 10  21.29810972 -1.3550271 10.14983
+##            a1        a2      dist
+##         &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+## 1   -1.862446 -1.887522 30.041522
+## 2  -13.060192 -2.291445 43.068437
+## 3   25.709318 -3.996407 21.093813
+## 4   38.056373 -3.500355 16.422965
+## 5   -6.607000  1.205726 15.813099
+## 6   -8.747213 -2.877722 42.559429
+## 7  -11.359571  3.159386 10.230428
+## 8   -9.494538  3.888237  6.739263
+## 9   -4.241306  4.442809  8.584836
+## 10  36.646607  2.272369 33.713600
 ## # ... with 240 more rows</code></pre>
 </section>
 <section id="section-3" class="slide level2">
@@ -215,19 +215,168 @@ best$par</code></pre></div>
 <pre><code>## [1] 4.222248 2.051204</code></pre>
 <p><img src="slides_model_basics_files/figure-revealjs/unnamed-chunk-14-1.png" width="576" /></p>
 </section>
-<section id="your-turn" class="slide level2 cover white">
-<h2>Your turn</h2>
-<p><img src="images/your_turn.jpg" class="cover height" /></p>
-<p style="color:black">
-<p>
-Alter your slides by highlighting some of the code.
-</p>
-<p>
-Add an image and adjust the size and center the image using html..
-</p>
-<p>
-Make notes for a few slides and try out presenter mode.
-</p>
+<section id="visualizing-models" class="slide level2">
+<h2>Visualizing models</h2>
+<ul>
+<li>Predictive models provide predicted data (obviously)<br />
+</li>
+<li>These data can be added to a dataframe and then treated like any other data</li>
+</ul>
+</section>
+<section id="predictions" class="slide level2">
+<h2>Predictions</h2>
+<p>To visualise the predictions from a model, we start by generating an evenly spaced grid of values that covers the region where our data lies. The easiest way to do that is to use <code>modelr::data_grid()</code>. Its first argument is a data frame, and for each subsequent argument it finds the unique variables and then generates all combinations:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grid &lt;-<span class="st"> </span>sim1 %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">data_grid</span>(x) 
+grid</code></pre></div>
+<pre><code>## # A tibble: 10 × 1
+##        x
+##    &lt;int&gt;
+## 1      1
+## 2      2
+## 3      3
+## 4      4
+## 5      5
+## 6      6
+## 7      7
+## 8      8
+## 9      9
+## 10    10</code></pre>
+</section>
+<section id="predictions-1" class="slide level2">
+<h2>Predictions</h2>
+<p>Next we add predictions. We’ll use <code>modelr::add_predictions()</code> which takes a dataframe and a model. It adds the predictions from the model to a new column in the dataframe:</p>
+<pre><code>## (Intercept)           x 
+##    4.220822    2.051533</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grid &lt;-<span class="st"> </span>grid %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">add_predictions</span>(sim1_mod) 
+grid</code></pre></div>
+<pre><code>## # A tibble: 10 × 2
+##        x      pred
+##    &lt;int&gt;     &lt;dbl&gt;
+## 1      1  6.272355
+## 2      2  8.323888
+## 3      3 10.375421
+## 4      4 12.426954
+## 5      5 14.478487
+## 6      6 16.530020
+## 7      7 18.581553
+## 8      8 20.633087
+## 9      9 22.684620
+## 10    10 24.736153</code></pre>
+<p>(You can also use this function to add predictions to your original dataset.)</p>
+</section>
+<section id="section-6" class="slide level2">
+<h2></h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(sim1, <span class="kw">aes</span>(x)) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> y)) +
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> pred), <span class="dt">data =</span> grid, <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>)</code></pre></div>
+<p><img src="slides_model_basics_files/figure-revealjs/unnamed-chunk-18-1.png" width="768" /></p>
+</section>
+<section id="residuals" class="slide level2">
+<h2>Residuals</h2>
+<p>The flip-side of predictions are <strong>residuals</strong>. The predictions tells you the pattern that the model has captured, and the residuals tell you what the model has missed. The residuals are just the distances between the observed and predicted values that we computed above.</p>
+</section>
+<section id="residuals-1" class="slide level2">
+<h2>Residuals</h2>
+<p>We add residuals to the data with <code>add_residuals()</code>, which works much like <code>add_predictions()</code>. Note, however, that we use the original dataset, not a manufactured grid. This is because to compute residuals we need actual y values.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sim1 &lt;-<span class="st"> </span>sim1 %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">add_residuals</span>(sim1_mod)
+sim1</code></pre></div>
+<pre><code>## # A tibble: 30 × 3
+##        x         y        resid
+##    &lt;int&gt;     &lt;dbl&gt;        &lt;dbl&gt;
+## 1      1  4.199913 -2.072442018
+## 2      1  7.510634  1.238279125
+## 3      1  2.125473 -4.146882207
+## 4      2  8.988857  0.664969362
+## 5      2 10.243105  1.919217378
+## 6      2 11.296823  2.972935148
+## 7      3  7.356365 -3.019056466
+## 8      3 10.505349  0.129928252
+## 9      3 10.511601  0.136179642
+## 10     4 12.434589  0.007634878
+## # ... with 20 more rows</code></pre>
+</section>
+<section id="residuals-2" class="slide level2">
+<h2>Residuals</h2>
+<p>Drawing a frequency polygon helps us understand the spread of the residuals:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(sim1, <span class="kw">aes</span>(resid)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_freqpoly</span>(<span class="dt">binwidth =</span> <span class="fl">0.5</span>)</code></pre></div>
+<p><img src="slides_model_basics_files/figure-revealjs/unnamed-chunk-20-1.png" width="576" /></p>
+</section>
+<section id="section-7" class="slide level2">
+<h2></h2>
+<p>You’ll often want to recreate plots using the residuals instead of the original predictor.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(sim1, <span class="kw">aes</span>(x, resid)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_ref_line</span>(<span class="dt">h =</span> <span class="dv">0</span>) +
+<span class="st">  </span><span class="kw">geom_point</span>() </code></pre></div>
+<p><img src="slides_model_basics_files/figure-revealjs/unnamed-chunk-21-1.png" width="576" /></p>
+<p>This looks like random noise, suggesting that our model has done a good job of capturing the patterns in the dataset.</p>
+</section>
+<section id="model_matrix" class="slide level2">
+<h2><code>model_matrix</code></h2>
+<p>Takes a dataframe and a formula and returns a tibble that defines the model equation: each column in the output is associated with one coefficient in the model.</p>
+</section>
+<section id="section-8" class="slide level2">
+<h2></h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">tribble</span>(
+  ~y, ~x1, ~x2,
+  <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">5</span>,
+  <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">6</span>
+)
+<span class="kw">model_matrix</span>(df, y ~<span class="st"> </span>x1)</code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   `(Intercept)`    x1
+##           &lt;dbl&gt; &lt;dbl&gt;
+## 1             1     2
+## 2             1     1</code></pre>
+</section>
+<section id="section-9" class="slide level2">
+<h2></h2>
+<p>The model matrix grows in an unsurprising way when you add more variables to the the model:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">model_matrix</span>(df, y ~<span class="st"> </span>x1 +<span class="st"> </span>x2)</code></pre></div>
+<pre><code>## # A tibble: 2 × 3
+##   `(Intercept)`    x1    x2
+##           &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1             1     2     5
+## 2             1     1     6</code></pre>
+</section>
+<section id="categorical-variables" class="slide level2">
+<h2>Categorical variables</h2>
+<p>Generating a function from a formula is straight forward when the predictor is continuous, but things get a bit more complicated when the predictor is categorical. Imagine you have a formula like <code>y ~ sex</code>, where sex could either be male or female. It doesn’t make sense to convert that to a formula like <code>y = x_0 + x_1 * sex</code> because <code>sex</code> isn’t a number - you can’t multiply it! Instead what R does is convert it to <code>y = x_0 + x_1 * sex_male</code> where <code>sex_male</code> is one if <code>sex</code> is male and zero otherwise:</p>
+</section>
+<section id="categorical-variables-1" class="slide level2">
+<h2>Categorical variables</h2>
+<p>Here’s the <code>sim2</code> dataset from modelr:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(sim2) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(x, y))</code></pre></div>
+<p><img src="slides_model_basics_files/figure-revealjs/unnamed-chunk-24-1.png" width="576" /></p>
+</section>
+<section id="categorical-variables-2" class="slide level2">
+<h2>Categorical variables</h2>
+<p>We can fit a model to it, and generate predictions:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod2 &lt;-<span class="st"> </span><span class="kw">lm</span>(y ~<span class="st"> </span>x, <span class="dt">data =</span> sim2)
+
+grid &lt;-<span class="st"> </span>sim2 %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">data_grid</span>(x) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">add_predictions</span>(mod2)
+grid</code></pre></div>
+<pre><code>## # A tibble: 4 × 2
+##       x     pred
+##   &lt;chr&gt;    &lt;dbl&gt;
+## 1     a 1.152166
+## 2     b 8.116039
+## 3     c 6.127191
+## 4     d 1.910981</code></pre>
+</section>
+<section id="section-10" class="slide level2">
+<h2></h2>
+<p>Effectively, a model with a categorical <code>x</code> will predict the mean value for each category:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(sim2, <span class="kw">aes</span>(x)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> y)) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> grid, <span class="kw">aes</span>(<span class="dt">y =</span> pred), <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>)</code></pre></div>
+<p><img src="slides_model_basics_files/figure-revealjs/unnamed-chunk-26-1.png" width="576" /></p>
 </section>
 
   <!--
