@@ -1,0 +1,64 @@
+---
+title: "Making Slides"
+author: "Ranae Dietzel and Andee Kaplan"
+date: "November 4, 2016"
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: ribbon
+---
+
+##Models 
+
+<center><img src="images/inception_top.gif" width="800px"/></center>
+
+##Why model?  
+* Modeling helps you identify trends, make predictions, and perform statistical tests  
+* Today we will only touch on modeling and do so in the context of tools we have already learned  
+
+We will be discussing Chapter 23 of [R for Data Science](http://r4ds.had.co.nz/model-basics.html) by Garrett Grolemund and Hadley Wickham
+
+##Modeling for EDA  
+* Use models to partition data into patterns and residuals  
+* Strong patterns will hide subtler trends, use models to peel back layers of structure as you explore a dataset  
+
+##Very, very, very basics of how models work  
+First, define a *family of models* that express a precise, but generic, pattern that you want to capture.  
+
+* For example, a straight line expressed `y = a_1 * x + a_2` 
+* `x` and `y` are known variable from your data and `a_1` and `a_2` are parameters that can vary to capture different patterns  
+
+##Very, very, very basics of how models work  
+Next, generate a *fitted model* by finding the model from the family that is the closest to your data.  
+
+* This takes the generic model family and makes it specific, like `y = 3 * x + 7`.  
+
+A fitted model is just the closest model from a family of models. This does not necessarily mean it is good and does not imply the model is "true". 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Your turn { .cover .white }
+
+<img src="images/your_turn.jpg" class="cover height" />
+
+<p style="color:black">
+<p>Alter your slides by highlighting some of the code.</p> 
+<p>Add an image and adjust the size and center the image using html..</p> 
+<p>Make notes for a few slides and try out presenter mode.</p>  
