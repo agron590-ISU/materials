@@ -134,5 +134,152 @@ grid <- diamonds2 %>%
 
 ```{r, echo=FALSE}
 grid  
-```
+```  
+
+##  
+
+```{r, fig.width=6, fig.height=4}
+ggplot(diamonds2, aes(carat, price)) + 
+  geom_point() + 
+  geom_line(data = grid, colour = "red", size = 1)
+```  
+
+##  
+
+```{r}
+diamonds2 <- diamonds2 %>% 
+  add_residuals(mod_diamond, "lresid")
+
+ggplot(diamonds2, aes(lcarat, lresid)) + 
+  geom_point()
+```  
+
+## Cut 
+
+```{r}
+ggplot(diamonds2, aes(cut, lresid)) + geom_boxplot()
+```   
+
+## Color 
+```{r}
+ggplot(diamonds2, aes(color, lresid)) + geom_boxplot()  
+```  
+
+## Clarity 
+```{r}
+ggplot(diamonds2, aes(clarity, lresid)) + geom_boxplot()
+```  
+
+## A more complicated model
+
+If we wanted to, we could continue to build up our model, moving the effects we've observed into the model to make them explicit. For example, we could include `color`, `cut`, and `clarity` into the model so that we also make explicit the effect of these three categorical variables:
+
+```{r}
+mod_diamond2 <- lm(lprice ~ lcarat + color + cut + clarity, data = diamonds2)
+```  
+
+##  
+```{r}
+grid <- diamonds2 %>% 
+  data_grid(cut, .model = mod_diamond2) %>% 
+  add_predictions(mod_diamond2)
+grid
+```  
+
+##
+```{r}
+ggplot(grid, aes(cut, pred)) + 
+  geom_point()
+```  
+
+## What affects the number of daily flights?  
+```{r}
+daily <- flights %>% 
+  mutate(date = make_date(year, month, day)) %>% 
+  group_by(date) %>% 
+  summarise(n = n())
+daily  
+```  
+
+##  
+```{r}
+ggplot(daily, aes(date, n)) + 
+  geom_line()
+```  
+
+## Day of week
+
+Understanding the long-term trend is challenging because there's a very strong day-of-week effect that dominates the subtler patterns. Let's start by looking at the distribution of flight numbers by day-of-week:
+
+```{r, echo=FALSE, fig.width=6, fig.height=4}
+daily <- daily %>% 
+  mutate(wday = wday(date, label = TRUE))
+ggplot(daily, aes(wday, n)) + 
+  geom_boxplot()
+```  
+
+##  
+
+One way to remove this strong pattern is to use a model. First, we fit the model, and display its predictions overlaid on the original data:
+
+```{r, fig.width=4, fig.height=2}
+mod <- lm(n ~ wday, data = daily)
+
+grid <- daily %>% 
+  data_grid(wday) %>% 
+  add_predictions(mod, "n")
+
+ggplot(daily, aes(wday, n)) + 
+  geom_boxplot() +
+  geom_point(data = grid, colour = "red", size = 4)
+```  
+
+##  
+Next we compute and visualise the residuals:
+
+```{r, fig.height=4, fig.width=6}
+daily <- daily %>% 
+  add_residuals(mod)
+daily %>% 
+  ggplot(aes(date, resid)) + 
+  geom_ref_line(h = 0) + 
+  geom_line()
+```  
+
+##  
+Our model seems to fail starting in June: you can still see a strong 
+    regular pattern that our model hasn't captured. Drawing a plot with one 
+    line for each day of the week makes the cause easier to see:
+
+    ```{r}
+    ggplot(daily, aes(date, resid, colour = wday)) + 
+      geom_ref_line(h = 0) + 
+      geom_line()
+    ```  
+
+##  
+There are some days with far fewer flights than expected:
+
+    ```{r}
+    daily %>% 
+      filter(resid < -100)
+    ```  
+
+##  
+There seems to be some smoother long term trend over the course of a year.
+    We can highlight that trend with `geom_smooth()`:
+
+    ```{r, echo=FALSE}
+    daily %>% 
+      ggplot(aes(date, resid)) + 
+      geom_ref_line(h = 0) + 
+      geom_line(colour = "grey50") + 
+      geom_smooth(se = FALSE, span = 0.20)
+    ```  
+
+##  
+
+  
+
+
 
