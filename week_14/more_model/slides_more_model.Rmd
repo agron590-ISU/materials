@@ -269,15 +269,117 @@ There are some days with far fewer flights than expected:
 There seems to be some smoother long term trend over the course of a year.
     We can highlight that trend with `geom_smooth()`:
 
-    ```{r, echo=FALSE}
+```{r}
     daily %>% 
       ggplot(aes(date, resid)) + 
       geom_ref_line(h = 0) + 
       geom_line(colour = "grey50") + 
       geom_smooth(se = FALSE, span = 0.20)
-    ```  
+```  
+    
+
+## Seasonal Saturday effect
+
+Let's first tackle our failure to accurately predict the number of flights on Saturday. A good place to start is to go back to the raw numbers, focussing on Saturdays:
+
+```{r, echo=FALSE, fig.width=6, fig.height=4}
+daily %>% 
+  filter(wday == "Sat") %>% 
+  ggplot(aes(date, n)) + 
+    geom_point() + 
+    geom_line() +
+    scale_x_date(NULL, date_breaks = "1 month", date_labels = "%b")
+```  
 
 ##  
+
+Lets create a "term" variable that roughly captures the three school terms, and check our work with a plot:
+
+```{r}
+term <- function(date) {
+  cut(date, 
+    breaks = ymd(20130101, 20130605, 20130825, 20140101),
+    labels = c("spring", "summer", "fall") 
+  )
+}
+
+daily <- daily %>% 
+  mutate(term = term(date)) 
+```  
+
+##
+```{r, fig.height=4, fig.width=6}
+daily %>% 
+  filter(wday == "Sat") %>% 
+  ggplot(aes(date, n, colour = term)) +
+  geom_point(alpha = 1/3) + 
+  geom_line() +
+  scale_x_date(NULL, date_breaks = "1 month", date_labels = "%b")
+```  
+
+##  
+It's useful to see how this new variable affects the other days of the week:
+
+```{r, fig.height=4, fig.width=6}
+daily %>% 
+  ggplot(aes(wday, n, colour = term)) +
+    geom_boxplot()
+```  
+
+##  
+
+It looks like there is significant variation across the terms, so fitting a separate day of week effect for each term is reasonable. 
+
+```{r}
+mod1 <- lm(n ~ wday, data = daily)
+mod2 <- lm(n ~ wday * term, data = daily)
+```  
+
+##  
+This improves our model, but not as much as we might hope:  
+
+```{r}
+daily %>% 
+  gather_residuals(without_term = mod1, with_term = mod2) %>% 
+  ggplot(aes(date, resid, colour = model)) +
+    geom_line(alpha = 0.75)
+```  
+
+##  
+
+We can see the problem by overlaying the predictions from the model on to the raw data:
+
+```{r, echo=FALSE}
+grid <- daily %>% 
+  data_grid(wday, term) %>% 
+  add_predictions(mod2, "n")
+
+ggplot(daily, aes(wday, n)) +
+  geom_boxplot() + 
+  geom_point(data = grid, colour = "red") + 
+  facet_wrap(~ term)
+```  
+
+##
+Our model is finding the _mean_ effect, but we have a lot of big outliers, so mean tends to be far away from the typical value. We can alleviate this problem by using a model that is robust to the effect of outliers: `MASS::rlm()`. This greatly reduces the impact of the outliers on our estimates, and gives a model that does a good job of removing the day of week pattern:
+
+```{r, warn = FALSE}
+mod3 <- MASS::rlm(n ~ wday * term, data = daily)
+```  
+
+##  
+```{r}
+daily %>% 
+  add_residuals(mod3, "resid") %>% 
+  ggplot(aes(date, resid)) + 
+  geom_hline(yintercept = 0, size = 2, colour = "white") + 
+  geom_line()
+```   
+
+
+
+
+
 
   
 
