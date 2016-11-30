@@ -1,0 +1,138 @@
+---
+title: "More Modeling Basics"
+author: "Ranae Dietzel and Andee Kaplan"
+date: "November 28, 2016"
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: ribbon
+---
+
+##More modeling as a tool for exploration  
+
+
+##Interactions  
+
+```{r setup, message = FALSE, echo=FALSE}
+library(tidyverse)
+library(nycflights13)
+library(lubridate)
+
+library(modelr)
+options(na.action = na.warn)
+```
+
+```{r, fig.width=6, fig.height=4}
+ggplot(sim3, aes(x1, y)) + 
+  geom_point(aes(colour = x2))
+```
+
+##  
+There are two possible models you could fit to this data:
+
+```{r}
+mod1 <- lm(y ~ x1 + x2, data = sim3)
+mod2 <- lm(y ~ x1 * x2, data = sim3)
+```
+
+When you add variables with `+`, the model will estimate each effect independent of all the others. It's possible to fit the so-called interaction by using `*`. For example, `y ~ x1 * x2` is translated to `y = a_0 + a_1 * a1 + a_2 * a2 + a_12 * a1 * a2`. Note that whenever you use `*`, both the interaction and the individual components are included in the model.
+
+##  
+
+To visualise these models we need two new tricks:
+
+1.  We have two predictors, so we need to give `data_grid()` both variables. 
+    It finds all the unique values of `x1` and `x2` and then generates all
+    combinations.  
+1.  To generate predictions from both models simultaneously, we can use 
+    `gather_predictions()` which adds each prediction as a row. The
+    complement of `gather_predictions()` is `spread_predictions()` which adds 
+    each prediction to a new column.  
+    
+## 
+Together this gives us:
+
+```{r}
+grid <- sim3 %>% 
+  data_grid(x1, x2) %>% 
+  gather_predictions(mod1, mod2)
+grid
+```  
+
+##  
+We can visualise the results for both models on one plot using facetting:
+
+```{r, fig.width=6, fig.height=4}
+ggplot(sim3, aes(x1, y, colour = x2)) + 
+  geom_point() + 
+  geom_line(data = grid, aes(y = pred)) + 
+  facet_wrap(~ model)
+```
+
+##  
+Which model is better for this data? We can take look at the residuals. 
+
+```{r, fig.width=6, fig.height=4}
+sim3 <- sim3 %>% 
+  gather_residuals(mod1, mod2)
+
+ggplot(sim3, aes(x1, resid, colour = x2)) + 
+  geom_point() + 
+  facet_grid(model ~ x2)
+```
+
+##Why are low quality diamonds more expensive?  
+```{r}
+ggplot(diamonds, aes(cut, price)) + geom_boxplot()
+```  
+
+##  
+
+```{r}
+ggplot(diamonds, aes(color, price)) + geom_boxplot()
+```  
+
+##  
+
+```{r}
+ggplot(diamonds, aes(clarity, price)) + geom_boxplot()
+```
+
+##  
+```{r}
+ggplot(diamonds, aes(carat, price)) + 
+  geom_point()
+```  
+
+##  
+
+```{r}
+diamonds2 <- diamonds %>% 
+  filter(carat <= 2.5) %>% 
+  mutate(lprice = log2(price), lcarat = log2(carat))
+```
+
+```{r, echo=FALSE, width=6, height=4}
+ggplot(diamonds2, aes(lcarat, lprice)) + 
+  geom_point()
+```
+##Identify linear pattern so we can remove it  
+```{r}
+mod_diamond <- lm(lprice ~ lcarat, data = diamonds2)
+```  
+
+##  
+```{r}
+grid <- diamonds2 %>% 
+  data_grid(carat = seq_range(carat, 20)) %>% 
+  mutate(lcarat = log2(carat)) %>% 
+  add_predictions(mod_diamond, "lprice") %>% 
+  mutate(price = 2 ^ lprice)  
+```  
+
+```{r, echo=FALSE}
+grid  
+```
+

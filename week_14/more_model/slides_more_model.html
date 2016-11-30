@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>More Modeling Basics</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="slides_more_model_files\rmdshower/node_modules/shower-ribbon/styles/screen-4x3.css">
+  <link rel="stylesheet" href="slides_more_model_files\rmdshower/style-common.css">
+  <link rel="stylesheet" href="slides_more_model_files\rmdshower/style-ribbon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+  <script src="slides_more_model_files\rmdshower/auto-render.min.js" type="text/javascript"></script>
+  
+  
+    <style type="text/css">
+   div.sourceCode { overflow-x: auto; }
+   table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+     margin: 0; padding: 0; vertical-align: baseline; border: none; }
+   table.sourceCode { width: 100%; line-height: 100%; }
+   td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+   td.sourceCode { padding-left: 5px; }
+   code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+   code > span.dt { color: #902000; } /* DataType */
+   code > span.dv { color: #40a070; } /* DecVal */
+   code > span.bn { color: #40a070; } /* BaseN */
+   code > span.fl { color: #40a070; } /* Float */
+   code > span.ch { color: #4070a0; } /* Char */
+   code > span.st { color: #4070a0; } /* String */
+   code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+   code > span.ot { color: #007020; } /* Other */
+   code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+   code > span.fu { color: #06287e; } /* Function */
+   code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+   code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+   code > span.cn { color: #880000; } /* Constant */
+   code > span.sc { color: #4070a0; } /* SpecialChar */
+   code > span.vs { color: #4070a0; } /* VerbatimString */
+   code > span.ss { color: #bb6688; } /* SpecialString */
+   code > span.im { } /* Import */
+   code > span.va { color: #19177c; } /* Variable */
+   code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+   code > span.op { color: #666666; } /* Operator */
+   code > span.bu { } /* BuiltIn */
+   code > span.ex { } /* Extension */
+   code > span.pp { color: #bc7a00; } /* Preprocessor */
+   code > span.at { color: #7d9029; } /* Attribute */
+   code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+   code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+   code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+   code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  
+  
+  
+</head>
+
+<body class="shower list">
+
+  <header class="caption">
+    <h1>More Modeling Basics</h1>
+    <p>Ranae Dietzel and Andee Kaplan</p>
+  </header>
+
+    
+  
+<section id="more-modeling-as-a-tool-for-exploration" class="slide level2">
+<h2>More modeling as a tool for exploration</h2>
+</section>
+<section id="interactions" class="slide level2">
+<h2>Interactions</h2>
+<pre><code>## Warning: package &#39;nycflights13&#39; was built under R version 3.3.2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(sim3, <span class="kw">aes</span>(x1, y)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> x2))</code></pre></div>
+<p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-1-1.png" width="576" /></p>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<p>There are two possible models you could fit to this data:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod1 &lt;-<span class="st"> </span><span class="kw">lm</span>(y ~<span class="st"> </span>x1 +<span class="st"> </span>x2, <span class="dt">data =</span> sim3)
+mod2 &lt;-<span class="st"> </span><span class="kw">lm</span>(y ~<span class="st"> </span>x1 *<span class="st"> </span>x2, <span class="dt">data =</span> sim3)</code></pre></div>
+<p>When you add variables with <code>+</code>, the model will estimate each effect independent of all the others. It’s possible to fit the so-called interaction by using <code>*</code>. For example, <code>y ~ x1 * x2</code> is translated to <code>y = a_0 + a_1 * a1 + a_2 * a2 + a_12 * a1 * a2</code>. Note that whenever you use <code>*</code>, both the interaction and the individual components are included in the model.</p>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<p>To visualise these models we need two new tricks:</p>
+<ol type="1">
+<li>We have two predictors, so we need to give <code>data_grid()</code> both variables. It finds all the unique values of <code>x1</code> and <code>x2</code> and then generates all combinations.<br />
+</li>
+<li>To generate predictions from both models simultaneously, we can use <code>gather_predictions()</code> which adds each prediction as a row. The complement of <code>gather_predictions()</code> is <code>spread_predictions()</code> which adds each prediction to a new column.</li>
+</ol>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<p>Together this gives us:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grid &lt;-<span class="st"> </span>sim3 %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">data_grid</span>(x1, x2) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">gather_predictions</span>(mod1, mod2)
+grid</code></pre></div>
+<pre><code>## # A tibble: 80 × 4
+##    model    x1     x2     pred
+##    &lt;chr&gt; &lt;int&gt; &lt;fctr&gt;    &lt;dbl&gt;
+## 1   mod1     1      a 1.674928
+## 2   mod1     1      b 4.562739
+## 3   mod1     1      c 6.480664
+## 4   mod1     1      d 4.034515
+## 5   mod1     2      a 1.478190
+## 6   mod1     2      b 4.366001
+## 7   mod1     2      c 6.283926
+## 8   mod1     2      d 3.837777
+## 9   mod1     3      a 1.281453
+## 10  mod1     3      b 4.169263
+## # ... with 70 more rows</code></pre>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<p>We can visualise the results for both models on one plot using facetting:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(sim3, <span class="kw">aes</span>(x1, y, <span class="dt">colour =</span> x2)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> grid, <span class="kw">aes</span>(<span class="dt">y =</span> pred)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(~<span class="st"> </span>model)</code></pre></div>
+<p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-4-1.png" width="576" /></p>
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<p>Which model is better for this data? We can take look at the residuals.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sim3 &lt;-<span class="st"> </span>sim3 %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">gather_residuals</span>(mod1, mod2)
+
+<span class="kw">ggplot</span>(sim3, <span class="kw">aes</span>(x1, resid, <span class="dt">colour =</span> x2)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">facet_grid</span>(model ~<span class="st"> </span>x2)</code></pre></div>
+<p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-5-1.png" width="576" /></p>
+</section>
+<section id="why-are-low-quality-diamonds-more-expensive" class="slide level2">
+<h2>Why are low quality diamonds more expensive?</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(cut, price)) +<span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-6-1.png" width="768" /></p>
+</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(color, price)) +<span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-7-1.png" width="768" /></p>
+</section>
+<section id="section-6" class="slide level2">
+<h2></h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(clarity, price)) +<span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-8-1.png" width="768" /></p>
+</section>
+<section id="section-7" class="slide level2">
+<h2></h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(carat, price)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-9-1.png" width="768" /></p>
+</section>
+<section id="section-8" class="slide level2">
+<h2></h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diamonds2 &lt;-<span class="st"> </span>diamonds %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(carat &lt;=<span class="st"> </span><span class="fl">2.5</span>) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">lprice =</span> <span class="kw">log2</span>(price), <span class="dt">lcarat =</span> <span class="kw">log2</span>(carat))</code></pre></div>
+<p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-11-1.png" width="768" /> ##Identify linear pattern so we can remove it</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod_diamond &lt;-<span class="st"> </span><span class="kw">lm</span>(lprice ~<span class="st"> </span>lcarat, <span class="dt">data =</span> diamonds2)</code></pre></div>
+</section>
+<section id="section-9" class="slide level2">
+<h2></h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grid &lt;-<span class="st"> </span>diamonds2 %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">data_grid</span>(<span class="dt">carat =</span> <span class="kw">seq_range</span>(carat, <span class="dv">20</span>)) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">lcarat =</span> <span class="kw">log2</span>(carat)) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">add_predictions</span>(mod_diamond, <span class="st">&quot;lprice&quot;</span>) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">price =</span> <span class="dv">2</span> ^<span class="st"> </span>lprice)  </code></pre></div>
+<pre><code>## # A tibble: 20 × 4
+##        carat      lcarat    lprice      price
+##        &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+## 1  0.2000000 -2.32192809  8.289840   312.9613
+## 2  0.3210526 -1.63911827  9.437897   693.5697
+## 3  0.4421053 -1.17753819 10.213984  1187.7244
+## 4  0.5631579 -0.82838862 10.801034  1784.1663
+## 5  0.6842105 -0.54748780 11.273333  2475.2060
+## 6  0.8052632 -0.31246777 11.668489  3255.1059
+## 7  0.9263158 -0.11042399 12.008199  4119.3452
+## 8  1.0473684  0.06676901 12.306126  5064.2274
+## 9  1.1684211  0.22456026 12.571432  6086.6476
+## 10 1.2894737  0.36678233 12.810560  7183.9430
+## 11 1.4105263  0.49623358 13.028216  8353.7936
+## 12 1.5315789  0.61501973 13.227939  9594.1507
+## 13 1.6526316  0.72476514 13.412462 10903.1859
+## 14 1.7736842  0.82674917 13.583935 12279.2526
+## 15 1.8947368  0.92199749 13.744083 13720.8562
+## 16 2.0157895  1.01134497 13.894309 15226.6312
+## 17 2.1368421  1.09548031 14.035772 16795.3226
+## 18 2.2578947  1.17497823 14.169437 18425.7712
+## 19 2.3789474  1.25032335 14.296120 20116.9016
+## 20 2.5000000  1.32192809 14.416515 21867.7116</code></pre>
+</section>
+
+  <!--
+  To hide progress bar from entire presentation
+  just remove “progress” element.
+  -->
+  <!-- <div class="progress"></div> -->
+  <script src="slides_more_model_files\rmdshower/node_modules/shower/node_modules/shower-core/shower.min.js"></script>
+  <!-- Copyright © 2015 Yours Truly, Famous Inc. -->
+  <!-- Photos by John Carey, fiftyfootshadows.net -->
+
+    <script>renderMathInElement(document.body);</script>
+  
+  
+</body>
+</html>
