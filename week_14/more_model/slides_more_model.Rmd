@@ -10,12 +10,18 @@ output:
     theme: ribbon
 ---
 
-##More modeling as a tool for exploration  
+##Interesting new package for creating slideshows  
+[xaringan](https://github.com/yihui/xaringan)  
+Maybe check it out.  
+You have presentations coming up.  
+Tuesday, December 13th, 9:45, this room.
+
+#Now more modeling as a tool for exploration  
 
 
 ##Interactions  
 
-```{r setup, message = FALSE, echo=FALSE}
+```{r setup, message = FALSE, echo=FALSE, warning=FALSE}
 library(tidyverse)
 library(nycflights13)
 library(lubridate)
@@ -117,7 +123,8 @@ diamonds2 <- diamonds %>%
 ```{r, echo=FALSE, width=6, height=4}
 ggplot(diamonds2, aes(lcarat, lprice)) + 
   geom_point()
-```
+```  
+
 ##Identify linear pattern so we can remove it  
 ```{r}
 mod_diamond <- lm(lprice ~ lcarat, data = diamonds2)
@@ -251,19 +258,19 @@ Our model seems to fail starting in June: you can still see a strong
     regular pattern that our model hasn't captured. Drawing a plot with one 
     line for each day of the week makes the cause easier to see:
 
-    ```{r}
+```{r}
     ggplot(daily, aes(date, resid, colour = wday)) + 
       geom_ref_line(h = 0) + 
       geom_line()
-    ```  
+```  
 
 ##  
 There are some days with far fewer flights than expected:
 
-    ```{r}
+```{r}
     daily %>% 
       filter(resid < -100)
-    ```  
+```  
 
 ##  
 There seems to be some smoother long term trend over the course of a year.

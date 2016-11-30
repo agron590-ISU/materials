@@ -64,25 +64,25 @@
 
     
   
-<section id="more-modeling-as-a-tool-for-exploration" class="slide level2">
-<h2>More modeling as a tool for exploration</h2>
+<section id="interesting-new-package-for-creating-slideshows" class="slide level2">
+<h2>Interesting new package for creating slideshows</h2>
+<p><a href="https://github.com/yihui/xaringan">xaringan</a><br />
+Maybe check it out.<br />
+You have presentations coming up.<br />
+Tuesday, December 13th, 9:45, this room.</p>
 </section>
-<section id="interactions" class="slide level2">
+<section id="now-more-modeling-as-a-tool-for-exploration" class="titleslide slide level1"><h2 class="shout">Now more modeling as a tool for exploration</h2></section><section id="interactions" class="slide level2">
 <h2>Interactions</h2>
-<pre><code>## Warning: package &#39;nycflights13&#39; was built under R version 3.3.2</code></pre>
-<pre><code>## Warning: package &#39;lubridate&#39; was built under R version 3.3.2</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(sim3, <span class="kw">aes</span>(x1, y)) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> x2))</code></pre></div>
 <p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-1-1.png" width="576" /></p>
-</section>
-<section id="section" class="slide level2">
+</section><section id="section" class="slide level2">
 <h2></h2>
 <p>There are two possible models you could fit to this data:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod1 &lt;-<span class="st"> </span><span class="kw">lm</span>(y ~<span class="st"> </span>x1 +<span class="st"> </span>x2, <span class="dt">data =</span> sim3)
 mod2 &lt;-<span class="st"> </span><span class="kw">lm</span>(y ~<span class="st"> </span>x1 *<span class="st"> </span>x2, <span class="dt">data =</span> sim3)</code></pre></div>
 <p>When you add variables with <code>+</code>, the model will estimate each effect independent of all the others. It’s possible to fit the so-called interaction by using <code>*</code>. For example, <code>y ~ x1 * x2</code> is translated to <code>y = a_0 + a_1 * a1 + a_2 * a2 + a_12 * a1 * a2</code>. Note that whenever you use <code>*</code>, both the interaction and the individual components are included in the model.</p>
-</section>
-<section id="section-1" class="slide level2">
+</section><section id="section-1" class="slide level2">
 <h2></h2>
 <p>To visualise these models we need two new tricks:</p>
 <ol type="1">
@@ -90,8 +90,7 @@ mod2 &lt;-<span class="st"> </span><span class="kw">lm</span>(y ~<span class="st
 </li>
 <li>To generate predictions from both models simultaneously, we can use <code>gather_predictions()</code> which adds each prediction as a row. The complement of <code>gather_predictions()</code> is <code>spread_predictions()</code> which adds each prediction to a new column.</li>
 </ol>
-</section>
-<section id="section-2" class="slide level2">
+</section><section id="section-2" class="slide level2">
 <h2></h2>
 <p>Together this gives us:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grid &lt;-<span class="st"> </span>sim3 %&gt;%<span class="st"> </span>
@@ -112,8 +111,7 @@ grid</code></pre></div>
 ## 9   mod1     3      a 1.281453
 ## 10  mod1     3      b 4.169263
 ## # ... with 70 more rows</code></pre>
-</section>
-<section id="section-3" class="slide level2">
+</section><section id="section-3" class="slide level2">
 <h2></h2>
 <p>We can visualise the results for both models on one plot using facetting:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(sim3, <span class="kw">aes</span>(x1, y, <span class="dt">colour =</span> x2)) +<span class="st"> </span>
@@ -121,8 +119,7 @@ grid</code></pre></div>
 <span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> grid, <span class="kw">aes</span>(<span class="dt">y =</span> pred)) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">facet_wrap</span>(~<span class="st"> </span>model)</code></pre></div>
 <p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-4-1.png" width="576" /></p>
-</section>
-<section id="section-4" class="slide level2">
+</section><section id="section-4" class="slide level2">
 <h2></h2>
 <p>Which model is better for this data? We can take look at the residuals.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sim3 &lt;-<span class="st"> </span>sim3 %&gt;%<span class="st"> </span>
@@ -132,37 +129,33 @@ grid</code></pre></div>
 <span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
 <span class="st">  </span><span class="kw">facet_grid</span>(model ~<span class="st"> </span>x2)</code></pre></div>
 <p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-5-1.png" width="576" /></p>
-</section>
-<section id="why-are-low-quality-diamonds-more-expensive" class="slide level2">
+</section><section id="why-are-low-quality-diamonds-more-expensive" class="slide level2">
 <h2>Why are low quality diamonds more expensive?</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(cut, price)) +<span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
 <p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-6-1.png" width="768" /></p>
-</section>
-<section id="section-5" class="slide level2">
+</section><section id="section-5" class="slide level2">
 <h2></h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(color, price)) +<span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
 <p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-7-1.png" width="768" /></p>
-</section>
-<section id="section-6" class="slide level2">
+</section><section id="section-6" class="slide level2">
 <h2></h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(clarity, price)) +<span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
 <p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-8-1.png" width="768" /></p>
-</section>
-<section id="section-7" class="slide level2">
+</section><section id="section-7" class="slide level2">
 <h2></h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(carat, price)) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
 <p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-9-1.png" width="768" /></p>
-</section>
-<section id="section-8" class="slide level2">
+</section><section id="section-8" class="slide level2">
 <h2></h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diamonds2 &lt;-<span class="st"> </span>diamonds %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">filter</span>(carat &lt;=<span class="st"> </span><span class="fl">2.5</span>) %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">lprice =</span> <span class="kw">log2</span>(price), <span class="dt">lcarat =</span> <span class="kw">log2</span>(carat))</code></pre></div>
-<p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-11-1.png" width="768" /> ##Identify linear pattern so we can remove it</p>
+<p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-11-1.png" width="768" /></p>
+</section><section id="identify-linear-pattern-so-we-can-remove-it" class="slide level2">
+<h2>Identify linear pattern so we can remove it</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod_diamond &lt;-<span class="st"> </span><span class="kw">lm</span>(lprice ~<span class="st"> </span>lcarat, <span class="dt">data =</span> diamonds2)</code></pre></div>
-</section>
-<section id="section-9" class="slide level2">
+</section><section id="section-9" class="slide level2">
 <h2></h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grid &lt;-<span class="st"> </span>diamonds2 %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">data_grid</span>(<span class="dt">carat =</span> <span class="kw">seq_range</span>(carat, <span class="dv">20</span>)) %&gt;%<span class="st"> </span>
@@ -192,15 +185,13 @@ grid</code></pre></div>
 ## 18 2.2578947  1.17497823 14.169437 18425.7712
 ## 19 2.3789474  1.25032335 14.296120 20116.9016
 ## 20 2.5000000  1.32192809 14.416515 21867.7116</code></pre>
-</section>
-<section id="section-10" class="slide level2">
+</section><section id="section-10" class="slide level2">
 <h2></h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds2, <span class="kw">aes</span>(carat, price)) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> grid, <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>)</code></pre></div>
 <p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-15-1.png" width="576" /></p>
-</section>
-<section id="section-11" class="slide level2">
+</section><section id="section-11" class="slide level2">
 <h2></h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diamonds2 &lt;-<span class="st"> </span>diamonds2 %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">add_residuals</span>(mod_diamond, <span class="st">&quot;lresid&quot;</span>)
@@ -208,28 +199,23 @@ grid</code></pre></div>
 <span class="kw">ggplot</span>(diamonds2, <span class="kw">aes</span>(lcarat, lresid)) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
 <p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-16-1.png" width="768" /></p>
-</section>
-<section id="cut" class="slide level2">
+</section><section id="cut" class="slide level2">
 <h2>Cut</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds2, <span class="kw">aes</span>(cut, lresid)) +<span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
 <p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-17-1.png" width="768" /></p>
-</section>
-<section id="color" class="slide level2">
+</section><section id="color" class="slide level2">
 <h2>Color</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds2, <span class="kw">aes</span>(color, lresid)) +<span class="st"> </span><span class="kw">geom_boxplot</span>()  </code></pre></div>
 <p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-18-1.png" width="768" /></p>
-</section>
-<section id="clarity" class="slide level2">
+</section><section id="clarity" class="slide level2">
 <h2>Clarity</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds2, <span class="kw">aes</span>(clarity, lresid)) +<span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
 <p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-19-1.png" width="768" /></p>
-</section>
-<section id="a-more-complicated-model" class="slide level2">
+</section><section id="a-more-complicated-model" class="slide level2">
 <h2>A more complicated model</h2>
 <p>If we wanted to, we could continue to build up our model, moving the effects we’ve observed into the model to make them explicit. For example, we could include <code>color</code>, <code>cut</code>, and <code>clarity</code> into the model so that we also make explicit the effect of these three categorical variables:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod_diamond2 &lt;-<span class="st"> </span><span class="kw">lm</span>(lprice ~<span class="st"> </span>lcarat +<span class="st"> </span>color +<span class="st"> </span>cut +<span class="st"> </span>clarity, <span class="dt">data =</span> diamonds2)</code></pre></div>
-</section>
-<section id="section-12" class="slide level2">
+</section><section id="section-12" class="slide level2">
 <h2></h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grid &lt;-<span class="st"> </span>diamonds2 %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">data_grid</span>(cut, <span class="dt">.model =</span> mod_diamond2) %&gt;%<span class="st"> </span>
@@ -243,14 +229,12 @@ grid</code></pre></div>
 ## 3 Very Good -0.5145732     G     SI1 11.15824
 ## 4   Premium -0.5145732     G     SI1 11.19055
 ## 5     Ideal -0.5145732     G     SI1 11.22187</code></pre>
-</section>
-<section id="section-13" class="slide level2">
+</section><section id="section-13" class="slide level2">
 <h2></h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(grid, <span class="kw">aes</span>(cut, pred)) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
 <p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-22-1.png" width="768" /></p>
-</section>
-<section id="what-affects-the-number-of-daily-flights" class="slide level2">
+</section><section id="what-affects-the-number-of-daily-flights" class="slide level2">
 <h2>What affects the number of daily flights?</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">daily &lt;-<span class="st"> </span>flights %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">date =</span> <span class="kw">make_date</span>(year, month, day)) %&gt;%<span class="st"> </span>
@@ -271,19 +255,16 @@ daily  </code></pre></div>
 ## 9  2013-01-09   902
 ## 10 2013-01-10   932
 ## # ... with 355 more rows</code></pre>
-</section>
-<section id="section-14" class="slide level2">
+</section><section id="section-14" class="slide level2">
 <h2></h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(daily, <span class="kw">aes</span>(date, n)) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_line</span>()</code></pre></div>
 <p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-24-1.png" width="768" /></p>
-</section>
-<section id="day-of-week" class="slide level2">
+</section><section id="day-of-week" class="slide level2">
 <h2>Day of week</h2>
 <p>Understanding the long-term trend is challenging because there’s a very strong day-of-week effect that dominates the subtler patterns. Let’s start by looking at the distribution of flight numbers by day-of-week:</p>
 <p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-25-1.png" width="576" /></p>
-</section>
-<section id="section-15" class="slide level2">
+</section><section id="section-15" class="slide level2">
 <h2></h2>
 <p>One way to remove this strong pattern is to use a model. First, we fit the model, and display its predictions overlaid on the original data:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod &lt;-<span class="st"> </span><span class="kw">lm</span>(n ~<span class="st"> </span>wday, <span class="dt">data =</span> daily)
@@ -296,8 +277,7 @@ grid &lt;-<span class="st"> </span>daily %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>() +
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> grid, <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>)</code></pre></div>
 <p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-26-1.png" width="384" /></p>
-</section>
-<section id="section-16" class="slide level2">
+</section><section id="section-16" class="slide level2">
 <h2></h2>
 <p>Next we compute and visualise the residuals:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">daily &lt;-<span class="st"> </span>daily %&gt;%<span class="st"> </span>
@@ -307,28 +287,19 @@ daily %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_ref_line</span>(<span class="dt">h =</span> <span class="dv">0</span>) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_line</span>()</code></pre></div>
 <p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-27-1.png" width="576" /></p>
-</section>
-<section id="section-17" class="slide level2">
+</section><section id="section-17" class="slide level2">
 <h2></h2>
 <p>Our model seems to fail starting in June: you can still see a strong regular pattern that our model hasn’t captured. Drawing a plot with one line for each day of the week makes the cause easier to see:</p>
-<pre><code>```r
-ggplot(daily, aes(date, resid, colour = wday)) + 
-  geom_ref_line(h = 0) + 
-  geom_line()
-```
-
-&lt;img src=&quot;slides_more_model_files/figure-revealjs/unnamed-chunk-28-1.png&quot; width=&quot;768&quot; /&gt;</code></pre>
-</section>
-<section id="section-18" class="slide level2">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">    <span class="kw">ggplot</span>(daily, <span class="kw">aes</span>(date, resid, <span class="dt">colour =</span> wday)) +<span class="st"> </span>
+<span class="st">      </span><span class="kw">geom_ref_line</span>(<span class="dt">h =</span> <span class="dv">0</span>) +<span class="st"> </span>
+<span class="st">      </span><span class="kw">geom_line</span>()</code></pre></div>
+<p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-28-1.png" width="768" /></p>
+</section><section id="section-18" class="slide level2">
 <h2></h2>
 <p>There are some days with far fewer flights than expected:</p>
-<pre><code>```r
-daily %&gt;% 
-  filter(resid &lt; -100)
-```
-
-```
-## # A tibble: 11 × 4
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">    daily %&gt;%<span class="st"> </span>
+<span class="st">      </span><span class="kw">filter</span>(resid &lt;<span class="st"> </span>-<span class="dv">100</span>)</code></pre></div>
+<pre><code>## # A tibble: 11 × 4
 ##          date     n  wday     resid
 ##        &lt;date&gt; &lt;int&gt; &lt;ord&gt;     &lt;dbl&gt;
 ## 1  2013-01-01   842  Tues -109.3585
@@ -341,10 +312,8 @@ daily %&gt;%
 ## 8  2013-11-29   661   Fri -306.4615
 ## 9  2013-12-24   761  Tues -190.3585
 ## 10 2013-12-25   719   Wed -243.6923
-## 11 2013-12-31   776  Tues -175.3585
-```</code></pre>
-</section>
-<section id="section-19" class="slide level2">
+## 11 2013-12-31   776  Tues -175.3585</code></pre>
+</section><section id="section-19" class="slide level2">
 <h2></h2>
 <p>There seems to be some smoother long term trend over the course of a year. We can highlight that trend with <code>geom_smooth()</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">    daily %&gt;%<span class="st"> </span>
@@ -353,13 +322,11 @@ daily %&gt;%
 <span class="st">      </span><span class="kw">geom_line</span>(<span class="dt">colour =</span> <span class="st">&quot;grey50&quot;</span>) +<span class="st"> </span>
 <span class="st">      </span><span class="kw">geom_smooth</span>(<span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">span =</span> <span class="fl">0.20</span>)</code></pre></div>
 <p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-30-1.png" width="768" /></p>
-</section>
-<section id="seasonal-saturday-effect" class="slide level2">
+</section><section id="seasonal-saturday-effect" class="slide level2">
 <h2>Seasonal Saturday effect</h2>
 <p>Let’s first tackle our failure to accurately predict the number of flights on Saturday. A good place to start is to go back to the raw numbers, focussing on Saturdays:</p>
 <p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-31-1.png" width="576" /></p>
-</section>
-<section id="section-20" class="slide level2">
+</section><section id="section-20" class="slide level2">
 <h2></h2>
 <p>Lets create a “term” variable that roughly captures the three school terms, and check our work with a plot:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">term &lt;-<span class="st"> </span>function(date) {
@@ -371,8 +338,7 @@ daily %&gt;%
 
 daily &lt;-<span class="st"> </span>daily %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">term =</span> <span class="kw">term</span>(date)) </code></pre></div>
-</section>
-<section id="section-21" class="slide level2">
+</section><section id="section-21" class="slide level2">
 <h2></h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">daily %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">filter</span>(wday ==<span class="st"> &quot;Sat&quot;</span>) %&gt;%<span class="st"> </span>
@@ -381,22 +347,19 @@ daily &lt;-<span class="st"> </span>daily %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_line</span>() +
 <span class="st">  </span><span class="kw">scale_x_date</span>(<span class="ot">NULL</span>, <span class="dt">date_breaks =</span> <span class="st">&quot;1 month&quot;</span>, <span class="dt">date_labels =</span> <span class="st">&quot;%b&quot;</span>)</code></pre></div>
 <p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-33-1.png" width="576" /></p>
-</section>
-<section id="section-22" class="slide level2">
+</section><section id="section-22" class="slide level2">
 <h2></h2>
 <p>It’s useful to see how this new variable affects the other days of the week:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">daily %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(wday, n, <span class="dt">colour =</span> term)) +
 <span class="st">    </span><span class="kw">geom_boxplot</span>()</code></pre></div>
 <p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-34-1.png" width="576" /></p>
-</section>
-<section id="section-23" class="slide level2">
+</section><section id="section-23" class="slide level2">
 <h2></h2>
 <p>It looks like there is significant variation across the terms, so fitting a separate day of week effect for each term is reasonable.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod1 &lt;-<span class="st"> </span><span class="kw">lm</span>(n ~<span class="st"> </span>wday, <span class="dt">data =</span> daily)
 mod2 &lt;-<span class="st"> </span><span class="kw">lm</span>(n ~<span class="st"> </span>wday *<span class="st"> </span>term, <span class="dt">data =</span> daily)</code></pre></div>
-</section>
-<section id="section-24" class="slide level2">
+</section><section id="section-24" class="slide level2">
 <h2></h2>
 <p>This improves our model, but not as much as we might hope:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">daily %&gt;%<span class="st"> </span>
@@ -404,18 +367,15 @@ mod2 &lt;-<span class="st"> </span><span class="kw">lm</span>(n ~<span class="st
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(date, resid, <span class="dt">colour =</span> model)) +
 <span class="st">    </span><span class="kw">geom_line</span>(<span class="dt">alpha =</span> <span class="fl">0.75</span>)</code></pre></div>
 <p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-36-1.png" width="768" /></p>
-</section>
-<section id="section-25" class="slide level2">
+</section><section id="section-25" class="slide level2">
 <h2></h2>
 <p>We can see the problem by overlaying the predictions from the model on to the raw data:</p>
 <p><img src="slides_more_model_files/figure-revealjs/unnamed-chunk-37-1.png" width="768" /></p>
-</section>
-<section id="section-26" class="slide level2">
+</section><section id="section-26" class="slide level2">
 <h2></h2>
 <p>Our model is finding the <em>mean</em> effect, but we have a lot of big outliers, so mean tends to be far away from the typical value. We can alleviate this problem by using a model that is robust to the effect of outliers: <code>MASS::rlm()</code>. This greatly reduces the impact of the outliers on our estimates, and gives a model that does a good job of removing the day of week pattern:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod3 &lt;-<span class="st"> </span>MASS::<span class="kw">rlm</span>(n ~<span class="st"> </span>wday *<span class="st"> </span>term, <span class="dt">data =</span> daily)</code></pre></div>
-</section>
-<section id="section-27" class="slide level2">
+</section><section id="section-27" class="slide level2">
 <h2></h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">daily %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">add_residuals</span>(mod3, <span class="st">&quot;resid&quot;</span>) %&gt;%<span class="st"> </span>
