@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>R Packages</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="slides_packages_files/rmdshower/node_modules/shower-ribbon/styles/screen-4x3.css">
+  <link rel="stylesheet" href="slides_packages_files/rmdshower/style-common.css">
+  <link rel="stylesheet" href="slides_packages_files/rmdshower/style-ribbon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+  <script src="slides_packages_files/rmdshower/auto-render.min.js" type="text/javascript"></script>
+  
+  
+    <style type="text/css">
+   div.sourceCode { overflow-x: auto; }
+   table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+     margin: 0; padding: 0; vertical-align: baseline; border: none; }
+   table.sourceCode { width: 100%; line-height: 100%; }
+   td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+   td.sourceCode { padding-left: 5px; }
+   code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+   code > span.dt { color: #902000; } /* DataType */
+   code > span.dv { color: #40a070; } /* DecVal */
+   code > span.bn { color: #40a070; } /* BaseN */
+   code > span.fl { color: #40a070; } /* Float */
+   code > span.ch { color: #4070a0; } /* Char */
+   code > span.st { color: #4070a0; } /* String */
+   code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+   code > span.ot { color: #007020; } /* Other */
+   code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+   code > span.fu { color: #06287e; } /* Function */
+   code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+   code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+   code > span.cn { color: #880000; } /* Constant */
+   code > span.sc { color: #4070a0; } /* SpecialChar */
+   code > span.vs { color: #4070a0; } /* VerbatimString */
+   code > span.ss { color: #bb6688; } /* SpecialString */
+   code > span.im { } /* Import */
+   code > span.va { color: #19177c; } /* Variable */
+   code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+   code > span.op { color: #666666; } /* Operator */
+   code > span.bu { } /* BuiltIn */
+   code > span.ex { } /* Extension */
+   code > span.pp { color: #bc7a00; } /* Preprocessor */
+   code > span.at { color: #7d9029; } /* Attribute */
+   code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+   code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+   code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+   code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  
+  
+  
+</head>
+
+<body class="shower list">
+
+  <header class="caption">
+    <h1>R Packages</h1>
+    <p>Ranae Dietzel and Andee Kaplan</p>
+  </header>
+
+    
+  
+<section id="lets-make-an-r-package" class="slide level2">
+<h2>Let’s make an <code>R</code> package!</h2>
+<p><img src="images/book_cover.png" height=475px /></p>
+<p>Content for today is from <a href="http://r-pkgs.had.co.nz/">Hadley’s book</a> and Eric’s ISU Graphics Group talk.</p>
+</section>
+<section id="why-packages" class="slide level2">
+<h2>Why Packages?</h2>
+<ul>
+<li>Easy to install compared to sourcing in <code>R</code> scripts</li>
+<li>Dependency tracking (e.g., <code>dplyr</code> requires <code>magrittr</code> for the pipe operator, etc.)</li>
+<li>Package versioning</li>
+<li>Documentation is much easier</li>
+<li>Sharing with others via CRAN, GitHub</li>
+<li>Makes <strong>reproducibility</strong> a little cleaner/easier</li>
+</ul>
+</section>
+<section id="requirements" class="slide level2">
+<h2>Requirements</h2>
+<ol start="2" type="1">
+<li>devtools (<code>install.packages(&quot;devtools&quot;)</code>)</li>
+<li>roxygen2 (<code>install.packages(&quot;roxygen2&quot;)</code>)</li>
+</ol>
+<p>Some other potentially useful packages include:</p>
+<ul>
+<li>testthat (<code>install.packages(&quot;testthat&quot;)</code>) - Allows the writing of unit tests for individual functions</li>
+<li>knitr (<code>install.packages(&quot;knitr&quot;)</code>) and rmarkdown (<code>install.packages(&quot;rmarkdown&quot;)</code>) for building vignettes</li>
+</ul>
+</section>
+<section id="ready" class="slide level2">
+<h2>Ready?</h2>
+<p>We can check:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(devtools)
+
+<span class="kw">has_devel</span>()</code></pre></div>
+<pre><code>## &#39;/usr/local/Cellar/r/3.3.2/R.framework/Resources/bin/R&#39; --no-site-file  \
+##   --no-environ --no-save --no-restore --quiet CMD SHLIB foo.c</code></pre>
+<pre><code>## </code></pre>
+<pre><code>## [1] TRUE</code></pre>
+</section>
+<section id="naming-your-package" class="slide level2">
+<h2>Naming your Package</h2>
+<p>From <a href="http://r-pkgs.had.co.nz/package.html" class="uri">http://r-pkgs.had.co.nz/package.html</a>:</p>
+<ul>
+<li>Pick a unique name you can easily Google.</li>
+<li>Avoid using both upper and lower case letters</li>
+<li>Find a word that evokes the problem and modify it so that it’s unique:
+<ul>
+<li>tidyr tidies data in <code>R</code></li>
+<li>lubridate makes dates and times easier.</li>
+</ul></li>
+<li>Add an r to the end of a word</li>
+</ul>
+</section>
+<section id="the-description-file" class="slide level2">
+<h2>The DESCRIPTION File</h2>
+<p>This is the overall descriptor of the package from which metadata is obtained. Fields include:</p>
+<ul>
+<li>Package: agron590demo</li>
+<li>Type: Package</li>
+<li>Title: What the Package Does (Title Case)</li>
+<li>Version: 0.1.0</li>
+<li>Author: Who wrote it</li>
+<li>Maintainer: The package maintainer <a href="mailto:yourself@somewhere.net">yourself@somewhere.net</a></li>
+<li>Description: More about what it does</li>
+</ul>
+<p>And more…</p>
+</section>
+<section id="the-namespace-file" class="slide level2">
+<h2>The NAMESPACE File</h2>
+<p>Defines the imported functions (dependencies), and exported functions</p>
+<p>What are exported functions?</p>
+<ul>
+<li>Functions that are made available to the user</li>
+<li>These contrast from internal functions which are not meant to be accessed by users of your package</li>
+<li><code>::</code> vs <code>:::</code></li>
+</ul>
+</section>
+<section id="the-r-directory" class="slide level2">
+<h2>The R Directory</h2>
+<p>Contains the <code>R</code> code for the package. This can be done in a few ways:</p>
+<ol type="1">
+<li>Put all functions into a single file</li>
+<li>Have a separate file for each function</li>
+<li>Group similar functions together in separate files</li>
+</ol>
+<p>The third is recommended by Hadley and is generally the approach that should be used, although CRAN gatekeepers prefer the second option at least compared with the first.</p>
+</section>
+<section id="the-man-directory" class="slide level2">
+<h2>The man Directory</h2>
+<ul>
+<li>Stands for “Manual”</li>
+<li>Contains “.Rd” files (<code>R</code> Documentation) which define the help files we know and love</li>
+<li>Very ugly structure</li>
+<li>Each (exported) function should have an Rd file associated with it.</li>
+<li>Luckily, we don’t have to manually edit this…</li>
+</ul>
+</section>
+<section id="roxygen2" class="slide level2">
+<h2><code>roxygen2</code></h2>
+<p>It allows automatic generation of:</p>
+<ul>
+<li>All exports</li>
+<li>All imports</li>
+<li>All Rd files</li>
+</ul>
+<p>It creates the NAMESPACE and Rd files automatically for us. We just have to add special comments above each function.</p>
+<p>Let’s take a look…</p>
+</section>
+<section id="checking-installing-building" class="slide level2">
+<h2>Checking, Installing, Building</h2>
+<p>There will be three general routines we use <code>devtools</code> for: checking (verifying that the package is in the proper format), installing (installing it on our own computer), and building (building it for use by other people)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># With your working directory set to the root package folder</span>
+devtools::<span class="kw">check</span>()
+devtools::<span class="kw">install</span>()
+devtools::<span class="kw">build</span>()</code></pre></div>
+</section>
+<section id="package-dependencies" class="slide level2">
+<h2>Package Dependencies</h2>
+<p>Sometimes we need to depend on other packages. To do so, we use the <span class="citation" data-cites="import">@import</span> or <span class="citation" data-cites="importFrom">@importFrom</span> directive in roxygen. Let’s look at an example.</p>
+</section>
+<section id="your-turn" class="slide level2 cover white">
+<h2>Your Turn</h2>
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<p><img src="images/your_turn.jpg" class="cover height" /></p>
+<p style="color:white">
+Add a new function of your choosing to the package. The function must:
+</p>
+<ol style="color:white">
+<li>
+Import the <code>ggplot2</code> package (<code>@import ggplot2</code>)
+</li>
+<li>
+Return a ggplot2 plot of your choosing
+</li>
+<li>
+Be exported
+</li>
+<li>
+Take at least two parameters which are both documented
+</li>
+</ol>
+<p style="color:white">
+When you have created this function, <strong>check</strong> and <strong>install</strong> your package to make sure that it works!
+</p>
+</section>
+<section id="github" class="slide level2">
+<h2>GitHub</h2>
+<p>In the real world, we’re usually developing packages with other developers. Collaborative coding tools like GitHub make this much easier.</p>
+<p>As a side benefit, putting your package on GitHub makes <strong>installing</strong> the package much easier as well:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">install_github</span>(<span class="st">&quot;andeek/agron590demo&quot;</span>)</code></pre></div>
+</section>
+
+  <!--
+  To hide progress bar from entire presentation
+  just remove “progress” element.
+  -->
+  <!-- <div class="progress"></div> -->
+  <script src="slides_packages_files/rmdshower/node_modules/shower/node_modules/shower-core/shower.min.js"></script>
+  <!-- Copyright © 2015 Yours Truly, Famous Inc. -->
+  <!-- Photos by John Carey, fiftyfootshadows.net -->
+
+    <script>renderMathInElement(document.body);</script>
+  
+  
+</body>
+</html>

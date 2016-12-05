@@ -1,0 +1,155 @@
+---
+title: "R Packages"
+author: "Ranae Dietzel and Andee Kaplan"
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: ribbon
+---
+
+## Let's make an `R` package!
+
+<img src="images/book_cover.png" height=475px />
+
+Content for today is from [Hadley's book](http://r-pkgs.had.co.nz/) and Eric's ISU Graphics Group talk. 
+
+## Why Packages?
+
+- Easy to install compared to sourcing in `R` scripts
+- Dependency tracking (e.g., `dplyr` requires `magrittr` for the pipe operator, etc.)
+- Package versioning
+- Documentation is much easier
+- Sharing with others via CRAN, GitHub
+- Makes **reproducibility** a little cleaner/easier
+
+## Requirements
+
+2. devtools (`install.packages("devtools")`)
+3. roxygen2 (`install.packages("roxygen2")`)
+
+Some other potentially useful packages include:
+
+- testthat (`install.packages("testthat")`) - Allows the writing of unit tests for individual functions
+- knitr (`install.packages("knitr")`) and rmarkdown (`install.packages("rmarkdown")`) for building vignettes
+
+## Ready?
+
+We can check:
+
+```{r}
+library(devtools)
+
+has_devel()
+```
+
+## Naming your Package
+
+From http://r-pkgs.had.co.nz/package.html:
+
+- Pick a unique name you can easily Google.
+- Avoid using both upper and lower case letters
+- Find a word that evokes the problem and modify it so that it’s unique:
+    - tidyr tidies data in `R`
+    - lubridate makes dates and times easier.
+- Add an r to the end of a word
+
+## The DESCRIPTION File
+
+This is the overall descriptor of the package from which metadata is obtained. Fields include:
+
+- Package: agron590demo
+- Type: Package
+- Title: What the Package Does (Title Case)
+- Version: 0.1.0
+- Author: Who wrote it
+- Maintainer: The package maintainer <yourself@somewhere.net>
+- Description: More about what it does
+
+And more...
+
+## The NAMESPACE File
+
+Defines the imported functions (dependencies), and exported functions
+
+What are exported functions?
+
+- Functions that are made available to the user
+- These contrast from internal functions which are not meant to be accessed by users of your package
+- `::` vs `:::`
+
+## The R Directory
+
+Contains the `R` code for the package. This can be done in a few ways:
+
+1. Put all functions into a single file
+2. Have a separate file for each function
+3. Group similar functions together in separate files
+
+The third is recommended by Hadley and is generally the approach that should be used, although CRAN gatekeepers prefer the second option at least compared with the first.
+
+## The man Directory
+
+- Stands for "Manual"
+- Contains ".Rd" files (`R` Documentation) which define the help files we know and love
+- Very ugly structure
+- Each (exported) function should have an Rd file associated with it.
+- Luckily, we don't have to manually edit this...
+
+## `roxygen2`
+
+It allows automatic generation of:
+
+- All exports
+- All imports
+- All Rd files
+
+It creates the NAMESPACE and Rd files automatically for us. We just have to add special comments above each function.
+
+Let's take a look...
+
+## Checking, Installing, Building
+
+There will be three general routines we use `devtools` for: checking (verifying that the package is in the proper format), installing (installing it on our own computer), and building (building it for use by other people)
+
+```{r, eval=FALSE}
+# With your working directory set to the root package folder
+devtools::check()
+devtools::install()
+devtools::build()
+```
+
+## Package Dependencies
+
+Sometimes we need to depend on other packages. To do so, we use the @import or @importFrom directive in roxygen. Let's look at an example.
+
+## Your Turn { .cover .white }
+
+<!-- image source https://www.flickr.com/photos/ollemhebb/16691684354/in/photolist-rqZfeh-dB2HGy-j4rtWV-cswQCb-bnmKUX-rurYD7-5vmdw6-7iHPtj-bvggjZ-7nwAyK-oVZdhD-acwkds-dqAf8f-e4z5Jk-6PBenY-dSAYZ9-5vmcGR-e4z7be-cyGrpE-7WLPaw-5vmdnn-8ciEWU-5vmcDa-o2NbGq-dxpJTW-cyGt4d-dZy9Sm-dZssjK-oVZ3SB-5BtrCp-e4z5Mk-6bvjNs-8cfk5H-dzTiW2-7Yfj3T-9mraHV-5XmJTS-aDtnzj-ruXg4M-ecF3x2-aAU6Fg-bsQosb-Hgh9UM-kJti5g-ifdCE4-ceXXhf-7AdkFZ-aEDYpr-otaizi-sa1Phn -->
+<img src="images/your_turn.jpg" class="cover height" />
+
+<p style="color:white">
+Add a new function of your choosing to the package. The function must:
+</p>
+
+<ol style="color:white">
+<li>Import the `ggplot2` package (`@import ggplot2`)</li>
+<li>Return a ggplot2 plot of your choosing</li>
+<li>Be exported</li>
+<li>Take at least two parameters which are both documented</li>
+</ol>
+<p style="color:white">
+When you have created this function, **check** and **install** your package to make sure that it works!
+</p>
+
+## GitHub
+
+In the real world, we're usually developing packages with other developers. Collaborative coding tools like GitHub make this much easier.
+
+As a side benefit, putting your package on GitHub makes **installing** the package much easier as well:
+
+```{r, eval=FALSE}
+devtools::install_github("andeek/agron590demo")
+```
+
