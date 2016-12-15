@@ -1,0 +1,35 @@
+Kati, Kelsie, Ohene, and Victoria,
+
+You final project was split into two parts, presentation and paper, each worth 50% of your grade.
+
+Your project was well presented and we clearly understood your objectives and how you fulfilled these objectives. You each talked roughly equal amounts of time and we could clearly see how you all contributed to the project.  You recieved full points for the presentation (100/100).  
+
+We expected to see details beyond the presentation in your paper, but these details were absent. In general, the paper lacked in content and professionalism.  
+
+Introduction and Background 
+  Your objective was well-defined and helped structure the paper. These two sections were redundant and it would have been helpful to have more description of some points, such as why the data is collected and how a relational database would help with quality control.  
+  
+Methods  
+  This section is unacceptably short for a paper that is about data methods. What was your modeling strategy and theory behind your decisions? What is the path of the data from the field to the database? What does the MATLAB code actually do and why didn't you include it in your repo? Most of the data dictionary methods are described in the Outcomes section.  
+
+Outcomes  
+  Data Dictionary  
+    The content looks good, but it should be specified which data is raw and which data is which is calculated. The data dictionary was not readable in the paper. It would have been nice to see it in a table so the rows lined up.  
+    
+  ERD
+    There were several problems with the ERD, although it's possible that a few of these were due to misunderstanding caused by a lack of explanation of why the ERD was designed as it was. Why did you choose separate tables for each calculated measurement? Does this help with your end use case? There is an extra relationship between experiments and observation time and there is an extra variable (t). There is duplicate data in terms of summary, which should be a view. 
+    
+  Possible Queries  
+    The possible questions posed are good, but there are no possible queries shown in the paper. It is unclear how queries for your database could have been placed into the SQLitetutorial. In the paper, there is nothing to illustrate how the database would work, which would have helped us understand the ERD. 
+    
+Conclusion  
+  Why switch from MATLAB to R in the future? Why use PostreSQL? We would have appreciated some discussion and comparison of DBMSs, as we talked about it meetings. How would you implement menus and graphs online? What were some of the challenges you faced in this process in general? 
+    
+  References
+    Is this the only resource you used for this paper? A bibliography as taught in class would have been preferred.  
+    
+General  
+This paper contained a lot of typos. You successfully used GitHub, but there is not much evidence of version control. In some cases, material appeared for the first time only in its final form. You received 50/100 points for your paper. 
+
+ 
+
