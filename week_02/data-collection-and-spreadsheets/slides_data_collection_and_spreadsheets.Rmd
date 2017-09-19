@@ -81,9 +81,6 @@ Be very, very careful.
 ##  
 <center><img src="images/bdoc.png" width="1200px" /></center> 
 
-##Put just one thing in a cell  
-<center><img src="images/dates_in_excel.png" width="500px" /></center>
-
 ##Make it a rectangle  
 * Rows should correspond to identifiers (blocks, treatments, reps)  
 * Columns should correspond to variables  
